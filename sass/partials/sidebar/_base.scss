@@ -24,9 +24,7 @@ aside.sidebar {
   img {
     @extend .flex-content;
     @extend .basic-alignment;
-	&.border {
-	  @include shadow-box($border: #fff .3em solid);
-	}
+	@include shadow-box($border: #fff .3em solid);
   }
   ul {
     margin-bottom: 0.5em;
