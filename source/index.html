@@ -3,6 +3,30 @@ layout: default
 ---
 
 <div class="blog-index">
+  
+  <ul class="blog-icons">
+    {% comment %}
+    <li>
+      <a title="subscribe via RSS" href="/blog/categories/English" rel="rss"></a>
+    </li>   
+    <li>
+      <a title="subscribe via email" href="/blog/categories/English" rel="email"></a>
+    </li>
+    {% endcomment %}
+    <li>
+      <a title="only English posts" href="/blog/categories/English" rel="english"></a>
+    </li>
+    <li>
+      <a title="nur deutsche Einträge" href="/blog/categories/German" rel="german"></a>
+    </li>
+  </ul>
+
+  <section>
+    <div class="intro-box">
+      test
+    </div>
+  </section>
+  
   {% assign index = true %}
   {% for post in paginator.posts %}
   {% assign content = post.content %}

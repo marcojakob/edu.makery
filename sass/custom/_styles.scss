@@ -6,4 +6,76 @@ article img.nobox, aside.sidebar img.nobox {
   @include border-radius(none);
   @include box-shadow(none);
   border: 0;
+  margin-bottom: 0;
 }
+
+// Apply clearfix so floated images don't overflow
+aside.sidebar li {
+  @extend .group;
+}
+
+// Vertical center image 
+article img.middle, aside.sidebar img.middle {
+  vertical-align: middle;
+  margin-right: .2em;
+}
+
+.intro-box {
+  padding: 1em;
+  margin-top: 1.2em;
+  margin-left: -1em;
+  margin-right: -1em;
+	background-color: $intro-box-bg;
+  border: 1px solid $intro-box-border;
+}
+
+@media only screen and (min-width: 992px) {
+  .intro-box {
+    margin-top: 2em;
+  }
+}
+
+@mixin language-link-icon($icon, $icon-active){
+  width: 32px;
+  height: 32px;
+  &, &:after {
+    background:transparent url($icon) left top no-repeat;
+  }
+  &:hover { 
+    background:transparent url($icon-active) left top no-repeat;
+  }
+}
+
+ul.blog-icons {
+  @extend .group;
+  display: block;
+  float: right;
+  margin-top: 0.5em;
+  margin-right: 0.5em;
+  
+  li {
+    float:left;
+    list-style-image: none;
+    list-style-type: none;
+  }
+  a {
+    padding-left: 0.5em;
+    display: block;
+    
+    &[rel=rss] { 
+      @include language-link-icon('/images/feed/rss_bw.png', '/images/feed/rss.png'); 
+    }
+    &[rel=email] { 
+      @include language-link-icon('/images/feed/email.png', '/images/feed/email_rss.png'); 
+      border-right: 1px solid $nav-border-bottom;
+      margin-right: 0.6em;
+    }
+    &[rel=english] {
+      @include language-link-icon('/images/lang/icondrawer_english_32_bw.png', '/images/lang/icondrawer_english_32.png'); 
+    }
+    &[rel=german] { 
+      @include language-link-icon('/images/lang/icondrawer_german_32_bw.png', '/images/lang/icondrawer_german_32.png'); 
+    }
+  }
+}
+

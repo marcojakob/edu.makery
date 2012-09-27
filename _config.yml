@@ -16,8 +16,8 @@ description: Resources and Software for Education.
 date_format: "ordinal"
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
-subscribe_rss: /atom.xml
-subscribe_email:
+subscribe_rss: http://feeds.feedburner.com/edu-makery
+subscribe_email: http://feedburner.google.com/fb/a/mailverify?uri=edu-makery
 # RSS feeds can list your email address if you like
 email:
 
@@ -45,7 +45,7 @@ titlecase: true       # Converts page and post titles to titlecase
 
 # list each of the sidebar modules you want to include, in the order you want them to appear.
 # To add custom asides, create files in /source/_includes/custom/asides/ and add them to the list like 'custom/asides/custom_aside_name.html'
-default_asides: [custom/asides/projects.html, asides/recent_posts.html]
+default_asides: [custom/asides/teaching_resources.html, asides/recent_posts.html]
 
 # Each layout uses the default asides, but they can have their own asides instead. Simply uncomment the lines below
 # and add an array with the asides you want to use.
