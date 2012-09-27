@@ -3,7 +3,7 @@ layout: post
 title: "Release of GameGridKara v2.0"
 date: 2012-09-25 00:56
 comments: true
-categories: english
+categories: English
 ---
 {% img /images/kara/gamegrid-kara.png 'GameGridKara' %} 
 

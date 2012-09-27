@@ -4,17 +4,23 @@ layout: default
 
 <div class="blog-index">
   
-  <ul class="blog-icons">
+    <ul class="blog-icons">
     <li>
-      <a title="show only English posts" href="/blog/en" class="lang-en"></a>
+      <a title="show all posts" href="/" class="lang-en"></a>
     </li>
     <li>
-      <a title="nur deutsche Einträge anzeigen" href="/blog/de" class="lang-de"></a>
+      <a title="nur deutsche Einträge anzeigen" href="/blog/de" class="lang-de_inactive"></a>
     </li>
   </ul>
+
+  <section class="intro-box">
+    <div>
+      <strong>English</strong> posts - <a href="{{ root_url }}/">show all</a>
+    </div>
+  </section>
   
   {% assign index = true %}
-  {% for post in paginator.posts %}
+  {% for post in site.categories['English'] %}
   {% assign content = post.content %}
     <article>
       {% include article.html %}

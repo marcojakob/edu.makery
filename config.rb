@@ -12,5 +12,8 @@ sass_dir = "sass"
 images_dir = "source/images"
 fonts_dir = "source/fonts"
 
+# Added this for sprites to have the correct path
+relative_assets = true
+
 line_comments = false
 output_style = :compressed

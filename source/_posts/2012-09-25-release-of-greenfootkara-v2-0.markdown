@@ -3,7 +3,7 @@ layout: post
 title: "Release of GreenfootKara v2.0"
 date: 2012-09-25 00:00
 comments: true
-categories: english
+categories: English
 ---
 There is a new release of GreenfootKara available (see downloads below). 
 
