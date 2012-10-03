@@ -33,14 +33,16 @@ Kara is placed in the following world setup and must be programmed to collect al
 
 One solution would be as follows:
 
-{% codeblock Kara collects leafs (Java) %}
+``` java Kara collects leafs (Java)
 while (!treeFront()) {
+
   if (onLeaf()) {
     removeLeaf();
   }
+  
   move();
 }
-{% endcodeblock %}
+```
 
 
 ## Kara Versions - Which Kara Should I Use? ##
