@@ -5,7 +5,7 @@ date: 2012-10-01 22:00
 comments: true
 categories: English
 ---
-I really love to program because I can be creative and make new things out of nothing. All I need is a computer and I can start creating programs and easily share my work with other people. There are not a lot of places in our world today that allow this kind of creativity. 
+I really love to program because I can be creative and make new things out of nothing. All I need is a computer and I can start creating programs and easily share my work with other people. There are not a lot of professions in our world today that allow this kind of creativity. 
 
 {% blockquote Donald Knuth http://www.paulgraham.com/knuth.html Computer Programming as an Art %}
 My feeling is that when we prepare a program, it can be like composing poetry or music
