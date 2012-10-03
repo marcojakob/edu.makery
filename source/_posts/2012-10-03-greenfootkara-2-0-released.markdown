@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Release of GreenfootKara v2.0"
-date: 2012-09-25 00:00
+title: "GreenfootKara 2.0 Released"
+date: 2012-10-03 12:00
 comments: true
 categories: English
 ---

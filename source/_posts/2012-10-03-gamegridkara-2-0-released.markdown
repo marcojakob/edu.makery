@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "Release of GameGridKara v2.0"
-date: 2012-09-25 00:56
+title: "GameGridKara 2.0 Released"
+date: 2012-10-03 13:00
 comments: true
 categories: English
 ---
-{% img /images/kara/gamegrid-kara.png 'GameGridKara' %} 
+{% img /images/kara/gamegridkara-logo-large.png 'GameGridKara' %} 
 
 There is a new release of GameGridKara available (based on [JGameGrid](http://www.aplu.ch/home/apluhomex.jsp?site=45)).
 
