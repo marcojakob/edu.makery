@@ -5,7 +5,7 @@ date: 2012-10-01 22:10
 comments: true
 categories: Deutsch
 ---
-[English Post](/blog/2012/10/01/why-i-love-programming/)
+--> [English Post](/blog/2012/10/01/why-i-love-programming/)
 
 Ich liebe es zu programmieren, weil ich dabei kreativ sein kann und Sachen aus dem Nichts erschaffen kann. Das einzige, was ich dazu brauche, ist ein Computer. Dann kann ich beginnen, Programme zu schreiben und diese nachher einfach mit anderen Leuten teilen. Es gibt in unserer heutigen Welt nicht mehr viele Berufe, wo man diese Art Kreativität ausleben kann.
 

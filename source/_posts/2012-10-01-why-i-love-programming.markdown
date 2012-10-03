@@ -5,7 +5,7 @@ date: 2012-10-01 22:00
 comments: true
 categories: English
 ---
-[--> Deutscher Eintrag](/blog/2012/10/01/warum-ich-gerne-programmiere/)
+--> [Deutscher Eintrag](/blog/2012/10/01/warum-ich-gerne-programmiere/)
 
 I really love to program because I can be creative and make new things out of nothing. All I need is a computer and I can start creating programs and easily share my work with other people. There are not a lot of professions in our world today that allow this kind of creativity. 
 
