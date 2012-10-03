@@ -5,6 +5,8 @@ date: 2012-10-03 12:00
 comments: true
 categories: English
 ---
+{% img /images/kara/greenfootkara-logo-large.png 'GreenfootKara' %} 
+
 There is a new release of GreenfootKara available (see downloads below). 
 
 GreenfootKara teaches basic programming concepts in Java, for example:
@@ -18,6 +20,7 @@ GreenfootKara teaches basic programming concepts in Java, for example:
 
 ## Features ##
 * **Uses Greenfoot as a simple programming IDE**
+* 16-20 lessons
 * 12 handouts for students
 * 24 Kara scenarios for Greenfoot
 * 38+ exercises with solutions

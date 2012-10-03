@@ -7,7 +7,7 @@ categories: English
 ---
 {% img /images/kara/gamegridkara-logo-large.png 'GameGridKara' %} 
 
-There is a new release of GameGridKara available (based on [JGameGrid](http://www.aplu.ch/home/apluhomex.jsp?site=45)).
+There is a new release of GameGridKara available.
 
 GameGridKara teaches basic programming concepts in Java, for example:
 
@@ -20,6 +20,7 @@ GameGridKara teaches basic programming concepts in Java, for example:
 
 ## Features ##
 * Use of **any programming IDE like Eclipse, Netbeans or BlueJ**
+* 16-20 lessons
 * 12 handouts for students
 * 24 Kara scenarios
 * 38+ exercises with solutions

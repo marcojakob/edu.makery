@@ -26,14 +26,14 @@ The rules of Kara's world are simple:
 * Kara checks if there is a mushroom in front with `mushroomFront()`
 
 
-### A Sample Exercise ###
+## A Sample Exercise ##
 Kara is placed in the following world setup and must be programmed to collect all leafs until he reaches the tree:
 
 {% img /images/kara/kara-example-collect-leafs.png Kara Collects Leafs %}
 
 One solution would be as follows:
 
-{% codeblock lang:java %}
+{% codeblock Kara collects leafs (Java) %}
 while (!treeFront()) {
   if (onLeaf()) {
     removeLeaf();
@@ -41,3 +41,28 @@ while (!treeFront()) {
   move();
 }
 {% endcodeblock %}
+
+
+## Kara Versions - Which Kara Should I Use? ##
+Kara has many different versions. The original Kara is designed as a finite state machine with a purely graphical program editor. See the full list of [available Kara versions](http://www.swisseduc.ch/informatik/karatojava/index.html).
+
+I usually prefer to start directly with writing Java code. Now there are three possible editors/libraries:
+
+### JavaKara ###
+JavaKara is the original editor. You can find the [JavaKara download and resources here](http://www.swisseduc.ch/informatik/karatojava/javakara/index.html) (in German).
+
+### GreenfootKara ###
+Since I really like the editor of the [Greenfoot IDE](greenfoot.org) I decided to create a Kara version that works with Greenfoot, it is called GreenfootKara. In addition to this I wrote an entire beginners course of 16-20 lessons with exercises and handouts to go along with GreenfootKara. You can find the links to the German and English versions on the [Teaching Resources](/teaching) page.
+
+### GameGridKara ###
+Sometimes, especially if time is too short, it might be good to directly start with a professional development environment like Eclipse or NetBeans. Since it was not possible to integrate Greenfoot into Eclipse/NetBeans, I had to find another solution. Altough, we could start JavaKara from Eclipse/NetBeans, there are just some things that are not possible (like programming an interactive Kara game). The solution was to port the code to work with a library called [JGameGrid](http://gamegrid.ch).
+
+GameGridKara enables us to use Kara in any IDE of our choice by simply adding two jar files to a project. The link to GameGridKara with the adjusted beginners course in German and English can be found on the [Teaching Resources](/teaching) page.
+
+
+
+
+
+
+
+
