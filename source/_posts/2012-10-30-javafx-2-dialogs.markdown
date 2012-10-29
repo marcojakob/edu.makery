@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "JavaFX Dialogs"
-date: 2012-10-30 12:00
+title: "JavaFX 2 Dialogs"
+date: 2012-10-30 00:45
 comments: true
 categories: [English, JavaFX]
 ---
