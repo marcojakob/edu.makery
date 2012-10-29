@@ -27,12 +27,6 @@ article img.middle, aside.sidebar img.middle {
   border-bottom: 1px solid $intro-box-border;
 }
 
-@media only screen and (min-width: 992px) {
-  .intro-box {
-   // margin-top: 2em;
-  }
-}
-
 @import "lang/*.png";
 @include all-lang-sprites;
 
