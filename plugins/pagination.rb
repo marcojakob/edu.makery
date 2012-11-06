@@ -11,7 +11,12 @@ module Jekyll
     # Returns nothing.
     def generate(site)
       site.pages.dup.each do |page|
-        paginate(site, page) if Pager.pagination_enabled?(site.config, page)
+      #####################
+      #
+      # DISABLED
+      #
+      #####################
+        #paginate(site, page) if Pager.pagination_enabled?(site.config, page)
       end
     end
 

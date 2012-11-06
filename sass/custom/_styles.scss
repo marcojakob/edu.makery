@@ -30,6 +30,9 @@ article img.middle, aside.sidebar img.middle {
 @import "lang/*.png";
 @include all-lang-sprites;
 
+@import "feed/*.png";
+@include all-feed-sprites;
+
 .blog-icons {
   float: right;
   margin: 0.5em 0.7em 0 0;
@@ -47,5 +50,12 @@ article img.middle, aside.sidebar img.middle {
     width: 32px;
     height: 32px;
   }
+}
+
+.category-icon {
+  float: right;
+  margin-top: 0.1em;
+  width: 16px;
+  height: 16px;
 }
 

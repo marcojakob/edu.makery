@@ -118,7 +118,9 @@ body > nav {
   }
   &:hover:after { background-color: lighten($nav-color, 20); }
 }
-.maskImageDisabled {
+
+/* DISABLE MASK IMAGE
+.maskImage {
   body > nav {
     @media only screen and (min-width: 550px) {
       ul[data-subscription$=email] + form {
@@ -135,4 +137,4 @@ body > nav {
   a[rel=subscribe-rss]{ @include mask-subscription-nav('rss.png'); }
   a[rel=subscribe-email]{ @include mask-subscription-nav('email.png'); }
 }
-
+*/
