@@ -276,6 +276,6 @@ Congratulations!
 In Tutorial Part III (coming soon...) we will add more functionality like adding, deleting and editing Persons.
 
 ### Download ###
-[Source of Tutorial Part II](/downloads/javafx-addressapp/addressapp-part-1.zip) as Eclipse Project
+[Source of Tutorial Part II](/downloads/javafx-addressapp/addressapp-part-2.zip) as Eclipse Project
 
 
