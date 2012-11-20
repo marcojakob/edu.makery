@@ -60,8 +60,7 @@ Right-click on the view package and create a new *FXML Document* called `PersonO
 
 
 ## Design with Scene Builder ##
-{% img /images/javafx-addressapp/important.png %}
-**Important:** If you get stuck somewhere, watch the [Getting Started with JavaFX Scene Builder](http://www.youtube.com/watch?v=rHcnsEoSK_c) YouTube Film. This helps a lot!
+**Note:** If you get stuck somewhere, watch the [Getting Started with JavaFX Scene Builder](http://www.youtube.com/watch?v=rHcnsEoSK_c) YouTube Film. This helps a lot!
 
 Right-click on `PersonOverview.fxml` and choose *Open with Scene Builder*. Now you should see the Scene Builder with just an *AncherPane* (visible under Hierarchy on the left).
 
