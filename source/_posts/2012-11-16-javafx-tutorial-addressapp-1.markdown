@@ -8,9 +8,13 @@ categories: [English, JavaFX]
 ## Goal ##
 The goal of this tutorial is to learn how to create graphical user interfaces with **JavaFX 2** and the **Scene Builder**. We will create an **address application** step-by-step:
 
-{% img /images/javafx-addressapp/addressapp01.png %}
+{% img /images/javafx-addressapp/part-1/addressapp01.png %}
 
-In this first part you will set up the main application and design it using Scene Builder. 
+## Topics in Part I
+* Getting to know JavaFX 2
+* Creating and starting a JavaFX Project
+* Using Scene Builder to desing the user interface
+
 
 <!-- more -->
 
@@ -51,8 +55,8 @@ Right from the start we will follow good software design principles. One very im
 There are two ways to create the user interface. Either using an XML file or programming everything in Java. Looking around the internet you will encounter both. We will use XML (ending in .fxml) for most parts. I find it a cleaner way to keep the controller and model separated from each other. Further, we can use the graphical Scene Builder to edit the XML. That means we will almost never have to directly work with XML.
 
 Right-click on the view package and create a new *FXML Document* called `PersonOverview`.   
-{% img /images/javafx-addressapp/addressapp03.png 400 %}
-{% img /images/javafx-addressapp/addressapp04.png 400 %}
+{% img /images/javafx-addressapp/part-1/addressapp03.png 400 %}
+{% img /images/javafx-addressapp/part-1/addressapp04.png 400 %}
 
 
 ## Design with Scene Builder ##
@@ -62,56 +66,56 @@ Right-click on the view package and create a new *FXML Document* called `PersonO
 Right-click on `PersonOverview.fxml` and choose *Open with Scene Builder*. Now you should see the Scene Builder with just an *AncherPane* (visible under Hierarchy on the left).
 
 1. Select the *Anchor Pane* in your Hierarchy and adjust the size under Layout (right side):   
-{% img /images/javafx-addressapp/addressapp05.png %}
+{% img /images/javafx-addressapp/part-1/addressapp05.png %}
 
 2. Add a *Split Pane (Horizontal Flow)* by dragging it from the Library into the main area. Right-click and select *Fit to Parent*.   
-{% img /images/javafx-addressapp/addressapp06.png %}
+{% img /images/javafx-addressapp/part-1/addressapp06.png %}
 
 3. Add a *TableView* into the left side. Select the TableView (not a Column) and set the following layout constraints. Inside an *AnchorPane* you can always set anchors to the four borders ([more information on Layouts](http://docs.oracle.com/javafx/2/layout/builtin_layouts.htm)).   
-{% img /images/javafx-addressapp/addressapp07.png %}
+{% img /images/javafx-addressapp/part-1/addressapp07.png %}
 
 4. Go to the menu *Preview | Preview in Window* to see, whether it behaves right. Try resizing the window. The TableView should always keep the 10px distance to the surrounding border.
 
 5. Change the column text (under Properties) to "First Name" and "Last Name" and adjust the sizes.   
-{% img /images/javafx-addressapp/addressapp08.png %}
+{% img /images/javafx-addressapp/part-1/addressapp08.png %}
 
 6. Add a *Label* on the right side with the text "Person Details". Adjust it's Layout using anchors.
 7. Add a *GridPane* on the right side, select it and adjust it's Layout.    
-{% img /images/javafx-addressapp/addressapp09.png %}
+{% img /images/javafx-addressapp/part-1/addressapp09.png %}
 
 8. Add some rows (under *Layout | GridPane Rows*). Add labels to the cells.   
-{% img /images/javafx-addressapp/addressapp10.png %}
+{% img /images/javafx-addressapp/part-1/addressapp10.png %}
 
 9. Add the three buttons at the bottom. Tipp: Select all of them, right-click and call *Wrap In | HBox*. This groups them together. You might need to specify a Spacing inside the HBox.
 
 10. Now you should see something like the following. Please test it using the Preview Menu.      
-{% img /images/javafx-addressapp/addressapp11.png %}
+{% img /images/javafx-addressapp/part-1/addressapp11.png %}
 
 
 ## Creating the Main Application ##
 We need another FXML for our root layout which will contain a menu bar and wraps the just created `PersonOverview.fxml?`.
 
 1. Create another *FXML Document* inside the view package called `RootLayout.fxml`. This time, choose *BorderPane* as the root element.   
-{% img /images/javafx-addressapp/addressapp12.png %}
+{% img /images/javafx-addressapp/part-1/addressapp12.png %}
 
 2. Open it in the Scene Builder.
 3. Resize the *BorderPane* with *Pref Width* set to 600 and *Pref Height* set to 400.   
-{% img /images/javafx-addressapp/addressapp13.png %}
+{% img /images/javafx-addressapp/part-1/addressapp13.png %}
 
 4. Add a *MenuBar* into the TOP Slot. We will not implement the menu functionality at the moment.   
-{% img /images/javafx-addressapp/addressapp14.png %}
+{% img /images/javafx-addressapp/part-1/addressapp14.png %}
 
 5. Now, we need to create the Main Java that starts up our application with the `RootLayout.fxml` and adds the `PersonOverview.fxml` in the center. 
 
 6. Right-click on the controller package, *New | Other...* and choose *JavaFX Main Class*. We'll call it `MainApp`.   
-{% img /images/javafx-addressapp/addressapp15.png 400 %}
+{% img /images/javafx-addressapp/part-1/addressapp15.png 400 %}
 
 
 ### Understanding the JavaFX Main class ###
 The generated `MainApp.java` class extends from `Application` and contains two methods. This is the basic structure that we need to start a JavaFX Application. The most important part for us is the `start(Stage primaryStage)` method. It is automatically called when we run the application.
 
 As you see, the `start(...)` method receives a `Stage` as parameter. It's good to understand the basic concept of a graphical application with JavaFX:   
-{% img /images/javafx-addressapp/javafx-hierachy.gif %}   
+{% img /images/javafx-addressapp/part-1/javafx-hierachy.gif %}   
 *Image Source: http://www.oracle.com/*
 
 It's like a theater play: The Stage is the main container which is usually a Window with a border and the typical minimize, maximize and close buttons. Inside the Stage you add a Scene which can, of course, be switched out by another Scene. Inside the Scene the actual JavaFX nodes like AnchorPane, TextBox, etc. are added.
@@ -188,14 +192,15 @@ public class MainApp extends Application {
 Try to understand the code. The various comments should give you some hints about what's going on.
 
 If you run the application now, you should see something like this:   
-{% img /images/javafx-addressapp/addressapp16.png %}
+{% img /images/javafx-addressapp/part-1/addressapp16.png %}
 
 
 ### What's Next? ###
 In [Tutorial Part II](/blog/2012/11/17/javafx-tutorial-addressapp-2) we will add some data and functionality to our AddressApp.
 
+
 ### Download ###
-[Source of Tutorial Part I](/downloads/javafx-addressapp/addressapp-part-1.zip) as Eclipse Project
+[Source of Tutorial Part I](/downloads/javafx-addressapp/part-1/addressapp-part-1.zip) as Eclipse Project
 
 
 

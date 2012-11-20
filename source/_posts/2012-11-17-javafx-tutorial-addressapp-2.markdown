@@ -5,106 +5,20 @@ date: 2012-11-17 00:30
 comments: true
 categories: [English, JavaFX]
 ---
-You will need the set up from [AddressApp Tutorial Part I](/blog/2012/11/16/javafx-tutorial-addressapp-1) before you start with Part II.
+You will need the set up from Tutorial [Part I](/blog/2012/11/16/javafx-tutorial-addressapp-1) before you start with Part II.
 
-This part of the tutorial will guide you through creating the model class and adding functionality to our AddressApp using controllers.
+## Topics in Part II ##
+* Creating a model class
+* Using the model class in an ObservableList
+* Show data in the view using controllers
+
 
 ## Create the Model Class ##
 Finally, we need a model class. Add a new class to the model package (`ch.makery.address.model`) called `Person`. This makes sense, since we want to manage people and their addresses. The `Person` class will have a few instance variables for the name, address and birthday. Add the following code to the class:
 
 <!-- more -->
 
-```java Person.java
-package ch.makery.address.model;
-
-import java.util.Calendar;
-
-/**
- * Model class for a Person.
- *
- * @author Marco Jakob
- */
-public class Person {
-
-	private String firstName;
-	private String lastName;
-	private String street;
-	private int postalCode;
-	private String city;
-	private Calendar birthday;
-
-	/**
-	 * Default constructor.
-	 */
-	public Person() {
-	}
-	
-	/**
-	 * Constructor with some initial data.
-	 * 
-	 * @param firstName
-	 * @param lastName
-	 */
-	public Person(String firstName, String lastName) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		
-		// some initial dummy data
-		this.street = "some street";
-		this.postalCode = 1234;
-		this.city = "some city";
-		this.birthday = Calendar.getInstance();
-	}
-	
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getStreet() {
-		return street;
-	}
-
-	public void setStreet(String street) {
-		this.street = street;
-	}
-
-	public int getPostalCode() {
-		return postalCode;
-	}
-
-	public void setPostalCode(int postalCode) {
-		this.postalCode = postalCode;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public Calendar getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(Calendar birthday) {
-		this.birthday = birthday;
-	}
-}
-```
+{% include_code javafx-addressapp/part-2/Person.java %}
 
 
 ## A List of Persons ##
@@ -255,10 +169,10 @@ We're almost there! But one little thing is missing: We haven't told our `Person
 1. Open `PersonOverview.fxml` with the Scene Builder.
 2. Select the topmost *AnchorPane* in the Hierarchy.
 3. Open *Code* on the right side and select the `PersonOverviewController` as **controller class**.   
-{% img /images/javafx-addressapp/addressapp21.png %}
+{% img /images/javafx-addressapp/part-2/addressapp21.png %}
 
 4. Select the TableView and choose under Properties the `personTable` field as **fx:id**.   
-{% img /images/javafx-addressapp/addressapp22.png %}
+{% img /images/javafx-addressapp/part-2/addressapp22.png %}
 
 5. Do the same for the columns and select `firstNameColumn` and `lastNameColumn` respectively.
 6. For each label in the second column, choose the corresponding **fx:id**.
@@ -267,15 +181,16 @@ We're almost there! But one little thing is missing: We haven't told our `Person
 
 ## Start the Application ##
 When you start your application now, you should see something like this:   
-{% img /images/javafx-addressapp/addressapp23.png %}
+{% img /images/javafx-addressapp/part-2/addressapp23.png %}
 
 Congratulations!
 
 
 ### What's Next? ###
-In Tutorial Part III (coming soon...) we will add more functionality like adding, deleting and editing Persons.
+In [Tutorial Part III](/blog/2012/11/20/javafx-tutorial-addressapp-3) we will add more functionality like adding, deleting and editing Persons.
+
 
 ### Download ###
-[Source of Tutorial Part II](/downloads/javafx-addressapp/addressapp-part-2.zip) as Eclipse Project
+[Source of Tutorial Part II](/downloads/javafx-addressapp/part-2/addressapp-part-2.zip) as Eclipse Project
 
 
