@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "JavaFX Tutorial III - Interacting with the User"
+title: "JavaFX Tutorial Part III - Interacting with the User"
 date: 2012-11-20 17:30
 comments: true
 categories: [English, JavaFX]
