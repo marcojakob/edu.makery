@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "JavaFX Tutorial Part I - Scene Builder"
+title: "JavaFX 2 Tutorial Part I - Scene Builder"
 date: 2012-11-16 22:00
 comments: true
 categories: [English, JavaFX]

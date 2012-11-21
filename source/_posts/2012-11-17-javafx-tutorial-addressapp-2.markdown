@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "JavaFX Tutorial Part II - Model and TableView"
+title: "JavaFX 2 Tutorial Part II - Model and TableView"
 date: 2012-11-17 00:30
 comments: true
 categories: [English, JavaFX]
