@@ -1,19 +1,20 @@
 ---
 layout: post
-title: "JavaFX 2 Tutorial - AddressApp Part I"
+title: "JavaFX Tutorial I - Scene Builder"
 date: 2012-11-16 22:00
 comments: true
 categories: [English, JavaFX]
 ---
 ## Goal ##
-The goal of this tutorial is to learn how to create graphical user interfaces with **JavaFX 2** and the **Scene Builder**. We will create an **address application** step-by-step:
+The goal of this tutorial is to learn how to create graphical user interfaces with **JavaFX 2** and **Scene Builder**. We will create an **address application** step-by-step:
 
 {% img /images/javafx-addressapp/part-1/addressapp01.png %}
 
 ## Topics in Part I
 * Getting to know JavaFX 2
 * Creating and starting a JavaFX Project
-* Using Scene Builder to desing the user interface
+* Using Scene Builder to design the user interface
+* Basic application structure using the Model View Controller (MVC) pattern
 
 
 <!-- more -->

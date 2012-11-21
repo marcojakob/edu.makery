@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "JavaFX 2 Tutorial - AddressApp Part II"
+title: "JavaFX Tutorial II - Model and TableView"
 date: 2012-11-17 00:30
 comments: true
 categories: [English, JavaFX]
@@ -8,9 +8,9 @@ categories: [English, JavaFX]
 You will need the set up from Tutorial [Part I](/blog/2012/11/16/javafx-tutorial-addressapp-1) before you start with Part II.
 
 ## Topics in Part II ##
-* Creating a model class
-* Using the model class in an ObservableList
-* Show data in the view using controllers
+* Creating a **model** class
+* Using the model class in an **ObservableList**
+* Show data in the **TableView** using **Controllers**
 
 
 ## Create the Model Class ##

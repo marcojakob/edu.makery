@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "JavaFX 2 Tutorial - AddressApp Part III"
+title: "JavaFX Tutorial III - Interacting with the User"
 date: 2012-11-20 17:30
 comments: true
 categories: [English, JavaFX]
@@ -11,6 +11,8 @@ You will need the set up from [Part I](/blog/2012/11/16/javafx-tutorial-addressa
 ## Topics in Part III ##
 * **React to selection changes** in the table.
 * Add functionality to the **add**, **edit**, and **remove** buttons.
+* Create a custom **popup dialog** to edit a person.
+* **Validating user input**.
 
 {% img /images/javafx-addressapp/part-3/addressapp31.png %}
 
