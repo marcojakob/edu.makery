@@ -14,7 +14,7 @@ You will need the set up from [Part I](/blog/2012/11/16/javafx-tutorial-addressa
 * Create a custom **popup dialog** to edit a person.
 * **Validating user input**.
 
-{% img /images/javafx-addressapp/part-3/addressapp31.png %}
+{% img /images/javafx-addressapp/part-3/addressapp01.png %}
 
 
 <!-- more -->
@@ -108,7 +108,7 @@ Now, open the `PersonOverview.fxml` file in *SceneBuilder*. Select the *Delete* 
 
 *Scene Builder Problem*: In my version of Scene Builder (1.1 beta_11) the methods did not appear. I had to go to the root AnchorPane (in Hierarchy view), delete the controller class, hit enter and add the controller class again. Now, the methods appear in the dropdown. Hope [this bug](http://javafx-jira.kenai.com/browse/DTL-5402) will be corrected soon.
 
-{% img /images/javafx-addressapp/part-3/addressapp32.png %}
+{% img /images/javafx-addressapp/part-3/addressapp02.png %}
 
 
 ### Error Handling ###
@@ -150,7 +150,7 @@ The new and edit buttons are a bit more work: We'll need a new custom dialog (a.
 
 1. Create a new fxml file called `PersonEditDialog.fxml` inside the view package.
 2. Use a `GridPane`, `Label`s, `TextBoxe`s and `Button`s to create a Dialog like the following:   
-{% img /images/javafx-addressapp/part-3/addressapp33.png %}   
+{% img /images/javafx-addressapp/part-3/addressapp03.png %}   
 If you don't to do the work, you can download this [PersonEditDialog.fxml](/downloads/javafx-addressapp/part-3/PersonEditDialog.fxml). 
 
 3. Create the controller `PersonEditDialogController`:   
@@ -269,9 +269,11 @@ I hope the concepts and structure of this application will get you started with 
 
 
 ### What's Next? ###
-In Tutorial Part IV (coming soon...) we might add some CSS styling or add a statistics chart.
+In [Tutorial Part IV](/blog/2012/11/26/javafx-tutorial-addressapp-4) we will add some CSS styling.
+
 
 ### Download ###
 [Source of Tutorial Part III](/downloads/javafx-addressapp/part-3/addressapp-part-3.zip) as Eclipse Project.
+
 
 
