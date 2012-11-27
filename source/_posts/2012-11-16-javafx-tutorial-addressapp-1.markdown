@@ -5,10 +5,11 @@ date: 2012-11-16 22:00
 comments: true
 categories: [English, JavaFX]
 ---
-## Goal ##
-The goal of this tutorial is to learn how to create graphical user interfaces with **JavaFX 2** and **Scene Builder**. We will create an **address application** step-by-step:
 
 {% img /images/javafx-addressapp/part-1/addressapp01.png %}
+
+## Goal ##
+The goal of this tutorial is to learn how to create graphical user interfaces with **JavaFX 2** and **Scene Builder**. We will cover many features of JavaFX 2 by creating an **Address Application** and enhancing it step-by-step.
 
 ## Topics in Part I
 * Getting to know JavaFX 2
@@ -16,8 +17,14 @@ The goal of this tutorial is to learn how to create graphical user interfaces wi
 * Using Scene Builder to design the user interface
 * Basic application structure using the Model View Controller (MVC) pattern
 
-
 <!-- more -->
+
+### Other Tutorial Parts ###
+* **Part I - Scene Builder**
+* [Part II - Model and TableView](/blog/2012/11/17/javafx-tutorial-addressapp-2) 
+* [Part III - Interacting with the User](/blog/2012/11/20/javafx-tutorial-addressapp-3) 
+* [Part IV - CSS Styling](/blog/2012/11/26/javafx-tutorial-addressapp-4)
+* [Part V - Storing Data as XML](/blog/2012/11/27/javafx-tutorial-addressapp-5) 
 
 ### Prerequisites ###
 * [Java JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html) update 7 or greater (includes JavaFX 2.x)
@@ -191,8 +198,7 @@ public class MainApp extends Application {
 
 Try to understand the code. The various comments should give you some hints about what's going on.
 
-If you run the application now, you should see something like this:   
-{% img /images/javafx-addressapp/part-1/addressapp16.png %}
+If you run the application now, you should see something like the screenshot at the beginning of this post.
 
 
 ### What's Next? ###

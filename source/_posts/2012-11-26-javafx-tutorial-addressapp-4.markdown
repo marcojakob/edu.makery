@@ -6,21 +6,21 @@ comments: true
 categories: [English, JavaFX]
 published: true
 ---
-You might need to go through the previous tutorial parts first:
 
-* [Part I - Scene Builder](/blog/2012/11/16/javafx-tutorial-addressapp-1)
-* [Part II - Model and TableView](/blog/2012/11/17/javafx-tutorial-addressapp-2) 
-* [Part III - Interacting with the User](/blog/2012/11/20/javafx-tutorial-addressapp-3) 
-
+{% img /images/javafx-addressapp/part-4/addressapp01.png %}
 
 ## Topics in Part IV ##
 * **CSS Styling**
 * Adding an **Application Icon**
 
-{% img /images/javafx-addressapp/part-4/addressapp01.png %}
-
-
 <!-- more -->
+
+### Other Tutorial Parts ###
+* [Part I - Scene Builder](/blog/2012/11/16/javafx-tutorial-addressapp-1)
+* [Part II - Model and TableView](/blog/2012/11/17/javafx-tutorial-addressapp-2)
+* [Part III - Interacting with the User](/blog/2012/11/20/javafx-tutorial-addressapp-3) 
+* **Part IV - CSS Styling**
+* [Part V - Storing Data as XML](/blog/2012/11/27/javafx-tutorial-addressapp-5) 
 
 ## CSS Styling ##
 In JavaFX you can style your user interface using Cascading Style Sheets (CSS). This is great! It's never been as easy to customize the appearance of a Java application.
@@ -150,7 +150,7 @@ You can also add an icon to the stage of the person edit dialog, of course.
 
 
 ### What's Next? ###
-In Tutorial Part V (coming soon...) we might add add a statistics chart or add persistant storage.
+In [Tutorial Part V](/blog/2012/11/27/javafx-tutorial-addressapp-5) we will add XML storage for our data.
 
 
 ### Download ###

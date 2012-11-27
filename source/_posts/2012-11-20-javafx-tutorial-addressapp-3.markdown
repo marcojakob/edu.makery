@@ -6,7 +6,8 @@ comments: true
 categories: [English, JavaFX]
 published: true
 ---
-You will need the set up from [Part I](/blog/2012/11/16/javafx-tutorial-addressapp-1) and [Part II](/blog/2012/11/17/javafx-tutorial-addressapp-2) before you start with Part III.
+
+{% img /images/javafx-addressapp/part-3/addressapp01.png %}
 
 ## Topics in Part III ##
 * **React to selection changes** in the table.
@@ -14,10 +15,14 @@ You will need the set up from [Part I](/blog/2012/11/16/javafx-tutorial-addressa
 * Create a custom **popup dialog** to edit a person.
 * **Validating user input**.
 
-{% img /images/javafx-addressapp/part-3/addressapp01.png %}
-
-
 <!-- more -->
+
+### Other Tutorial Parts ###
+* [Part I - Scene Builder](/blog/2012/11/16/javafx-tutorial-addressapp-1)
+* [Part II - Model and TableView](/blog/2012/11/17/javafx-tutorial-addressapp-2)
+* **Part III - Interacting with the User**
+* [Part IV - CSS Styling](/blog/2012/11/26/javafx-tutorial-addressapp-4)
+* [Part V - Storing Data as XML](/blog/2012/11/27/javafx-tutorial-addressapp-5) 
 
 ## React to Table Selections ##
 Obviousely, we haven't used the right side of our application, yet. The idea is when the user selects a person in the table, the details about that person should be displayed on the right side.

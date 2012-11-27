@@ -5,18 +5,26 @@ date: 2012-11-17 00:30
 comments: true
 categories: [English, JavaFX]
 ---
-You will need the set up from Tutorial [Part I](/blog/2012/11/16/javafx-tutorial-addressapp-1) before you start with Part II.
+
+{% img /images/javafx-addressapp/part-2/addressapp01.png %}
 
 ## Topics in Part II ##
 * Creating a **model** class
 * Using the model class in an **ObservableList**
 * Show data in the **TableView** using **Controllers**
 
+<!-- more -->
+
+### Other Tutorial Parts ###
+* [Part I - Scene Builder](/blog/2012/11/16/javafx-tutorial-addressapp-1)
+* **Part II - Model and TableView**
+* [Part III - Interacting with the User](/blog/2012/11/20/javafx-tutorial-addressapp-3) 
+* [Part IV - CSS Styling](/blog/2012/11/26/javafx-tutorial-addressapp-4)
+* [Part V - Storing Data as XML](/blog/2012/11/27/javafx-tutorial-addressapp-5) 
+
 
 ## Create the Model Class ##
-Finally, we need a model class. Add a new class to the model package (`ch.makery.address.model`) called `Person`. This makes sense, since we want to manage people and their addresses. The `Person` class will have a few instance variables for the name, address and birthday. Add the following code to the class:
-
-<!-- more -->
+We need a model class to hold information about the people in our address book. Add a new class to the model package (`ch.makery.address.model`) called `Person`. This makes sense, since we want to manage people and their addresses. The `Person` class will have a few instance variables for the name, address and birthday. Add the following code to the class:
 
 {% include_code javafx-addressapp/part-2/Person.java %}
 
@@ -169,10 +177,10 @@ We're almost there! But one little thing is missing: We haven't told our `Person
 1. Open `PersonOverview.fxml` with the Scene Builder.
 2. Select the topmost *AnchorPane* in the Hierarchy.
 3. Open *Code* on the right side and select the `PersonOverviewController` as **controller class**.   
-{% img /images/javafx-addressapp/part-2/addressapp01.png %}
+{% img /images/javafx-addressapp/part-2/addressapp02.png %}
 
 4. Select the TableView and choose under Properties the `personTable` field as **fx:id**.   
-{% img /images/javafx-addressapp/part-2/addressapp02.png %}
+{% img /images/javafx-addressapp/part-2/addressapp03.png %}
 
 5. Do the same for the columns and select `firstNameColumn` and `lastNameColumn` respectively.
 6. For each label in the second column, choose the corresponding **fx:id**.
@@ -180,8 +188,7 @@ We're almost there! But one little thing is missing: We haven't told our `Person
 
 
 ## Start the Application ##
-When you start your application now, you should see something like this:   
-{% img /images/javafx-addressapp/part-2/addressapp03.png %}
+When you start your application now, you should see something like the screenshot at the beginning of this blog post.   
 
 Congratulations!
 
