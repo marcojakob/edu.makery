@@ -20,7 +20,8 @@ published: true
 * [Part II - Model and TableView](/blog/2012/11/17/javafx-tutorial-addressapp-2)
 * [Part III - Interacting with the User](/blog/2012/11/20/javafx-tutorial-addressapp-3) 
 * **Part IV - CSS Styling**
-* [Part V - Storing Data as XML](/blog/2012/11/27/javafx-tutorial-addressapp-5) 
+* [Part V - Storing Data as XML](/blog/2012/11/27/javafx-tutorial-addressapp-5)
+* [Part VI - Statistics Chart](/blog/2012/12/04/javafx-tutorial-addressapp-6) 
 
 ## CSS Styling ##
 In JavaFX you can style your user interface using Cascading Style Sheets (CSS). This is great! It's never been as easy to customize the appearance of a Java application.
@@ -148,6 +149,7 @@ public void start(Stage primaryStage) {
 
 You can also add an icon to the stage of the person edit dialog, of course.
 
+---
 
 ### What's Next? ###
 In [Tutorial Part V](/blog/2012/11/27/javafx-tutorial-addressapp-5) we will add XML storage for our data.

@@ -23,6 +23,7 @@ published: true
 * [Part III - Interacting with the User](/blog/2012/11/20/javafx-tutorial-addressapp-3) 
 * [Part IV - CSS Styling](/blog/2012/11/26/javafx-tutorial-addressapp-4)
 * **Part V - Storing Data as XML**
+* [Part VI - Statistics Chart](/blog/2012/12/04/javafx-tutorial-addressapp-6) 
 
 ## Saving User Preferences ##
 Java allows us to save some application state using a class called `Preferences`. Depending on the operating system, the `Preferences` are saved in different places (e.g. the registry file in Windows).
@@ -274,10 +275,10 @@ Let's see how it all works together:
 4. The `MainApp` gets the `RootLayoutController` from the fxml loader and passes a reference to itself to the controller. With this reference the controller can later access the (public) methods of `MainApp`.
 5. At the end of the `start(...)` method we try to get the *last opened person file* from `Preferences`. If the `Preferences` know about such an XML file, we'll load the data from this XML file. This will apparently overwrite the sample data from the constructor. 
 
-
+---
 
 ### What's Next? ###
-In Tutorial Part VI (coming soon...) we might add add a statistics chart.
+In Tutorial [Part VI](/blog/2012/12/04/javafx-tutorial-addressapp-6) add a birthday statistics chart.
 
 
 ### Download ###

@@ -24,7 +24,8 @@ The goal of this tutorial is to learn how to create graphical user interfaces wi
 * [Part II - Model and TableView](/blog/2012/11/17/javafx-tutorial-addressapp-2) 
 * [Part III - Interacting with the User](/blog/2012/11/20/javafx-tutorial-addressapp-3) 
 * [Part IV - CSS Styling](/blog/2012/11/26/javafx-tutorial-addressapp-4)
-* [Part V - Storing Data as XML](/blog/2012/11/27/javafx-tutorial-addressapp-5) 
+* [Part V - Storing Data as XML](/blog/2012/11/27/javafx-tutorial-addressapp-5)
+* [Part VI - Statistics Chart](/blog/2012/12/04/javafx-tutorial-addressapp-6) 
 
 ### Prerequisites ###
 * [Java JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html) update 7 or greater (includes JavaFX 2.x)
@@ -200,6 +201,7 @@ Try to understand the code. The various comments should give you some hints abou
 
 If you run the application now, you should see something like the screenshot at the beginning of this post.
 
+---
 
 ### What's Next? ###
 In [Tutorial Part II](/blog/2012/11/17/javafx-tutorial-addressapp-2) we will add some data and functionality to our AddressApp.

@@ -20,7 +20,8 @@ categories: [English, JavaFX]
 * **Part II - Model and TableView**
 * [Part III - Interacting with the User](/blog/2012/11/20/javafx-tutorial-addressapp-3) 
 * [Part IV - CSS Styling](/blog/2012/11/26/javafx-tutorial-addressapp-4)
-* [Part V - Storing Data as XML](/blog/2012/11/27/javafx-tutorial-addressapp-5) 
+* [Part V - Storing Data as XML](/blog/2012/11/27/javafx-tutorial-addressapp-5)
+* [Part VI - Statistics Chart](/blog/2012/12/04/javafx-tutorial-addressapp-6) 
 
 
 ## Create the Model Class ##
@@ -192,6 +193,7 @@ When you start your application now, you should see something like the screensho
 
 Congratulations!
 
+---
 
 ### What's Next? ###
 In [Tutorial Part III](/blog/2012/11/20/javafx-tutorial-addressapp-3) we will add more functionality like adding, deleting and editing Persons.
