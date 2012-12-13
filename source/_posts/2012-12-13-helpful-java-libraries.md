@@ -60,7 +60,7 @@ With the Eclipse *Data Tools Platform* plugin you can manage your database. This
 
 
 ### Database with a Mapper Tool and MySQL (Advanced) ###
-Tools like [Hibernate](www.hibernate.org/) and [EclipseLink](http://www.eclipse.org/eclipselink/) help to fill the gap between the relational data in the database and objects (see [Object-relational impedance mismatch](http://de.wikipedia.org/wiki/Object-relational_impedance_mismatch)).
+Tools like [Hibernate](http://www.hibernate.org/) and [EclipseLink](http://www.eclipse.org/eclipselink/) help to fill the gap between the relational data in the database and objects (see [Object-relational impedance mismatch](http://de.wikipedia.org/wiki/Object-relational_impedance_mismatch)).
 
 * [Hibernate Tutorial](http://www.javatips.net/blog/2011/12/hibernate-annotations-tutorial)
 * Other [Hibernate Tutorials](http://www.roseindia.net/hibernate/hibernate4/index.shtml) with more information.
