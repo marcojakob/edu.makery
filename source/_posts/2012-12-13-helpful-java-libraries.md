@@ -14,6 +14,8 @@ This post is meant to assist students to tackle their first real Java project. I
 
 Almost every application will need some way to persistently store data. There are many different ways to accomplish that. We'll start with a simple way to save a small amount of data and continue to more advanced techniques. 
 
+<!-- more -->
+
 Some of the techniques (Preferences, XML and reading/writing Files) described here were already used in the [JavaFX Tutorial Part 5](/blog/2012/11/27/javafx-tutorial-addressapp-5). 
 
 ### Preferences ###
