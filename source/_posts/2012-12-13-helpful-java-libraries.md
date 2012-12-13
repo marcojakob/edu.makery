@@ -4,7 +4,7 @@ title: "Helpful Java Libraries"
 date: 2012-12-13 23:00
 comments: true
 categories: [English]
-published: false
+published: true
 ---
 
 This post is meant to assist students to tackle their first real Java project. It is a list of Java libraries with some tipps and helpful links to get started. I hope you'll have some fun creating your own software.
