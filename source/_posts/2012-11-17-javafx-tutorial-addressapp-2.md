@@ -21,7 +21,8 @@ categories: [English, JavaFX]
 * [Part III - Interacting with the User](/blog/2012/11/20/javafx-tutorial-addressapp-3) 
 * [Part IV - CSS Styling](/blog/2012/11/26/javafx-tutorial-addressapp-4)
 * [Part V - Storing Data as XML](/blog/2012/11/27/javafx-tutorial-addressapp-5)
-* [Part VI - Statistics Chart](/blog/2012/12/04/javafx-tutorial-addressapp-6) 
+* [Part VI - Statistics Chart](/blog/2012/12/04/javafx-tutorial-addressapp-6)
+* [Part VII - Deployment with e(fx)clipse](/blog/2012/12/18/javafx-tutorial-addressapp-7)
 
 
 ## Create the Model Class ##

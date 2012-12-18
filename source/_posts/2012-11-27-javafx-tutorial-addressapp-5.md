@@ -23,7 +23,8 @@ published: true
 * [Part III - Interacting with the User](/blog/2012/11/20/javafx-tutorial-addressapp-3) 
 * [Part IV - CSS Styling](/blog/2012/11/26/javafx-tutorial-addressapp-4)
 * **Part V - Storing Data as XML**
-* [Part VI - Statistics Chart](/blog/2012/12/04/javafx-tutorial-addressapp-6) 
+* [Part VI - Statistics Chart](/blog/2012/12/04/javafx-tutorial-addressapp-6)
+* [Part VII - Deployment with e(fx)clipse](/blog/2012/12/18/javafx-tutorial-addressapp-7)
 
 ## Saving User Preferences ##
 Java allows us to save some application state using a class called `Preferences`. Depending on the operating system, the `Preferences` are saved in different places (e.g. the registry file in Windows).
@@ -278,7 +279,7 @@ Let's see how it all works together:
 ---
 
 ### What's Next? ###
-In Tutorial [Part VI](/blog/2012/12/04/javafx-tutorial-addressapp-6) add a birthday statistics chart.
+In Tutorial [Part VI](/blog/2012/12/04/javafx-tutorial-addressapp-6) we'll add a birthday statistics chart.
 
 
 ### Download ###

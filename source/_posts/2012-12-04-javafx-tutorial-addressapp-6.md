@@ -21,6 +21,7 @@ published: true
 * [Part IV - CSS Styling](/blog/2012/11/26/javafx-tutorial-addressapp-4)
 * [Part V - Storing Data as XML](/blog/2012/11/27/javafx-tutorial-addressapp-5)
 * **Part VI - Statistics Chart**
+* [Part VII - Deployment with e(fx)clipse](/blog/2012/12/18/javafx-tutorial-addressapp-7)
 
 
 ## Birthday Statistics ##
@@ -135,9 +136,7 @@ A good place for more information is the official Oracle tutorial on [Using Java
 ---
 
 ### What's Next? ###
-I hope this tutorial was a help for you to get started with JavaFX and you'll be able to write your own JavaFX project from here. I might add some further JavaFX blog posts outside of this tutorial series, we'll see...
-
-I appreciate any feedback. Feel free to write comments if you have any suggestions or if something was unclear.
+In the last tutorial [Part VII](/blog/2012/12/18/javafx-tutorial-addressapp-7) we will finally deploy our application (i.e. package and deliver the app to our users).
 
 
 ### Download Source ###

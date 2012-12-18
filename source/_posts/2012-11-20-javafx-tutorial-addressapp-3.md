@@ -23,7 +23,8 @@ published: true
 * **Part III - Interacting with the User**
 * [Part IV - CSS Styling](/blog/2012/11/26/javafx-tutorial-addressapp-4)
 * [Part V - Storing Data as XML](/blog/2012/11/27/javafx-tutorial-addressapp-5)
-* [Part VI - Statistics Chart](/blog/2012/12/04/javafx-tutorial-addressapp-6) 
+* [Part VI - Statistics Chart](/blog/2012/12/04/javafx-tutorial-addressapp-6)
+* [Part VII - Deployment with e(fx)clipse](/blog/2012/12/18/javafx-tutorial-addressapp-7)
 
 ## React to Table Selections ##
 Obviousely, we haven't used the right side of our application, yet. The idea is when the user selects a person in the table, the details about that person should be displayed on the right side.

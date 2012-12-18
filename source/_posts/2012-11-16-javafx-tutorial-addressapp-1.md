@@ -25,7 +25,8 @@ The goal of this tutorial is to learn how to create graphical user interfaces wi
 * [Part III - Interacting with the User](/blog/2012/11/20/javafx-tutorial-addressapp-3) 
 * [Part IV - CSS Styling](/blog/2012/11/26/javafx-tutorial-addressapp-4)
 * [Part V - Storing Data as XML](/blog/2012/11/27/javafx-tutorial-addressapp-5)
-* [Part VI - Statistics Chart](/blog/2012/12/04/javafx-tutorial-addressapp-6) 
+* [Part VI - Statistics Chart](/blog/2012/12/04/javafx-tutorial-addressapp-6)
+* [Part VII - Deployment with e(fx)clipse](/blog/2012/12/18/javafx-tutorial-addressapp-7)
 
 ### Prerequisites ###
 * [Java JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html) update 7 or greater (includes JavaFX 2.x)
