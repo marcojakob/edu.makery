@@ -11,6 +11,11 @@ published: true
 
 I thought I'd write one last part of this tutorial series to show how to deploy (i.e. package and publish) the AddressApp.
 
+Download example AddressApp as 
+
+* Windows [exe installer](https://www.dropbox.com/s/jk5ilt3p47c674z/AddressApp-0.7.exe).
+* MacOS dmg drag-and-drop installer *(coming soon, if someone with MacOS sends me their file ;-)*
+
 
 ## Topics in Part VII ##
 * Deploying our JavaFX application as **Native Package** with e(fx)clipse

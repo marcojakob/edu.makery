@@ -2,6 +2,7 @@
 layout: post
 title: "JavaFX 2 Dialogs"
 date: 2012-10-30 00:45
+updated: 2012-12-18 01:00
 comments: true
 categories: [English, JavaFX]
 ---
@@ -12,7 +13,7 @@ Fortunately, the authors of JavaFX [published](http://fxexperience.com/2012/10/a
 One of those ui controls is a class called `Dialogs.java` which is exactly what we need.
 
 ## How To Use the Dialogs ##
-1. Download the newest **javafx-dialogs-x.x.x.jar** file from my [GitHub Downloads Page](https://github.com/marcojakob/javafx-ui-sandbox/downloads). I put all necessary classes, css files and images inside this jar.
+1. Download the newest **javafx-dialogs-x.x.x.jar** file from my [GitHub Page](https://github.com/marcojakob/javafx-ui-sandbox/tree/master/javafx-dialogs/dist). Alternatively download [javafx-dialogs-0.0.1 from Dropbox](https://www.dropbox.com/s/894i21d532gn9h0/javafx-dialogs-0.0.1.jar). I put all necessary classes, css files and images inside this jar.
 2. Add the jar file to your project (usually inside a **lib** subfolder).
 3. Add the jar file to the project's classpath: In Eclipse *right-click on the jar file* | *Build Path* | *Add to Build Path*. Now Eclipse knows about the library.
 4. Then add one of the following lines:
