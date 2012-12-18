@@ -3,7 +3,7 @@ layout: post
 title: "Helpful Java Libraries"
 date: 2012-12-13 23:00
 comments: true
-categories: [English]
+categories: [English, Java]
 published: true
 ---
 

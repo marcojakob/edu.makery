@@ -3,7 +3,7 @@ layout: post
 title: "GameGridKara 2.0 Released"
 date: 2012-10-03 13:00
 comments: true
-categories: English
+categories: [English, Java]
 ---
 {% img /images/kara/gamegridkara-logo-large.png GameGridKara %} 
 
@@ -48,7 +48,7 @@ To create your own scenarios you will need to put the following two libraries on
 * GameGridKara-2.2.0.jar
 * JGameGrid-2.20.jar
 
-You can extract the two libraries from any scenario (see downloads below) or [download them directly](https://github.com/marcojakob/gamegrid-kara/downloads).
+You can extract the two libraries from any scenario (see downloads below).
 
 Each scenario must have *one Java class* and a *WorldSetup.txt* file as seen above. Here is a complete example of a Java class where the actual program will be written:
 

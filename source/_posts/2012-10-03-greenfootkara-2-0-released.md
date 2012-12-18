@@ -3,7 +3,7 @@ layout: post
 title: "GreenfootKara 2.0 Released"
 date: 2012-10-03 12:00
 comments: true
-categories: English
+categories: [English, Java]
 ---
 {% img /images/kara/greenfootkara-logo-large.png 'GreenfootKara' %} 
 
@@ -43,7 +43,7 @@ Y: 10
 
 
 ## How to Get Started ##
-First you must download and install [Greenfoot](http://greenfoot.org/downloads). After the installation you should be able to open and compile the predefined scenarios (see downloads below).
+First you must download and install [Greenfoot](http://greenfoot.org). After the installation you should be able to open and compile the predefined scenarios (see downloads below).
 
 ### Create Your Own Scenarios ###
 To create your own scenarios I recommend to just copy an existing scenario and make changes to the *WorldSetup.txt* file and the *MyKara* class.
