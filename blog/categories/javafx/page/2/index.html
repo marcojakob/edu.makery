@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>edu.makery.ch</title>
+  <meta name="author" content="Marco Jakob">
+
+  
+  <meta name="description" content="When programming a graphical user interface (GUI) there are occasions where you&#8217;ll need a simple popup dialog to communicate with the user. In &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://edu.makery.ch/blog/categories/javafx/page/2/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/edu-makery-javafx" rel="alternate" title="edu.makery.ch" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34917397-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">edu.makery.ch</a></h1>
+  
+    <h2>Education in the Making.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation">
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:edu.makery.ch" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Blog Archives</a></li>
+  <li><a href="/learn-java">Learn Java</a></li>
+  <li><a href="/learn-javafx">Learn JavaFX</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  <ul class="blog-icons">
+    <li>
+      <a title="subscribe via RSS: JavaFX" href="http://feeds.feedburner.com/edu-makery-javafx" class="feed-rss_32"></a>
+    </li>
+  </ul>
+
+  <section class="intro-box">
+    <div>
+      <strong>Category: JavaFX</strong> - <a href="/">show all</a>
+    </div>
+  </section>
+  
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/30/javafx-2-dialogs/">JavaFX 2 Dialogs</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+<time datetime="2012-10-30T00:45:00+01:00" pubdate data-updated="true">Oct 30<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When programming a graphical user interface (GUI) there are occasions where you&#8217;ll need a simple popup dialog to communicate with the user. In Swing (the predecessor of JavaFX) there is a convenient class called <a href="http://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html">JOptionPane</a> for such dialogs. A similar class doesn&#8217;t exist in JavaFX 2.x (yet).</p>
+
+<p>Fortunately, the authors of JavaFX <a href="http://fxexperience.com/2012/10/announcing-the-javafx-ui-controls-sandbox/">published</a> some user interface controls they are currently working on. Those controls might be added in a future version of JavaFX.</p>
+
+<p>One of those ui controls is a class called <code>Dialogs.java</code> which is exactly what we need.</p>
+
+<h2>How To Use the Dialogs</h2>
+
+<ol>
+<li>Download the newest <strong>javafx-dialogs-x.x.x.jar</strong> file from my <a href="https://github.com/marcojakob/javafx-ui-sandbox/tree/master/javafx-dialogs/dist">GitHub Page</a>. Alternatively download <a href="https://www.dropbox.com/s/894i21d532gn9h0/javafx-dialogs-0.0.1.jar">javafx-dialogs-0.0.1 from Dropbox</a>. I put all necessary classes, css files and images inside this jar.</li>
+<li>Add the jar file to your project (usually inside a <strong>lib</strong> subfolder).</li>
+<li>Add the jar file to the project&#8217;s classpath: In Eclipse <em>right-click on the jar file</em> | <em>Build Path</em> | <em>Add to Build Path</em>. Now Eclipse knows about the library.</li>
+<li>Then add one of the following lines:</li>
+</ol>
+
+
+<h3>Information Dialog</h3>
+
+<p><img src="/images/javafx-dialogs/javafx-information-dialog.png" title="JavaFX Information Dialog" ></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">Dialogs</span><span class="o">.</span><span class="na">showInformationDialog</span><span class="o">(</span><span class="n">stage</span><span class="o">,</span> <span class="s">&quot;I have a great message for you!&quot;</span><span class="o">,</span>
+</span><span class='line'>    <span class="s">&quot;Information Dialog&quot;</span><span class="o">,</span> <span class="s">&quot;title&quot;</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/30/javafx-2-dialogs/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives/javafx">Archives (JavaFX)</a>
+    
+    <a class="next" href="/blog/categories/javafx/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/19/javafx-tableview-cell-renderer/">JavaFX TableView Cell Renderer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/18/javafx-tableview-filter/">JavaFX TableView Filter</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/18/new-java-and-javafx-learn-pages/">New Java and JavaFX Learn Pages</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/18/javafx-tutorial-addressapp-7/">JavaFX 2 Tutorial Part VII - Deployment with e(fx)clipse</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/13/helpful-java-libraries/">Helpful Java Libraries</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/04/javafx-tutorial-addressapp-6/">JavaFX 2 Tutorial Part VI - Statistics Chart</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/27/javafx-tutorial-addressapp-5/">JavaFX 2 Tutorial Part V - Storing Data as XML</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/26/javafx-tutorial-addressapp-4/">JavaFX 2 Tutorial Part IV - CSS Styling</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/'>All (17)</a><a title='subscribe via RSS' href='http://feeds.feedburner.com/edu-makery' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/deutsch/'>Deutsch (1)</a><a title='subscribe via RSS: Deutsch' href='http://feeds.feedburner.com/edu-makery-deutsch' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/english/'>English (16)</a><a title='subscribe via RSS: English' href='http://feeds.feedburner.com/edu-makery-english' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/java/'>Java (5)</a><a title='subscribe via RSS: Java' href='http://feeds.feedburner.com/edu-makery-java' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/javafx/'>JavaFX (11)</a><a title='subscribe via RSS: JavaFX' href='http://feeds.feedburner.com/edu-makery-javafx' class='feed-rss_16 category-icon'></a></li>
+
+  </ul>
+</section>
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Marco Jakob - 
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - 
+  <span class="credit">Icons by <a href="http://glyphicons.com">glyphicons</a> and <a href="http://www.icondrawer.com">icondrawer</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'edumakery';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

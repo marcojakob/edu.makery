@@ -1,0 +1,745 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>JavaFX 2 Tutorial Part IV - CSS Styling - edu.makery.ch</title>
+  <meta name="author" content="Marco Jakob">
+
+  
+  <meta name="description" content="Topics in Part IV CSS Styling
+Adding an Application Icon Other Tutorial Parts Part I - Scene Builder
+Part II - Model and TableView
+Part III - &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://edu.makery.ch/blog/2012/11/26/javafx-tutorial-addressapp-4/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/edu-makery" rel="alternate" title="edu.makery.ch" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34917397-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">edu.makery.ch</a></h1>
+  
+    <h2>Education in the Making.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation">
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:edu.makery.ch" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Blog Archives</a></li>
+  <li><a href="/learn-java">Learn Java</a></li>
+  <li><a href="/learn-javafx">Learn JavaFX</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">JavaFX 2 Tutorial Part IV - CSS Styling</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-26T13:00:00+01:00" pubdate data-updated="true">Nov 26<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><img src="/images/javafx-addressapp/part-4/addressapp01.png"></p>
+
+<h2>Topics in Part IV</h2>
+
+<ul>
+<li><strong>CSS Styling</strong></li>
+<li>Adding an <strong>Application Icon</strong></li>
+</ul>
+
+
+<!-- more -->
+
+
+<h3>Other Tutorial Parts</h3>
+
+<ul>
+<li><a href="/blog/2012/11/16/javafx-tutorial-addressapp-1">Part I - Scene Builder</a></li>
+<li><a href="/blog/2012/11/17/javafx-tutorial-addressapp-2">Part II - Model and TableView</a></li>
+<li><a href="/blog/2012/11/20/javafx-tutorial-addressapp-3">Part III - Interacting with the User</a></li>
+<li><strong>Part IV - CSS Styling</strong></li>
+<li><a href="/blog/2012/11/27/javafx-tutorial-addressapp-5">Part V - Storing Data as XML</a></li>
+<li><a href="/blog/2012/12/04/javafx-tutorial-addressapp-6">Part VI - Statistics Chart</a></li>
+<li><a href="/blog/2012/12/18/javafx-tutorial-addressapp-7">Part VII - Deployment with e(fx)clipse</a></li>
+</ul>
+
+
+<h2>CSS Styling</h2>
+
+<p>In JavaFX you can style your user interface using Cascading Style Sheets (CSS). This is great! It&#8217;s never been as easy to customize the appearance of a Java application.</p>
+
+<p>In this tutorial we will create a <em>DarkTheme</em> inspired by the Windows 8 Metro design. The css for the buttons is based on the blog post <a href="http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/">JMetro - Windows 8 Metro controls on Java</a> by Pedro Duque Vieira.</p>
+
+<h3>Getting Familiar with CSS</h3>
+
+<p>If you want to style your JavaFX application you should have a basic understanding of CSS in general. A good place to start is this <a href="http://www.csstutorial.net/">CSS tutorial</a>.</p>
+
+<p>For more JavaFX specific information about CSS:</p>
+
+<ul>
+<li><a href="http://docs.oracle.com/javafx/2/css_tutorial/jfxpub-css_tutorial.htm">Skinning JavaFX Applications with CSS</a> - Tutorial by Oracle</li>
+<li><a href="http://docs.oracle.com/cd/E17802_01/javafx/javafx/1.3/docs/api/javafx.scene/doc-files/cssref.html">JavaFX CSS Reference</a> - Official Reference</li>
+</ul>
+
+
+<h3>Default JavaFX CSS</h3>
+
+<p>The default source for CSS styles is a file called <strong><code>caspian.css</code></strong>. This css file can be found in the Java FX jar file <code>jfxrt.jar</code> located in your Java folder under <code>/jdk_x.x.x/jre/lib/jfxrt.jar</code>.</p>
+
+<p>This default style sheet is always applied to a JavaFX application. By adding a custom style sheet we can override the default styles of the <code>caspian.css</code>. <br/>
+Hint: It helps to look at the default CSS file to see which styles you might need to override.</p>
+
+<h3>Attaching CSS Style Sheets</h3>
+
+<p>Add the following CSS file called <code>DarkTheme.css</code> to the <em>view</em> package.</p>
+
+<figure class='code'><figcaption><span> (DarkTheme.css)</span> <a href='/downloads/javafx-addressapp/part-4/DarkTheme.css'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+<span class='line-number'>116</span>
+<span class='line-number'>117</span>
+<span class='line-number'>118</span>
+<span class='line-number'>119</span>
+<span class='line-number'>120</span>
+<span class='line-number'>121</span>
+<span class='line-number'>122</span>
+<span class='line-number'>123</span>
+<span class='line-number'>124</span>
+<span class='line-number'>125</span>
+<span class='line-number'>126</span>
+<span class='line-number'>127</span>
+<span class='line-number'>128</span>
+<span class='line-number'>129</span>
+<span class='line-number'>130</span>
+<span class='line-number'>131</span>
+<span class='line-number'>132</span>
+<span class='line-number'>133</span>
+<span class='line-number'>134</span>
+<span class='line-number'>135</span>
+<span class='line-number'>136</span>
+<span class='line-number'>137</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.background</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">background-color</span><span class="o">:</span> <span class="m">#1d1d1d</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.label</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">font-size</span><span class="o">:</span> <span class="m">11pt</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">font-family</span><span class="o">:</span> <span class="s2">&quot;Segoe UI Semibold&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">text</span><span class="o">-</span><span class="n">fill</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">opacity</span><span class="o">:</span> <span class="m">0</span><span class="o">.</span><span class="m">6</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.label-bright</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">font-size</span><span class="o">:</span> <span class="m">11pt</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">font-family</span><span class="o">:</span> <span class="s2">&quot;Segoe UI Semibold&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">text</span><span class="o">-</span><span class="n">fill</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">opacity</span><span class="o">:</span> <span class="m">1</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.label-header</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">font-size</span><span class="o">:</span> <span class="m">32pt</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">font-family</span><span class="o">:</span> <span class="s2">&quot;Segoe UI Light&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">text</span><span class="o">-</span><span class="n">fill</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">opacity</span><span class="o">:</span> <span class="m">1</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.table-view</span> <span class="p">{</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="n">base</span><span class="o">:</span> <span class="m">#1d1d1d</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="n">control</span><span class="o">-</span><span class="n">inner</span><span class="o">-</span><span class="k">background</span><span class="o">:</span> <span class="m">#1d1d1d</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">background-color</span><span class="o">:</span> <span class="m">#1d1d1d</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">table-cell</span><span class="o">-</span><span class="k">border-color</span><span class="o">:</span> <span class="k">transparent</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="n">table</span><span class="o">-</span><span class="n">header</span><span class="o">-</span><span class="k">border-color</span><span class="o">:</span> <span class="k">transparent</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">padding</span><span class="o">:</span> <span class="m">5</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.table-view</span> <span class="nc">.column-header-background</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">background-color</span><span class="o">:</span> <span class="k">transparent</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.table-view</span> <span class="nc">.column-header</span><span class="o">,</span> <span class="nc">.table-view</span> <span class="nc">.filler</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">size</span><span class="o">:</span> <span class="m">35</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">border-width</span><span class="o">:</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">border-color</span><span class="o">:</span>
+</span><span class='line'>        <span class="k">transparent</span>
+</span><span class='line'>        <span class="k">transparent</span>
+</span><span class='line'>        <span class="n">derive</span><span class="p">(</span><span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="n">base</span><span class="o">,</span> <span class="m">80</span><span class="o">%</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">transparent</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">border</span><span class="o">-</span><span class="n">insets</span><span class="o">:</span> <span class="m">0</span> <span class="m">10</span> <span class="m">1</span> <span class="m">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.table-view</span> <span class="nc">.column-header</span> <span class="nc">.label</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">font-size</span><span class="o">:</span> <span class="m">20pt</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">font-family</span><span class="o">:</span> <span class="s2">&quot;Segoe UI Light&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">text</span><span class="o">-</span><span class="n">fill</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="n">alignment</span><span class="o">:</span> <span class="k">center-left</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">opacity</span><span class="o">:</span> <span class="m">1</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.table-view</span><span class="nd">:focused</span> <span class="nc">.table-row-cell</span><span class="nd">:filled:focused:selected</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">background-color</span><span class="o">:</span> <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="n">focus</span><span class="o">-</span><span class="k">color</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.split-pane</span><span class="nd">:horizontal</span> <span class="o">&gt;</span> <span class="o">*</span> <span class="o">&gt;</span> <span class="nc">.split-pane-divider</span> <span class="p">{</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">border-color</span><span class="o">:</span> <span class="k">transparent</span> <span class="m">#1d1d1d</span> <span class="k">transparent</span> <span class="m">#1d1d1d</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">background-color</span><span class="o">:</span> <span class="k">transparent</span><span class="o">,</span> <span class="n">derive</span><span class="p">(</span><span class="m">#1d1d1d</span><span class="o">,</span><span class="m">20</span><span class="o">%</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.split-pane</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">padding</span><span class="o">:</span> <span class="m">1</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.menu-bar</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">background-color</span><span class="o">:</span> <span class="n">derive</span><span class="p">(</span><span class="m">#1d1d1d</span><span class="o">,</span><span class="m">20</span><span class="o">%</span><span class="p">);</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="n">selection</span><span class="o">-</span><span class="n">bar</span><span class="o">:</span> <span class="n">derive</span><span class="p">(</span><span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">background</span><span class="o">,-</span><span class="m">7</span><span class="o">%</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.menu-bar</span> <span class="nc">.label</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">font-size</span><span class="o">:</span> <span class="m">14pt</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">font-family</span><span class="o">:</span> <span class="s2">&quot;Segoe UI Light&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">text</span><span class="o">-</span><span class="n">fill</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">opacity</span><span class="o">:</span> <span class="m">0</span><span class="o">.</span><span class="m">9</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.text-field</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">font-size</span><span class="o">:</span> <span class="m">12pt</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">font-family</span><span class="o">:</span> <span class="s2">&quot;Segoe UI Semibold&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="c">/* </span>
+</span><span class='line'><span class="c"> * Metro style Push Button</span>
+</span><span class='line'><span class="c"> * Author: Pedro Duque Vieira</span>
+</span><span class='line'><span class="c"> * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/</span>
+</span><span class='line'><span class="c"> */</span>
+</span><span class='line'><span class="nc">.button</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">padding</span><span class="o">:</span> <span class="m">5</span> <span class="m">22</span> <span class="m">5</span> <span class="m">22</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">border-color</span><span class="o">:</span> <span class="m">#e2e2e2</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">border-width</span><span class="o">:</span> <span class="m">2</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">background</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">background-color</span><span class="o">:</span> <span class="m">#1d1d1d</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">font-family</span><span class="o">:</span> <span class="s2">&quot;Segoe UI&quot;</span><span class="o">,</span> <span class="n">Helvetica</span><span class="o">,</span> <span class="n">Arial</span><span class="o">,</span> <span class="k">sans-serif</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">font-size</span><span class="o">:</span> <span class="m">11pt</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">text</span><span class="o">-</span><span class="n">fill</span><span class="o">:</span> <span class="m">#d8d8d8</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">background</span><span class="o">-</span><span class="n">insets</span><span class="o">:</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">1</span><span class="o">,</span> <span class="m">2</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.button</span><span class="nd">:hover</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">background-color</span><span class="o">:</span> <span class="m">#3a3a3a</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.button</span><span class="nd">:pressed</span><span class="o">,</span> <span class="nc">.button</span><span class="nd">:default:hover:pressed</span> <span class="p">{</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">background-color</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">text</span><span class="o">-</span><span class="n">fill</span><span class="o">:</span> <span class="m">#1d1d1d</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.button</span><span class="nd">:focused</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">border-color</span><span class="o">:</span> <span class="nb">white</span><span class="o">,</span> <span class="nb">white</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">border-width</span><span class="o">:</span> <span class="m">1</span><span class="o">,</span> <span class="m">1</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">border-style</span><span class="o">:</span> <span class="k">solid</span><span class="o">,</span> <span class="n">segments</span><span class="p">(</span><span class="m">1</span><span class="o">,</span> <span class="m">1</span><span class="p">);</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">border</span><span class="o">-</span><span class="n">insets</span><span class="o">:</span> <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">1</span><span class="o">,</span> <span class="m">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.button</span><span class="nd">:disabled</span><span class="o">,</span> <span class="nc">.button</span><span class="nd">:default:disabled</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">opacity</span><span class="o">:</span> <span class="m">0</span><span class="o">.</span><span class="m">4</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">background-color</span><span class="o">:</span> <span class="m">#1d1d1d</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">text</span><span class="o">-</span><span class="n">fill</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.button</span><span class="nd">:default</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">background-color</span><span class="o">:</span> <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="n">focus</span><span class="o">-</span><span class="k">color</span><span class="p">;</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">text</span><span class="o">-</span><span class="n">fill</span><span class="o">:</span> <span class="m">#ffffff</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.button</span><span class="nd">:default:hover</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">background-color</span><span class="o">:</span> <span class="n">derive</span><span class="p">(</span><span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="n">focus</span><span class="o">-</span><span class="k">color</span><span class="o">,</span><span class="m">30</span><span class="o">%</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We now need to attach the CSS to our Scene. We could do this programmatically in Java code, but we&#8217;ll use the Scene Builder to add it to our fxml files:</p>
+
+<h4>Attach CSS to RootLayout.fxml</h4>
+
+<p>Open the file <code>RootLayout.fxml</code> in Scene Builder. Select the root <code>BorderPane</code> in the Hierarchy view. Under properties add the <code>DarkTheme.css</code> file as stylesheet.</p>
+
+<h4>Attach CSS to PersonEditDialog.fxml</h4>
+
+<p>Open the file <code>PersonEditDialog.fxml</code> in Scene Builder. Select the root <code>AnchorPane</code> and choose <code>DarkTheme.css</code> in the properties view as stylesheet.</p>
+
+<p>The background is still white, so add the Style Class <code>background</code> to the root <code>AnchorPane</code>.</p>
+
+<p><img src="/images/javafx-addressapp/part-4/addressapp02.png"></p>
+
+<p>Select the OK button and choose <em>Default Button</em> in the Properties View. This will change its color and make this the default button when the <em>enter</em> key is pressed by the user.</p>
+
+<h4>Attach CSS to PersonOverview.fxml</h4>
+
+<p>Open the file <code>PersonOverview.fxml</code> in Scene Builder. Select the root <code>AnchorPane</code> in the Hierarchy view. Under properties add the <code>DarkTheme.css</code> file as stylesheet.</p>
+
+<p><img src="/images/javafx-addressapp/part-4/addressapp03.png"></p>
+
+<p>You should already see some changes now: The table and the buttons are black. If you select a button and look at the CSS part in the Properties view you will see that there already is a default style class called <code>button</code>.</p>
+
+<p><img src="/images/javafx-addressapp/part-4/addressapp04.png"></p>
+
+<p>All class styles <code>.button</code> from <code>caspian.css</code> apply to those buttons. Since we&#8217;ve redefined (and thus overridden) some of those styles in our custom CSS, the appearance of the buttons change automatically.</p>
+
+<p>You might need to adjust the size of the buttons so that all text is displayed.</p>
+
+<p>Select the right <code>AnchorPane</code> that is inside the <code>SplitPane</code>. Go to the Properties view and use the plus (+) sign to add a Style Class. Select the <code>background</code> style class. The background should now turn black.</p>
+
+<p><img src="/images/javafx-addressapp/part-4/addressapp05.png">
+<img src="/images/javafx-addressapp/part-4/addressapp06.png"></p>
+
+<p>If there is a white border around the table, select the <code>TableView</code> and choose 0 for all anchors in the Layout view. Now the table should take up all the left space.</p>
+
+<h4>Labels with different style</h4>
+
+<p>Right now, all the labels on the right side have the same size. There are already some styles defined in the css file called <code>.label-header</code> and <code>.label-bright</code> that we&#8217;ll use to further style the labels.</p>
+
+<p>Select the <em>Person Details</em> label and add <code>label-header</code> as a Style Class.</p>
+
+<p><img src="/images/javafx-addressapp/part-4/addressapp07.png"></p>
+
+<p>To each label in the right column (where the actual person details are displayed), add the css Style Class <code>label-bright</code>.</p>
+
+<h2>Adding an Application Icon</h2>
+
+<p>Right now our application just has the default icon in the title bar and taks bar:</p>
+
+<p><img src="/images/javafx-addressapp/part-4/addressapp08.png"></p>
+
+<p>It looks much nicer with a custom icon:</p>
+
+<p><img src="/images/javafx-addressapp/part-4/addressapp09.png"></p>
+
+<h3>The Icon File</h3>
+
+<p>A possible place to get free icons is <a href="http://www.iconfinder.com">Icon Finder</a>. I downloaded a little <a href="http://www.iconfinder.com/icondetails/86957/32/">address book icon</a>.</p>
+
+<p>Create a (normal) folder inside your AddressApp project called <strong>resources</strong> and a subfolder called <strong>images</strong> in it. Put the icon of your choice inside the images folder. Your folder structure should look something like this now:</p>
+
+<p><img src="/images/javafx-addressapp/part-4/addressapp10.png"></p>
+
+<h3>Set Icon to Scene</h3>
+
+<p>To set the icon for our scene add the following line to the <code>start(...)</code> method in <code>MainApp.java</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="k">this</span><span class="o">.</span><span class="na">primaryStage</span><span class="o">.</span><span class="na">getIcons</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Image</span><span class="o">(</span><span class="s">&quot;file:resources/images/address_book_32.png&quot;</span><span class="o">));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The whole <code>start(...)</code> method will look something like this now:</p>
+
+<figure class='code'><figcaption><span>MainApp.java</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="o">(</span><span class="n">Stage</span> <span class="n">primaryStage</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">this</span><span class="o">.</span><span class="na">primaryStage</span> <span class="o">=</span> <span class="n">primaryStage</span><span class="o">;</span>
+</span><span class='line'>  <span class="k">this</span><span class="o">.</span><span class="na">primaryStage</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="s">&quot;AddressApp&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="c1">// Set the application icon</span>
+</span><span class='line'>  <span class="k">this</span><span class="o">.</span><span class="na">primaryStage</span><span class="o">.</span><span class="na">getIcons</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Image</span><span class="o">(</span><span class="s">&quot;file:resources/images/address_book_32.png&quot;</span><span class="o">));</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>    <span class="c1">// Load the root layout from the fxml file</span>
+</span><span class='line'>    <span class="n">FXMLLoader</span> <span class="n">loader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FXMLLoader</span><span class="o">(</span><span class="n">MainApp</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getResource</span><span class="o">(</span><span class="s">&quot;view/RootLayout.fxml&quot;</span><span class="o">));</span>
+</span><span class='line'>    <span class="n">rootLayout</span> <span class="o">=</span> <span class="o">(</span><span class="n">BorderPane</span><span class="o">)</span> <span class="n">loader</span><span class="o">.</span><span class="na">load</span><span class="o">();</span>
+</span><span class='line'>    <span class="n">Scene</span> <span class="n">scene</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scene</span><span class="o">(</span><span class="n">rootLayout</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">primaryStage</span><span class="o">.</span><span class="na">setScene</span><span class="o">(</span><span class="n">scene</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">primaryStage</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="c1">// Exception gets thrown if the fxml file could not be loaded</span>
+</span><span class='line'>    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">showPersonOverview</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can also add an icon to the stage of the person edit dialog, of course.</p>
+
+<hr />
+
+<h3>What&#8217;s Next?</h3>
+
+<p>In <a href="/blog/2012/11/27/javafx-tutorial-addressapp-5">Tutorial Part V</a> we will add XML storage for our data.</p>
+
+<h3>Download</h3>
+
+<p><a href="/downloads/javafx-addressapp/part-4/addressapp-part-4.zip">Source of Tutorial Part IV</a> as Eclipse Project.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Marco Jakob</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-26T13:00:00+01:00" pubdate data-updated="true">Nov 26<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/english/'>English</a>, <a class='category' href='/blog/categories/javafx/'>JavaFX</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://edu.makery.ch/blog/2012/11/26/javafx-tutorial-addressapp-4/" data-via="" data-counturl="http://edu.makery.ch/blog/2012/11/26/javafx-tutorial-addressapp-4/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/11/20/javafx-tutorial-addressapp-3/" title="Previous Post: JavaFX 2 Tutorial Part III - Interacting with the User">&laquo; JavaFX 2 Tutorial Part III - Interacting with the User</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/11/27/javafx-tutorial-addressapp-5/" title="Next Post: JavaFX 2 Tutorial Part V - Storing Data as XML">JavaFX 2 Tutorial Part V - Storing Data as XML &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/19/javafx-tableview-cell-renderer/">JavaFX TableView Cell Renderer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/18/javafx-tableview-filter/">JavaFX TableView Filter</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/18/new-java-and-javafx-learn-pages/">New Java and JavaFX Learn Pages</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/18/javafx-tutorial-addressapp-7/">JavaFX 2 Tutorial Part VII - Deployment with e(fx)clipse</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/13/helpful-java-libraries/">Helpful Java Libraries</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/04/javafx-tutorial-addressapp-6/">JavaFX 2 Tutorial Part VI - Statistics Chart</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/27/javafx-tutorial-addressapp-5/">JavaFX 2 Tutorial Part V - Storing Data as XML</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/26/javafx-tutorial-addressapp-4/">JavaFX 2 Tutorial Part IV - CSS Styling</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/'>All (17)</a><a title='subscribe via RSS' href='http://feeds.feedburner.com/edu-makery' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/deutsch/'>Deutsch (1)</a><a title='subscribe via RSS: Deutsch' href='http://feeds.feedburner.com/edu-makery-deutsch' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/english/'>English (16)</a><a title='subscribe via RSS: English' href='http://feeds.feedburner.com/edu-makery-english' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/java/'>Java (5)</a><a title='subscribe via RSS: Java' href='http://feeds.feedburner.com/edu-makery-java' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/javafx/'>JavaFX (11)</a><a title='subscribe via RSS: JavaFX' href='http://feeds.feedburner.com/edu-makery-javafx' class='feed-rss_16 category-icon'></a></li>
+
+  </ul>
+</section>
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Marco Jakob - 
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - 
+  <span class="credit">Icons by <a href="http://glyphicons.com">glyphicons</a> and <a href="http://www.icondrawer.com">icondrawer</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'edumakery';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://edu.makery.ch/blog/2012/11/26/javafx-tutorial-addressapp-4/';
+        var disqus_url = 'http://edu.makery.ch/blog/2012/11/26/javafx-tutorial-addressapp-4/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

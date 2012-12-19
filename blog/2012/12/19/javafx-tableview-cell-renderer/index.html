@@ -1,0 +1,374 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>JavaFX TableView Cell Renderer - edu.makery.ch</title>
+  <meta name="author" content="Marco Jakob">
+
+  
+  <meta name="description" content="In this post I will show how to customize the rendering of a JavaFX 2 TableView. The Birthday column in the screenshot below is a formatted Calendar &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://edu.makery.ch/blog/2012/12/19/javafx-tableview-cell-renderer/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/edu-makery" rel="alternate" title="edu.makery.ch" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34917397-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">edu.makery.ch</a></h1>
+  
+    <h2>Education in the Making.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation">
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:edu.makery.ch" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Blog Archives</a></li>
+  <li><a href="/learn-java">Learn Java</a></li>
+  <li><a href="/learn-javafx">Learn JavaFX</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">JavaFX TableView Cell Renderer</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-19T03:00:00+01:00" pubdate data-updated="true">Dec 19<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>In this post I will show how to customize the rendering of a JavaFX 2 TableView. The <em>Birthday</em> column in the screenshot below is a formatted <code>Calendar</code> object. Depending on the year, the text color is changed.</p>
+
+<p><img src="/images/javafx-tableview-cell-renderer/javafx-tableview-cell-renderer-01.png"></p>
+
+<!-- more -->
+
+
+<h2>How a Table Cell is Rendered</h2>
+
+<p>Each table cell will receive an object, in our case it is an instance of <code>Person</code>. To do the rendering, the cell will need a <a href="http://docs.oracle.com/javafx/2/api/javafx/scene/control/TableColumn.html#setCellValueFactory(javafx.util.Callback"><code>Cell Value Factory</code></a>) and a <a href="http://docs.oracle.com/javafx/2/api/javafx/scene/control/TableColumn.html#setCellFactory(javafx.util.Callback"><code>Cell Factory</code></a>):</p>
+
+<h3>Cell Value Factory</h3>
+
+<p>The cell must know which part of <code>Person</code> it needs to display. For all cells in the <em>birthday column</em> this will be the <code>Person</code>s <code>birthday</code> value.</p>
+
+<p>This is our birthday column:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="n">TableColumn</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">,</span> <span class="n">Calendar</span><span class="o">&gt;</span> <span class="n">birthdayColumn</span><span class="o">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And later during initialization, we&#8217;ll set the <code>Cell Value Factory</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">birthdayColumn</span><span class="o">.</span><span class="na">setCellValueFactory</span><span class="o">(</span>
+</span><span class='line'>    <span class="k">new</span> <span class="n">PropertyValueFactory</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">,</span> <span class="n">Calendar</span><span class="o">&gt;(</span><span class="s">&quot;birthday&quot;</span><span class="o">));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So far nothing too fancy.</p>
+
+<h3>Cell Factory</h3>
+
+<p>Once the cell has the value, it must know how to display that value. In our case, the birthday&#8217;s <code>Calendar</code> value must be formatted and colored depending on the year.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">birthdayColumn</span><span class="o">.</span><span class="na">setCellFactory</span><span class="o">(</span><span class="k">new</span> <span class="n">Callback</span><span class="o">&lt;</span><span class="n">TableColumn</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">,</span> <span class="n">Calendar</span><span class="o">&gt;,</span> <span class="n">TableCell</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">,</span> <span class="n">Calendar</span><span class="o">&gt;&gt;()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="n">TableCell</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">,</span> <span class="n">Calendar</span><span class="o">&gt;</span> <span class="n">call</span><span class="o">(</span><span class="n">TableColumn</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">,</span> <span class="n">Calendar</span><span class="o">&gt;</span> <span class="n">param</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="k">new</span> <span class="n">TableCell</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">,</span> <span class="n">Calendar</span><span class="o">&gt;()</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="nd">@Override</span>
+</span><span class='line'>          <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">updateItem</span><span class="o">(</span><span class="n">Calendar</span> <span class="n">item</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">empty</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>              <span class="kd">super</span><span class="o">.</span><span class="na">updateItem</span><span class="o">(</span><span class="n">item</span><span class="o">,</span> <span class="n">empty</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>              <span class="k">if</span> <span class="o">(!</span><span class="n">empty</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="c1">// Use a SimpleDateFormat or similar in the format method</span>
+</span><span class='line'>                <span class="n">setText</span><span class="o">(</span><span class="n">format</span><span class="o">(</span><span class="n">item</span><span class="o">));</span>
+</span><span class='line'>
+</span><span class='line'>                <span class="k">if</span> <span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">Calendar</span><span class="o">.</span><span class="na">YEAR</span><span class="o">)</span> <span class="o">==</span> <span class="mi">2011</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                  <span class="n">setTextFill</span><span class="o">(</span><span class="n">Color</span><span class="o">.</span><span class="na">CHOCOLATE</span><span class="o">);</span>
+</span><span class='line'>                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span><span class='line'>                  <span class="n">setTextFill</span><span class="o">(</span><span class="n">Color</span><span class="o">.</span><span class="na">BLACK</span><span class="o">);</span>
+</span><span class='line'>                <span class="o">}</span>
+</span><span class='line'>              <span class="o">}</span>
+</span><span class='line'>          <span class="o">}</span>
+</span><span class='line'>      <span class="o">};</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The <code>Cell Factory</code> contains some complicated stuff (<em>Callback</em>, <em>Generics</em> and <em>Anonymous Inner Classes</em>). Don&#8217;t worry too much about all this. Just focus on the important part which is the <code>updateItem(...)</code> method.</p>
+
+<p>This <code>updateItem(...)</code> method gets called whenever the cell should be rendered. We receive the <code>Calendar</code> item that must be rendered. If empty is <code>true</code> we don&#8217;t do anything. Otherwise we format the item and set the text of the cell. Depending on the year, we also set the text color.</p>
+
+<h2>ListView and TreeView</h2>
+
+<p>Note that the JavaFX 2 <a href="http://docs.oracle.com/javafx/2/api/javafx/scene/control/ListView.html"><code>ListView</code></a> and <a href="http://docs.oracle.com/javafx/2/api/javafx/scene/control/TreeView.html"><code>TreeView</code></a> are rendered in a very similar way.</p>
+
+<h2>Download</h2>
+
+<p>Download the complete <a href="/downloads/javafx-tableview-cell-renderer/javafx-tableview-cell-renderer.zip">tableview-cell-renderer example</a>.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Marco Jakob</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-19T03:00:00+01:00" pubdate data-updated="true">Dec 19<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/english/'>English</a>, <a class='category' href='/blog/categories/javafx/'>JavaFX</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://edu.makery.ch/blog/2012/12/19/javafx-tableview-cell-renderer/" data-via="" data-counturl="http://edu.makery.ch/blog/2012/12/19/javafx-tableview-cell-renderer/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/12/18/javafx-tableview-filter/" title="Previous Post: JavaFX TableView Filter">&laquo; JavaFX TableView Filter</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/19/javafx-tableview-cell-renderer/">JavaFX TableView Cell Renderer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/18/javafx-tableview-filter/">JavaFX TableView Filter</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/18/new-java-and-javafx-learn-pages/">New Java and JavaFX Learn Pages</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/18/javafx-tutorial-addressapp-7/">JavaFX 2 Tutorial Part VII - Deployment with e(fx)clipse</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/13/helpful-java-libraries/">Helpful Java Libraries</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/04/javafx-tutorial-addressapp-6/">JavaFX 2 Tutorial Part VI - Statistics Chart</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/27/javafx-tutorial-addressapp-5/">JavaFX 2 Tutorial Part V - Storing Data as XML</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/26/javafx-tutorial-addressapp-4/">JavaFX 2 Tutorial Part IV - CSS Styling</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/'>All (17)</a><a title='subscribe via RSS' href='http://feeds.feedburner.com/edu-makery' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/deutsch/'>Deutsch (1)</a><a title='subscribe via RSS: Deutsch' href='http://feeds.feedburner.com/edu-makery-deutsch' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/english/'>English (16)</a><a title='subscribe via RSS: English' href='http://feeds.feedburner.com/edu-makery-english' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/java/'>Java (5)</a><a title='subscribe via RSS: Java' href='http://feeds.feedburner.com/edu-makery-java' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/javafx/'>JavaFX (11)</a><a title='subscribe via RSS: JavaFX' href='http://feeds.feedburner.com/edu-makery-javafx' class='feed-rss_16 category-icon'></a></li>
+
+  </ul>
+</section>
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Marco Jakob - 
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - 
+  <span class="credit">Icons by <a href="http://glyphicons.com">glyphicons</a> and <a href="http://www.icondrawer.com">icondrawer</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'edumakery';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://edu.makery.ch/blog/2012/12/19/javafx-tableview-cell-renderer/';
+        var disqus_url = 'http://edu.makery.ch/blog/2012/12/19/javafx-tableview-cell-renderer/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

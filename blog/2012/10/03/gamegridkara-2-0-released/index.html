@@ -1,0 +1,431 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>GameGridKara 2.0 Released - edu.makery.ch</title>
+  <meta name="author" content="Marco Jakob">
+
+  
+  <meta name="description" content="GameGridKara version 2.0 has been released (see a change log). Features Complete beginners course in German and English
+Combination of Kara and &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://edu.makery.ch/blog/2012/10/03/gamegridkara-2-0-released/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/edu-makery" rel="alternate" title="edu.makery.ch" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34917397-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">edu.makery.ch</a></h1>
+  
+    <h2>Education in the Making.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation">
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:edu.makery.ch" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Blog Archives</a></li>
+  <li><a href="/learn-java">Learn Java</a></li>
+  <li><a href="/learn-javafx">Learn JavaFX</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">GameGridKara 2.0 Released</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-03T13:00:00+02:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><img src="/images/kara/gamegridkara-logo-large.png" title="GameGridKara" ></p>
+
+<p>GameGridKara version 2.0 has been released (see a <a href="http://www.swisseduc.ch/informatik/karatojava/gamegridkara/changes.html">change log</a>).</p>
+
+<h2>Features</h2>
+
+<ul>
+<li>Complete beginners course in German and English</li>
+<li>Combination of Kara and <a href="http://www.gamegrid.ch">GameGrid</a> for a simple introduction to Java programming</li>
+<li>Use <strong>any programming IDE like Eclipse, Netbeans or BlueJ</strong></li>
+<li>16-20 lessons</li>
+<li>12 handouts for students</li>
+<li>24 Kara scenarios</li>
+<li>38+ exercises with solutions</li>
+<li>Programming of a Sokoban game with self-designed levels, a highscore, etc.</li>
+</ul>
+
+
+<h2>Sample Scenario</h2>
+
+<p>That&#8217;s how a simple scenario of GameGridKara looks like in Eclipse. You will find the complete exercise on the handout for chapter 1 (see downloads).</p>
+
+<p><img src="/images/kara/gamegridkara-eclipse.png" title="GameGridKara in Eclipse" ></p>
+
+<p>What does the program in the screenshot do? It will get Kara around the first tree. The complete program can be written inside the <code>act()</code> method. For more complex scenarios you will likely have to create additional methods.</p>
+
+<!-- more -->
+
+
+<p>Kara&#8217;s world in the scenario above is loaded from the WorldSetup.txt file:</p>
+
+<figure class='code'><figcaption><span>WorldSetup.txt</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='text'><span class='line'>World: Kara 07 Around Tree
+</span><span class='line'>X: 10
+</span><span class='line'>Y: 2
+</span><span class='line'>
+</span><span class='line'>@ # #  #.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>X</code> and <code>Y</code> attributes define the width and height of the world. <code>@</code> represents the location of Kara while <code>#</code> stands for a tree and <code>.</code> for a leaf. The size of the world and the actor positions can easily be changed by editing the <em>WorldSetup.txt</em> file. You can also design new world setups by placing actors inside the world with the mouse and using the context menu | <code>saveWorldSetupToFile()</code> to save it to a file.</p>
+
+<h2>How to Get Started</h2>
+
+<p>To use the predefined scenarios you can import the scenarios into your development environment (see downloads below).</p>
+
+<h3>Create Your Own Scenarios</h3>
+
+<p>To create your own scenarios you will need to put the following two libraries on the classpath:</p>
+
+<ul>
+<li>GameGridKara-2.2.0.jar</li>
+<li>JGameGrid-2.20.jar</li>
+</ul>
+
+
+<p>You can extract the two libraries from any scenario (see downloads below).</p>
+
+<p>Each scenario must have <em>one Java class</em> and a <em>WorldSetup.txt</em> file as seen above. Here is a complete example of a Java class where the actual program will be written:</p>
+
+<figure class='code'><figcaption><span>MyKara.java</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">import</span> <span class="nn">kara.gamegrid.Kara</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">kara.gamegrid.KaraWorld</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * MyKara is a subclass of Kara. Therefore, it inherits all methods of Kara: &lt;p&gt;</span>
+</span><span class='line'><span class="cm"> * </span>
+</span><span class='line'><span class="cm"> * &lt;i&gt;MyKara ist eine Unterklasse von Kara. Sie erbt damit alle Methoden der Klasse Kara:&lt;/i&gt; &lt;p&gt;</span>
+</span><span class='line'><span class="cm"> * </span>
+</span><span class='line'><span class="cm"> * Actions:     move(), turnLeft(), turnRight(), putLeaf(), removeLeaf() &lt;b&gt;</span>
+</span><span class='line'><span class="cm"> * Sensors:     onLeaf(), treeFront(), treeLeft(), treeRight(), mushroomFront()</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyKara</span> <span class="kd">extends</span> <span class="n">Kara</span> <span class="o">{</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="cm">/**</span>
+</span><span class='line'><span class="cm">   * In the &#39;act()&#39; method you can write your program for Kara &lt;br&gt;</span>
+</span><span class='line'><span class="cm">   * &lt;i&gt;In der Methode &#39;act()&#39; koennen die Befehle fuer Kara programmiert werden&lt;/i&gt;</span>
+</span><span class='line'><span class="cm">   */</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">act</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">move</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">turnRight</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">move</span><span class="o">();</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="n">stop</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  
+</span><span class='line'>  
+</span><span class='line'>  <span class="cm">/**</span>
+</span><span class='line'><span class="cm">  * The main-method is the start of the program where the Kara world is loaded &lt;br&gt;</span>
+</span><span class='line'><span class="cm">  * &lt;i&gt;Die main-Methode ist der Start des Programms, wo die Kara Welt geladen wird&lt;/i&gt;</span>
+</span><span class='line'><span class="cm">  */</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">KaraWorld</span> <span class="n">world</span> <span class="o">=</span> <span class="k">new</span> <span class="n">KaraWorld</span><span class="o">(</span><span class="s">&quot;WorldSetup.txt&quot;</span><span class="o">,</span> <span class="n">MyKara</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">world</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The <code>main(...)</code> method is needed to setup and start the world. You need to tell GameGridKara the name of the world setup file and provide the class in which to look for the <code>act()</code> method.</p>
+
+<h2>GameGridKara Downloads</h2>
+
+<p>Instructions, handouts, and scenarios can be downloaded from the Swisseduc website: <br/>
+<a href="http://www.swisseduc.ch/informatik/karatojava/gamegridkara/gamegridkara-english.html"><img class="nobox middle" src="/images/swisseduc.png" title="'GameGridKara on Swisseduc (English)'" > GameGridKara Downloads (English)</a> <br/>
+<a href="http://www.swisseduc.ch/informatik/karatojava/gamegridkara/index.html"><img class="nobox middle" src="/images/swisseduc.png" title="'GameGridKara on Swisseduc (German)'" > GameGridKara Downloads (German)</a></p>
+
+<p>The GameGridKara source can be found on GitHub (feedback and bug reports are welcome!): <br/>
+<a href="https://github.com/marcojakob/gamegrid-kara"><img class="nobox middle" src="/images/glyphicons_github.png" title="'GameGridKara on GitHub'" > GameGridKara Source on GitHub</a></p>
+
+<h2>Feedback</h2>
+
+<p>I would appreciate any feedback of your experience with GameGridKara. You can write an <a href="/about">E-Mail</a> or leave a comment at the bottom of this blog entry. If you create your own exercises and scenarios I would be glad to post or link them on this blog so others could use them too.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Marco Jakob</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-03T13:00:00+02:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/english/'>English</a>, <a class='category' href='/blog/categories/java/'>Java</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://edu.makery.ch/blog/2012/10/03/gamegridkara-2-0-released/" data-via="" data-counturl="http://edu.makery.ch/blog/2012/10/03/gamegridkara-2-0-released/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/10/03/greenfootkara-2-0-released/" title="Previous Post: GreenfootKara 2.0 Released">&laquo; GreenfootKara 2.0 Released</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/10/30/javafx-2-dialogs/" title="Next Post: JavaFX 2 Dialogs">JavaFX 2 Dialogs &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/19/javafx-tableview-cell-renderer/">JavaFX TableView Cell Renderer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/18/javafx-tableview-filter/">JavaFX TableView Filter</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/18/new-java-and-javafx-learn-pages/">New Java and JavaFX Learn Pages</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/18/javafx-tutorial-addressapp-7/">JavaFX 2 Tutorial Part VII - Deployment with e(fx)clipse</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/13/helpful-java-libraries/">Helpful Java Libraries</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/04/javafx-tutorial-addressapp-6/">JavaFX 2 Tutorial Part VI - Statistics Chart</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/27/javafx-tutorial-addressapp-5/">JavaFX 2 Tutorial Part V - Storing Data as XML</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/26/javafx-tutorial-addressapp-4/">JavaFX 2 Tutorial Part IV - CSS Styling</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/'>All (17)</a><a title='subscribe via RSS' href='http://feeds.feedburner.com/edu-makery' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/deutsch/'>Deutsch (1)</a><a title='subscribe via RSS: Deutsch' href='http://feeds.feedburner.com/edu-makery-deutsch' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/english/'>English (16)</a><a title='subscribe via RSS: English' href='http://feeds.feedburner.com/edu-makery-english' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/java/'>Java (5)</a><a title='subscribe via RSS: Java' href='http://feeds.feedburner.com/edu-makery-java' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/javafx/'>JavaFX (11)</a><a title='subscribe via RSS: JavaFX' href='http://feeds.feedburner.com/edu-makery-javafx' class='feed-rss_16 category-icon'></a></li>
+
+  </ul>
+</section>
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Marco Jakob - 
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - 
+  <span class="credit">Icons by <a href="http://glyphicons.com">glyphicons</a> and <a href="http://www.icondrawer.com">icondrawer</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'edumakery';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://edu.makery.ch/blog/2012/10/03/gamegridkara-2-0-released/';
+        var disqus_url = 'http://edu.makery.ch/blog/2012/10/03/gamegridkara-2-0-released/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

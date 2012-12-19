@@ -1,0 +1,659 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>edu.makery.ch</title>
+  <meta name="author" content="Marco Jakob">
+
+  
+  <meta name="description" content="Goal The goal of this tutorial is to learn how to create graphical user interfaces with JavaFX 2 and Scene Builder. We will cover many features of &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://edu.makery.ch/blog/page/2/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/edu-makery" rel="alternate" title="edu.makery.ch" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34917397-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">edu.makery.ch</a></h1>
+  
+    <h2>Education in the Making.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation">
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:edu.makery.ch" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Blog Archives</a></li>
+  <li><a href="/learn-java">Learn Java</a></li>
+  <li><a href="/learn-javafx">Learn JavaFX</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  <ul class="blog-icons">
+    <li>
+      <a title="subscribe via RSS" href="http://feeds.feedburner.com/edu-makery" class="feed-rss_32"></a>
+    </li>
+  </ul>
+  
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/16/javafx-tutorial-addressapp-1/">JavaFX 2 Tutorial Part I - Scene Builder</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-16T22:00:00+01:00" pubdate data-updated="true">Nov 16<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="/images/javafx-addressapp/part-1/addressapp01.png"></p>
+
+<h2>Goal</h2>
+
+<p>The goal of this tutorial is to learn how to create graphical user interfaces with <strong>JavaFX 2</strong> and <strong>Scene Builder</strong>. We will cover many features of JavaFX 2 by creating an <strong>Address Application</strong> and enhancing it step-by-step.</p>
+
+<h2>Topics in Part I</h2>
+
+<ul>
+<li>Getting to know JavaFX 2</li>
+<li>Creating and starting a JavaFX Project</li>
+<li>Using Scene Builder to design the user interface</li>
+<li>Basic application structure using the Model View Controller (MVC) pattern</li>
+</ul>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/11/16/javafx-tutorial-addressapp-1/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/30/javafx-2-dialogs/">JavaFX 2 Dialogs</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+<time datetime="2012-10-30T00:45:00+01:00" pubdate data-updated="true">Oct 30<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When programming a graphical user interface (GUI) there are occasions where you&#8217;ll need a simple popup dialog to communicate with the user. In Swing (the predecessor of JavaFX) there is a convenient class called <a href="http://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html">JOptionPane</a> for such dialogs. A similar class doesn&#8217;t exist in JavaFX 2.x (yet).</p>
+
+<p>Fortunately, the authors of JavaFX <a href="http://fxexperience.com/2012/10/announcing-the-javafx-ui-controls-sandbox/">published</a> some user interface controls they are currently working on. Those controls might be added in a future version of JavaFX.</p>
+
+<p>One of those ui controls is a class called <code>Dialogs.java</code> which is exactly what we need.</p>
+
+<h2>How To Use the Dialogs</h2>
+
+<ol>
+<li>Download the newest <strong>javafx-dialogs-x.x.x.jar</strong> file from my <a href="https://github.com/marcojakob/javafx-ui-sandbox/tree/master/javafx-dialogs/dist">GitHub Page</a>. Alternatively download <a href="https://www.dropbox.com/s/894i21d532gn9h0/javafx-dialogs-0.0.1.jar">javafx-dialogs-0.0.1 from Dropbox</a>. I put all necessary classes, css files and images inside this jar.</li>
+<li>Add the jar file to your project (usually inside a <strong>lib</strong> subfolder).</li>
+<li>Add the jar file to the project&#8217;s classpath: In Eclipse <em>right-click on the jar file</em> | <em>Build Path</em> | <em>Add to Build Path</em>. Now Eclipse knows about the library.</li>
+<li>Then add one of the following lines:</li>
+</ol>
+
+
+<h3>Information Dialog</h3>
+
+<p><img src="/images/javafx-dialogs/javafx-information-dialog.png" title="JavaFX Information Dialog" ></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">Dialogs</span><span class="o">.</span><span class="na">showInformationDialog</span><span class="o">(</span><span class="n">stage</span><span class="o">,</span> <span class="s">&quot;I have a great message for you!&quot;</span><span class="o">,</span>
+</span><span class='line'>    <span class="s">&quot;Information Dialog&quot;</span><span class="o">,</span> <span class="s">&quot;title&quot;</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/30/javafx-2-dialogs/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/03/gamegridkara-2-0-released/">GameGridKara 2.0 Released</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-03T13:00:00+02:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="/images/kara/gamegridkara-logo-large.png" title="GameGridKara" ></p>
+
+<p>GameGridKara version 2.0 has been released (see a <a href="http://www.swisseduc.ch/informatik/karatojava/gamegridkara/changes.html">change log</a>).</p>
+
+<h2>Features</h2>
+
+<ul>
+<li>Complete beginners course in German and English</li>
+<li>Combination of Kara and <a href="http://www.gamegrid.ch">GameGrid</a> for a simple introduction to Java programming</li>
+<li>Use <strong>any programming IDE like Eclipse, Netbeans or BlueJ</strong></li>
+<li>16-20 lessons</li>
+<li>12 handouts for students</li>
+<li>24 Kara scenarios</li>
+<li>38+ exercises with solutions</li>
+<li>Programming of a Sokoban game with self-designed levels, a highscore, etc.</li>
+</ul>
+
+
+<h2>Sample Scenario</h2>
+
+<p>That&#8217;s how a simple scenario of GameGridKara looks like in Eclipse. You will find the complete exercise on the handout for chapter 1 (see downloads).</p>
+
+<p><img src="/images/kara/gamegridkara-eclipse.png" title="GameGridKara in Eclipse" ></p>
+
+<p>What does the program in the screenshot do? It will get Kara around the first tree. The complete program can be written inside the <code>act()</code> method. For more complex scenarios you will likely have to create additional methods.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/03/gamegridkara-2-0-released/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/03/greenfootkara-2-0-released/">GreenfootKara 2.0 Released</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-03T12:00:00+02:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="/images/kara/greenfootkara-logo-large.png" title="'GreenfootKara'" ></p>
+
+<p>GreenfootKara version 2.0 has been released (see a <a href="http://www.swisseduc.ch/informatik/karatojava/greenfootkara/changes.html">change log</a>).</p>
+
+<h2>Features</h2>
+
+<ul>
+<li>Complete beginners course in German and English</li>
+<li>Combination of Kara and <a href="http://greenfoot.org">Greenfoot</a> for a simple introduction to Java programming</li>
+<li><strong>Uses Greenfoot as a simple programming IDE</strong></li>
+<li>16-20 lessons</li>
+<li>12 handouts for students</li>
+<li>24 Kara scenarios</li>
+<li>38+ exercises with solutions</li>
+<li>Programming of a Sokoban game with self-designed levels, a highscore, etc.</li>
+</ul>
+
+
+<h2>Sample Scenario</h2>
+
+<p>That&#8217;s how a simple scenario of GreenfootKara looks like. You will find the complete exercise on the handout for chapter 1 (see downloads).</p>
+
+<p><img src="/images/kara/greenfootkara-screenshot.png" title="GreenfootKara in Eclipse" ></p>
+
+<p>What does the program in the screenshot do? It will get Kara around the first tree. The complete program can be written inside the <code>act()</code> method. For more complex scenarios you will likely have to create additional methods.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/03/greenfootkara-2-0-released/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/02/introduction-to-programming-with-kara/">Introduction to Programming With Kara</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-02T22:00:00+02:00" pubdate data-updated="true">Oct 2<span>nd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Kara offers a playful introduction to fundamental concepts of programming. Kara is a ladybug that lives in a simple world with trees, leafs and mushrooms.</p>
+
+<p><img src="/images/kara/kara.png" title="Kara" >
+<img src="/images/kara/mushroom.png" title="Mushroom" >
+<img src="/images/kara/leaf.png" title="Leaf" >
+<img src="/images/kara/tree.png" title="Tree" ></p>
+
+<p>The rules of Kara&#8217;s world are simple:</p>
+
+<h4>Actions</h4>
+
+<ul>
+<li>Kara can move around with <code>move()</code> (Kara can push a mushroom, can step on leafs but can&#8217;t walk through trees)</li>
+<li>Kara turns left or right with <code>turnLeft()</code> or <code>turnRight()</code></li>
+<li>Kara puts down a leaf with <code>putLeaf()</code></li>
+<li>Kara picks up a leaf with <code>removeLeaf()</code></li>
+</ul>
+
+
+<h4>Sensors</h4>
+
+<ul>
+<li>Kara checks if he stands on a leaf with <code>onLeaf()</code></li>
+<li>Kara checks if there is a tree with <code>treeFront()</code>, <code>treeLeft()</code>, or <code>treeRight()</code></li>
+<li>Kara checks if there is a mushroom in front with <code>mushroomFront()</code></li>
+</ul>
+
+
+<h2>A Sample Exercise</h2>
+
+<p>Kara is placed in the following world setup and must be programmed to collect all leafs until he reaches the tree:</p>
+
+<p><img src="/images/kara/kara-example-collect-leafs.png" title="Kara Collects Leafs" ></p>
+
+<p>One solution would be as follows:</p>
+
+<figure class='code'><figcaption><span>Kara collects leafs (Java)</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="k">while</span> <span class="o">(!</span><span class="n">treeFront</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="o">(</span><span class="n">onLeaf</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">removeLeaf</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">move</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Kara Versions - Which Kara Should I Use?</h2>
+
+<p>Kara has many different versions. The original Kara is designed as a finite state machine with a purely graphical program editor. See the full list of <a href="http://www.swisseduc.ch/informatik/karatojava/index.html">available Kara versions</a>.</p>
+
+<p>I usually prefer to start directly with writing Java code. Now there are three possible editors/libraries:</p>
+
+<h3>JavaKara</h3>
+
+<p>JavaKara is the original editor. You can find the <a href="http://www.swisseduc.ch/informatik/karatojava/javakara/index.html">JavaKara download and resources here</a> (in German).</p>
+
+<h3>GreenfootKara</h3>
+
+<p>Since I really like the editor of the <a href="http://greenfoot.org">Greenfoot IDE</a> I decided to create a Kara version that works with Greenfoot, it is called GreenfootKara. In addition to this I wrote an entire beginners course of 16-20 lessons with exercises and handouts to go along with GreenfootKara. You can find the links to the German and English versions on the <a href="/learn-java">Learn Java</a> page.</p>
+
+<h3>GameGridKara</h3>
+
+<p>Sometimes, especially if time is too short, it might be good to directly start with a professional development environment like Eclipse or NetBeans. Since it was not possible to integrate Greenfoot into Eclipse/NetBeans, I had to find another solution. Altough, we could start JavaKara from Eclipse/NetBeans, there are just some things that are not possible (like programming an interactive Kara game). The solution was to port the code to work with a library called <a href="http://gamegrid.ch">JGameGrid</a>.</p>
+
+<p>GameGridKara enables us to use Kara in any IDE of our choice by simply adding two jar files to a project. The link to GameGridKara with the adjusted beginners course in German and English can be found on the <a href="/learn-java">Learn Java</a> page.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/01/warum-ich-gerne-programmiere/">Warum Ich Gerne Programmiere</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-01T22:10:00+02:00" pubdate data-updated="true">Oct 1<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>→ <a href="/blog/2012/10/01/why-i-love-programming/">English Post</a></p>
+
+<p>Ich liebe es zu programmieren, weil ich dabei kreativ sein kann und Sachen aus dem Nichts erschaffen kann. Das einzige, was ich dazu brauche, ist ein Computer. Dann kann ich beginnen, Programme zu schreiben und diese nachher einfach mit anderen Leuten teilen. Es gibt in unserer heutigen Welt nicht mehr viele Berufe, wo man diese Art Kreativität ausleben kann.</p>
+
+<blockquote><p>Programmieren kann sein wie das Verfassen eines Gedichtes oder das Komponieren eines Musikstückes</p><footer><strong>Donald Knuth (eig. Übers.)</strong> <cite><a href='http://www.paulgraham.com/knuth.html'>Computer Programming as an Art</a></cite></footer></blockquote>
+
+
+<p>Ich glaube, dass es mehr Leute geben würde, welchen diese Art von Arbeit Spass machen würde, als es tatsächlich tun. Dies mag sein, weil es ziemlich schwierig scheint, mit Programmieren zu starten. Deshalb denke ich oft darüber nach, wie man den Einstig für Programmieranfänger vereinfachen und spannender gestalten kann. Und ja, es ist natürlich immer noch ok, wenn Sie es auch dann nicht lustig finden, aber lasst uns wenigstens ein paar Hindernisse aus dem Weg räumen und es probieren.</p>
+
+<h2>Über diesen Blog</h2>
+
+<p>Ich werde in diesem Blog Einträge schreiben über Tools und Materialen, von denen ich denke, dass sie für das Unterrichten/Lernen von Informatik hilfreich sind. Vielleicht werde ich auch später noch über andere Themen aus dem Bereich Education schreiben.</p>
+
+<p>Viele Einträge v.a. zum Thema Programmieren werden auf Englisch sein. Evtl. werde ich auch mal Einträge auf Deutsch übersetzen oder nur auf Deutsch schreiben. Je nach dem was Sinn macht.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/01/why-i-love-programming/">Why I Love Programming</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-01T22:00:00+02:00" pubdate data-updated="true">Oct 1<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>→ <a href="/blog/2012/10/01/warum-ich-gerne-programmiere/">German Post</a></p>
+
+<p>I really love to program because I can be creative and make new things out of nothing. All I need is a computer and I can start creating programs and easily share my work with other people. There are not a lot of professions in our world today that allow this kind of creativity.</p>
+
+<blockquote><p>My feeling is that when we prepare a program, it can be like composing poetry or music</p><footer><strong>Donald Knuth</strong> <cite><a href='http://www.paulgraham.com/knuth.html'>Computer Programming as an Art</a></cite></footer></blockquote>
+
+
+<p>I believe there are many more people who would enjoy this kind of work than are actually doing it. This might be because it seems quite hard to get started with. That&#8217;s why I think a lot about how to make it as smooth as possible for a beginner to get started and have fun with programming. And yes, it&#8217;s ok if you&#8217;ll still don&#8217;t like it, but let&#8217;s get some obstacles out of the way and try.</p>
+
+<h2>About This Blog</h2>
+
+<p>In this blog I will write about some tools and resources that I think are helpful for teaching/learning computer science. Maybe I will decide to write about some other educational toppics as well - we&#8217;ll see.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/19/javafx-tableview-cell-renderer/">JavaFX TableView Cell Renderer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/18/javafx-tableview-filter/">JavaFX TableView Filter</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/18/new-java-and-javafx-learn-pages/">New Java and JavaFX Learn Pages</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/18/javafx-tutorial-addressapp-7/">JavaFX 2 Tutorial Part VII - Deployment with e(fx)clipse</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/13/helpful-java-libraries/">Helpful Java Libraries</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/04/javafx-tutorial-addressapp-6/">JavaFX 2 Tutorial Part VI - Statistics Chart</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/27/javafx-tutorial-addressapp-5/">JavaFX 2 Tutorial Part V - Storing Data as XML</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/11/26/javafx-tutorial-addressapp-4/">JavaFX 2 Tutorial Part IV - CSS Styling</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/'>All (17)</a><a title='subscribe via RSS' href='http://feeds.feedburner.com/edu-makery' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/deutsch/'>Deutsch (1)</a><a title='subscribe via RSS: Deutsch' href='http://feeds.feedburner.com/edu-makery-deutsch' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/english/'>English (16)</a><a title='subscribe via RSS: English' href='http://feeds.feedburner.com/edu-makery-english' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/java/'>Java (5)</a><a title='subscribe via RSS: Java' href='http://feeds.feedburner.com/edu-makery-java' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/javafx/'>JavaFX (11)</a><a title='subscribe via RSS: JavaFX' href='http://feeds.feedburner.com/edu-makery-javafx' class='feed-rss_16 category-icon'></a></li>
+
+  </ul>
+</section>
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Marco Jakob - 
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - 
+  <span class="credit">Icons by <a href="http://glyphicons.com">glyphicons</a> and <a href="http://www.icondrawer.com">icondrawer</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'edumakery';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

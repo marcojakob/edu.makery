@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[edu.makery.ch | Category: Deutsch]]></title>
+  <link href="http://edu.makery.ch/blog/categories/deutsch/atom.xml" rel="self"/>
+  <link href="http://edu.makery.ch/blog/categories/deutsch/"/>
+  <updated>2012-12-19T03:08:42+01:00</updated>
+  <id>http://edu.makery.ch/blog/categories/deutsch</id>
+  <author>
+    <name><![CDATA[Marco Jakob]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Warum ich gerne Programmiere]]></title>
+    <link href="http://edu.makery.ch/blog/2012/10/01/warum-ich-gerne-programmiere/"/>
+    <updated>2012-10-01T22:10:00+02:00</updated>
+    <id>http://edu.makery.ch/blog/2012/10/01/warum-ich-gerne-programmiere</id>
+    <content type="html"><![CDATA[<p>→ <a href="http://edu.makery.ch/blog/2012/10/01/why-i-love-programming/">English Post</a></p>
+
+<p>Ich liebe es zu programmieren, weil ich dabei kreativ sein kann und Sachen aus dem Nichts erschaffen kann. Das einzige, was ich dazu brauche, ist ein Computer. Dann kann ich beginnen, Programme zu schreiben und diese nachher einfach mit anderen Leuten teilen. Es gibt in unserer heutigen Welt nicht mehr viele Berufe, wo man diese Art Kreativität ausleben kann.</p>
+
+<blockquote><p>Programmieren kann sein wie das Verfassen eines Gedichtes oder das Komponieren eines Musikstückes</p><footer><strong>Donald Knuth (eig. Übers.)</strong> <cite><a href='http://www.paulgraham.com/knuth.html'>Computer Programming as an Art</a></cite></footer></blockquote>
+
+
+<p>Ich glaube, dass es mehr Leute geben würde, welchen diese Art von Arbeit Spass machen würde, als es tatsächlich tun. Dies mag sein, weil es ziemlich schwierig scheint, mit Programmieren zu starten. Deshalb denke ich oft darüber nach, wie man den Einstig für Programmieranfänger vereinfachen und spannender gestalten kann. Und ja, es ist natürlich immer noch ok, wenn Sie es auch dann nicht lustig finden, aber lasst uns wenigstens ein paar Hindernisse aus dem Weg räumen und es probieren.</p>
+
+<h2>Über diesen Blog</h2>
+
+<p>Ich werde in diesem Blog Einträge schreiben über Tools und Materialen, von denen ich denke, dass sie für das Unterrichten/Lernen von Informatik hilfreich sind. Vielleicht werde ich auch später noch über andere Themen aus dem Bereich Education schreiben.</p>
+
+<p>Viele Einträge v.a. zum Thema Programmieren werden auf Englisch sein. Evtl. werde ich auch mal Einträge auf Deutsch übersetzen oder nur auf Deutsch schreiben. Je nach dem was Sinn macht.</p>
+]]></content>
+  </entry>
+  
+</feed>
