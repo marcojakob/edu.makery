@@ -27,6 +27,7 @@ For a first contact with JavaFX take a look at the [JavaFX 2 Dialogs](/blog/2012
 ## JavaFX Blog Posts ##
 * [JavaFX 2 Dialogs](/blog/2012/10/30/javafx-2-dialogs) - Creating simple popup dialogs
 * [JavaFX TableView Filter](/blog/2012/12/18/javafx-tableview-filter) - Filtering a TableView
+* [JavaFX TableView Cell Renderer](/blog/2012/12/19/javafx-tableview-cell-renderer) - A custom cell renderer for TableView
 
 To see all blog posts related to JavaFX see the [JavaFX Archive](/blog/archives/javafx).
 
