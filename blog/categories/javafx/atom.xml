@@ -4,7 +4,7 @@
   <title><![CDATA[edu.makery.ch | Category: JavaFX]]></title>
   <link href="http://edu.makery.ch/blog/categories/javafx/atom.xml" rel="self"/>
   <link href="http://edu.makery.ch/blog/categories/javafx/"/>
-  <updated>2012-12-19T14:40:11+01:00</updated>
+  <updated>2012-12-19T19:05:45+01:00</updated>
   <id>http://edu.makery.ch/blog/categories/javafx</id>
   <author>
     <name><![CDATA[Marco Jakob]]></name>
@@ -12,6 +12,271 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[JavaFX Event Handlers and Change Listeners]]></title>
+    <link href="http://edu.makery.ch/blog/2012/12/19/javafx-event-handlers-and-change-listeners/"/>
+    <updated>2012-12-19T19:00:00+01:00</updated>
+    <id>http://edu.makery.ch/blog/2012/12/19/javafx-event-handlers-and-change-listeners</id>
+    <content type="html"><![CDATA[<p>Very often in JavaFX we have to react to user events: The user clicks a button, presses a key, moves the mouse, etc. This post describes how to handle such events.</p>
+
+<p>We&#8217;ll try to do as much event handling with <em>Scene Builder</em> and <code>fxml</code> as possible. For some events we&#8217;ll add event handling in the Java code of the controller.</p>
+
+<p>Our example covers some of the most used events on common JavaFX 2 controls:</p>
+
+<p><img src="http://edu.makery.ch/images/javafx-event-handlers-and-change-listeners/javafx-event-handlers-and-change-listeners-01.png"></p>
+
+<!-- more -->
+
+
+<p>Note: For background information refer to the official <a href="http://docs.oracle.com/javafx/2/events/jfxpub-events.htm">JavaFX Events Tutorial</a> (does not cover <code>fxml</code>).</p>
+
+<h2>Set Up</h2>
+
+<p>Set up a simple JavaFX project with an <strong>fxml</strong> file, a corresponding <strong>controller</strong> class and a main class to load the fxml. Alternatively, just download the source at the end of this post.</p>
+
+<h2>Button Events</h2>
+
+<p>Handling <code>Button</code> events is very easy. Altough there are other events we&#8217;ll likely only need <code>ActionEvent</code>s.</p>
+
+<p>First, open the <strong>controller</strong> class. Add a new method to handle button action events:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">handleButtonAction</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">outputTextArea</span><span class="o">.</span><span class="na">appendText</span><span class="o">(</span><span class="s">&quot;Button Action\n&quot;</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note: The <code>outputTextArea</code> is just a JavaFX <code>TextArea</code> to print some output. You could also do a <code>System.out.println(...)</code>.</p>
+
+<p>Now, open the <strong>fxml</strong> file in <em>Scene Builder</em>, select a button and choose <code>#handleButtonAction</code> as <em>On Action</em>.</p>
+
+<p><img src="http://edu.makery.ch/images/javafx-event-handlers-and-change-listeners/javafx-event-handlers-and-change-listeners-02.png"></p>
+
+<p>This should already be enough for the button to work. If we need more information about the event that called our method in the controller, we could add a parameter like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">handleButtonAction</span><span class="o">(</span><span class="n">ActionEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">outputTextArea</span><span class="o">.</span><span class="na">appendText</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">toString</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot;\n&quot;</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>CheckBox Events</h2>
+
+<p>Handling <code>CheckBox</code> events works almost the same as handling <code>Button</code> events. The only difference is that we might need to know the current state of the <code>CheckBox</code>, wheter it is selected or not.</p>
+
+<p>For such information we must have a reference to the <code>CheckBox</code>. So, we&#8217;ll add an instance variable at the beginning of our <strong>controller</strong>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">private</span> <span class="n">CheckBox</span> <span class="n">checkBox</span><span class="o">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Open <em>Scene Builder</em>, choose the <code>checkBox</code> variable as <code>fx:id</code> for the <code>CheckBox</code>.</p>
+
+<p><img src="http://edu.makery.ch/images/javafx-event-handlers-and-change-listeners/javafx-event-handlers-and-change-listeners-03.png"></p>
+
+<p>Now create a handler method and choose it as <em>On Action</em> in <em>Scene Builder</em>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">handleCheckBoxAction</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">outputTextArea</span><span class="o">.</span><span class="na">appendText</span><span class="o">(</span><span class="s">&quot;CheckBox Action (selected: &quot;</span> <span class="o">+</span> <span class="n">checkBox</span><span class="o">.</span><span class="na">isSelected</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot;)\n&quot;</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>ComboBox Events</h2>
+
+<p>For the <code>ComboBox</code> (and later for the <code>ListView</code>) we&#8217;ll use a simple model class called <code>Person</code> with a <code>firstName</code> and <code>lastName</code> attribute:</p>
+
+<figure class='code'><figcaption><span>Person.java</span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">String</span> <span class="n">firstName</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">String</span> <span class="n">lastName</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">Person</span><span class="o">(</span><span class="n">String</span> <span class="n">firstName</span><span class="o">,</span> <span class="n">String</span> <span class="n">lastName</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">firstName</span> <span class="o">=</span> <span class="n">firstName</span><span class="o">;</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">lastName</span> <span class="o">=</span> <span class="n">lastName</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="n">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="n">lastName</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now, let&#8217;s start with the <code>ComboBox</code> stuff:</p>
+
+<p>First, create an instance variable for the <code>ComboBox</code> and an <code>ObservableList</code> in our <strong>controller</strong> class. Select the <code>comboBox</code> variable as <code>fx:id</code> in <em>Scene Builder</em>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">private</span> <span class="n">ComboBox</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">comboBox</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">private</span> <span class="n">ObservableList</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">comboBoxData</span> <span class="o">=</span> <span class="n">FXCollections</span><span class="o">.</span><span class="na">observableArrayList</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Second, add some data (e.g. in the constructor or initialize method):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="n">comboBoxData</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&quot;Hans&quot;</span><span class="o">,</span> <span class="s">&quot;Muster&quot;</span><span class="o">));</span>
+</span><span class='line'><span class="n">comboBoxData</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&quot;Ruth&quot;</span><span class="o">,</span> <span class="s">&quot;Mueller&quot;</span><span class="o">));</span>
+</span><span class='line'><span class="n">comboBoxData</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&quot;Heinz&quot;</span><span class="o">,</span> <span class="s">&quot;Kurz&quot;</span><span class="o">));</span>
+</span><span class='line'><span class="n">comboBoxData</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&quot;Cornelia&quot;</span><span class="o">,</span> <span class="s">&quot;Meier&quot;</span><span class="o">));</span>
+</span><span class='line'><span class="n">comboBoxData</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&quot;Werner&quot;</span><span class="o">,</span> <span class="s">&quot;Meyer&quot;</span><span class="o">));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Third, set the data into the list. This must be in the <code>initialize()</code> method as this is the time when we can be shure that the variable <code>comboBox</code> is initialized with the <code>ComboBox</code> from the <code>fxml</code> file.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="n">comboBox</span><span class="o">.</span><span class="na">setItems</span><span class="o">(</span><span class="n">comboBoxData</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>Fourth, create a handler method and select the method as <em>On Action</em> in <em>Scene Builder</em>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">handleComboBoxAction</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">Person</span> <span class="n">selectedPerson</span> <span class="o">=</span> <span class="n">comboBox</span><span class="o">.</span><span class="na">getSelectionModel</span><span class="o">().</span><span class="na">getSelectedItem</span><span class="o">();</span>
+</span><span class='line'>  <span class="n">outputTextArea</span><span class="o">.</span><span class="na">appendText</span><span class="o">(</span><span class="s">&quot;ComboBox Action (selected: &quot;</span> <span class="o">+</span> <span class="n">selectedPerson</span> <span class="o">+</span> <span class="s">&quot;)\n&quot;</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Hyperlink Events</h2>
+
+<p><code>Hyperlink</code>s can be used the same way as a <code>Button</code> (see above).</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">handleHyperlinkAction</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">outputTextArea</span><span class="o">.</span><span class="na">appendText</span><span class="o">(</span><span class="s">&quot;Hyperlink Action\n&quot;</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Slider Events</h2>
+
+<p><code>Slider</code>s don&#8217;t have <code>ActionEvent</code>s. Instead they have a <code>Number</code> called <code>valueProperty</code> that contains the current value of the slider.</p>
+
+<h3>Change Listener</h3>
+
+<p>In JavaFX a <code>Property</code> is more than just a simple value. Each <code>Property</code> provides methods to observe changes made to its value. We can <strong>&#8220;listen for changes&#8221;</strong>.</p>
+
+<p>So, create an instance variable and select it <code>fx:id</code> in <em>Scene Builder</em>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">private</span> <span class="n">Slider</span> <span class="n">slider</span><span class="o">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In the <code>initialize()</code> method add a <code>ChangeListener</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="c1">// Listen for Slider value changes</span>
+</span><span class='line'><span class="n">slider</span><span class="o">.</span><span class="na">valueProperty</span><span class="o">().</span><span class="na">addListener</span><span class="o">(</span><span class="k">new</span> <span class="n">ChangeListener</span><span class="o">&lt;</span><span class="n">Number</span><span class="o">&gt;()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">changed</span><span class="o">(</span><span class="n">ObservableValue</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">Number</span><span class="o">&gt;</span> <span class="n">observable</span><span class="o">,</span>
+</span><span class='line'>          <span class="n">Number</span> <span class="n">oldValue</span><span class="o">,</span> <span class="n">Number</span> <span class="n">newValue</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="n">outputTextArea</span><span class="o">.</span><span class="na">appendText</span><span class="o">(</span><span class="s">&quot;Slider Value Changed (newValue: &quot;</span> <span class="o">+</span> <span class="n">newValue</span><span class="o">.</span><span class="na">intValue</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot;)\n&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This construct looks a bit coplicated. Fortunately, it&#8217;s always the same pattern for every <code>ChangeListener</code>. Let me explain:</p>
+
+<ol>
+<li><code>slider.valueProperty()</code> gives us access to the <code>Property</code>. <br/>
+<strong>Note:</strong> There are many other <code>Properties</code> like <code>focusedProperty() or</code>disabledProperty()<code>. We could use any of those properties and add a</code>ChangeListener` to it.</li>
+<li><code>addListener(...)</code> expects a <code>ChangeListener</code> of type <code>Number</code>. <code>ChangeListener</code> is an interface so we need to create a concrete class that <code>implements ChangeListener</code>:
+
+<ul>
+<li>Normally, we would create a new class implementing the <code>ChangeListener</code> interface like this: <code>public class MyChangeListener implements ChangeListener&lt;Number&gt; {...}</code>. Then, we&#8217;d create an instance of this class and pass it to <code>addListener(...)</code>.</li>
+<li>Since we will <em>use this class only once</em>, it&#8217;s a bit overkill to create a normal class. Instead we can use a short form of creating a class and instantiating it. This is called an <strong>Anonymous Inner Class</strong> as it does not have a name.</li>
+</ul>
+</li>
+<li><code>new ChangeListener&lt;Number&gt;() {...}</code> creates such an <em>Anonymous Inner Class</em> of type <code>&lt;Number&gt;</code>.</li>
+<li>Every <code>ChangeListener</code> must have a method called <code>changed(...)</code> that will be called every time a change occurs.</li>
+</ol>
+
+
+<h2>TextBox Events</h2>
+
+<p>In a <code>TextBox</code> the <code>ActionEvent</code> is triggered with the return key. We might use this, but probably the most common case is that we must react to changes made to the text.</p>
+
+<p>First, we&#8217;ll create an instance variable and select it as <code>fx:id</code> in <em>Scene Builder</em>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">private</span> <span class="n">TextField</span> <span class="n">textField</span><span class="o">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And this is how we can react to changes of the text. We&#8217;ll use a <code>ChangeListener</code> as described above (see Slider section):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="c1">// Listen for TextField text changes</span>
+</span><span class='line'><span class="n">textField</span><span class="o">.</span><span class="na">textProperty</span><span class="o">().</span><span class="na">addListener</span><span class="o">(</span><span class="k">new</span> <span class="n">ChangeListener</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">changed</span><span class="o">(</span><span class="n">ObservableValue</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">observable</span><span class="o">,</span>
+</span><span class='line'>          <span class="n">String</span> <span class="n">oldValue</span><span class="o">,</span> <span class="n">String</span> <span class="n">newValue</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="n">outputTextArea</span><span class="o">.</span><span class="na">appendText</span><span class="o">(</span><span class="s">&quot;TextField Text Changed (newValue: &quot;</span> <span class="o">+</span> <span class="n">newValue</span> <span class="o">+</span> <span class="s">&quot;)\n&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>ListView Events</h2>
+
+<p>We&#8217;ll use the same <code>Person</code> class as we used for the <code>ComboBox</code> above.</p>
+
+<p>First, create an instance variable for the <code>ListView</code> and an <code>ObservableList</code> in our <strong>controller</strong> class. Select the <code>listView</code> variable as <code>fx:id</code> in <em>Scene Builder</em>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">private</span> <span class="n">ListView</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">listView</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">private</span> <span class="n">ObservableList</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">listViewData</span> <span class="o">=</span> <span class="n">FXCollections</span><span class="o">.</span><span class="na">observableArrayList</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Second, add some data (e.g. in the constructor or initialize method):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="n">listViewData</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&quot;Lydia&quot;</span><span class="o">,</span> <span class="s">&quot;Kunz&quot;</span><span class="o">));</span>
+</span><span class='line'><span class="n">listViewData</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&quot;Anna&quot;</span><span class="o">,</span> <span class="s">&quot;Best&quot;</span><span class="o">));</span>
+</span><span class='line'><span class="n">listViewData</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&quot;Stefan&quot;</span><span class="o">,</span> <span class="s">&quot;Meier&quot;</span><span class="o">));</span>
+</span><span class='line'><span class="n">listViewData</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&quot;Martin&quot;</span><span class="o">,</span> <span class="s">&quot;Mueller&quot;</span><span class="o">));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Third, set the data into the list. This must be in the <code>initialize()</code> method as this is the time when we can be shure that the variable <code>listView</code> is initialized with the <code>ListView</code> from the <code>fxml</code> file.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="n">listView</span><span class="o">.</span><span class="na">setItems</span><span class="o">(</span><span class="n">listViewData</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>Fourth, also in the <code>initialize()</code> method, we&#8217;ll add a <code>ChangeListener</code>. It is the same ChangeListener pattern as described above (see Slider section):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="n">listView</span><span class="o">.</span><span class="na">getSelectionModel</span><span class="o">().</span><span class="na">selectedItemProperty</span><span class="o">().</span><span class="na">addListener</span><span class="o">(</span><span class="k">new</span> <span class="n">ChangeListener</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">changed</span><span class="o">(</span><span class="n">ObservableValue</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">Person</span><span class="o">&gt;</span> <span class="n">observable</span><span class="o">,</span>
+</span><span class='line'>          <span class="n">Person</span> <span class="n">oldValue</span><span class="o">,</span> <span class="n">Person</span> <span class="n">newValue</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="n">outputTextArea</span><span class="o">.</span><span class="na">appendText</span><span class="o">(</span><span class="s">&quot;ListView Selection Changed (newValue: &quot;</span> <span class="o">+</span> <span class="n">newValue</span> <span class="o">+</span> <span class="s">&quot;)\n&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Download Example Source</h2>
+
+<p>Download the complete <a href="http://edu.makery.ch/downloads/javafx-event-handlers-and-change-listeners/javafx-event-handlers-and-change-listeners.zip">event-handlers example source</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[JavaFX TableView Cell Renderer]]></title>
@@ -2489,238 +2754,6 @@ If you don&#8217;t to do the work, you can download this <a href="http://edu.mak
 <h3>Download</h3>
 
 <p><a href="http://edu.makery.ch/downloads/javafx-addressapp/part-2/addressapp-part-2.zip">Source of Tutorial Part II</a> as Eclipse Project</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[JavaFX 2 Tutorial Part I - Scene Builder]]></title>
-    <link href="http://edu.makery.ch/blog/2012/11/16/javafx-tutorial-addressapp-1/"/>
-    <updated>2012-11-16T22:00:00+01:00</updated>
-    <id>http://edu.makery.ch/blog/2012/11/16/javafx-tutorial-addressapp-1</id>
-    <content type="html"><![CDATA[<p><img src="http://edu.makery.ch/images/javafx-addressapp/part-1/addressapp01.png"></p>
-
-<h2>Goal</h2>
-
-<p>The goal of this tutorial is to learn how to create graphical user interfaces with <strong>JavaFX 2</strong> and <strong>Scene Builder</strong>. We will cover many features of JavaFX 2 by creating an <strong>Address Application</strong> and enhancing it step-by-step.</p>
-
-<h2>Topics in Part I</h2>
-
-<ul>
-<li>Getting to know JavaFX 2</li>
-<li>Creating and starting a JavaFX Project</li>
-<li>Using Scene Builder to design the user interface</li>
-<li>Basic application structure using the Model View Controller (MVC) pattern</li>
-</ul>
-
-
-<!-- more -->
-
-
-<h3>Other Tutorial Parts</h3>
-
-<ul>
-<li><strong>Part I - Scene Builder</strong></li>
-<li><a href="http://edu.makery.ch/blog/2012/11/17/javafx-tutorial-addressapp-2">Part II - Model and TableView</a></li>
-<li><a href="http://edu.makery.ch/blog/2012/11/20/javafx-tutorial-addressapp-3">Part III - Interacting with the User</a></li>
-<li><a href="http://edu.makery.ch/blog/2012/11/26/javafx-tutorial-addressapp-4">Part IV - CSS Styling</a></li>
-<li><a href="http://edu.makery.ch/blog/2012/11/27/javafx-tutorial-addressapp-5">Part V - Storing Data as XML</a></li>
-<li><a href="http://edu.makery.ch/blog/2012/12/04/javafx-tutorial-addressapp-6">Part VI - Statistics Chart</a></li>
-<li><a href="http://edu.makery.ch/blog/2012/12/18/javafx-tutorial-addressapp-7">Part VII - Deployment with e(fx)clipse</a></li>
-</ul>
-
-
-<h3>Prerequisites</h3>
-
-<ul>
-<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java JDK 7</a> update 7 or greater (includes JavaFX 2.x)</li>
-<li>Eclipse 4.2 or greater with e(fx)clipse plugin. The easiest way is to download the preconfigured distro from the <a href="http://efxclipse.org/install.html">e(fx)clipse website</a>.</li>
-<li><a href="http://www.oracle.com/technetwork/java/javafx/overview/index.html">Scene Builder 1.1</a> or greater</li>
-</ul>
-
-
-<h3>Preparation and Helpful Links</h3>
-
-<p>Play around with the JavaFX widgets in the <a href="http://download.oracle.com/otndocs/products/javafx/2.2/samples/Ensemble/index.html#SAMPLES">JavaFX Ensemble</a>:</p>
-
-<ul>
-<li>JavaFX Ensemble is a gallery of over 100 sample applications that use a wide range of JavaFX features.</li>
-<li>Contains source code for each sample.</li>
-<li>Contains links to API documentation (JavaDoc).</li>
-</ul>
-
-
-<p>Some other helpful links:</p>
-
-<ul>
-<li><a href="http://docs.oracle.com/javafx/2/get_started/jfxpub-get_started.htm">JavaFX Tutorials</a> - Official Tutorials by Oracle</li>
-<li><a href="http://docs.oracle.com/javafx/2/api/">JavaFX 2 API</a> - JavaDoc for JavaFX classes</li>
-<li><a href="http://docs.oracle.com/javase/7/docs/api/">Java 7 API</a> - JavaDoc for the standard Java classes</li>
-</ul>
-
-
-<p>Now, let&#8217;s get started!</p>
-
-<h2>Create a new JavaFX Project</h2>
-
-<p>In Eclipse (with e(fx)clipse installed) go to <em>File | New | Other&#8230;</em> and choose <em>JavaFX Project</em>.
-Specify the Name of the project (i.e. AddressApp).</p>
-
-<h3>Create the Packages</h3>
-
-<p>Right from the start we will follow good software design principles. One very important principle is that of <a href="http://de.wikipedia.org/wiki/Model_View_Controller"><strong>Model-View-Controller</strong> (MVC)</a>. According to this we divide our code into three units and create a package for each (Right-click on the src-folder, <em>New&#8230; | Package</em>):</p>
-
-<ul>
-<li>For the controller classes: <code>ch.makery.address</code></li>
-<li>For the view classes: <code>ch.makery.address.view</code></li>
-<li>For the model classes: <code>ch.makery.address.model</code></li>
-</ul>
-
-
-<h2>Create the FXML Layout File</h2>
-
-<p>There are two ways to create the user interface. Either using an XML file or programming everything in Java. Looking around the internet you will encounter both. We will use XML (ending in .fxml) for most parts. I find it a cleaner way to keep the controller and model separated from each other. Further, we can use the graphical Scene Builder to edit the XML. That means we will almost never have to directly work with XML.</p>
-
-<p>Right-click on the view package and create a new <em>FXML Document</em> called <code>PersonOverview</code>. <br/>
-<img src="http://edu.makery.ch/images/javafx-addressapp/part-1/addressapp03.png" width="400">
-<img src="http://edu.makery.ch/images/javafx-addressapp/part-1/addressapp04.png" width="400"></p>
-
-<h2>Design with Scene Builder</h2>
-
-<p><strong>Note:</strong> If you get stuck somewhere, watch the <a href="http://www.youtube.com/watch?v=rHcnsEoSK_c">Getting Started with JavaFX Scene Builder</a> YouTube Film. This helps a lot!</p>
-
-<p>Right-click on <code>PersonOverview.fxml</code> and choose <em>Open with Scene Builder</em>. Now you should see the Scene Builder with just an <em>AncherPane</em> (visible under Hierarchy on the left).</p>
-
-<ol>
-<li><p>Select the <em>Anchor Pane</em> in your Hierarchy and adjust the size under Layout (right side): <br/>
-<img src="http://edu.makery.ch/images/javafx-addressapp/part-1/addressapp05.png"></p></li>
-<li><p>Add a <em>Split Pane (Horizontal Flow)</em> by dragging it from the Library into the main area. Right-click and select <em>Fit to Parent</em>. <br/>
-<img src="http://edu.makery.ch/images/javafx-addressapp/part-1/addressapp06.png"></p></li>
-<li><p>Add a <em>TableView</em> into the left side. Select the TableView (not a Column) and set the following layout constraints. Inside an <em>AnchorPane</em> you can always set anchors to the four borders (<a href="http://docs.oracle.com/javafx/2/layout/builtin_layouts.htm">more information on Layouts</a>). <br/>
-<img src="http://edu.makery.ch/images/javafx-addressapp/part-1/addressapp07.png"></p></li>
-<li><p>Go to the menu <em>Preview | Preview in Window</em> to see, whether it behaves right. Try resizing the window. The TableView should always keep the 10px distance to the surrounding border.</p></li>
-<li><p>Change the column text (under Properties) to &#8220;First Name&#8221; and &#8220;Last Name&#8221; and adjust the sizes. <br/>
-<img src="http://edu.makery.ch/images/javafx-addressapp/part-1/addressapp08.png"></p></li>
-<li><p>Add a <em>Label</em> on the right side with the text &#8220;Person Details&#8221;. Adjust it&#8217;s Layout using anchors.</p></li>
-<li><p>Add a <em>GridPane</em> on the right side, select it and adjust it&#8217;s Layout.  <br/>
-<img src="http://edu.makery.ch/images/javafx-addressapp/part-1/addressapp09.png"></p></li>
-<li><p>Add some rows (under <em>Layout | GridPane Rows</em>). Add labels to the cells. <br/>
-<img src="http://edu.makery.ch/images/javafx-addressapp/part-1/addressapp10.png"></p></li>
-<li><p>Add the three buttons at the bottom. Tipp: Select all of them, right-click and call <em>Wrap In | HBox</em>. This groups them together. You might need to specify a Spacing inside the HBox.</p></li>
-<li><p>Now you should see something like the following. Please test it using the Preview Menu.    <br/>
-<img src="http://edu.makery.ch/images/javafx-addressapp/part-1/addressapp11.png"></p></li>
-</ol>
-
-
-<h2>Creating the Main Application</h2>
-
-<p>We need another FXML for our root layout which will contain a menu bar and wraps the just created <code>PersonOverview.fxml?</code>.</p>
-
-<ol>
-<li><p>Create another <em>FXML Document</em> inside the view package called <code>RootLayout.fxml</code>. This time, choose <em>BorderPane</em> as the root element. <br/>
-<img src="http://edu.makery.ch/images/javafx-addressapp/part-1/addressapp12.png"></p></li>
-<li><p>Open it in the Scene Builder.</p></li>
-<li><p>Resize the <em>BorderPane</em> with <em>Pref Width</em> set to 600 and <em>Pref Height</em> set to 400. <br/>
-<img src="http://edu.makery.ch/images/javafx-addressapp/part-1/addressapp13.png"></p></li>
-<li><p>Add a <em>MenuBar</em> into the TOP Slot. We will not implement the menu functionality at the moment. <br/>
-<img src="http://edu.makery.ch/images/javafx-addressapp/part-1/addressapp14.png"></p></li>
-<li><p>Now, we need to create the Main Java that starts up our application with the <code>RootLayout.fxml</code> and adds the <code>PersonOverview.fxml</code> in the center.</p></li>
-<li><p>Right-click on the controller package, <em>New | Other&#8230;</em> and choose <em>JavaFX Main Class</em>. We&#8217;ll call it <code>MainApp</code>. <br/>
-<img src="http://edu.makery.ch/images/javafx-addressapp/part-1/addressapp15.png" width="400"></p></li>
-</ol>
-
-
-<h3>Understanding the JavaFX Main class</h3>
-
-<p>The generated <code>MainApp.java</code> class extends from <code>Application</code> and contains two methods. This is the basic structure that we need to start a JavaFX Application. The most important part for us is the <code>start(Stage primaryStage)</code> method. It is automatically called when we run the application.</p>
-
-<p>As you see, the <code>start(...)</code> method receives a <code>Stage</code> as parameter. It&#8217;s good to understand the basic concept of a graphical application with JavaFX: <br/>
-<img src="http://edu.makery.ch/images/javafx-addressapp/part-1/javafx-hierachy.gif"> <br/>
-<em>Image Source: http://www.oracle.com/</em></p>
-
-<p>It&#8217;s like a theater play: The Stage is the main container which is usually a Window with a border and the typical minimize, maximize and close buttons. Inside the Stage you add a Scene which can, of course, be switched out by another Scene. Inside the Scene the actual JavaFX nodes like AnchorPane, TextBox, etc. are added.</p>
-
-<p>Open <code>MainApp.java</code> and replace the code with the following:</p>
-
-<figure class='code'><figcaption><span>MainApp.java</span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">ch</span><span class="o">.</span><span class="na">makery</span><span class="o">.</span><span class="na">address</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kn">import</span> <span class="nn">javafx.application.Application</span><span class="o">;</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">javafx.fxml.FXMLLoader</span><span class="o">;</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">javafx.scene.Scene</span><span class="o">;</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">javafx.scene.layout.AnchorPane</span><span class="o">;</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">javafx.scene.layout.BorderPane</span><span class="o">;</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">javafx.stage.Stage</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainApp</span> <span class="kd">extends</span> <span class="n">Application</span> <span class="o">{</span>
-</span><span class='line'>  
-</span><span class='line'>  <span class="kd">private</span> <span class="n">Stage</span> <span class="n">primaryStage</span><span class="o">;</span>
-</span><span class='line'>  <span class="kd">private</span> <span class="n">BorderPane</span> <span class="n">rootLayout</span><span class="o">;</span>
-</span><span class='line'>  
-</span><span class='line'>  <span class="nd">@Override</span>
-</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="o">(</span><span class="n">Stage</span> <span class="n">primaryStage</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">primaryStage</span> <span class="o">=</span> <span class="n">primaryStage</span><span class="o">;</span>
-</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">primaryStage</span><span class="o">.</span><span class="na">setTitle</span><span class="o">(</span><span class="s">&quot;AddressApp&quot;</span><span class="o">);</span>
-</span><span class='line'>      
-</span><span class='line'>      <span class="k">try</span> <span class="o">{</span>
-</span><span class='line'>          <span class="c1">// Load the root layout from the fxml file</span>
-</span><span class='line'>          <span class="n">FXMLLoader</span> <span class="n">loader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FXMLLoader</span><span class="o">(</span><span class="n">MainApp</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getResource</span><span class="o">(</span><span class="s">&quot;view/RootLayout.fxml&quot;</span><span class="o">));</span>
-</span><span class='line'>          <span class="n">rootLayout</span> <span class="o">=</span> <span class="o">(</span><span class="n">BorderPane</span><span class="o">)</span> <span class="n">loader</span><span class="o">.</span><span class="na">load</span><span class="o">();</span>
-</span><span class='line'>          <span class="n">Scene</span> <span class="n">scene</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scene</span><span class="o">(</span><span class="n">rootLayout</span><span class="o">);</span>
-</span><span class='line'>          <span class="n">primaryStage</span><span class="o">.</span><span class="na">setScene</span><span class="o">(</span><span class="n">scene</span><span class="o">);</span>
-</span><span class='line'>          <span class="n">primaryStage</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
-</span><span class='line'>      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>          <span class="c1">// Exception gets thrown if the fxml file could not be loaded</span>
-</span><span class='line'>          <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-</span><span class='line'>      <span class="o">}</span>
-</span><span class='line'>      
-</span><span class='line'>      <span class="n">showPersonOverview</span><span class="o">();</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'>  
-</span><span class='line'>  <span class="cm">/**</span>
-</span><span class='line'><span class="cm">  * Returns the main stage.</span>
-</span><span class='line'><span class="cm">  * @return</span>
-</span><span class='line'><span class="cm">  */</span>
-</span><span class='line'>  <span class="kd">public</span> <span class="n">Stage</span> <span class="nf">getPrimaryStage</span><span class="o">()</span> <span class="o">{</span>
-</span><span class='line'>      <span class="k">return</span> <span class="n">primaryStage</span><span class="o">;</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'>  
-</span><span class='line'>  <span class="cm">/**</span>
-</span><span class='line'><span class="cm">  * Shows the person overview scene.</span>
-</span><span class='line'><span class="cm">  */</span>
-</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showPersonOverview</span><span class="o">()</span> <span class="o">{</span>
-</span><span class='line'>      <span class="k">try</span> <span class="o">{</span>
-</span><span class='line'>          <span class="c1">// Load the fxml file and set into the center of the main layout</span>
-</span><span class='line'>          <span class="n">FXMLLoader</span> <span class="n">loader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FXMLLoader</span><span class="o">(</span><span class="n">MainApp</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getResource</span><span class="o">(</span><span class="s">&quot;view/PersonOverview.fxml&quot;</span><span class="o">));</span>
-</span><span class='line'>          <span class="n">AnchorPane</span> <span class="n">overviewPage</span> <span class="o">=</span> <span class="o">(</span><span class="n">AnchorPane</span><span class="o">)</span> <span class="n">loader</span><span class="o">.</span><span class="na">load</span><span class="o">();</span>
-</span><span class='line'>          <span class="n">rootLayout</span><span class="o">.</span><span class="na">setCenter</span><span class="o">(</span><span class="n">overviewPage</span><span class="o">);</span>
-</span><span class='line'>          
-</span><span class='line'>      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>          <span class="c1">// Exception gets thrown if the fxml file could not be loaded</span>
-</span><span class='line'>          <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-</span><span class='line'>      <span class="o">}</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'>  
-</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>      <span class="n">launch</span><span class="o">(</span><span class="n">args</span><span class="o">);</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Try to understand the code. The various comments should give you some hints about what&#8217;s going on.</p>
-
-<p>If you run the application now, you should see something like the screenshot at the beginning of this post.</p>
-
-<hr />
-
-<h3>What&#8217;s Next?</h3>
-
-<p>In <a href="http://edu.makery.ch/blog/2012/11/17/javafx-tutorial-addressapp-2">Tutorial Part II</a> we will add some data and functionality to our AddressApp.</p>
-
-<h3>Download</h3>
-
-<p><a href="http://edu.makery.ch/downloads/javafx-addressapp/part-1/addressapp-part-1.zip">Source of Tutorial Part I</a> as Eclipse Project</p>
 ]]></content>
   </entry>
   

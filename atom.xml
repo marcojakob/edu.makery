@@ -4,7 +4,7 @@
   <title><![CDATA[edu.makery.ch]]></title>
   <link href="http://edu.makery.ch/atom.xml" rel="self"/>
   <link href="http://edu.makery.ch/"/>
-  <updated>2012-12-19T14:40:11+01:00</updated>
+  <updated>2012-12-19T19:05:45+01:00</updated>
   <id>http://edu.makery.ch/</id>
   <author>
     <name><![CDATA[Marco Jakob]]></name>
@@ -12,6 +12,271 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[JavaFX Event Handlers and Change Listeners]]></title>
+    <link href="http://edu.makery.ch/blog/2012/12/19/javafx-event-handlers-and-change-listeners/"/>
+    <updated>2012-12-19T19:00:00+01:00</updated>
+    <id>http://edu.makery.ch/blog/2012/12/19/javafx-event-handlers-and-change-listeners</id>
+    <content type="html"><![CDATA[<p>Very often in JavaFX we have to react to user events: The user clicks a button, presses a key, moves the mouse, etc. This post describes how to handle such events.</p>
+
+<p>We&#8217;ll try to do as much event handling with <em>Scene Builder</em> and <code>fxml</code> as possible. For some events we&#8217;ll add event handling in the Java code of the controller.</p>
+
+<p>Our example covers some of the most used events on common JavaFX 2 controls:</p>
+
+<p><img src="http://edu.makery.ch/images/javafx-event-handlers-and-change-listeners/javafx-event-handlers-and-change-listeners-01.png"></p>
+
+<!-- more -->
+
+
+<p>Note: For background information refer to the official <a href="http://docs.oracle.com/javafx/2/events/jfxpub-events.htm">JavaFX Events Tutorial</a> (does not cover <code>fxml</code>).</p>
+
+<h2>Set Up</h2>
+
+<p>Set up a simple JavaFX project with an <strong>fxml</strong> file, a corresponding <strong>controller</strong> class and a main class to load the fxml. Alternatively, just download the source at the end of this post.</p>
+
+<h2>Button Events</h2>
+
+<p>Handling <code>Button</code> events is very easy. Altough there are other events we&#8217;ll likely only need <code>ActionEvent</code>s.</p>
+
+<p>First, open the <strong>controller</strong> class. Add a new method to handle button action events:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">handleButtonAction</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">outputTextArea</span><span class="o">.</span><span class="na">appendText</span><span class="o">(</span><span class="s">&quot;Button Action\n&quot;</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note: The <code>outputTextArea</code> is just a JavaFX <code>TextArea</code> to print some output. You could also do a <code>System.out.println(...)</code>.</p>
+
+<p>Now, open the <strong>fxml</strong> file in <em>Scene Builder</em>, select a button and choose <code>#handleButtonAction</code> as <em>On Action</em>.</p>
+
+<p><img src="http://edu.makery.ch/images/javafx-event-handlers-and-change-listeners/javafx-event-handlers-and-change-listeners-02.png"></p>
+
+<p>This should already be enough for the button to work. If we need more information about the event that called our method in the controller, we could add a parameter like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">handleButtonAction</span><span class="o">(</span><span class="n">ActionEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">outputTextArea</span><span class="o">.</span><span class="na">appendText</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">toString</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot;\n&quot;</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>CheckBox Events</h2>
+
+<p>Handling <code>CheckBox</code> events works almost the same as handling <code>Button</code> events. The only difference is that we might need to know the current state of the <code>CheckBox</code>, wheter it is selected or not.</p>
+
+<p>For such information we must have a reference to the <code>CheckBox</code>. So, we&#8217;ll add an instance variable at the beginning of our <strong>controller</strong>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">private</span> <span class="n">CheckBox</span> <span class="n">checkBox</span><span class="o">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Open <em>Scene Builder</em>, choose the <code>checkBox</code> variable as <code>fx:id</code> for the <code>CheckBox</code>.</p>
+
+<p><img src="http://edu.makery.ch/images/javafx-event-handlers-and-change-listeners/javafx-event-handlers-and-change-listeners-03.png"></p>
+
+<p>Now create a handler method and choose it as <em>On Action</em> in <em>Scene Builder</em>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">handleCheckBoxAction</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">outputTextArea</span><span class="o">.</span><span class="na">appendText</span><span class="o">(</span><span class="s">&quot;CheckBox Action (selected: &quot;</span> <span class="o">+</span> <span class="n">checkBox</span><span class="o">.</span><span class="na">isSelected</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot;)\n&quot;</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>ComboBox Events</h2>
+
+<p>For the <code>ComboBox</code> (and later for the <code>ListView</code>) we&#8217;ll use a simple model class called <code>Person</code> with a <code>firstName</code> and <code>lastName</code> attribute:</p>
+
+<figure class='code'><figcaption><span>Person.java</span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">String</span> <span class="n">firstName</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">String</span> <span class="n">lastName</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">Person</span><span class="o">(</span><span class="n">String</span> <span class="n">firstName</span><span class="o">,</span> <span class="n">String</span> <span class="n">lastName</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">firstName</span> <span class="o">=</span> <span class="n">firstName</span><span class="o">;</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">lastName</span> <span class="o">=</span> <span class="n">lastName</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="n">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="n">lastName</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now, let&#8217;s start with the <code>ComboBox</code> stuff:</p>
+
+<p>First, create an instance variable for the <code>ComboBox</code> and an <code>ObservableList</code> in our <strong>controller</strong> class. Select the <code>comboBox</code> variable as <code>fx:id</code> in <em>Scene Builder</em>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">private</span> <span class="n">ComboBox</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">comboBox</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">private</span> <span class="n">ObservableList</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">comboBoxData</span> <span class="o">=</span> <span class="n">FXCollections</span><span class="o">.</span><span class="na">observableArrayList</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Second, add some data (e.g. in the constructor or initialize method):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="n">comboBoxData</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&quot;Hans&quot;</span><span class="o">,</span> <span class="s">&quot;Muster&quot;</span><span class="o">));</span>
+</span><span class='line'><span class="n">comboBoxData</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&quot;Ruth&quot;</span><span class="o">,</span> <span class="s">&quot;Mueller&quot;</span><span class="o">));</span>
+</span><span class='line'><span class="n">comboBoxData</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&quot;Heinz&quot;</span><span class="o">,</span> <span class="s">&quot;Kurz&quot;</span><span class="o">));</span>
+</span><span class='line'><span class="n">comboBoxData</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&quot;Cornelia&quot;</span><span class="o">,</span> <span class="s">&quot;Meier&quot;</span><span class="o">));</span>
+</span><span class='line'><span class="n">comboBoxData</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&quot;Werner&quot;</span><span class="o">,</span> <span class="s">&quot;Meyer&quot;</span><span class="o">));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Third, set the data into the list. This must be in the <code>initialize()</code> method as this is the time when we can be shure that the variable <code>comboBox</code> is initialized with the <code>ComboBox</code> from the <code>fxml</code> file.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="n">comboBox</span><span class="o">.</span><span class="na">setItems</span><span class="o">(</span><span class="n">comboBoxData</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>Fourth, create a handler method and select the method as <em>On Action</em> in <em>Scene Builder</em>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">handleComboBoxAction</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">Person</span> <span class="n">selectedPerson</span> <span class="o">=</span> <span class="n">comboBox</span><span class="o">.</span><span class="na">getSelectionModel</span><span class="o">().</span><span class="na">getSelectedItem</span><span class="o">();</span>
+</span><span class='line'>  <span class="n">outputTextArea</span><span class="o">.</span><span class="na">appendText</span><span class="o">(</span><span class="s">&quot;ComboBox Action (selected: &quot;</span> <span class="o">+</span> <span class="n">selectedPerson</span> <span class="o">+</span> <span class="s">&quot;)\n&quot;</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Hyperlink Events</h2>
+
+<p><code>Hyperlink</code>s can be used the same way as a <code>Button</code> (see above).</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">handleHyperlinkAction</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">outputTextArea</span><span class="o">.</span><span class="na">appendText</span><span class="o">(</span><span class="s">&quot;Hyperlink Action\n&quot;</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Slider Events</h2>
+
+<p><code>Slider</code>s don&#8217;t have <code>ActionEvent</code>s. Instead they have a <code>Number</code> called <code>valueProperty</code> that contains the current value of the slider.</p>
+
+<h3>Change Listener</h3>
+
+<p>In JavaFX a <code>Property</code> is more than just a simple value. Each <code>Property</code> provides methods to observe changes made to its value. We can <strong>&#8220;listen for changes&#8221;</strong>.</p>
+
+<p>So, create an instance variable and select it <code>fx:id</code> in <em>Scene Builder</em>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">private</span> <span class="n">Slider</span> <span class="n">slider</span><span class="o">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In the <code>initialize()</code> method add a <code>ChangeListener</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="c1">// Listen for Slider value changes</span>
+</span><span class='line'><span class="n">slider</span><span class="o">.</span><span class="na">valueProperty</span><span class="o">().</span><span class="na">addListener</span><span class="o">(</span><span class="k">new</span> <span class="n">ChangeListener</span><span class="o">&lt;</span><span class="n">Number</span><span class="o">&gt;()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">changed</span><span class="o">(</span><span class="n">ObservableValue</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">Number</span><span class="o">&gt;</span> <span class="n">observable</span><span class="o">,</span>
+</span><span class='line'>          <span class="n">Number</span> <span class="n">oldValue</span><span class="o">,</span> <span class="n">Number</span> <span class="n">newValue</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="n">outputTextArea</span><span class="o">.</span><span class="na">appendText</span><span class="o">(</span><span class="s">&quot;Slider Value Changed (newValue: &quot;</span> <span class="o">+</span> <span class="n">newValue</span><span class="o">.</span><span class="na">intValue</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot;)\n&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This construct looks a bit coplicated. Fortunately, it&#8217;s always the same pattern for every <code>ChangeListener</code>. Let me explain:</p>
+
+<ol>
+<li><code>slider.valueProperty()</code> gives us access to the <code>Property</code>. <br/>
+<strong>Note:</strong> There are many other <code>Properties</code> like <code>focusedProperty() or</code>disabledProperty()<code>. We could use any of those properties and add a</code>ChangeListener` to it.</li>
+<li><code>addListener(...)</code> expects a <code>ChangeListener</code> of type <code>Number</code>. <code>ChangeListener</code> is an interface so we need to create a concrete class that <code>implements ChangeListener</code>:
+
+<ul>
+<li>Normally, we would create a new class implementing the <code>ChangeListener</code> interface like this: <code>public class MyChangeListener implements ChangeListener&lt;Number&gt; {...}</code>. Then, we&#8217;d create an instance of this class and pass it to <code>addListener(...)</code>.</li>
+<li>Since we will <em>use this class only once</em>, it&#8217;s a bit overkill to create a normal class. Instead we can use a short form of creating a class and instantiating it. This is called an <strong>Anonymous Inner Class</strong> as it does not have a name.</li>
+</ul>
+</li>
+<li><code>new ChangeListener&lt;Number&gt;() {...}</code> creates such an <em>Anonymous Inner Class</em> of type <code>&lt;Number&gt;</code>.</li>
+<li>Every <code>ChangeListener</code> must have a method called <code>changed(...)</code> that will be called every time a change occurs.</li>
+</ol>
+
+
+<h2>TextBox Events</h2>
+
+<p>In a <code>TextBox</code> the <code>ActionEvent</code> is triggered with the return key. We might use this, but probably the most common case is that we must react to changes made to the text.</p>
+
+<p>First, we&#8217;ll create an instance variable and select it as <code>fx:id</code> in <em>Scene Builder</em>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">private</span> <span class="n">TextField</span> <span class="n">textField</span><span class="o">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And this is how we can react to changes of the text. We&#8217;ll use a <code>ChangeListener</code> as described above (see Slider section):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="c1">// Listen for TextField text changes</span>
+</span><span class='line'><span class="n">textField</span><span class="o">.</span><span class="na">textProperty</span><span class="o">().</span><span class="na">addListener</span><span class="o">(</span><span class="k">new</span> <span class="n">ChangeListener</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">changed</span><span class="o">(</span><span class="n">ObservableValue</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">observable</span><span class="o">,</span>
+</span><span class='line'>          <span class="n">String</span> <span class="n">oldValue</span><span class="o">,</span> <span class="n">String</span> <span class="n">newValue</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="n">outputTextArea</span><span class="o">.</span><span class="na">appendText</span><span class="o">(</span><span class="s">&quot;TextField Text Changed (newValue: &quot;</span> <span class="o">+</span> <span class="n">newValue</span> <span class="o">+</span> <span class="s">&quot;)\n&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>ListView Events</h2>
+
+<p>We&#8217;ll use the same <code>Person</code> class as we used for the <code>ComboBox</code> above.</p>
+
+<p>First, create an instance variable for the <code>ListView</code> and an <code>ObservableList</code> in our <strong>controller</strong> class. Select the <code>listView</code> variable as <code>fx:id</code> in <em>Scene Builder</em>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">private</span> <span class="n">ListView</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">listView</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">private</span> <span class="n">ObservableList</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">listViewData</span> <span class="o">=</span> <span class="n">FXCollections</span><span class="o">.</span><span class="na">observableArrayList</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Second, add some data (e.g. in the constructor or initialize method):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="n">listViewData</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&quot;Lydia&quot;</span><span class="o">,</span> <span class="s">&quot;Kunz&quot;</span><span class="o">));</span>
+</span><span class='line'><span class="n">listViewData</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&quot;Anna&quot;</span><span class="o">,</span> <span class="s">&quot;Best&quot;</span><span class="o">));</span>
+</span><span class='line'><span class="n">listViewData</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&quot;Stefan&quot;</span><span class="o">,</span> <span class="s">&quot;Meier&quot;</span><span class="o">));</span>
+</span><span class='line'><span class="n">listViewData</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&quot;Martin&quot;</span><span class="o">,</span> <span class="s">&quot;Mueller&quot;</span><span class="o">));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Third, set the data into the list. This must be in the <code>initialize()</code> method as this is the time when we can be shure that the variable <code>listView</code> is initialized with the <code>ListView</code> from the <code>fxml</code> file.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="n">listView</span><span class="o">.</span><span class="na">setItems</span><span class="o">(</span><span class="n">listViewData</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>Fourth, also in the <code>initialize()</code> method, we&#8217;ll add a <code>ChangeListener</code>. It is the same ChangeListener pattern as described above (see Slider section):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="n">listView</span><span class="o">.</span><span class="na">getSelectionModel</span><span class="o">().</span><span class="na">selectedItemProperty</span><span class="o">().</span><span class="na">addListener</span><span class="o">(</span><span class="k">new</span> <span class="n">ChangeListener</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">changed</span><span class="o">(</span><span class="n">ObservableValue</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">Person</span><span class="o">&gt;</span> <span class="n">observable</span><span class="o">,</span>
+</span><span class='line'>          <span class="n">Person</span> <span class="n">oldValue</span><span class="o">,</span> <span class="n">Person</span> <span class="n">newValue</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="n">outputTextArea</span><span class="o">.</span><span class="na">appendText</span><span class="o">(</span><span class="s">&quot;ListView Selection Changed (newValue: &quot;</span> <span class="o">+</span> <span class="n">newValue</span> <span class="o">+</span> <span class="s">&quot;)\n&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Download Example Source</h2>
+
+<p>Download the complete <a href="http://edu.makery.ch/downloads/javafx-event-handlers-and-change-listeners/javafx-event-handlers-and-change-listeners.zip">event-handlers example source</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[JavaFX TableView Cell Renderer]]></title>
