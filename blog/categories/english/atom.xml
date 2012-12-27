@@ -4,7 +4,7 @@
   <title><![CDATA[edu.makery.ch | Category: English]]></title>
   <link href="http://edu.makery.ch/blog/categories/english/atom.xml" rel="self"/>
   <link href="http://edu.makery.ch/blog/categories/english/"/>
-  <updated>2012-12-19T20:49:49+01:00</updated>
+  <updated>2012-12-27T21:48:49+01:00</updated>
   <id>http://edu.makery.ch/blog/categories/english</id>
   <author>
     <name><![CDATA[Marco Jakob]]></name>
@@ -317,6 +317,8 @@
 
 <p>Once the cell has the value, it must know how to display that value. In our case, the birthday&#8217;s <code>Calendar</code> value must be formatted and colored depending on the year.</p>
 
+<p><em>[update 2012-12-27: Set text to null if cell is empty. See <a href="http://edu.makery.ch/blog/2012/12/19/javafx-tableview-cell-renderer/#comment-746539504">comment</a> by James_D below]</em></p>
+
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="n">birthdayColumn</span><span class="o">.</span><span class="na">setCellFactory</span><span class="o">(</span><span class="k">new</span> <span class="n">Callback</span><span class="o">&lt;</span><span class="n">TableColumn</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">,</span> <span class="n">Calendar</span><span class="o">&gt;,</span> <span class="n">TableCell</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">,</span> <span class="n">Calendar</span><span class="o">&gt;&gt;()</span> <span class="o">{</span>
 </span><span class='line'>  <span class="nd">@Override</span>
 </span><span class='line'>  <span class="kd">public</span> <span class="n">TableCell</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">,</span> <span class="n">Calendar</span><span class="o">&gt;</span> <span class="n">call</span><span class="o">(</span><span class="n">TableColumn</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">,</span> <span class="n">Calendar</span><span class="o">&gt;</span> <span class="n">param</span><span class="o">)</span> <span class="o">{</span>
@@ -335,6 +337,9 @@
 </span><span class='line'>                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
 </span><span class='line'>                  <span class="n">setTextFill</span><span class="o">(</span><span class="n">Color</span><span class="o">.</span><span class="na">BLACK</span><span class="o">);</span>
 </span><span class='line'>                <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>              <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span><span class='line'>                <span class="n">setText</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
 </span><span class='line'>              <span class="o">}</span>
 </span><span class='line'>          <span class="o">}</span>
 </span><span class='line'>      <span class="o">};</span>
