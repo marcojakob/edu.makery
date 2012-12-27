@@ -2,6 +2,7 @@
 layout: post
 title: "JavaFX TableView Cell Renderer"
 date: 2012-12-19 03:00
+updated: 2012-12-27
 comments: true
 categories: [English, JavaFX]
 published: true
@@ -36,6 +37,7 @@ So far nothing too fancy.
 ### Cell Factory ###
 Once the cell has the value, it must know how to display that value. In our case, the birthday's `Calendar` value must be formatted and colored depending on the year.
 
+*[update 2012-12-27: Set text to null if cell is empty. See [comment](http://edu.makery.ch/blog/2012/12/19/javafx-tableview-cell-renderer/#comment-746539504) by James_D below]*
 ```java
 birthdayColumn.setCellFactory(new Callback<TableColumn<Person, Calendar>, TableCell<Person, Calendar>>() {
 	@Override
@@ -55,6 +57,9 @@ birthdayColumn.setCellFactory(new Callback<TableColumn<Person, Calendar>, TableC
                 } else {
                   setTextFill(Color.BLACK);
                 }
+                
+              } else {
+                setText(null);
               }
 			}
 		};

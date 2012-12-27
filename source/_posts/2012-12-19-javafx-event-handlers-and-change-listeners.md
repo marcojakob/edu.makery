@@ -246,6 +246,5 @@ listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListen
 ```
 
 
-
 ## Download Example Source ##
 Download the complete [event-handlers example source](/downloads/javafx-event-handlers-and-change-listeners/javafx-event-handlers-and-change-listeners.zip).
