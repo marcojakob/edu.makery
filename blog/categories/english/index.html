@@ -9,7 +9,7 @@
   <meta name="author" content="Marco Jakob">
 
   
-  <meta name="description" content="Very often in JavaFX we have to react to user events: The user clicks a button, presses a key, moves the mouse, etc. This post describes how to &hellip;">
+  <meta name="description" content="JavaFX 2.2 and above provides a convenient snapshot feature. It takes a snapshot of any node or scene. The following method saves the barChart node &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,75 @@
   </section>
   
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/01/04/javafx-snapshot-as-png-image/">JavaFX Snapshot as PNG Image</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-04T14:00:00+01:00" pubdate data-updated="true">Jan 4<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>JavaFX 2.2 and above provides a convenient <code>snapshot</code> feature. It takes a snapshot of any node or scene.</p>
+
+<p>The following method saves the <code>barChart</code> node as a <code>png</code> image:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">saveAsPng</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">WritableImage</span> <span class="n">image</span> <span class="o">=</span> <span class="n">barChart</span><span class="o">.</span><span class="na">snapshot</span><span class="o">(</span><span class="k">new</span> <span class="n">SnapshotParameters</span><span class="o">(),</span> <span class="kc">null</span><span class="o">);</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="c1">// TODO: probably use a file chooser here</span>
+</span><span class='line'>  <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&quot;chart.png&quot;</span><span class="o">);</span>
+</span><span class='line'>  
+</span><span class='line'>    <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">ImageIO</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">SwingFXUtils</span><span class="o">.</span><span class="na">fromFXImage</span><span class="o">(</span><span class="n">image</span><span class="o">,</span> <span class="kc">null</span><span class="o">),</span> <span class="s">&quot;png&quot;</span><span class="o">,</span> <span class="n">file</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="c1">// TODO: handle exception here</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note: You could test this code with our <strong>AddressApp</strong> example (see download at the end of <a href="/blog/2012/12/18/javafx-tutorial-addressapp-7">AddressApp Tutorial Part VII</a>). Just add the <code>saveAsPng()</code> method to the <code>BirthdayStatisticsController</code> class and call the method through some action (e.g. a new button).</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -519,59 +588,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/20/javafx-tutorial-addressapp-3/">JavaFX 2 Tutorial Part III - Interacting With the User</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-  
-<time datetime="2012-11-20T17:30:00+01:00" pubdate data-updated="true">Nov 20<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="/images/javafx-addressapp/part-3/addressapp01.png"></p>
-
-<h2>Topics in Part III</h2>
-
-<ul>
-<li><strong>React to selection changes</strong> in the table.</li>
-<li>Add functionality to the <strong>add</strong>, <strong>edit</strong>, and <strong>remove</strong> buttons.</li>
-<li>Create a custom <strong>popup dialog</strong> to edit a person.</li>
-<li><strong>Validating user input</strong>.</li>
-</ul>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/11/20/javafx-tutorial-addressapp-3/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/categories/english/page/2/">&larr; Older</a>
@@ -585,6 +601,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/01/04/javafx-snapshot-as-png-image/">JavaFX Snapshot as PNG Image</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/12/19/javafx-event-handlers-and-change-listeners/">JavaFX Event Handlers and Change Listeners</a>
@@ -614,20 +634,16 @@
         <a href="/blog/2012/12/04/javafx-tutorial-addressapp-6/">JavaFX 2 Tutorial Part VI - Statistics Chart</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2012/11/27/javafx-tutorial-addressapp-5/">JavaFX 2 Tutorial Part V - Storing Data as XML</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/'>All (18)</a><a title='subscribe via RSS' href='http://feeds.feedburner.com/edu-makery' class='feed-rss_16 category-icon'></a></li>
+    <li class='category'><a href='/'>All (19)</a><a title='subscribe via RSS' href='http://feeds.feedburner.com/edu-makery' class='feed-rss_16 category-icon'></a></li>
 <li class='category'><a href='/blog/categories/deutsch/'>Deutsch (1)</a><a title='subscribe via RSS: Deutsch' href='http://feeds.feedburner.com/edu-makery-deutsch' class='feed-rss_16 category-icon'></a></li>
-<li class='category'><a href='/blog/categories/english/'>English (17)</a><a title='subscribe via RSS: English' href='http://feeds.feedburner.com/edu-makery-english' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/english/'>English (18)</a><a title='subscribe via RSS: English' href='http://feeds.feedburner.com/edu-makery-english' class='feed-rss_16 category-icon'></a></li>
 <li class='category'><a href='/blog/categories/java/'>Java (5)</a><a title='subscribe via RSS: Java' href='http://feeds.feedburner.com/edu-makery-java' class='feed-rss_16 category-icon'></a></li>
-<li class='category'><a href='/blog/categories/javafx/'>JavaFX (12)</a><a title='subscribe via RSS: JavaFX' href='http://feeds.feedburner.com/edu-makery-javafx' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/javafx/'>JavaFX (13)</a><a title='subscribe via RSS: JavaFX' href='http://feeds.feedburner.com/edu-makery-javafx' class='feed-rss_16 category-icon'></a></li>
 
   </ul>
 </section>
@@ -637,7 +653,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Marco Jakob - 
+  Copyright &copy; 2013 - Marco Jakob - 
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - 
   <span class="credit">Icons by <a href="http://glyphicons.com">glyphicons</a> and <a href="http://www.icondrawer.com">icondrawer</a></span>
 </p>

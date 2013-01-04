@@ -4,7 +4,7 @@
   <title><![CDATA[edu.makery.ch]]></title>
   <link href="http://edu.makery.ch/atom.xml" rel="self"/>
   <link href="http://edu.makery.ch/"/>
-  <updated>2012-12-27T21:48:49+01:00</updated>
+  <updated>2013-01-04T13:57:28+01:00</updated>
   <id>http://edu.makery.ch/</id>
   <author>
     <name><![CDATA[Marco Jakob]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[JavaFX Snapshot as PNG Image]]></title>
+    <link href="http://edu.makery.ch/blog/2013/01/04/javafx-snapshot-as-png-image/"/>
+    <updated>2013-01-04T14:00:00+01:00</updated>
+    <id>http://edu.makery.ch/blog/2013/01/04/javafx-snapshot-as-png-image</id>
+    <content type="html"><![CDATA[<p>JavaFX 2.2 and above provides a convenient <code>snapshot</code> feature. It takes a snapshot of any node or scene.</p>
+
+<p>The following method saves the <code>barChart</code> node as a <code>png</code> image:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">saveAsPng</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">WritableImage</span> <span class="n">image</span> <span class="o">=</span> <span class="n">barChart</span><span class="o">.</span><span class="na">snapshot</span><span class="o">(</span><span class="k">new</span> <span class="n">SnapshotParameters</span><span class="o">(),</span> <span class="kc">null</span><span class="o">);</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="c1">// TODO: probably use a file chooser here</span>
+</span><span class='line'>  <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&quot;chart.png&quot;</span><span class="o">);</span>
+</span><span class='line'>  
+</span><span class='line'>    <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">ImageIO</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">SwingFXUtils</span><span class="o">.</span><span class="na">fromFXImage</span><span class="o">(</span><span class="n">image</span><span class="o">,</span> <span class="kc">null</span><span class="o">),</span> <span class="s">&quot;png&quot;</span><span class="o">,</span> <span class="n">file</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="c1">// TODO: handle exception here</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note: You could test this code with our <strong>AddressApp</strong> example (see download at the end of <a href="http://edu.makery.ch/blog/2012/12/18/javafx-tutorial-addressapp-7">AddressApp Tutorial Part VII</a>). Just add the <code>saveAsPng()</code> method to the <code>BirthdayStatisticsController</code> class and call the method through some action (e.g. a new button).</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[JavaFX Event Handlers and Change Listeners]]></title>

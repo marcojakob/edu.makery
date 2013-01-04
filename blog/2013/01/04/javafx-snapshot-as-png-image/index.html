@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Introduction to Programming with Kara - edu.makery.ch</title>
+  <title>JavaFX Snapshot as PNG Image - edu.makery.ch</title>
   <meta name="author" content="Marco Jakob">
 
   
-  <meta name="description" content="Kara offers a playful introduction to fundamental concepts of programming. Kara is a ladybug that lives in a simple world with trees, leafs and &hellip;">
+  <meta name="description" content="JavaFX 2.2 and above provides a convenient snapshot feature. It takes a snapshot of any node or scene. The following method saves the barChart node &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://edu.makery.ch/blog/2012/10/02/introduction-to-programming-with-kara/">
+  <link rel="canonical" href="http://edu.makery.ch/blog/2013/01/04/javafx-snapshot-as-png-image/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -78,7 +78,7 @@
   
   <header>
     
-      <h1 class="entry-title">Introduction to Programming With Kara</h1>
+      <h1 class="entry-title">JavaFX Snapshot as PNG Image</h1>
     
     
       <p class="meta">
@@ -94,50 +94,18 @@
   
 
 
-<time datetime="2012-10-02T22:00:00+02:00" pubdate data-updated="true">Oct 2<span>nd</span>, 2012</time>
+<time datetime="2013-01-04T14:00:00+01:00" pubdate data-updated="true">Jan 4<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Kara offers a playful introduction to fundamental concepts of programming. Kara is a ladybug that lives in a simple world with trees, leafs and mushrooms.</p>
+<div class="entry-content"><p>JavaFX 2.2 and above provides a convenient <code>snapshot</code> feature. It takes a snapshot of any node or scene.</p>
 
-<p><img src="/images/kara/kara.png" title="Kara" >
-<img src="/images/kara/mushroom.png" title="Mushroom" >
-<img src="/images/kara/leaf.png" title="Leaf" >
-<img src="/images/kara/tree.png" title="Tree" ></p>
+<p>The following method saves the <code>barChart</code> node as a <code>png</code> image:</p>
 
-<p>The rules of Kara&#8217;s world are simple:</p>
-
-<h4>Actions</h4>
-
-<ul>
-<li>Kara can move around with <code>move()</code> (Kara can push a mushroom, can step on leafs but can&#8217;t walk through trees)</li>
-<li>Kara turns left or right with <code>turnLeft()</code> or <code>turnRight()</code></li>
-<li>Kara puts down a leaf with <code>putLeaf()</code></li>
-<li>Kara picks up a leaf with <code>removeLeaf()</code></li>
-</ul>
-
-
-<h4>Sensors</h4>
-
-<ul>
-<li>Kara checks if he stands on a leaf with <code>onLeaf()</code></li>
-<li>Kara checks if there is a tree with <code>treeFront()</code>, <code>treeLeft()</code>, or <code>treeRight()</code></li>
-<li>Kara checks if there is a mushroom in front with <code>mushroomFront()</code></li>
-</ul>
-
-
-<h2>A Sample Exercise</h2>
-
-<p>Kara is placed in the following world setup and must be programmed to collect all leafs until he reaches the tree:</p>
-
-<p><img src="/images/kara/kara-example-collect-leafs.png" title="Kara Collects Leafs" ></p>
-
-<p>One solution would be as follows:</p>
-
-<figure class='code'><figcaption><span>Kara collects leafs (Java)</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -145,36 +113,28 @@
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="k">while</span> <span class="o">(!</span><span class="n">treeFront</span><span class="o">())</span> <span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">if</span> <span class="o">(</span><span class="n">onLeaf</span><span class="o">())</span> <span class="o">{</span>
-</span><span class='line'>    <span class="n">removeLeaf</span><span class="o">();</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">move</span><span class="o">();</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">saveAsPng</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">WritableImage</span> <span class="n">image</span> <span class="o">=</span> <span class="n">barChart</span><span class="o">.</span><span class="na">snapshot</span><span class="o">(</span><span class="k">new</span> <span class="n">SnapshotParameters</span><span class="o">(),</span> <span class="kc">null</span><span class="o">);</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="c1">// TODO: probably use a file chooser here</span>
+</span><span class='line'>  <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&quot;chart.png&quot;</span><span class="o">);</span>
+</span><span class='line'>  
+</span><span class='line'>    <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">ImageIO</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">SwingFXUtils</span><span class="o">.</span><span class="na">fromFXImage</span><span class="o">(</span><span class="n">image</span><span class="o">,</span> <span class="kc">null</span><span class="o">),</span> <span class="s">&quot;png&quot;</span><span class="o">,</span> <span class="n">file</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="c1">// TODO: handle exception here</span>
+</span><span class='line'>    <span class="o">}</span>
 </span><span class='line'><span class="o">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h2>Kara Versions - Which Kara Should I Use?</h2>
-
-<p>Kara has many different versions. The original Kara is designed as a finite state machine with a purely graphical program editor. See the full list of <a href="http://www.swisseduc.ch/informatik/karatojava/index.html">available Kara versions</a>.</p>
-
-<p>I usually prefer to start directly with writing Java code. Now there are three possible editors/libraries:</p>
-
-<h3>JavaKara</h3>
-
-<p>JavaKara is the original editor. You can find the <a href="http://www.swisseduc.ch/informatik/karatojava/javakara/index.html">JavaKara download and resources here</a> (in German).</p>
-
-<h3>GreenfootKara</h3>
-
-<p>Since I really like the editor of the <a href="http://greenfoot.org">Greenfoot IDE</a> I decided to create a Kara version that works with Greenfoot, it is called GreenfootKara. In addition to this I wrote an entire beginners course of 16-20 lessons with exercises and handouts to go along with GreenfootKara. You can find the links to the German and English versions on the <a href="/learn-java">Learn Java</a> page.</p>
-
-<h3>GameGridKara</h3>
-
-<p>Sometimes, especially if time is too short, it might be good to directly start with a professional development environment like Eclipse or NetBeans. Since it was not possible to integrate Greenfoot into Eclipse/NetBeans, I had to find another solution. Altough, we could start JavaKara from Eclipse/NetBeans, there are just some things that are not possible (like programming an interactive Kara game). The solution was to port the code to work with a library called <a href="http://gamegrid.ch">JGameGrid</a>.</p>
-
-<p>GameGridKara enables us to use Kara in any IDE of our choice by simply adding two jar files to a project. The link to GameGridKara with the adjusted beginners course in German and English can be found on the <a href="/learn-java">Learn Java</a> page.</p>
+<p>Note: You could test this code with our <strong>AddressApp</strong> example (see download at the end of <a href="/blog/2012/12/18/javafx-tutorial-addressapp-7">AddressApp Tutorial Part VII</a>). Just add the <code>saveAsPng()</code> method to the <code>BirthdayStatisticsController</code> class and call the method through some action (e.g. a new button).</p>
 </div>
 
 
@@ -197,12 +157,12 @@
   
 
 
-<time datetime="2012-10-02T22:00:00+02:00" pubdate data-updated="true">Oct 2<span>nd</span>, 2012</time>
+<time datetime="2013-01-04T14:00:00+01:00" pubdate data-updated="true">Jan 4<span>th</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/english/'>English</a>, <a class='category' href='/blog/categories/java/'>Java</a>
+    <a class='category' href='/blog/categories/english/'>English</a>, <a class='category' href='/blog/categories/javafx/'>JavaFX</a>
   
 </span>
 
@@ -211,7 +171,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://edu.makery.ch/blog/2012/10/02/introduction-to-programming-with-kara/" data-via="marcojkob" data-counturl="http://edu.makery.ch/blog/2012/10/02/introduction-to-programming-with-kara/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://edu.makery.ch/blog/2013/01/04/javafx-snapshot-as-png-image/" data-via="marcojkob" data-counturl="http://edu.makery.ch/blog/2013/01/04/javafx-snapshot-as-png-image/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -222,10 +182,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/10/01/warum-ich-gerne-programmiere/" title="Previous Post: Warum ich gerne Programmiere">&laquo; Warum ich gerne Programmiere</a>
+        <a class="basic-alignment left" href="/blog/2012/12/19/javafx-event-handlers-and-change-listeners/" title="Previous Post: JavaFX Event Handlers and Change Listeners">&laquo; JavaFX Event Handlers and Change Listeners</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2012/10/03/greenfootkara-2-0-released/" title="Next Post: GreenfootKara 2.0 Released">GreenfootKara 2.0 Released &raquo;</a>
       
     </p>
   </footer>
@@ -310,8 +268,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://edu.makery.ch/blog/2012/10/02/introduction-to-programming-with-kara/';
-        var disqus_url = 'http://edu.makery.ch/blog/2012/10/02/introduction-to-programming-with-kara/';
+        var disqus_identifier = 'http://edu.makery.ch/blog/2013/01/04/javafx-snapshot-as-png-image/';
+        var disqus_url = 'http://edu.makery.ch/blog/2013/01/04/javafx-snapshot-as-png-image/';
         var disqus_script = 'embed.js';
       
     (function () {
