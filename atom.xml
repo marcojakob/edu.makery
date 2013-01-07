@@ -4,7 +4,7 @@
   <title><![CDATA[edu.makery.ch]]></title>
   <link href="http://edu.makery.ch/atom.xml" rel="self"/>
   <link href="http://edu.makery.ch/"/>
-  <updated>2013-01-04T13:57:28+01:00</updated>
+  <updated>2013-01-07T15:32:03+01:00</updated>
   <id>http://edu.makery.ch/</id>
   <author>
     <name><![CDATA[Marco Jakob]]></name>
@@ -12,6 +12,180 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[JavaFX Date Picker]]></title>
+    <link href="http://edu.makery.ch/blog/2013/01/07/javafx-date-picker/"/>
+    <updated>2013-01-07T15:00:00+01:00</updated>
+    <id>http://edu.makery.ch/blog/2013/01/07/javafx-date-picker</id>
+    <content type="html"><![CDATA[<p>As JavaFX 2.2 doesn&#8217;t contain a Calendar control we would have to create our own to provide a convenient way to enter a date. Fortunately, <a href="http://myjavafx.blogspot.ch/2012/01/javafx-calendar-control.html">Christian Schudt</a> has created a very nice DatePicker that we can use:</p>
+
+<p><img src="http://edu.makery.ch/images/javafx-date-picker/javafx-date-picker-01.png"></p>
+
+<!-- more -->
+
+
+<p>I modified <a href="http://myjavafx.blogspot.ch/2012/01/javafx-calendar-control.html">Christian Schudt&#8217;s</a> <code>DatePicker</code> class a little with a few additional lines at the end of the constructor. One change is to let the <code>DatePicker</code> grow horizontally with its parent and the other change passes the style sheet to the popup.</p>
+
+<p>You can <strong>download</strong> a <code>jar</code> with my modified version and the stylesheet that goes with it:</p>
+
+<ul>
+<li><a href="http://edu.makery.ch/downloads/javafx-date-picker/schudt-javafx-datepicker.jar">schudt-javafx-datepicker.jar</a></li>
+<li><a href="http://edu.makery.ch/downloads/javafx-date-picker/DatePicker.css">DatePicker.css</a></li>
+</ul>
+
+
+<h2>Integrating the Date Picker with AddressApp</h2>
+
+<p>I&#8217;ll show how you can use the <code>DatePicker</code> by integrating it with our <strong>AddressApp</strong> example. You can download the full AddressApp example from the <a href="http://edu.makery.ch/blog/2012/12/18/javafx-tutorial-addressapp-7">AddressApp Tutorial Part VII</a> (at the very end of the blog post).</p>
+
+<h3>Add the Library and CSS</h3>
+
+<p>Download and add the <code>schudt-javafx-datepicker.jar</code> file from above to the <code>lib</code> folder. Add it to the classpath with <em>right-click | Build Path | Add to Build Path</em>.</p>
+
+<p>Add the <code>DatePicker.css</code> file to the <code>ch.makery.address.view</code> package.</p>
+
+<h3>Prepare the View for the DatePicker</h3>
+
+<p>In our <code>PersonEditDialog</code> we have a simple text field for the Date. This is not very convenient and we&#8217;d like to replace this with the new <code>DatePicker</code>.</p>
+
+<p>First, delete the birthday text field from <code>PersonEditDialog.fxml</code> (using the SceneBuilder).</p>
+
+<p>We won&#8217;t be able to add the custom <code>DatePicker</code> directly in SceneBuilder (at least not with the current SceneBuilder). We&#8217;ll need to add it manually in the Java code. Delete the <code>birthdayField</code> from the <code>PersonEditDialogController</code> and add the following fields instead:</p>
+
+<figure class='code'><figcaption><span>PersonEditDialogController</span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">private</span> <span class="n">GridPane</span> <span class="n">gridPane</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">private</span> <span class="n">DatePicker</span> <span class="n">birthdayDatePicker</span><span class="o">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now, open the <code>PersonEditDialog.fxml</code> in SceneBuilder. Select the GridPane and choose <code>gridPane</code> as <code>fx:id</code>.</p>
+
+<h3>Initialize the DatePicker</h3>
+
+<p>Create the <code>DatePicker</code> in the <code>initialize()</code> method as follows:</p>
+
+<figure class='code'><figcaption><span>PersonEditDialogController</span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">initialize</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="c1">// Initialize the DatePicker for birthday</span>
+</span><span class='line'>  <span class="n">birthdayDatePicker</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DatePicker</span><span class="o">(</span><span class="n">Locale</span><span class="o">.</span><span class="na">ENGLISH</span><span class="o">);</span>
+</span><span class='line'>  <span class="n">birthdayDatePicker</span><span class="o">.</span><span class="na">setDateFormat</span><span class="o">(</span><span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s">&quot;yyyy-MM-dd&quot;</span><span class="o">));</span>
+</span><span class='line'>  <span class="n">birthdayDatePicker</span><span class="o">.</span><span class="na">getCalendarView</span><span class="o">().</span><span class="na">todayButtonTextProperty</span><span class="o">().</span><span class="na">set</span><span class="o">(</span><span class="s">&quot;Today&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="n">birthdayDatePicker</span><span class="o">.</span><span class="na">getCalendarView</span><span class="o">().</span><span class="na">setShowWeeks</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+</span><span class='line'>  <span class="n">birthdayDatePicker</span><span class="o">.</span><span class="na">getStylesheets</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;ch/makery/address/view/DatePicker.css&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Add DatePicker to grid</span>
+</span><span class='line'>  <span class="n">gridPane</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">birthdayDatePicker</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Some Further Adjustments</h3>
+
+<p>Change in <code>setPerson(...)</code>:</p>
+
+<figure class='code'><figcaption><span>PersonEditDialogController</span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPerson</span><span class="o">(</span><span class="n">Person</span> <span class="n">person</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">this</span><span class="o">.</span><span class="na">person</span> <span class="o">=</span> <span class="n">person</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">firstNameField</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="na">getFirstName</span><span class="o">());</span>
+</span><span class='line'>  <span class="n">lastNameField</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="na">getLastName</span><span class="o">());</span>
+</span><span class='line'>  <span class="n">streetField</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="na">getStreet</span><span class="o">());</span>
+</span><span class='line'>  <span class="n">postalCodeField</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="na">getPostalCode</span><span class="o">()));</span>
+</span><span class='line'>  <span class="n">cityField</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="na">getCity</span><span class="o">());</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="na">getBirthday</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">birthdayDatePicker</span><span class="o">.</span><span class="na">setSelectedDate</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="na">getBirthday</span><span class="o">().</span><span class="na">getTime</span><span class="o">());</span>
+</span><span class='line'>  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">birthdayDatePicker</span><span class="o">.</span><span class="na">setSelectedDate</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Change in <code>handleOk()</code>:</p>
+
+<figure class='code'><figcaption><span>PersonEditDialogController</span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="nd">@FXML</span>
+</span><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">handleOk</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="o">(</span><span class="n">isInputValid</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">person</span><span class="o">.</span><span class="na">setFirstName</span><span class="o">(</span><span class="n">firstNameField</span><span class="o">.</span><span class="na">getText</span><span class="o">());</span>
+</span><span class='line'>    <span class="n">person</span><span class="o">.</span><span class="na">setLastName</span><span class="o">(</span><span class="n">lastNameField</span><span class="o">.</span><span class="na">getText</span><span class="o">());</span>
+</span><span class='line'>    <span class="n">person</span><span class="o">.</span><span class="na">setStreet</span><span class="o">(</span><span class="n">streetField</span><span class="o">.</span><span class="na">getText</span><span class="o">());</span>
+</span><span class='line'>    <span class="n">person</span><span class="o">.</span><span class="na">setPostalCode</span><span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">postalCodeField</span><span class="o">.</span><span class="na">getText</span><span class="o">()));</span>
+</span><span class='line'>    <span class="n">person</span><span class="o">.</span><span class="na">setCity</span><span class="o">(</span><span class="n">cityField</span><span class="o">.</span><span class="na">getText</span><span class="o">());</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">Calendar</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Calendar</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
+</span><span class='line'>    <span class="n">c</span><span class="o">.</span><span class="na">setTime</span><span class="o">(</span><span class="n">birthdayDatePicker</span><span class="o">.</span><span class="na">getSelectedDate</span><span class="o">());</span>
+</span><span class='line'>    <span class="n">person</span><span class="o">.</span><span class="na">setBirthday</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">okClicked</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+</span><span class='line'>    <span class="n">dialogStage</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Change in <code>isInputValid()</code>:</p>
+
+<figure class='code'><figcaption><span>PersonEditDialogController</span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">isInputValid</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">String</span> <span class="n">errorMessage</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="o">(</span><span class="n">firstNameField</span><span class="o">.</span><span class="na">getText</span><span class="o">()</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">firstNameField</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">errorMessage</span> <span class="o">+=</span> <span class="s">&quot;No valid first name!\n&quot;</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  <span class="k">if</span> <span class="o">(</span><span class="n">lastNameField</span><span class="o">.</span><span class="na">getText</span><span class="o">()</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">lastNameField</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">errorMessage</span> <span class="o">+=</span> <span class="s">&quot;No valid last name!\n&quot;</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  <span class="k">if</span> <span class="o">(</span><span class="n">streetField</span><span class="o">.</span><span class="na">getText</span><span class="o">()</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">streetField</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">errorMessage</span> <span class="o">+=</span> <span class="s">&quot;No valid street!\n&quot;</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="o">(</span><span class="n">postalCodeField</span><span class="o">.</span><span class="na">getText</span><span class="o">()</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">postalCodeField</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">errorMessage</span> <span class="o">+=</span> <span class="s">&quot;No valid postal code!\n&quot;</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span><span class='line'>    <span class="c1">// try to parse the postal code into an int</span>
+</span><span class='line'>    <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">postalCodeField</span><span class="o">.</span><span class="na">getText</span><span class="o">());</span>
+</span><span class='line'>    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">NumberFormatException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">errorMessage</span> <span class="o">+=</span> <span class="s">&quot;No valid postal code (must be an integer)!\n&quot;</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="o">(</span><span class="n">cityField</span><span class="o">.</span><span class="na">getText</span><span class="o">()</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">cityField</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">errorMessage</span> <span class="o">+=</span> <span class="s">&quot;No valid city!\n&quot;</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">////////////////////////////////////////</span>
+</span><span class='line'>  <span class="c1">// CHANGE STARTS HERE</span>
+</span><span class='line'>  <span class="c1">////////////////////////////////////////</span>
+</span><span class='line'>  <span class="k">if</span> <span class="o">(</span><span class="n">birthdayDatePicker</span><span class="o">.</span><span class="na">getSelectedDate</span><span class="o">()</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">errorMessage</span> <span class="o">+=</span> <span class="s">&quot;No valid birthday!\n&quot;</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="o">(</span><span class="n">birthdayDatePicker</span><span class="o">.</span><span class="na">invalidProperty</span><span class="o">().</span><span class="na">get</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">errorMessage</span> <span class="o">+=</span> <span class="s">&quot;No valid birthday. Use the format yyyy-mm-dd!\n&quot;</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  <span class="c1">////////////////////////////////////////</span>
+</span><span class='line'>  <span class="c1">// CHANGE ENDS HERE</span>
+</span><span class='line'>  <span class="c1">////////////////////////////////////////</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="o">(</span><span class="n">errorMessage</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span><span class='line'>    <span class="c1">// Show the error message</span>
+</span><span class='line'>    <span class="n">Dialogs</span><span class="o">.</span><span class="na">showErrorDialog</span><span class="o">(</span><span class="n">dialogStage</span><span class="o">,</span> <span class="n">errorMessage</span><span class="o">,</span>
+</span><span class='line'>        <span class="s">&quot;Please correct invalid fields&quot;</span><span class="o">,</span> <span class="s">&quot;Invalid Fields&quot;</span><span class="o">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Tweaking the DatePicker</h2>
+
+<p>For further details about how to tweak the <code>DatePicker</code> see <a href="http://myjavafx.blogspot.ch/2012/01/javafx-calendar-control.html">JavaFX Calendar Control</a> on Christian Schudt&#8217;s Blog.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[JavaFX Snapshot as PNG Image]]></title>
