@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Learn Java
-comments: false
+comments: true
 footer: true
 ---
 ### First Contact with Programming ###
