@@ -2,6 +2,7 @@
 layout: post
 title: "JavaFX 2 Tutorial Part V - Storing Data as XML"
 date: 2012-11-27 22:00
+updated: 2013-02-08
 comments: true
 categories: [English, JavaFX]
 published: true
@@ -218,7 +219,7 @@ If the user closes the dialog without choosing a file, `null` is returned. Other
 
 2. Select each menu item in the Hierarchy view. In the Code view under *On Action* you should see a choice of all the `@FXML` methods of the controller. Choose the corresponding method for each menu item.   
 {% img /images/javafx-addressapp/part-5/addressapp03.png %}   
-**If you don't see the choices in On Action:** Because of a bug in the *Developer Preview of Scene Builder 1.1* you have to remove the controller from the root, hit enter, and add it again. I had to do this after every restart of Scene Builder!   
+*If you don't see the choices in On Action*: Because of a [bug](http://javafx-jira.kenai.com/browse/DTL-5402) in Scene Builder you have to remove the controller from the root, hit enter, and add it again. I had to do this after every restart of Scene Builder! (**fixed in Scene Builder 1.1 beta 17 and above!**)
 
 3. Close Scene Builder and hit **Refresh (F5)** on your project's root folder. This will make Eclipse aware of the changes you made in Scene Builder.
 

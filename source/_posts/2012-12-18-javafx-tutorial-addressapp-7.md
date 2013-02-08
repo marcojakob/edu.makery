@@ -2,6 +2,7 @@
 layout: post
 title: "JavaFX 2 Tutorial Part VII - Deployment with e(fx)clipse"
 date: 2012-12-18 01:00
+updated: 2013-02-08
 comments: true
 categories: [English, JavaFX]
 published: true
@@ -62,6 +63,9 @@ The e(fx)clipse plugin will help us generate the native package and installer.
 
 
 ### Step 1 - eclipse.ini ###
+
+**Note**: Step 1 might not be necessary with e(fx)clipse 0.8.0 and above. See [Tom Schindl's comment](/blog/2012/12/18/javafx-tutorial-addressapp-7#comment-742775781) below (the author of e(fx)clipse).
+
 JavaFX uses a tool called [Ant](http://ant.apache.org/) to build and package the application. This tool is already included in Eclipse. As Ant depends on the JDK we need to make shure Eclipse itself runs with the JDK (not the JRE).
 
 1. Close Eclipse.

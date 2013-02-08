@@ -2,6 +2,7 @@
 layout: post
 title: "JavaFX 2 Tutorial Part VI - Statistics Chart"
 date: 2012-12-04 12:00
+updated: 2013-02-08
 comments: true
 categories: [English, JavaFX]
 published: true
@@ -123,7 +124,7 @@ Now open the `RootLayout.fxml` file with Scene Builder.
 
 Select the *Show Statistics* `MenuItem` and choose `#handleShowBirthdayStatistics` for `On Action` (in Code view)   
 
-**Remember:** You might need to remove the controller from the root, hit enter and set it again if the `handle...` method does not appear. Because of a [bug](http://javafx-jira.kenai.com/browse/DTL-5402) in Scene Builder.
+**Remember:** You might need to remove the controller from the root, hit enter and set it again if the `handle...` method does not appear. Because of a [bug](http://javafx-jira.kenai.com/browse/DTL-5402) in Scene Builder (**fixed in Scene Builder 1.1 beta 17 and above!**).
 
 {% img /images/javafx-addressapp/part-6/addressapp02.png %}
 

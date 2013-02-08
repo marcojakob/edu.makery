@@ -29,7 +29,8 @@ For a first contact with JavaFX take a look at the [JavaFX 2 Dialogs](/blog/2012
 * [JavaFX TableView Filter](/blog/2012/12/18/javafx-tableview-filter) - Filtering a TableView
 * [JavaFX TableView Cell Renderer](/blog/2012/12/19/javafx-tableview-cell-renderer) - A custom cell renderer for TableView
 * [JavaFX Event Handlers and Change Listeners](/blog/2012/12/19/javafx-event-handlers-and-change-listeners) - How to handle user events on common JavaFX 2 controls
-* [JavaFX Snapshot as PNG Image](/blog/2013/01/04/javafx-snapshot-as-png-image)
+* [JavaFX Snapshot as PNG Image](/blog/2013/01/04/javafx-snapshot-as-png-image) - Make a Screenshot of a JavaFX GUI
+* [JavaFX Date Picker](/blog/2013/01/07/javafx-date-picker/) - JavaFX Calendar control by Christian Schudt
 
 To see all blog posts related to JavaFX see the [JavaFX Archive](/blog/archives/javafx).
 

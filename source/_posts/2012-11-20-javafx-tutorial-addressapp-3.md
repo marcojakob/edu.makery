@@ -2,7 +2,7 @@
 layout: post
 title: "JavaFX 2 Tutorial Part III - Interacting with the User"
 date: 2012-11-20 17:30
-updated: 2012-12-18
+updated: 2013-02-08
 comments: true
 categories: [English, JavaFX]
 published: true
@@ -114,7 +114,7 @@ private void handleDeletePerson() {
 
 Now, open the `PersonOverview.fxml` file in *SceneBuilder*. Select the *Delete* button, open the *Code* view and choose `#handleDeletePerson` in the dropdown of **On Action**.
 
-*Scene Builder Problem*: In my version of Scene Builder (1.1 beta_11) the methods did not appear. I had to go to the root AnchorPane (in Hierarchy view), delete the controller class, hit enter and add the controller class again. Now, the methods appear in the dropdown. Hope [this bug](http://javafx-jira.kenai.com/browse/DTL-5402) will be corrected soon.
+*Scene Builder Problem* (**fixed in Scene Builder 1.1 beta 17 and above!**): In my version of Scene Builder (1.1 beta_11) the methods did not appear. I had to go to the root AnchorPane (in Hierarchy view), delete the controller class, hit enter and add the controller class again. Now, the methods appear in the dropdown. Hope [this bug](http://javafx-jira.kenai.com/browse/DTL-5402) will be corrected soon.
 
 {% img /images/javafx-addressapp/part-3/addressapp02.png %}
 
