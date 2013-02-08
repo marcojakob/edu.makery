@@ -4,7 +4,7 @@
   <title><![CDATA[edu.makery.ch]]></title>
   <link href="http://edu.makery.ch/atom.xml" rel="self"/>
   <link href="http://edu.makery.ch/"/>
-  <updated>2013-02-08T20:26:38+01:00</updated>
+  <updated>2013-02-08T20:28:26+01:00</updated>
   <id>http://edu.makery.ch/</id>
   <author>
     <name><![CDATA[Marco Jakob]]></name>
@@ -23,6 +23,9 @@
 <h2>Scene Builder Update</h2>
 
 <p>The Scene Builder bug forced us to delete and then reselect the controller class every time we reopened a <code>fxml</code> file in Scene Builder. This is fixed in <code>Scene Builder 1.1 beta 17</code> and above. So <strong>I recommend you update to the newest version</strong>:</p>
+
+<!-- more -->
+
 
 <ul>
 <li>Go to <a href="http://www.oracle.com/technetwork/java/javafx/tools/index.html">JavaFX Scene Builder Page</a> and download the newest <strong>JavaFX Scene Builder 1.1 Early Access</strong> edition.</li>
