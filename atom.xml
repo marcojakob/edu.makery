@@ -4,7 +4,7 @@
   <title><![CDATA[edu.makery.ch]]></title>
   <link href="http://edu.makery.ch/atom.xml" rel="self"/>
   <link href="http://edu.makery.ch/"/>
-  <updated>2013-01-23T20:59:16+01:00</updated>
+  <updated>2013-02-08T20:26:38+01:00</updated>
   <id>http://edu.makery.ch/</id>
   <author>
     <name><![CDATA[Marco Jakob]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[JavaFX Scene Builder and e(fx)clipse Updates]]></title>
+    <link href="http://edu.makery.ch/blog/2013/02/08/javafx-scene-builder-and-efxclipse-updates/"/>
+    <updated>2013-02-08T21:00:00+01:00</updated>
+    <id>http://edu.makery.ch/blog/2013/02/08/javafx-scene-builder-and-efxclipse-updates</id>
+    <content type="html"><![CDATA[<p>I&#8217;m excited about the quick reaction to bug reports by the JavaFX developers at Oracle! I&#8217;ve reported an (annoying) Scene Builder <a href="http://javafx-jira.kenai.com/browse/DTL-5402">bug</a> at the end of November and it was already fixed in a new Scene Builder version in January.</p>
+
+<h2>Scene Builder Update</h2>
+
+<p>The Scene Builder bug forced us to delete and then reselect the controller class every time we reopened a <code>fxml</code> file in Scene Builder. This is fixed in <code>Scene Builder 1.1 beta 17</code> and above. So <strong>I recommend you update to the newest version</strong>:</p>
+
+<ul>
+<li>Go to <a href="http://www.oracle.com/technetwork/java/javafx/tools/index.html">JavaFX Scene Builder Page</a> and download the newest <strong>JavaFX Scene Builder 1.1 Early Access</strong> edition.</li>
+</ul>
+
+
+<p>I&#8217;ve updated the AddressApp Tutorial <a href="http://edu.makery.ch/blog/2012/11/20/javafx-tutorial-addressapp-3/">Part III</a>, <a href="http://edu.makery.ch/blog/2012/11/27/javafx-tutorial-addressapp-5">Part V</a> and <a href="http://edu.makery.ch/blog/2012/12/04/javafx-tutorial-addressapp-6">Part VI</a> where I mentioned the bug.</p>
+
+<h2>e(fx)clipse Update</h2>
+
+<p>The (very helpful) JavaFX plugin for Eclipse has been updated to <a href="http://tomsondev.bestsolution.at/2013/01/06/efxclipse-0-8-0-released/">version 0.8.0</a>.</p>
+
+<p>As Tom Schindl, the author of e(fx)clipse, mentioned in a <a href="http://edu.makery.ch/blog/2012/12/18/javafx-tutorial-addressapp-7#comment-742775781">comment</a> to <a href="http://edu.makery.ch/blog/2012/12/18/javafx-tutorial-addressapp-7">AddressApp Tutorial Part VII</a>, we might not need to explicitly start Eclipse with a JDK to do the deployment (Step 1 in the tutorial).</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[JavaFX Date Picker]]></title>
@@ -937,6 +963,8 @@
 
 <h3>Step 1 - eclipse.ini</h3>
 
+<p><strong>Note</strong>: Step 1 might not be necessary with e(fx)clipse 0.8.0 and above. See <a href="http://edu.makery.ch/blog/2012/12/18/javafx-tutorial-addressapp-7#comment-742775781">Tom Schindl&#8217;s comment</a> below (the author of e(fx)clipse).</p>
+
 <p>JavaFX uses a tool called <a href="http://ant.apache.org/">Ant</a> to build and package the application. This tool is already included in Eclipse. As Ant depends on the JDK we need to make shure Eclipse itself runs with the JDK (not the JRE).</p>
 
 <ol>
@@ -1420,7 +1448,7 @@ We&#8217;ll use the reference to the <code>BarChart</code> to set our data.</li>
 
 <p>Select the <em>Show Statistics</em> <code>MenuItem</code> and choose <code>#handleShowBirthdayStatistics</code> for <code>On Action</code> (in Code view)</p>
 
-<p><strong>Remember:</strong> You might need to remove the controller from the root, hit enter and set it again if the <code>handle...</code> method does not appear. Because of a <a href="http://javafx-jira.kenai.com/browse/DTL-5402">bug</a> in Scene Builder.</p>
+<p><strong>Remember:</strong> You might need to remove the controller from the root, hit enter and set it again if the <code>handle...</code> method does not appear. Because of a <a href="http://javafx-jira.kenai.com/browse/DTL-5402">bug</a> in Scene Builder (<strong>fixed in Scene Builder 1.1 beta 17 and above!</strong>).</p>
 
 <p><img src="http://edu.makery.ch/images/javafx-addressapp/part-6/addressapp02.png"></p>
 
@@ -1843,7 +1871,7 @@ We&#8217;ll use the reference to the <code>BarChart</code> to set our data.</li>
 <li><p>Open <code>RootLayout.fxml</code> in Scene Builder. Select the root <code>BorderPane</code>. In the Code view select the <code>RootLayoutController</code> as Controller class.</p></li>
 <li><p>Select each menu item in the Hierarchy view. In the Code view under <em>On Action</em> you should see a choice of all the <code>@FXML</code> methods of the controller. Choose the corresponding method for each menu item. <br/>
 <img src="http://edu.makery.ch/images/javafx-addressapp/part-5/addressapp03.png"> <br/>
-<strong>If you don&#8217;t see the choices in On Action:</strong> Because of a bug in the <em>Developer Preview of Scene Builder 1.1</em> you have to remove the controller from the root, hit enter, and add it again. I had to do this after every restart of Scene Builder!</p></li>
+<em>If you don&#8217;t see the choices in On Action</em>: Because of a <a href="http://javafx-jira.kenai.com/browse/DTL-5402">bug</a> in Scene Builder you have to remove the controller from the root, hit enter, and add it again. I had to do this after every restart of Scene Builder! (<strong>fixed in Scene Builder 1.1 beta 17 and above!</strong>)</p></li>
 <li><p>Close Scene Builder and hit <strong>Refresh (F5)</strong> on your project&#8217;s root folder. This will make Eclipse aware of the changes you made in Scene Builder.</p></li>
 </ol>
 
@@ -2417,7 +2445,7 @@ Hint: It helps to look at the default CSS file to see which styles you might nee
 
 <p>Now, open the <code>PersonOverview.fxml</code> file in <em>SceneBuilder</em>. Select the <em>Delete</em> button, open the <em>Code</em> view and choose <code>#handleDeletePerson</code> in the dropdown of <strong>On Action</strong>.</p>
 
-<p><em>Scene Builder Problem</em>: In my version of Scene Builder (1.1 beta_11) the methods did not appear. I had to go to the root AnchorPane (in Hierarchy view), delete the controller class, hit enter and add the controller class again. Now, the methods appear in the dropdown. Hope <a href="http://javafx-jira.kenai.com/browse/DTL-5402">this bug</a> will be corrected soon.</p>
+<p><em>Scene Builder Problem</em> (<strong>fixed in Scene Builder 1.1 beta 17 and above!</strong>): In my version of Scene Builder (1.1 beta_11) the methods did not appear. I had to go to the root AnchorPane (in Hierarchy view), delete the controller class, hit enter and add the controller class again. Now, the methods appear in the dropdown. Hope <a href="http://javafx-jira.kenai.com/browse/DTL-5402">this bug</a> will be corrected soon.</p>
 
 <p><img src="http://edu.makery.ch/images/javafx-addressapp/part-3/addressapp02.png"></p>
 
@@ -3719,26 +3747,6 @@ Specify the Name of the project (i.e. AddressApp).</p>
 <p>Ich werde in diesem Blog Einträge schreiben über Tools und Materialen, von denen ich denke, dass sie für das Unterrichten/Lernen von Informatik hilfreich sind. Vielleicht werde ich auch später noch über andere Themen aus dem Bereich Education schreiben.</p>
 
 <p>Viele Einträge v.a. zum Thema Programmieren werden auf Englisch sein. Evtl. werde ich auch mal Einträge auf Deutsch übersetzen oder nur auf Deutsch schreiben. Je nach dem was Sinn macht.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Why I Love Programming]]></title>
-    <link href="http://edu.makery.ch/blog/2012/10/01/why-i-love-programming/"/>
-    <updated>2012-10-01T22:00:00+02:00</updated>
-    <id>http://edu.makery.ch/blog/2012/10/01/why-i-love-programming</id>
-    <content type="html"><![CDATA[<p>→ <a href="http://edu.makery.ch/blog/2012/10/01/warum-ich-gerne-programmiere/">German Post</a></p>
-
-<p>I really love to program because I can be creative and make new things out of nothing. All I need is a computer and I can start creating programs and easily share my work with other people. There are not a lot of professions in our world today that allow this kind of creativity.</p>
-
-<blockquote><p>My feeling is that when we prepare a program, it can be like composing poetry or music</p><footer><strong>Donald Knuth</strong> <cite><a href='http://www.paulgraham.com/knuth.html'>Computer Programming as an Art</a></cite></footer></blockquote>
-
-
-<p>I believe there are many more people who would enjoy this kind of work than are actually doing it. This might be because it seems quite hard to get started with. That&#8217;s why I think a lot about how to make it as smooth as possible for a beginner to get started and have fun with programming. And yes, it&#8217;s ok if you&#8217;ll still don&#8217;t like it, but let&#8217;s get some obstacles out of the way and try.</p>
-
-<h2>About This Blog</h2>
-
-<p>In this blog I will write about some tools and resources that I think are helpful for teaching/learning computer science. Maybe I will decide to write about some other educational toppics as well - we&#8217;ll see.</p>
 ]]></content>
   </entry>
   

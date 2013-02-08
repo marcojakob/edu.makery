@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Learn JavaFX - edu.makery.ch</title>
+  <title>JavaFX Scene Builder and e(fx)clipse Updates - edu.makery.ch</title>
   <meta name="author" content="Marco Jakob">
 
   
-  <meta name="description" content="Learn JavaFX What is JavaFX? JavaFX provides Java developers with a very nice graphics platform. In October 2011, JavaFX 2.0 was released. It&#8217; &hellip;">
+  <meta name="description" content="I&#8217;m excited about the quick reaction to bug reports by the JavaFX developers at Oracle! I&#8217;ve reported an (annoying) Scene Builder bug at &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://edu.makery.ch/learn-javafx/">
+  <link rel="canonical" href="http://edu.makery.ch/blog/2013/02/08/javafx-scene-builder-and-efxclipse-updates/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -74,57 +74,88 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Learn JavaFX</h1>
+    
+      <h1 class="entry-title">JavaFX Scene Builder and E(fx)clipse Updates</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-08T21:00:00+01:00" pubdate data-updated="true">Feb 8<span>th</span>, 2013</time>
+        
+      </p>
     
   </header>
-  
-  <h3>What is JavaFX?</h3>
 
-<p><img class="right" src="/images/learn-javafx/javafx-logo.png" title="'JavaFX Logo'" ></p>
 
-<p>JavaFX provides Java developers with a very nice graphics platform. In October 2011, JavaFX 2.0 was released. It&#8217;s intended to be the choice for new graphical user interfaces (GUI) rather than the older Java Swing.</p>
+<div class="entry-content"><p>I&#8217;m excited about the quick reaction to bug reports by the JavaFX developers at Oracle! I&#8217;ve reported an (annoying) Scene Builder <a href="http://javafx-jira.kenai.com/browse/DTL-5402">bug</a> at the end of November and it was already fixed in a new Scene Builder version in January.</p>
 
-<p>When I started teaching JavaFX in 2012 it was still very early. There were no books covering JavaFX that I found suitable for students new to programming. So I started to write a very detailed tutorial series on JavaFX. The tutorial walks you through designing, programming and deploying an address application.</p>
+<h2>Scene Builder Update</h2>
 
-<p>For a first contact with JavaFX take a look at the <a href="/blog/2012/10/30/javafx-2-dialogs/">JavaFX 2 Dialogs</a>.</p>
-
-<h2>AddressApp Tutorial</h2>
+<p>The Scene Builder bug forced us to delete and then reselect the controller class every time we reopened a <code>fxml</code> file in Scene Builder. This is fixed in <code>Scene Builder 1.1 beta 17</code> and above. So <strong>I recommend you update to the newest version</strong>:</p>
 
 <ul>
-<li><a href="/blog/2012/11/16/javafx-tutorial-addressapp-1">Part I - Scene Builder</a></li>
-<li><a href="/blog/2012/11/17/javafx-tutorial-addressapp-2">Part II - Model and TableView</a></li>
-<li><a href="/blog/2012/11/20/javafx-tutorial-addressapp-3">Part III - Interacting with the User</a></li>
-<li><a href="/blog/2012/11/26/javafx-tutorial-addressapp-4">Part IV - CSS Styling</a></li>
-<li><a href="/blog/2012/11/27/javafx-tutorial-addressapp-5">Part V - Storing Data as XML</a></li>
-<li><a href="/blog/2012/12/04/javafx-tutorial-addressapp-6">Part VI - Statistics Chart</a></li>
-<li><a href="/blog/2012/12/18/javafx-tutorial-addressapp-7">Part VII - Deployment with e(fx)clipse</a></li>
+<li>Go to <a href="http://www.oracle.com/technetwork/java/javafx/tools/index.html">JavaFX Scene Builder Page</a> and download the newest <strong>JavaFX Scene Builder 1.1 Early Access</strong> edition.</li>
 </ul>
 
 
-<h2>JavaFX Blog Posts</h2>
+<p>I&#8217;ve updated the AddressApp Tutorial <a href="/blog/2012/11/20/javafx-tutorial-addressapp-3/">Part III</a>, <a href="/blog/2012/11/27/javafx-tutorial-addressapp-5">Part V</a> and <a href="/blog/2012/12/04/javafx-tutorial-addressapp-6">Part VI</a> where I mentioned the bug.</p>
 
-<ul>
-<li><a href="/blog/2012/10/30/javafx-2-dialogs">JavaFX 2 Dialogs</a> - Creating simple popup dialogs</li>
-<li><a href="/blog/2012/12/18/javafx-tableview-filter">JavaFX TableView Filter</a> - Filtering a TableView</li>
-<li><a href="/blog/2012/12/19/javafx-tableview-cell-renderer">JavaFX TableView Cell Renderer</a> - A custom cell renderer for TableView</li>
-<li><a href="/blog/2012/12/19/javafx-event-handlers-and-change-listeners">JavaFX Event Handlers and Change Listeners</a> - How to handle user events on common JavaFX 2 controls</li>
-<li><a href="/blog/2013/01/04/javafx-snapshot-as-png-image">JavaFX Snapshot as PNG Image</a> - Make a Screenshot of a JavaFX GUI</li>
-<li><a href="/blog/2013/01/07/javafx-date-picker/">JavaFX Date Picker</a> - JavaFX Calendar control by Christian Schudt</li>
-</ul>
+<h2>e(fx)clipse Update</h2>
+
+<p>The (very helpful) JavaFX plugin for Eclipse has been updated to <a href="http://tomsondev.bestsolution.at/2013/01/06/efxclipse-0-8-0-released/">version 0.8.0</a>.</p>
+
+<p>As Tom Schindl, the author of e(fx)clipse, mentioned in a <a href="/blog/2012/12/18/javafx-tutorial-addressapp-7#comment-742775781">comment</a> to <a href="/blog/2012/12/18/javafx-tutorial-addressapp-7">AddressApp Tutorial Part VII</a>, we might not need to explicitly start Eclipse with a JDK to do the deployment (Step 1 in the tutorial).</p>
+</div>
 
 
-<p>To see all blog posts related to JavaFX see the <a href="/blog/archives/javafx">JavaFX Archive</a>.</p>
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Marco Jakob</span></span>
+
+      
+
+
+
+
+
+
+
 
   
-    <footer>
+
+
+<time datetime="2013-02-08T21:00:00+01:00" pubdate data-updated="true">Feb 8<span>th</span>, 2013</time>
       
-      
-        <div class="sharing">
+
+<span class="categories">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://edu.makery.ch/learn-javafx/index.html" data-via="marcojkob" data-counturl="http://edu.makery.ch/learn-javafx/index.html" >Tweet</a>
+    <a class='category' href='/blog/categories/english/'>English</a>, <a class='category' href='/blog/categories/javafx/'>JavaFX</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://edu.makery.ch/blog/2013/02/08/javafx-scene-builder-and-efxclipse-updates/" data-via="marcojkob" data-counturl="http://edu.makery.ch/blog/2013/02/08/javafx-scene-builder-and-efxclipse-updates/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -132,9 +163,14 @@
   
 </div>
 
+    
+    <p class="meta">
       
-    </footer>
-  
+        <a class="basic-alignment left" href="/blog/2013/01/07/javafx-date-picker/" title="Previous Post: JavaFX Date Picker">&laquo; JavaFX Date Picker</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
   <section>
@@ -216,8 +252,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://edu.makery.ch/learn-javafx/index.html';
-        var disqus_url = 'http://edu.makery.ch/learn-javafx/index.html';
+        var disqus_identifier = 'http://edu.makery.ch/blog/2013/02/08/javafx-scene-builder-and-efxclipse-updates/';
+        var disqus_url = 'http://edu.makery.ch/blog/2013/02/08/javafx-scene-builder-and-efxclipse-updates/';
         var disqus_script = 'embed.js';
       
     (function () {

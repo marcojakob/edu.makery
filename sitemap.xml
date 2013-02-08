@@ -34,7 +34,7 @@
     </url>
     <url>
         <loc>http://edu.makery.ch/blog/2012/11/20/javafx-tutorial-addressapp-3/</loc>
-        <lastmod>2013-01-23T20:58:56+01:00</lastmod>
+        <lastmod>2013-02-08T19:37:29+01:00</lastmod>
     </url>
     <url>
         <loc>http://edu.makery.ch/blog/2012/11/26/javafx-tutorial-addressapp-4/</loc>
@@ -42,11 +42,11 @@
     </url>
     <url>
         <loc>http://edu.makery.ch/blog/2012/11/27/javafx-tutorial-addressapp-5/</loc>
-        <lastmod>2012-12-18T01:41:36+01:00</lastmod>
+        <lastmod>2013-02-08T19:43:13+01:00</lastmod>
     </url>
     <url>
         <loc>http://edu.makery.ch/blog/2012/12/04/javafx-tutorial-addressapp-6/</loc>
-        <lastmod>2012-12-18T01:40:53+01:00</lastmod>
+        <lastmod>2013-02-08T19:57:49+01:00</lastmod>
     </url>
     <url>
         <loc>http://edu.makery.ch/blog/2012/12/13/helpful-java-libraries/</loc>
@@ -54,7 +54,7 @@
     </url>
     <url>
         <loc>http://edu.makery.ch/blog/2012/12/18/javafx-tutorial-addressapp-7/</loc>
-        <lastmod>2012-12-18T03:20:54+01:00</lastmod>
+        <lastmod>2013-02-08T20:18:31+01:00</lastmod>
     </url>
     <url>
         <loc>http://edu.makery.ch/blog/2012/12/18/new-java-and-javafx-learn-pages/</loc>
@@ -83,32 +83,38 @@
         <lastmod>2013-01-07T15:30:40+01:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://edu.makery.ch/blog/2013/02/08/javafx-scene-builder-and-efxclipse-updates/
+        </loc>
+        <lastmod>2013-02-08T20:25:29+01:00</lastmod>
+    </url>
+    <url>
         <loc>http://edu.makery.ch/about/</loc>
         <lastmod>2012-10-03T04:39:44+02:00</lastmod>
     </url>
     <url>
         <loc>http://edu.makery.ch/blog/archives/</loc>
-        <lastmod>2013-01-23T20:58:56+01:00</lastmod>
+        <lastmod>2013-02-08T20:25:29+01:00</lastmod>
     </url>
     <url>
         <loc>http://edu.makery.ch/blog/categories/deutsch/</loc>
-        <lastmod>2013-01-23T20:58:56+01:00</lastmod>
+        <lastmod>2013-02-08T20:25:29+01:00</lastmod>
     </url>
     <url>
         <loc>http://edu.makery.ch/blog/categories/english/</loc>
-        <lastmod>2013-01-23T20:58:56+01:00</lastmod>
+        <lastmod>2013-02-08T20:25:29+01:00</lastmod>
     </url>
     <url>
         <loc>http://edu.makery.ch/blog/categories/java/</loc>
-        <lastmod>2013-01-23T20:58:56+01:00</lastmod>
+        <lastmod>2013-02-08T20:25:29+01:00</lastmod>
     </url>
     <url>
         <loc>http://edu.makery.ch/blog/categories/javafx/</loc>
-        <lastmod>2013-01-23T20:58:56+01:00</lastmod>
+        <lastmod>2013-02-08T20:25:29+01:00</lastmod>
     </url>
     <url>
         <loc>http://edu.makery.ch/</loc>
-        <lastmod>2013-01-23T20:58:56+01:00</lastmod>
+        <lastmod>2013-02-08T20:25:29+01:00</lastmod>
     </url>
     <url>
         <loc>http://edu.makery.ch/learn-java/</loc>
@@ -116,6 +122,6 @@
     </url>
     <url>
         <loc>http://edu.makery.ch/learn-javafx/</loc>
-        <lastmod>2013-01-11T18:59:32+01:00</lastmod>
+        <lastmod>2013-02-08T18:16:24+01:00</lastmod>
     </url>
 </urlset>
