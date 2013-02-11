@@ -4,7 +4,7 @@
   <title><![CDATA[edu.makery.ch]]></title>
   <link href="http://edu.makery.ch/atom.xml" rel="self"/>
   <link href="http://edu.makery.ch/"/>
-  <updated>2013-02-08T20:28:26+01:00</updated>
+  <updated>2013-02-11T14:54:59+01:00</updated>
   <id>http://edu.makery.ch/</id>
   <author>
     <name><![CDATA[Marco Jakob]]></name>
@@ -12,6 +12,23 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[JavaFX Deployment on Mac OS]]></title>
+    <link href="http://edu.makery.ch/blog/2013/02/11/javafx-deployment-on-mac-os/"/>
+    <updated>2013-02-11T15:00:00+01:00</updated>
+    <id>http://edu.makery.ch/blog/2013/02/11/javafx-deployment-on-mac-os</id>
+    <content type="html"><![CDATA[<p><img src="http://edu.makery.ch/images/javafx-addressapp/part-7/addressapp07.png"></p>
+
+<p>Eskil, one of my students, provided me with information about how to deploy the JavaFX AddressApp on Mac OS.</p>
+
+<p>I&#8217;ve updated the <a href="http://edu.makery.ch/blog/2012/12/18/javafx-tutorial-addressapp-7/">AddressApp Tutorial Part VII</a> with instructions about JavaFX deployment for Mac.</p>
+
+<p>To see how the end result will look like you can download it as a Mac OS dmg drag-and-drop installer: <a href="https://www.dropbox.com/s/cfpr4bh25u8qsmz/AddressApp.dmg">AddressApp.dmg</a></p>
+
+<p>Thank you Eskil for providing this!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[JavaFX Scene Builder and e(fx)clipse Updates]]></title>
@@ -897,15 +914,17 @@
     <link href="http://edu.makery.ch/blog/2012/12/18/javafx-tutorial-addressapp-7/"/>
     <updated>2012-12-18T01:00:00+01:00</updated>
     <id>http://edu.makery.ch/blog/2012/12/18/javafx-tutorial-addressapp-7</id>
-    <content type="html"><![CDATA[<p><img src="http://edu.makery.ch/images/javafx-addressapp/part-7/addressapp01.png"></p>
+    <content type="html"><![CDATA[<p><strong>Updated Feb 11th, 2013</strong>: New instructions for Deployment on Mac OS. Thank you Eskil for providing me with this information!</p>
+
+<p><img src="http://edu.makery.ch/images/javafx-addressapp/part-7/addressapp01.png"></p>
 
 <p>I thought I&#8217;d write one last part of this tutorial series to show how to deploy (i.e. package and publish) the AddressApp.</p>
 
 <p>Download example AddressApp as</p>
 
 <ul>
-<li>Windows <a href="https://www.dropbox.com/s/jk5ilt3p47c674z/AddressApp-0.7.exe">exe installer</a>.</li>
-<li>MacOS dmg drag-and-drop installer <em>(coming soon, if someone with MacOS sends me their file ;-)</em></li>
+<li>Windows exe installer: <a href="https://www.dropbox.com/s/jk5ilt3p47c674z/AddressApp-0.7.exe">AddressApp-0.7.exe</a>.</li>
+<li>MacOS dmg drag-and-drop installer: <a href="https://www.dropbox.com/s/cfpr4bh25u8qsmz/AddressApp.dmg">AddressApp.dmg</a> - Thank you Eskil for providing this!</li>
 </ul>
 
 
@@ -972,7 +991,7 @@
 
 <ol>
 <li>Close Eclipse.</li>
-<li>Find the folder of your Eclipse installation and open the file <code>eclipse.ini</code> in a text editor. This file contains Eclipse startup settings.</li>
+<li>Find the folder of your Eclipse installation and open the file <code>eclipse.ini</code> in a text editor. This file contains Eclipse startup settings. On Mac OS X, eclipse.ini can be found by right-clicking Eclipse.app and selecting &#8220;Show package contents&#8221;. The file is located under Contents/MacOS.</li>
 <li>After the line <code>openFile</code> add <code>-vm</code> and then specify your <strong>jdk installation directory</strong>. The end of the file should now look like this:</li>
 </ol>
 
@@ -985,6 +1004,8 @@
 </span><span class='line'>-Xmx512m
 </span></code></pre></td></tr></table></div></figure>
 
+
+<p><strong>Mac OS</strong>: For Mac OS, path can be something like /Library/Java/JavaVirtualMachines/jdk1.7.0_07.jdk/Contents/Home/bin/java (In my version the javaw.exe does not exist but I specified &#8220;java&#8221; instead which seemed no problem)</p>
 
 <h3>Step 2 - Installer Icons</h3>
 
@@ -1000,11 +1021,11 @@
 
 <h3>Step 3 - Edit build.fxbuild</h3>
 
-<p>The file <code>build.fxbuild</code> is used by e(fx)clipse to generate a file that will be used by the Ant build tool.</p>
+<p>The file <code>build.fxbuild</code> is used by e(fx)clipse to generate a file that will be used by the Ant build tool. If you don&#8217;t have a <code>build.fxbuild</code> file, create a new <em>Java FX Project</em> in Eclipse and copy the generated file.</p>
 
 <ol>
 <li>Open <code>build.fxbuild</code> from your project root.</li>
-<li><p>Fill out all the fields containing a star. <br/>
+<li><p>Fill out all the fields containing a star. For Mac OS: Do not use spaces in Application title as this seems to cause a problem.  <br/>
 <img src="http://edu.makery.ch/images/javafx-addressapp/part-7/addressapp04.png"></p></li>
 <li><p>Switch to the <strong>Deploy</strong> tab at the bottom.</p></li>
 <li><p>Select the <em>Native Package</em> check box. <br/>
@@ -1070,24 +1091,27 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>Step 5 - Download an Installer Tool (depends on your platform)</h3>
+<h3>Step 5 (WINDOWS) - Windows exe Installer</h3>
 
-<p>For Windows <code>exe</code> installer:</p>
+<p><img src="http://edu.makery.ch/images/javafx-addressapp/part-7/addressapp06.png"></p>
 
-<ul>
+<p>With <strong>Inno Setup</strong> we can create a Windows Installer of our application as a single <code>.exe</code> file. The resulting <code>.exe</code> will perform a user level installation (no admin permissions required). A shortcut will be created (menu or desktop)</p>
+
+<ol>
 <li>Download <a href="http://www.jrsoftware.org/isdl.php">Inno Setup 5 or later</a>. Install Inno Setup on your computer. Our Ant script will use it to automatically generate the installer.</li>
-<li>The resulting <code>.exe</code> will perform a user level installation (no admin permissions required)</li>
-<li>A shortcut will be created (menu or desktop)</li>
-</ul>
+<li>Add the path to Inno Setup (e.g. <code>C:\Program Files (x86)\Inno Setup 5</code>) to the <code>PATH</code> variable in your windows environment variables.</li>
+</ol>
 
 
-<p>For Mac OS <code>dmg</code> installer:</p>
+<h3>Step 5 (MAC) - MacOS dmg Installer</h3>
 
-<ul>
-<li>Only Mac OS X is required.</li>
-<li>Will create a <code>dmg</code> drag and drop installer.</li>
-</ul>
+<p><img src="http://edu.makery.ch/images/javafx-addressapp/part-7/addressapp07.png"></p>
 
+<p>To create a Mac OS <code>dmg</code> drag-and-drop installer, no additional tool is required.</p>
+
+<p>Note: For the installer image to work it must have exactly the same name as the application.</p>
+
+<h3>Step 5 (LINUX etc.) - Linux rpm Installer</h3>
 
 <p>For other packaging options (<code>msi</code> for windows, <code>rpm</code> for Linux) see this native packaging <a href="https://blogs.oracle.com/talkingjavadeployment/entry/native_packaging_for_javafx">blog post</a> or this <a href="http://docs.oracle.com/javafx/2/deployment/self-contained-packaging.htm#A1324980">oracle documentation</a>.</p>
 
@@ -1095,7 +1119,7 @@
 
 <p>As a final step, we run the <code>build.xml</code> with Ant: <em>Right-click</em> on the <code>build.xml</code> file | <em>Run As</em> | <em>Ant Build</em>.</p>
 
-<p><img src="http://edu.makery.ch/images/javafx-addressapp/part-7/addressapp06.png"></p>
+<p><img src="http://edu.makery.ch/images/javafx-addressapp/part-7/addressapp08.png"></p>
 
 <p>The building <strong>will take a while</strong>, about 1 minute on my computer.</p>
 
@@ -3728,28 +3752,6 @@ Specify the Name of the project (i.e. AddressApp).</p>
 <p>Sometimes, especially if time is too short, it might be good to directly start with a professional development environment like Eclipse or NetBeans. Since it was not possible to integrate Greenfoot into Eclipse/NetBeans, I had to find another solution. Altough, we could start JavaKara from Eclipse/NetBeans, there are just some things that are not possible (like programming an interactive Kara game). The solution was to port the code to work with a library called <a href="http://gamegrid.ch">JGameGrid</a>.</p>
 
 <p>GameGridKara enables us to use Kara in any IDE of our choice by simply adding two jar files to a project. The link to GameGridKara with the adjusted beginners course in German and English can be found on the <a href="http://edu.makery.ch/learn-java">Learn Java</a> page.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Warum ich gerne Programmiere]]></title>
-    <link href="http://edu.makery.ch/blog/2012/10/01/warum-ich-gerne-programmiere/"/>
-    <updated>2012-10-01T22:10:00+02:00</updated>
-    <id>http://edu.makery.ch/blog/2012/10/01/warum-ich-gerne-programmiere</id>
-    <content type="html"><![CDATA[<p>→ <a href="http://edu.makery.ch/blog/2012/10/01/why-i-love-programming/">English Post</a></p>
-
-<p>Ich liebe es zu programmieren, weil ich dabei kreativ sein kann und Sachen aus dem Nichts erschaffen kann. Das einzige, was ich dazu brauche, ist ein Computer. Dann kann ich beginnen, Programme zu schreiben und diese nachher einfach mit anderen Leuten teilen. Es gibt in unserer heutigen Welt nicht mehr viele Berufe, wo man diese Art Kreativität ausleben kann.</p>
-
-<blockquote><p>Programmieren kann sein wie das Verfassen eines Gedichtes oder das Komponieren eines Musikstückes</p><footer><strong>Donald Knuth (eig. Übers.)</strong> <cite><a href='http://www.paulgraham.com/knuth.html'>Computer Programming as an Art</a></cite></footer></blockquote>
-
-
-<p>Ich glaube, dass es mehr Leute geben würde, welchen diese Art von Arbeit Spass machen würde, als es tatsächlich tun. Dies mag sein, weil es ziemlich schwierig scheint, mit Programmieren zu starten. Deshalb denke ich oft darüber nach, wie man den Einstig für Programmieranfänger vereinfachen und spannender gestalten kann. Und ja, es ist natürlich immer noch ok, wenn Sie es auch dann nicht lustig finden, aber lasst uns wenigstens ein paar Hindernisse aus dem Weg räumen und es probieren.</p>
-
-<h2>Über diesen Blog</h2>
-
-<p>Ich werde in diesem Blog Einträge schreiben über Tools und Materialen, von denen ich denke, dass sie für das Unterrichten/Lernen von Informatik hilfreich sind. Vielleicht werde ich auch später noch über andere Themen aus dem Bereich Education schreiben.</p>
-
-<p>Viele Einträge v.a. zum Thema Programmieren werden auf Englisch sein. Evtl. werde ich auch mal Einträge auf Deutsch übersetzen oder nur auf Deutsch schreiben. Je nach dem was Sinn macht.</p>
 ]]></content>
   </entry>
   
