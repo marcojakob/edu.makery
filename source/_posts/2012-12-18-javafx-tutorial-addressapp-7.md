@@ -2,11 +2,13 @@
 layout: post
 title: "JavaFX 2 Tutorial Part VII - Deployment with e(fx)clipse"
 date: 2012-12-18 01:00
-updated: 2013-02-08
+updated: 2013-02-11
 comments: true
 categories: [English, JavaFX]
 published: true
 ---
+
+**Updated Feb 11th, 2013**: New instructions for Deployment on Mac OS. Thank you Eskil for providing me with this information!
 
 {% img /images/javafx-addressapp/part-7/addressapp01.png %}
 
@@ -14,8 +16,8 @@ I thought I'd write one last part of this tutorial series to show how to deploy 
 
 Download example AddressApp as 
 
-* Windows [exe installer](https://www.dropbox.com/s/jk5ilt3p47c674z/AddressApp-0.7.exe).
-* MacOS dmg drag-and-drop installer *(coming soon, if someone with MacOS sends me their file ;-)*
+* Windows exe installer: [AddressApp-0.7.exe](https://www.dropbox.com/s/jk5ilt3p47c674z/AddressApp-0.7.exe).
+* MacOS dmg drag-and-drop installer: [AddressApp.dmg](https://www.dropbox.com/s/cfpr4bh25u8qsmz/AddressApp.dmg) - Thank you Eskil for providing this!
 
 
 ## Topics in Part VII ##
@@ -69,7 +71,7 @@ The e(fx)clipse plugin will help us generate the native package and installer.
 JavaFX uses a tool called [Ant](http://ant.apache.org/) to build and package the application. This tool is already included in Eclipse. As Ant depends on the JDK we need to make shure Eclipse itself runs with the JDK (not the JRE).
 
 1. Close Eclipse.
-2. Find the folder of your Eclipse installation and open the file `eclipse.ini` in a text editor. This file contains Eclipse startup settings.
+2. Find the folder of your Eclipse installation and open the file `eclipse.ini` in a text editor. This file contains Eclipse startup settings. On Mac OS X, eclipse.ini can be found by right-clicking Eclipse.app and selecting "Show package contents". The file is located under Contents/MacOS.
 3. After the line `openFile` add `-vm` and then specify your **jdk installation directory**. The end of the file should now look like this:
 ```text eclipse.ini
 openFile
@@ -79,6 +81,8 @@ C:\Program Files\Java\jdk1.7.0_09\bin\javaw.exe
 -Xms40m
 -Xmx512m
 ```
+
+**Mac OS**: For Mac OS, path can be something like /Library/Java/JavaVirtualMachines/jdk1.7.0_07.jdk/Contents/Home/bin/java (In my version the javaw.exe does not exist but I specified "java" instead which seemed no problem)
 
 
 ### Step 2 - Installer Icons ###
@@ -91,10 +95,10 @@ We would like to have some nice icons for our installer:
 
 
 ### Step 3 - Edit build.fxbuild ###
-The file `build.fxbuild` is used by e(fx)clipse to generate a file that will be used by the Ant build tool.
+The file `build.fxbuild` is used by e(fx)clipse to generate a file that will be used by the Ant build tool. If you don't have a `build.fxbuild` file, create a new *Java FX Project* in Eclipse and copy the generated file.
 
 1. Open `build.fxbuild` from your project root.
-2. Fill out all the fields containing a star.   
+2. Fill out all the fields containing a star. For Mac OS: Do not use spaces in Application title as this seems to cause a problem.    
 {% img /images/javafx-addressapp/part-7/addressapp04.png %}
 
 3. Switch to the **Deploy** tab at the bottom.
@@ -161,26 +165,31 @@ Find the following block further down in the file:
 ```
 
 
-### Step 5 - Download an Installer Tool (depends on your platform) ###
-For Windows `exe` installer:
+### Step 5 (WINDOWS) - Windows exe Installer ###
+{% img /images/javafx-addressapp/part-7/addressapp06.png %}
 
-* Download [Inno Setup 5 or later](http://www.jrsoftware.org/isdl.php). Install Inno Setup on your computer. Our Ant script will use it to automatically generate the installer.
-* The resulting `.exe` will perform a user level installation (no admin permissions required)
-* A shortcut will be created (menu or desktop)
+With **Inno Setup** we can create a Windows Installer of our application as a single `.exe` file. The resulting `.exe` will perform a user level installation (no admin permissions required). A shortcut will be created (menu or desktop)
 
-For Mac OS `dmg` installer:
+1. Download [Inno Setup 5 or later](http://www.jrsoftware.org/isdl.php). Install Inno Setup on your computer. Our Ant script will use it to automatically generate the installer.
+2. Add the path to Inno Setup (e.g. `C:\Program Files (x86)\Inno Setup 5`) to the `PATH` variable in your windows environment variables.
 
-* Only Mac OS X is required.
-* Will create a `dmg` drag and drop installer.
 
+### Step 5 (MAC) - MacOS dmg Installer ###
+{% img /images/javafx-addressapp/part-7/addressapp07.png %}
+
+To create a Mac OS `dmg` drag-and-drop installer, no additional tool is required.
+
+Note: For the installer image to work it must have exactly the same name as the application.
+
+
+### Step 5 (LINUX etc.) - Linux rpm Installer ###
 For other packaging options (`msi` for windows, `rpm` for Linux) see this native packaging [blog post](https://blogs.oracle.com/talkingjavadeployment/entry/native_packaging_for_javafx) or this [oracle documentation](http://docs.oracle.com/javafx/2/deployment/self-contained-packaging.htm#A1324980).
-
 
 
 ### Step 6 - Run build.xml ###
 As a final step, we run the `build.xml` with Ant: *Right-click* on the `build.xml` file | *Run As* | *Ant Build*.
 
-{% img /images/javafx-addressapp/part-7/addressapp06.png %}
+{% img /images/javafx-addressapp/part-7/addressapp08.png %}
 
 The building **will take a while**, about 1 minute on my computer.
 
