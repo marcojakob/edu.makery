@@ -4,7 +4,7 @@
   <title><![CDATA[edu.makery.ch]]></title>
   <link href="http://edu.makery.ch/atom.xml" rel="self"/>
   <link href="http://edu.makery.ch/"/>
-  <updated>2013-02-11T14:54:59+01:00</updated>
+  <updated>2013-02-12T11:06:45+01:00</updated>
   <id>http://edu.makery.ch/</id>
   <author>
     <name><![CDATA[Marco Jakob]]></name>
@@ -1099,7 +1099,7 @@
 
 <ol>
 <li>Download <a href="http://www.jrsoftware.org/isdl.php">Inno Setup 5 or later</a>. Install Inno Setup on your computer. Our Ant script will use it to automatically generate the installer.</li>
-<li>Add the path to Inno Setup (e.g. <code>C:\Program Files (x86)\Inno Setup 5</code>) to the <code>PATH</code> variable in your windows environment variables.</li>
+<li>Tell Windows about the installation path to Inno Setup (e.g. <code>C:\Program Files (x86)\Inno Setup 5</code>): Add it to the <code>Path</code> variable in your windows environment variables. If you don&#8217;t know where to find it, read <a href="http://www.computerhope.com/issues/ch000549.htm">How to set the path and environment variables in Windows</a>.</li>
 </ol>
 
 
