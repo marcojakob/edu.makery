@@ -171,7 +171,7 @@ Find the following block further down in the file:
 With **Inno Setup** we can create a Windows Installer of our application as a single `.exe` file. The resulting `.exe` will perform a user level installation (no admin permissions required). A shortcut will be created (menu or desktop)
 
 1. Download [Inno Setup 5 or later](http://www.jrsoftware.org/isdl.php). Install Inno Setup on your computer. Our Ant script will use it to automatically generate the installer.
-2. Add the path to Inno Setup (e.g. `C:\Program Files (x86)\Inno Setup 5`) to the `PATH` variable in your windows environment variables.
+2. Tell Windows about the installation path to Inno Setup (e.g. `C:\Program Files (x86)\Inno Setup 5`): Add it to the `Path` variable in your windows environment variables. If you don't know where to find it, read [How to set the path and environment variables in Windows](http://www.computerhope.com/issues/ch000549.htm).
 
 
 ### Step 5 (MAC) - MacOS dmg Installer ###
