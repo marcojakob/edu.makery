@@ -29,7 +29,7 @@ The goal of this tutorial is to learn how to create graphical user interfaces wi
 * [Part VII - Deployment with e(fx)clipse](/blog/2012/12/18/javafx-tutorial-addressapp-7)
 
 ### Prerequisites ###
-* [Java JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html) update 7 or greater (includes JavaFX 2.x)
+* Latest [Java JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html) that includes **JavaFX 2.2** or greater.
 * Eclipse 4.2 or greater with e(fx)clipse plugin. The easiest way is to download the preconfigured distro from the [e(fx)clipse website](http://efxclipse.org/install.html).
 * [Scene Builder 1.1](http://www.oracle.com/technetwork/java/javafx/overview/index.html) or greater
 
