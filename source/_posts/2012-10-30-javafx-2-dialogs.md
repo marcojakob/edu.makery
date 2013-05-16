@@ -2,7 +2,7 @@
 layout: post
 title: "JavaFX 2 Dialogs"
 date: 2012-10-30 00:45
-updated: 2012-12-18 01:00
+updated: 2013-05-16
 comments: true
 categories: [English, JavaFX]
 ---
@@ -85,6 +85,51 @@ choices.add("c");
 String input = Dialogs.showInputDialog(stage, "Choose your color:", 
     "Input Dialog With Choices", "title", "b", choices);
 ```
+
+
+---
+**UPDATE (Version 0.0.3)**
+
+### Custom Dialog ###
+Since JavaFX dialogs version 0.0.3 there is support for custom dialogs (thanks to Guldner for providing the [patch](https://github.com/marcojakob/javafx-ui-sandbox/pull/7)).
+
+Here is an example of how to use custom dialogs to create a login form:
+
+{% img /images/javafx-dialogs/javafx-custom-dialog.png JavaFX Custom Dialog %}
+
+```java
+GridPane grid = new GridPane();
+grid.setHgap(10);
+grid.setVgap(10);
+grid.setPadding(new Insets(0, 10, 0, 10));
+final TextField username = new TextField(); 
+username.setPromptText("Username");
+final PasswordField password = new PasswordField(); 
+password.setPromptText("Password");
+
+grid.add(new Label("Username:"), 0, 0);
+grid.add(username, 1, 0);
+grid.add(new Label("Password:"), 0, 1);
+grid.add(password, 1, 1);
+
+String usernameResult;
+String passwordResult;
+
+Callback<Void, Void> myCallback = new Callback<Void, Void>() {
+  @Override
+  public Void call(Void param) {
+    usernameResult = username.getText();
+    passwordResult = password.getText();
+    return null;
+  }
+};
+
+DialogResponse resp = Dialogs.showCustomDialog(stage, grid, "Please log in", "Login", DialogOptions.OK_CANCEL, myCallback);
+System.out.println("Custom Dialog: User clicked: " + resp);
+//You must check the resp, since input fields' texts are returned regardless of what button was pressed. (ie. If user clicked 'Cancel' disregard the input) 
+System.out.println("Custom Dialog: Fields set from custom dialog: " + usernameResult + "/" + passwordResult);
+```
+
 
 ## Bugs / Questions ##
 If you have questions or found a bug please leave a comment below or report an [issue on GitHub](https://github.com/marcojakob/javafx-ui-sandbox).
