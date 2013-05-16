@@ -211,6 +211,81 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<hr />
+
+<p><strong>UPDATE (Version 0.0.3)</strong></p>
+
+<h3>Custom Dialog</h3>
+
+<p>Since JavaFX dialogs version 0.0.3 there is support for custom dialogs (thanks to Guldner for providing the <a href="https://github.com/marcojakob/javafx-ui-sandbox/pull/7">patch</a>).</p>
+
+<p>Here is an example of how to use custom dialogs to create a login form:</p>
+
+<p><img src="/images/javafx-dialogs/javafx-custom-dialog.png" title="JavaFX Custom Dialog" ></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">GridPane</span> <span class="n">grid</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GridPane</span><span class="o">();</span>
+</span><span class='line'><span class="n">grid</span><span class="o">.</span><span class="na">setHgap</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+</span><span class='line'><span class="n">grid</span><span class="o">.</span><span class="na">setVgap</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+</span><span class='line'><span class="n">grid</span><span class="o">.</span><span class="na">setPadding</span><span class="o">(</span><span class="k">new</span> <span class="n">Insets</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">10</span><span class="o">));</span>
+</span><span class='line'><span class="kd">final</span> <span class="n">TextField</span> <span class="n">username</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TextField</span><span class="o">();</span>
+</span><span class='line'><span class="n">username</span><span class="o">.</span><span class="na">setPromptText</span><span class="o">(</span><span class="s">&quot;Username&quot;</span><span class="o">);</span>
+</span><span class='line'><span class="kd">final</span> <span class="n">PasswordField</span> <span class="n">password</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PasswordField</span><span class="o">();</span>
+</span><span class='line'><span class="n">password</span><span class="o">.</span><span class="na">setPromptText</span><span class="o">(</span><span class="s">&quot;Password&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">grid</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;Username:&quot;</span><span class="o">),</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+</span><span class='line'><span class="n">grid</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">username</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+</span><span class='line'><span class="n">grid</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;Password:&quot;</span><span class="o">),</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+</span><span class='line'><span class="n">grid</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">password</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">String</span> <span class="n">usernameResult</span><span class="o">;</span>
+</span><span class='line'><span class="n">String</span> <span class="n">passwordResult</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">Callback</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">,</span> <span class="n">Void</span><span class="o">&gt;</span> <span class="n">myCallback</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Callback</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">,</span> <span class="n">Void</span><span class="o">&gt;()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="n">Void</span> <span class="nf">call</span><span class="o">(</span><span class="n">Void</span> <span class="n">param</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">usernameResult</span> <span class="o">=</span> <span class="n">username</span><span class="o">.</span><span class="na">getText</span><span class="o">();</span>
+</span><span class='line'>    <span class="n">passwordResult</span> <span class="o">=</span> <span class="n">password</span><span class="o">.</span><span class="na">getText</span><span class="o">();</span>
+</span><span class='line'>    <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">DialogResponse</span> <span class="n">resp</span> <span class="o">=</span> <span class="n">Dialogs</span><span class="o">.</span><span class="na">showCustomDialog</span><span class="o">(</span><span class="n">stage</span><span class="o">,</span> <span class="n">grid</span><span class="o">,</span> <span class="s">&quot;Please log in&quot;</span><span class="o">,</span> <span class="s">&quot;Login&quot;</span><span class="o">,</span> <span class="n">DialogOptions</span><span class="o">.</span><span class="na">OK_CANCEL</span><span class="o">,</span> <span class="n">myCallback</span><span class="o">);</span>
+</span><span class='line'><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Custom Dialog: User clicked: &quot;</span> <span class="o">+</span> <span class="n">resp</span><span class="o">);</span>
+</span><span class='line'><span class="c1">//You must check the resp, since input fields&#39; texts are returned regardless of what button was pressed. (ie. If user clicked &#39;Cancel&#39; disregard the input) </span>
+</span><span class='line'><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Custom Dialog: Fields set from custom dialog: &quot;</span> <span class="o">+</span> <span class="n">usernameResult</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">passwordResult</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <h2>Bugs / Questions</h2>
 
 <p>If you have questions or found a bug please leave a comment below or report an <a href="https://github.com/marcojakob/javafx-ui-sandbox">issue on GitHub</a>.</p>
@@ -238,7 +313,7 @@
 
 
   
-<time datetime="2012-12-18T01:00:00+01:00" class="updated">Updated Dec 18<span>th</span>, 2012</time>
+<time datetime="2013-05-16T00:00:00+02:00" class="updated">Updated May 16<span>th</span>, 2013</time>
       
 
 <span class="categories">
