@@ -2,6 +2,7 @@
 layout: post
 title: "JavaFX Date Picker"
 date: 2013-01-07 15:00
+updated: 2013-05-16
 comments: true
 categories: [English, JavaFX]
 published: true
@@ -17,7 +18,8 @@ I modified [Christian Schudt's](http://myjavafx.blogspot.ch/2012/01/javafx-calen
 
 You can **download** a `jar` with my modified version and the stylesheet that goes with it:
 
-* [schudt-javafx-datepicker.jar](/downloads/javafx-date-picker/schudt-javafx-datepicker.jar)
+* [schudt-javafx-datepicker-0.0.2.jar](/downloads/javafx-date-picker/schudt-javafx-datepicker-0.0.2.jar)
+  * Version 0.0.2 contains a fix for the Japanese language (credits to mas0061)
 * [DatePicker.css](/downloads/javafx-date-picker/DatePicker.css)
 
 
@@ -26,7 +28,7 @@ I'll show how you can use the `DatePicker` by integrating it with our **AddressA
 
 
 ### Add the Library and CSS ###
-Download and add the `schudt-javafx-datepicker.jar` file from above to the `lib` folder. Add it to the classpath with *right-click | Build Path | Add to Build Path*.
+Download and add the `schudt-javafx-datepicker-x-x-x.jar` file from above to the `lib` folder. Add it to the classpath with *right-click | Build Path | Add to Build Path*.
 
 Add the `DatePicker.css` file to the `ch.makery.address.view` package.
 
