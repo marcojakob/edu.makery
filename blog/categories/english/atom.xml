@@ -4,7 +4,7 @@
   <title><![CDATA[edu.makery.ch | Category: English]]></title>
   <link href="http://edu.makery.ch/blog/categories/english/atom.xml" rel="self"/>
   <link href="http://edu.makery.ch/blog/categories/english/"/>
-  <updated>2013-05-16T21:30:55+02:00</updated>
+  <updated>2013-05-22T15:39:15+02:00</updated>
   <id>http://edu.makery.ch/blog/categories/english</id>
   <author>
     <name><![CDATA[Marco Jakob]]></name>
@@ -921,6 +921,8 @@
     <id>http://edu.makery.ch/blog/2012/12/18/javafx-tutorial-addressapp-7</id>
     <content type="html"><![CDATA[<p><strong>Updated Feb 11th, 2013</strong>: New instructions for Deployment on Mac OS. Thank you Eskil for providing me with this information!</p>
 
+<p><strong>Updated May 22nd, 2013</strong>: Updated step 3 and step 4 for e(fx)clipse plugin version 0.8.1.</p>
+
 <p><img src="http://edu.makery.ch/images/javafx-addressapp/part-7/addressapp01.png"></p>
 
 <p>I thought I&#8217;d write one last part of this tutorial series to show how to deploy (i.e. package and publish) the AddressApp.</p>
@@ -1030,19 +1032,19 @@
 
 <ol>
 <li>Open <code>build.fxbuild</code> from your project root.</li>
-<li><p>Fill out all the fields containing a star. For Mac OS: Do not use spaces in Application title as this seems to cause a problem.  <br/>
-<img src="http://edu.makery.ch/images/javafx-addressapp/part-7/addressapp04.png"></p></li>
-<li><p>Switch to the <strong>Deploy</strong> tab at the bottom.</p></li>
-<li><p>Select the <em>Native Package</em> check box. <br/>
-<img src="http://edu.makery.ch/images/javafx-addressapp/part-7/addressapp05.png"></p></li>
-<li><p>Go back to the <strong>Overview</strong> tab and click on the link <code>Generate ant build.xml only</code> (found on the right side).</p></li>
+<li><p>Fill out all the fields containing a star. For MacOS: Do not use spaces in Application title as this seems to cause a problem.  <br/>
+<img src="http://edu.makery.ch/images/javafx-addressapp/part-7/addressapp04b.png"></p></li>
+<li><p>As <strong>Packaging Format</strong> choose <code>exe</code> for Windows, <code>dmg</code> for MacOS, and <code>rpm</code> for Linux.</p></li>
+<li><p>Click on the link <code>Generate ant build.xml only</code> (found on the right side).</p></li>
 <li>Verify that a new <code>build</code> folder and a file <code>build.xml</code> is created.</li>
 </ol>
 
 
-<h3>Step 4 - Edit build.xml</h3>
+<h3>Step 4 - Edit build.xml to include icons</h3>
 
-<p>E(fx)clipse has generated a file <code>build/build.xml</code> which is ready to be executed by <strong>Ant</strong>. As e(fx)clipse (in the current version 0.1.1) can&#8217;t be told to include additional resources like our <code>resources</code> folder and the few installer icons we&#8217;ve added above, we have to manually edit the <code>build.xml</code>:</p>
+<p>E(fx)clipse has generated a file <code>build/build.xml</code> which is ready to be executed by <strong>Ant</strong>. Our installer icons and resource icons just won&#8217;t work. If you don&#8217;t want icons you may skip this step.</p>
+
+<p>As e(fx)clipse can&#8217;t be told (yet?) to include additional resources like our <code>resources</code> folder and the few installer icons we&#8217;ve added above, we have to manually edit the <code>build.xml</code>:</p>
 
 <p>Open <code>build.xml</code> and find the path <code>fxant</code>. Add one line for the <code>${basedir}</code> (will make our installer icons available):</p>
 
@@ -1073,6 +1075,8 @@
 </span><span class='line'>  <span class="nt">&lt;/copy&gt;</span>
 </span><span class='line'>  
 </span><span class='line'>  <span class="nt">&lt;mkdir</span> <span class="na">dir=</span><span class="s">&quot;package&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c">&lt;!-- Icons only for Windows --&gt;</span>
 </span><span class='line'>  <span class="nt">&lt;mkdir</span> <span class="na">dir=</span><span class="s">&quot;package/windows&quot;</span> <span class="nt">/&gt;</span>
 </span><span class='line'>  <span class="nt">&lt;copy</span> <span class="na">todir=</span><span class="s">&quot;package/windows&quot;</span><span class="nt">&gt;</span>
 </span><span class='line'>      <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">&quot;..&quot;</span><span class="nt">&gt;</span>
@@ -1081,6 +1085,7 @@
 </span><span class='line'>      <span class="nt">&lt;/fileset&gt;</span>
 </span><span class='line'>  <span class="nt">&lt;/copy&gt;</span>
 </span><span class='line'>  
+</span><span class='line'>  <span class="c">&lt;!-- Icons only for MacOS --&gt;</span>
 </span><span class='line'>  <span class="nt">&lt;mkdir</span> <span class="na">dir=</span><span class="s">&quot;package/macosx&quot;</span> <span class="nt">/&gt;</span>
 </span><span class='line'>  <span class="nt">&lt;copy</span> <span class="na">todir=</span><span class="s">&quot;package/macosx&quot;</span><span class="nt">&gt;</span>
 </span><span class='line'>      <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">&quot;..&quot;</span><span class="nt">&gt;</span>
@@ -1126,7 +1131,7 @@
 
 <p><img src="http://edu.makery.ch/images/javafx-addressapp/part-7/addressapp08.png"></p>
 
-<p>The building <strong>will take a while</strong>, about 1 minute on my computer.</p>
+<p>The building <strong>will take a while</strong> (about 1 minute on my computer).</p>
 
 <p>If everything was successful, you should find the native bundle in the folder <code>build/deploy/bundles</code>:</p>
 

@@ -9,7 +9,7 @@
   <meta name="author" content="Marco Jakob">
 
   
-  <meta name="description" content="Updated Feb 11th, 2013: New instructions for Deployment on Mac OS. Thank you Eskil for providing me with this information! I thought I&#8217;d write &hellip;">
+  <meta name="description" content="Updated Feb 11th, 2013: New instructions for Deployment on Mac OS. Thank you Eskil for providing me with this information! Updated May 22nd, 2013: &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -104,6 +104,8 @@
 
 
 <div class="entry-content"><p><strong>Updated Feb 11th, 2013</strong>: New instructions for Deployment on Mac OS. Thank you Eskil for providing me with this information!</p>
+
+<p><strong>Updated May 22nd, 2013</strong>: Updated step 3 and step 4 for e(fx)clipse plugin version 0.8.1.</p>
 
 <p><img src="/images/javafx-addressapp/part-7/addressapp01.png"></p>
 
@@ -220,19 +222,19 @@
 
 <ol>
 <li>Open <code>build.fxbuild</code> from your project root.</li>
-<li><p>Fill out all the fields containing a star. For Mac OS: Do not use spaces in Application title as this seems to cause a problem.  <br/>
-<img src="/images/javafx-addressapp/part-7/addressapp04.png"></p></li>
-<li><p>Switch to the <strong>Deploy</strong> tab at the bottom.</p></li>
-<li><p>Select the <em>Native Package</em> check box. <br/>
-<img src="/images/javafx-addressapp/part-7/addressapp05.png"></p></li>
-<li><p>Go back to the <strong>Overview</strong> tab and click on the link <code>Generate ant build.xml only</code> (found on the right side).</p></li>
+<li><p>Fill out all the fields containing a star. For MacOS: Do not use spaces in Application title as this seems to cause a problem.  <br/>
+<img src="/images/javafx-addressapp/part-7/addressapp04b.png"></p></li>
+<li><p>As <strong>Packaging Format</strong> choose <code>exe</code> for Windows, <code>dmg</code> for MacOS, and <code>rpm</code> for Linux.</p></li>
+<li><p>Click on the link <code>Generate ant build.xml only</code> (found on the right side).</p></li>
 <li>Verify that a new <code>build</code> folder and a file <code>build.xml</code> is created.</li>
 </ol>
 
 
-<h3>Step 4 - Edit build.xml</h3>
+<h3>Step 4 - Edit build.xml to include icons</h3>
 
-<p>E(fx)clipse has generated a file <code>build/build.xml</code> which is ready to be executed by <strong>Ant</strong>. As e(fx)clipse (in the current version 0.1.1) can&#8217;t be told to include additional resources like our <code>resources</code> folder and the few installer icons we&#8217;ve added above, we have to manually edit the <code>build.xml</code>:</p>
+<p>E(fx)clipse has generated a file <code>build/build.xml</code> which is ready to be executed by <strong>Ant</strong>. Our installer icons and resource icons just won&#8217;t work. If you don&#8217;t want icons you may skip this step.</p>
+
+<p>As e(fx)clipse can&#8217;t be told (yet?) to include additional resources like our <code>resources</code> folder and the few installer icons we&#8217;ve added above, we have to manually edit the <code>build.xml</code>:</p>
 
 <p>Open <code>build.xml</code> and find the path <code>fxant</code>. Add one line for the <code>${basedir}</code> (will make our installer icons available):</p>
 
@@ -294,12 +296,17 @@
 <span class='line-number'>24</span>
 <span class='line-number'>25</span>
 <span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
 </pre></td><td class='code'><pre><code class='xml'><span class='line'>  <span class="nt">&lt;mkdir</span> <span class="na">dir=</span><span class="s">&quot;dist/resources&quot;</span> <span class="nt">/&gt;</span>
 </span><span class='line'>  <span class="nt">&lt;copy</span> <span class="na">todir=</span><span class="s">&quot;dist/resources&quot;</span> <span class="nt">&gt;</span>
 </span><span class='line'>      <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">&quot;../resources&quot;</span> <span class="nt">/&gt;</span>
 </span><span class='line'>  <span class="nt">&lt;/copy&gt;</span>
 </span><span class='line'>  
 </span><span class='line'>  <span class="nt">&lt;mkdir</span> <span class="na">dir=</span><span class="s">&quot;package&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c">&lt;!-- Icons only for Windows --&gt;</span>
 </span><span class='line'>  <span class="nt">&lt;mkdir</span> <span class="na">dir=</span><span class="s">&quot;package/windows&quot;</span> <span class="nt">/&gt;</span>
 </span><span class='line'>  <span class="nt">&lt;copy</span> <span class="na">todir=</span><span class="s">&quot;package/windows&quot;</span><span class="nt">&gt;</span>
 </span><span class='line'>      <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">&quot;..&quot;</span><span class="nt">&gt;</span>
@@ -308,6 +315,7 @@
 </span><span class='line'>      <span class="nt">&lt;/fileset&gt;</span>
 </span><span class='line'>  <span class="nt">&lt;/copy&gt;</span>
 </span><span class='line'>  
+</span><span class='line'>  <span class="c">&lt;!-- Icons only for MacOS --&gt;</span>
 </span><span class='line'>  <span class="nt">&lt;mkdir</span> <span class="na">dir=</span><span class="s">&quot;package/macosx&quot;</span> <span class="nt">/&gt;</span>
 </span><span class='line'>  <span class="nt">&lt;copy</span> <span class="na">todir=</span><span class="s">&quot;package/macosx&quot;</span><span class="nt">&gt;</span>
 </span><span class='line'>      <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">&quot;..&quot;</span><span class="nt">&gt;</span>
@@ -353,7 +361,7 @@
 
 <p><img src="/images/javafx-addressapp/part-7/addressapp08.png"></p>
 
-<p>The building <strong>will take a while</strong>, about 1 minute on my computer.</p>
+<p>The building <strong>will take a while</strong> (about 1 minute on my computer).</p>
 
 <p>If everything was successful, you should find the native bundle in the folder <code>build/deploy/bundles</code>:</p>
 
@@ -398,7 +406,7 @@
 
 
   
-<time datetime="2013-02-11T00:00:00+01:00" class="updated">Updated Feb 11<span>th</span>, 2013</time>
+<time datetime="2013-05-22T00:00:00+02:00" class="updated">Updated May 22<span>nd</span>, 2013</time>
       
 
 <span class="categories">
