@@ -2,13 +2,15 @@
 layout: post
 title: "JavaFX 2 Tutorial Part VII - Deployment with e(fx)clipse"
 date: 2012-12-18 01:00
-updated: 2013-02-11
+updated: 2013-05-22
 comments: true
 categories: [English, JavaFX]
 published: true
 ---
 
 **Updated Feb 11th, 2013**: New instructions for Deployment on Mac OS. Thank you Eskil for providing me with this information!
+
+**Updated May 22nd, 2013**: Updated step 3 and step 4 for e(fx)clipse plugin version 0.8.1.
 
 {% img /images/javafx-addressapp/part-7/addressapp01.png %}
 
@@ -98,19 +100,19 @@ We would like to have some nice icons for our installer:
 The file `build.fxbuild` is used by e(fx)clipse to generate a file that will be used by the Ant build tool. If you don't have a `build.fxbuild` file, create a new *Java FX Project* in Eclipse and copy the generated file.
 
 1. Open `build.fxbuild` from your project root.
-2. Fill out all the fields containing a star. For Mac OS: Do not use spaces in Application title as this seems to cause a problem.    
-{% img /images/javafx-addressapp/part-7/addressapp04.png %}
+2. Fill out all the fields containing a star. For MacOS: Do not use spaces in Application title as this seems to cause a problem.    
+{% img /images/javafx-addressapp/part-7/addressapp04b.png %}
 
-3. Switch to the **Deploy** tab at the bottom.
-4. Select the *Native Package* check box.   
-{% img /images/javafx-addressapp/part-7/addressapp05.png %}
+3. As **Packaging Format** choose `exe` for Windows, `dmg` for MacOS, and `rpm` for Linux.
 
-5. Go back to the **Overview** tab and click on the link `Generate ant build.xml only` (found on the right side).
-6. Verify that a new `build` folder and a file `build.xml` is created.
+4. Click on the link `Generate ant build.xml only` (found on the right side).
+5. Verify that a new `build` folder and a file `build.xml` is created.
 
 
-### Step 4 - Edit build.xml ###
-E(fx)clipse has generated a file `build/build.xml` which is ready to be executed by **Ant**. As e(fx)clipse (in the current version 0.1.1) can't be told to include additional resources like our `resources` folder and the few installer icons we've added above, we have to manually edit the `build.xml`:
+### Step 4 - Edit build.xml to include icons ###
+E(fx)clipse has generated a file `build/build.xml` which is ready to be executed by **Ant**. Our installer icons and resource icons just won't work. If you don't want icons you may skip this step. 
+
+As e(fx)clipse can't be told (yet?) to include additional resources like our `resources` folder and the few installer icons we've added above, we have to manually edit the `build.xml`:
 
 Open `build.xml` and find the path `fxant`. Add one line for the `${basedir}` (will make our installer icons available):
 
@@ -142,6 +144,8 @@ Find the following block further down in the file:
 		</copy>
 		
 		<mkdir dir="package" />
+    
+		<!-- Icons only for Windows -->
 		<mkdir dir="package/windows" />
 		<copy todir="package/windows">
 			<fileset dir="..">
@@ -150,6 +154,7 @@ Find the following block further down in the file:
 			</fileset>
 		</copy>
 		
+		<!-- Icons only for MacOS -->
 		<mkdir dir="package/macosx" />
 		<copy todir="package/macosx">
 			<fileset dir="..">
@@ -191,7 +196,7 @@ As a final step, we run the `build.xml` with Ant: *Right-click* on the `build.xm
 
 {% img /images/javafx-addressapp/part-7/addressapp08.png %}
 
-The building **will take a while**, about 1 minute on my computer.
+The building **will take a while** (about 1 minute on my computer).
 
 If everything was successful, you should find the native bundle in the folder `build/deploy/bundles`:
 
