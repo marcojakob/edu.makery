@@ -13356,7 +13356,7 @@ supportsPointerEvents: function() {
   return $._supportsPointerEvents;
 }}],
 ["html5_dnd_example", "html5_dnd_example.dart", , {
-installCodeTabs_closure: {"": "Closure;link_0",
+installCodeblockTabs_closure: {"": "Closure;link_0",
   call$1: function($event) {
     var t1, t2, exampleCodeParent, t3, currentTab;
     $.preventDefault$0$x($event);
@@ -13364,7 +13364,7 @@ installCodeTabs_closure: {"": "Closure;link_0",
     t2 = $.getInterceptor$x(t1);
     exampleCodeParent = $.get$parent$x($.get$parent$x(t2.get$parent(t1)));
     t3 = $.getInterceptor$x(exampleCodeParent);
-    $.forEach$1$ax(t3.queryAll$1(exampleCodeParent, "[tab]"), new $.installCodeTabs__closure());
+    $.forEach$1$ax(t3.queryAll$1(exampleCodeParent, "[tab]"), new $.installCodeblockTabs__closure());
     currentTab = $.$index$asx(t2.get$attributes(t1), "tab");
     $.add$1$ax(t2.get$classes(t1), "active");
     $.add$1$ax($.get$classes$x(t3.query$1(exampleCodeParent, ".content [tab=\"" + $.S(currentTab) + "\"]")), "active");
@@ -13372,7 +13372,7 @@ installCodeTabs_closure: {"": "Closure;link_0",
   $isFunction: true
 },
 
-installCodeTabs__closure: {"": "Closure;",
+installCodeblockTabs__closure: {"": "Closure;",
   call$1: function(e) {
     $.remove$1$ax($.get$classes$x(e), "active");
   },
@@ -13502,15 +13502,15 @@ main: function() {
   $.Sortable$(new $._FrozenElementList(document.querySelectorAll("#sortable-list-exclude li:not(.disabled)")), null);
   $.Sortable$(new $._FrozenElementList(document.querySelectorAll("#sortable-list-handles li")), "span");
   $.Sortable$(new $._FrozenElementList(document.querySelectorAll("#sortable-list-connected li")), null);
-  $.installCodeTabs();
+  $.installCodeblockTabs();
 },
 
-installCodeTabs: function() {
+installCodeblockTabs: function() {
   var tabLinks, t1, link;
   tabLinks = new $._FrozenElementList(document.querySelectorAll(".example-code .menu li a"));
   for (t1 = tabLinks.get$iterator(tabLinks); t1.moveNext$0();) {
     link = t1._current;
-    $.get$onClick$x(link).listen$1(new $.installCodeTabs_closure(link));
+    $.get$onClick$x(link).listen$1(new $.installCodeblockTabs_closure(link));
   }
 },
 
