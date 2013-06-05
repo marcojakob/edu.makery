@@ -13543,7 +13543,7 @@ sectionDropEffects: function() {
 
 sectionDragImages: function() {
   var png, canvas, t1, ctx, t2, canvasImage, dragmeOne, dragmeTwo, dragmeThree, dragmeFour;
-  png = $.ImageElement_ImageElement(null, "dart-html5-drag-and-drop/icons/smiley-happy.png", null);
+  png = $.ImageElement_ImageElement(null, "icons/smiley-happy.png", null);
   canvas = $.CanvasElement_CanvasElement(null, null);
   t1 = $.getInterceptor$x(canvas);
   ctx = t1.get$context2D(canvas);
