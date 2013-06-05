@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Dart Event Bus - edu.makery.ch</title>
+  <meta name="author" content="Marco Jakob">
+
+  
+  <meta name="description" content="Dart Event Bus A simple Event Bus using Dart Streams
+for decoupling applications. Source on GitHub Event Bus Pattern An Event Bus follows the &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://edu.makery.ch/projects/dart-event-bus/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="http://feeds.feedburner.com/edu-makery" rel="alternate" title="edu.makery.ch" type="application/atom+xml">
+  <!-- Fonts from Google"s Web font directory at http://google.com/webfonts -->
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34917397-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">edu.makery.ch</a></h1>
+  
+    <h2>How to Make Things.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation">
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:edu.makery.ch" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/projects">Projects</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article role="article">
+  
+  <header>
+    <h1 class="entry-title">Dart Event Bus</h1>
+    
+  </header>
+  
+  <p>A simple Event Bus using Dart <a href="http://api.dartlang.org/docs/releases/latest/dart_async/Stream.html">Streams</a>
+for decoupling applications.</p>
+
+<p><a href="https://github.com/marcojakob/dart-event-bus"><img class="nobox middle" src="/images/glyphicons_github.png" title="'Dart Event Bus on GitHub'" > Source on GitHub</a></p>
+
+<h2>Event Bus Pattern</h2>
+
+<p>An Event Bus follows the publish/subscribe pattern. It allows listeners to
+subscribe for events and publishers to fire events. This enables objects to
+interact without requiring to explicitly define listeners and keeping track of
+them.</p>
+
+<h3>Event Bus and MVC</h3>
+
+<p>The Event Bus pattern is especially helpful for decoupling <a href="http://wikipedia.org/wiki/Model_View_Controller">MVC</a>
+(or <a href="http://wikipedia.org/wiki/Model_View_Presenter">MVP</a>) applications.</p>
+
+<p><strong>One group of MVC</strong> is not a problem.</p>
+
+<p><img src="https://raw.github.com/marcojakob/dart-event-bus/master/doc/mvc.png" alt="Model-View-Controller" /></p>
+
+<p>But as soon as there are <strong>multiple groups of MVCs</strong>, those groups will have to talk
+to each other. This creates a tight coupling between the controllers.</p>
+
+<p><img src="https://raw.github.com/marcojakob/dart-event-bus/master/doc/mvc-multi.png" alt="Multi Model-View-Controllers" /></p>
+
+<p>By communication through an <strong>Event Bus</strong>, the coupling is reduced.</p>
+
+<p><img src="https://raw.github.com/marcojakob/dart-event-bus/master/doc/event-bus.png" alt="Event Bus" /></p>
+
+<h2>Usage</h2>
+
+<h3>1. Add Dependency</h3>
+
+<p>Add the folowing to your <strong>pubspec.yaml</strong> and run <strong>pub install</strong></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">dependencies</span><span class="p-Indicator">:</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">event_bus</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">any</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>2. Define Events</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="k">import</span> <span class="s1">&#39;package:event_bus/event_bus.dart&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">final</span> <span class="n">EventType</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">userLoggedInEvent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EventType</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="p">();</span>
+</span><span class='line'><span class="kd">final</span> <span class="n">EventType</span><span class="o">&lt;</span><span class="n">Order</span><span class="o">&gt;</span> <span class="n">newOrderEvent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EventType</span><span class="o">&lt;</span><span class="n">Order</span><span class="o">&gt;</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note: The generic type of the event (<code>User</code> and <code>Order</code> in this case) is the
+type of data that will be provided when the event is fired.</p>
+
+<h3>3. Create Event Bus</h3>
+
+<p>Create an instance of <code>EventBus</code> and make it available to other classes.</p>
+
+<p>Usually there is just one Event Bus per application, but more than one may be
+set up to group a specific set of events.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="n">EventBus</span> <span class="n">eventBus</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EventBus</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will instantiate the default implementation of <code>EventBus</code> which is
+<code>SimpleEventBus</code>. You may provide your own <code>EventBus</code> by either extending
+<code>SimpleEventBus</code> or implementing <code>EventBus</code>.</p>
+
+<h3>4. Register Listeners</h3>
+
+<p>Register listeners that will be called whenever the event is fired.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="n">eventBus</span><span class="p">.</span><span class="n">on</span><span class="p">(</span><span class="n">userLoggedInEvent</span><span class="p">).</span><span class="n">listen</span><span class="p">((</span><span class="n">User</span> <span class="n">user</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">print</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">name</span><span class="p">);</span> 
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>EventBus</code> uses Dart <a href="http://api.dartlang.org/docs/releases/latest/dart_async/Stream.html">Streams</a>
+as its underlying mechanism to keep track of listeners. You may use all
+functionality available by the <a href="http://api.dartlang.org/docs/releases/latest/dart_async/Stream.html">Stream</a>
+API. One example is the use of <a href="http://api.dartlang.org/docs/releases/latest/dart_async/StreamSubscription.html">StreamSubscriptions</a>
+to later unsubscribe from the events.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="n">StreamSubscription</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">subscription</span> <span class="o">=</span> <span class="n">eventBus</span><span class="p">.</span><span class="n">on</span><span class="p">(</span><span class="n">userLoggedInEvent</span><span class="p">).</span><span class="n">listen</span><span class="p">((</span><span class="n">User</span> <span class="n">user</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">print</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">name</span><span class="p">);</span> 
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">subscription</span><span class="p">.</span><span class="n">cancel</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>5. Fire Events</h3>
+
+<p>Finally, we need to fire an event.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="n">eventBus</span><span class="p">.</span><span class="n">fire</span><span class="p">(</span><span class="n">userLoggedInEvent</span><span class="p">,</span> <span class="k">new</span> <span class="n">User</span><span class="p">(</span><span class="s1">&#39;Mickey&#39;</span><span class="p">));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Examples</h2>
+
+<p>Examples are available in the <code>example</code> directory.</p>
+
+<h2>License</h2>
+
+<p>The MIT License (MIT)</p>
+
+  
+    <footer>
+      
+      
+        <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://edu.makery.ch/projects/dart-event-bus/index.html" data-via="marco_jakob" data-counturl="http://edu.makery.ch/projects/dart-event-bus/index.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+      
+    </footer>
+  
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Projects</h1>
+  <ul>
+    <li>
+      <a href="/projects/learn-programming">Learn Programming</a>
+    </li>    
+    <li>
+      <a href="/projects/learn-javafx">Learn JavaFX</a>
+    </li>    
+    <li>
+      <a href="/projects/dart-html5-drag-and-drop">Dart HTML5 Drag and Drop</a>
+    </li>
+    <li>
+      <a href="/projects/dart-event-bus">Dart Event Bus</a>
+    </li>
+  </ul>
+</section>
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/'>All (23)</a><a title='subscribe via RSS' href='http://feeds.feedburner.com/edu-makery' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/deutsch/'>Deutsch (1)</a><a title='subscribe via RSS: Deutsch' href='http://feeds.feedburner.com/edu-makery-deutsch' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/english/'>English (22)</a><a title='subscribe via RSS: English' href='http://feeds.feedburner.com/edu-makery-english' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/java/'>Java (6)</a><a title='subscribe via RSS: Java' href='http://feeds.feedburner.com/edu-makery-java' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/javafx/'>JavaFX (16)</a><a title='subscribe via RSS: JavaFX' href='http://feeds.feedburner.com/edu-makery-javafx' class='feed-rss_16 category-icon'></a></li>
+
+  </ul>
+</section>
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Marco Jakob - 
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - 
+  <span class="credit">Icons by <a href="http://glyphicons.com">glyphicons</a> and <a href="http://www.icondrawer.com">icondrawer</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'edumakery';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://edu.makery.ch/projects/dart-event-bus/index.html';
+        var disqus_url = 'http://edu.makery.ch/projects/dart-event-bus/index.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

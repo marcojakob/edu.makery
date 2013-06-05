@@ -4,7 +4,7 @@
   <title><![CDATA[edu.makery.ch | Category: Java]]></title>
   <link href="http://edu.makery.ch/blog/categories/java/atom.xml" rel="self"/>
   <link href="http://edu.makery.ch/blog/categories/java/"/>
-  <updated>2013-05-31T20:44:58+02:00</updated>
+  <updated>2013-06-05T03:43:19+02:00</updated>
   <id>http://edu.makery.ch/blog/categories/java</id>
   <author>
     <name><![CDATA[Marco Jakob]]></name>
@@ -21,23 +21,44 @@
     <content type="html"><![CDATA[<p>I created two new pages to structure content on this website. The pages will guide you through the learning resources about Java and JavaFX:</p>
 
 <ul>
-<li><a href="http://edu.makery.ch/learn-java">Learn Java</a> - Java resources and blog posts</li>
-<li><a href="http://edu.makery.ch/learn-javafx">Learn JavaFX</a> - JavaFX resources and blog posts</li>
+<li><a href="http://edu.makery.ch/projects/learn-programming">Learn Programming</a> - Java resources and blog posts</li>
+<li><a href="http://edu.makery.ch/projects/learn-javafx">Learn JavaFX</a> - JavaFX resources and blog posts</li>
 </ul>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Helpful Java Libraries]]></title>
-    <link href="http://edu.makery.ch/blog/2012/12/13/helpful-java-libraries/"/>
+    <title type="html"><![CDATA[Creating PDFs in Java]]></title>
+    <link href="http://edu.makery.ch/blog/2012/12/13/creating-pdfs-in-java/"/>
+    <updated>2012-12-13T23:30:00+01:00</updated>
+    <id>http://edu.makery.ch/blog/2012/12/13/creating-pdfs-in-java</id>
+    <content type="html"><![CDATA[<p><img src="http://edu.makery.ch/images/helpful-java-libraries/pdf.png"></p>
+
+<p>A good library to create PDFs is <a href="http://itextpdf.com/">iText</a>. It is a very powerful library but can also be used for very basic PDF file creation.</p>
+
+<ul>
+<li><a href="http://sourceforge.net/projects/itext/">iText download</a></li>
+</ul>
+
+
+<p>There are many iText tutorials, here are just a couple:</p>
+
+<ul>
+<li><a href="http://www.vogella.com/articles/JavaPDF/article.html">iText Tutorial</a></li>
+<li>Tutorials and <a href="http://www.roseindia.net/java/itext/index.shtml">many iText Examples</a>
+Almost every application will need some way to persistently store data. There are many different ways to accomplish that. We&#8217;ll start with a simple way to save a small amount of data and continue to more advanced techniques.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Persisting Data in Java]]></title>
+    <link href="http://edu.makery.ch/blog/2012/12/13/persisting-data-in-java/"/>
     <updated>2012-12-13T23:00:00+01:00</updated>
-    <id>http://edu.makery.ch/blog/2012/12/13/helpful-java-libraries</id>
-    <content type="html"><![CDATA[<p>This post is meant to assist students to tackle their first real Java project. It is a list of Java libraries with some tipps and helpful links to get started. I hope you&#8217;ll have some fun creating your own software.</p>
-
-<h2>Persisting Data</h2>
-
-<p><img src="http://edu.makery.ch/images/helpful-java-libraries/floppy.png"></p>
+    <id>http://edu.makery.ch/blog/2012/12/13/persisting-data-in-java</id>
+    <content type="html"><![CDATA[<p><img src="http://edu.makery.ch/images/helpful-java-libraries/floppy.png"></p>
 
 <p>Almost every application will need some way to persistently store data. There are many different ways to accomplish that. We&#8217;ll start with a simple way to save a small amount of data and continue to more advanced techniques.</p>
 
@@ -46,7 +67,7 @@
 
 <p>Some of the techniques (Preferences, XML and reading/writing Files) described here were already used in the <a href="http://edu.makery.ch/blog/2012/11/27/javafx-tutorial-addressapp-5">JavaFX Tutorial Part 5</a>.</p>
 
-<h3>Preferences</h3>
+<h2>Preferences</h2>
 
 <p>With the class <a href="http://docs.oracle.com/javase/7/docs/api/index.html?java/util/prefs/Preferences.html"><code>Preferences</code></a> of the standard Java library we can save some small values. Typically, you&#8217;d save some simple user preferences in it like path to the <em>last opened file</em>.</p>
 
@@ -58,7 +79,7 @@
 </ul>
 
 
-<h3>Saving Files</h3>
+<h2>Saving Files</h2>
 
 <p>There are various possibilities to load and save a file in Java.</p>
 
@@ -72,7 +93,7 @@
 
 <p>That&#8217;s why it helps to save data in some structured form like XML.</p>
 
-<h3>XML with XStream</h3>
+<h2>XML with XStream</h2>
 
 <p>XStream is a simple library to serialize objects to XML and back again. Serializing means that, given an object (which may contain a reference to other objects), XStream will create a single XML-String representing this object(s). The XML-String can then be saved to a file. XStream will later accept this XML-String to reproduce the object(s) again.</p>
 
@@ -84,7 +105,7 @@
 
 <p>When data gets more complex then a database instead of XML is appropriate.</p>
 
-<h3>Java Database (also called Derby)</h3>
+<h2>Java Database (also called Derby)</h2>
 
 <p>Derby is an Open Source Database completely written in Java. The advantage of a pure Java database is that it can be embedded with the Java program (as opposed to being run as a separate, standalone server). Derby is based on the SQL Standard.</p>
 
@@ -94,7 +115,7 @@
 </ul>
 
 
-<h4>Eclipse Data Tools Platform</h4>
+<h3>Eclipse Data Tools Platform</h3>
 
 <p>With the Eclipse <em>Data Tools Platform</em> plugin you can manage your database. This is very practical, especially to view the data that has been saved to the database.</p>
 
@@ -103,7 +124,7 @@
 </ul>
 
 
-<h3>Database with a Mapper Tool and MySQL (Advanced)</h3>
+<h2>Database with a Mapper Tool and MySQL (Advanced)</h2>
 
 <p>Tools like <a href="http://www.hibernate.org/">Hibernate</a> and <a href="http://www.eclipse.org/eclipselink/">EclipseLink</a> help to fill the gap between the relational data in the database and objects (see <a href="http://de.wikipedia.org/wiki/Object-relational_impedance_mismatch">Object-relational impedance mismatch</a>).</p>
 
@@ -112,25 +133,6 @@
 <li>Other <a href="http://www.roseindia.net/hibernate/hibernate4/index.shtml">Hibernate Tutorials</a> with more information.</li>
 <li>An extensive <a href="http://www.youtube.com/watch?v=Yv2xctJxE-w&amp;list=PL4AFF701184976B25&amp;index=1">Hibernate video tutorial series</a></li>
 <li><a href="http://www.vogella.com/articles/JavaPersistenceAPI/article.html">EclipseLink Tutorial</a> - also using Derby Embedded Database (could be replaced by MySQL)</li>
-</ul>
-
-
-<h2>Creating PDFs</h2>
-
-<p><img src="http://edu.makery.ch/images/helpful-java-libraries/pdf.png"></p>
-
-<p>A good library to create PDFs is <a href="http://itextpdf.com/">iText</a>. It is a very powerful library but can also be used for very basic PDF file creation.</p>
-
-<ul>
-<li><a href="http://sourceforge.net/projects/itext/">iText download</a></li>
-</ul>
-
-
-<p>There are many iText tutorials, here are just a couple:</p>
-
-<ul>
-<li><a href="http://www.vogella.com/articles/JavaPDF/article.html">iText Tutorial</a></li>
-<li>Tutorials and <a href="http://www.roseindia.net/java/itext/index.shtml">many iText Examples</a></li>
 </ul>
 
 ]]></content>

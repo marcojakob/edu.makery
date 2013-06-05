@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Helpful Java Libraries - edu.makery.ch</title>
+  <title>Persisting Data in Java - edu.makery.ch</title>
   <meta name="author" content="Marco Jakob">
 
   
-  <meta name="description" content="This post is meant to assist students to tackle their first real Java project. It is a list of Java libraries with some tipps and helpful links to &hellip;">
+  <meta name="description" content="Almost every application will need some way to persistently store data. There are many different ways to accomplish that. We&#8217;ll start with a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,16 +18,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://edu.makery.ch/blog/2012/12/13/helpful-java-libraries/">
+  <link rel="canonical" href="http://edu.makery.ch/blog/2012/12/13/persisting-data-in-java/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="http://feeds.feedburner.com/edu-makery" rel="alternate" title="edu.makery.ch" type="application/atom+xml">
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <!-- Fonts from Google"s Web font directory at http://google.com/webfonts -->
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+
+
   
   <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -48,7 +52,7 @@
   <header role="banner"><hgroup>
   <h1><a href="/">edu.makery.ch</a></h1>
   
-    <h2>Learn How to Make Things.</h2>
+    <h2>How to Make Things.</h2>
   
 </hgroup>
 
@@ -64,9 +68,8 @@
   
 <ul class="main-navigation">
   <li><a href="/">Home</a></li>
-  <li><a href="/blog/archives">Blog Archives</a></li>
-  <li><a href="/learn-java">Learn Java</a></li>
-  <li><a href="/learn-javafx">Learn JavaFX</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/projects">Projects</a></li>
   <li><a href="/about">About</a></li>
 </ul>
 
@@ -78,7 +81,7 @@
   
   <header>
     
-      <h1 class="entry-title">Helpful Java Libraries</h1>
+      <h1 class="entry-title">Persisting Data in Java</h1>
     
     
       <p class="meta">
@@ -101,11 +104,7 @@
   </header>
 
 
-<div class="entry-content"><p>This post is meant to assist students to tackle their first real Java project. It is a list of Java libraries with some tipps and helpful links to get started. I hope you&#8217;ll have some fun creating your own software.</p>
-
-<h2>Persisting Data</h2>
-
-<p><img src="/images/helpful-java-libraries/floppy.png"></p>
+<div class="entry-content"><p><img src="/images/helpful-java-libraries/floppy.png"></p>
 
 <p>Almost every application will need some way to persistently store data. There are many different ways to accomplish that. We&#8217;ll start with a simple way to save a small amount of data and continue to more advanced techniques.</p>
 
@@ -114,7 +113,7 @@
 
 <p>Some of the techniques (Preferences, XML and reading/writing Files) described here were already used in the <a href="/blog/2012/11/27/javafx-tutorial-addressapp-5">JavaFX Tutorial Part 5</a>.</p>
 
-<h3>Preferences</h3>
+<h2>Preferences</h2>
 
 <p>With the class <a href="http://docs.oracle.com/javase/7/docs/api/index.html?java/util/prefs/Preferences.html"><code>Preferences</code></a> of the standard Java library we can save some small values. Typically, you&#8217;d save some simple user preferences in it like path to the <em>last opened file</em>.</p>
 
@@ -126,7 +125,7 @@
 </ul>
 
 
-<h3>Saving Files</h3>
+<h2>Saving Files</h2>
 
 <p>There are various possibilities to load and save a file in Java.</p>
 
@@ -140,7 +139,7 @@
 
 <p>That&#8217;s why it helps to save data in some structured form like XML.</p>
 
-<h3>XML with XStream</h3>
+<h2>XML with XStream</h2>
 
 <p>XStream is a simple library to serialize objects to XML and back again. Serializing means that, given an object (which may contain a reference to other objects), XStream will create a single XML-String representing this object(s). The XML-String can then be saved to a file. XStream will later accept this XML-String to reproduce the object(s) again.</p>
 
@@ -152,7 +151,7 @@
 
 <p>When data gets more complex then a database instead of XML is appropriate.</p>
 
-<h3>Java Database (also called Derby)</h3>
+<h2>Java Database (also called Derby)</h2>
 
 <p>Derby is an Open Source Database completely written in Java. The advantage of a pure Java database is that it can be embedded with the Java program (as opposed to being run as a separate, standalone server). Derby is based on the SQL Standard.</p>
 
@@ -162,7 +161,7 @@
 </ul>
 
 
-<h4>Eclipse Data Tools Platform</h4>
+<h3>Eclipse Data Tools Platform</h3>
 
 <p>With the Eclipse <em>Data Tools Platform</em> plugin you can manage your database. This is very practical, especially to view the data that has been saved to the database.</p>
 
@@ -171,7 +170,7 @@
 </ul>
 
 
-<h3>Database with a Mapper Tool and MySQL (Advanced)</h3>
+<h2>Database with a Mapper Tool and MySQL (Advanced)</h2>
 
 <p>Tools like <a href="http://www.hibernate.org/">Hibernate</a> and <a href="http://www.eclipse.org/eclipselink/">EclipseLink</a> help to fill the gap between the relational data in the database and objects (see <a href="http://de.wikipedia.org/wiki/Object-relational_impedance_mismatch">Object-relational impedance mismatch</a>).</p>
 
@@ -180,25 +179,6 @@
 <li>Other <a href="http://www.roseindia.net/hibernate/hibernate4/index.shtml">Hibernate Tutorials</a> with more information.</li>
 <li>An extensive <a href="http://www.youtube.com/watch?v=Yv2xctJxE-w&amp;list=PL4AFF701184976B25&amp;index=1">Hibernate video tutorial series</a></li>
 <li><a href="http://www.vogella.com/articles/JavaPersistenceAPI/article.html">EclipseLink Tutorial</a> - also using Derby Embedded Database (could be replaced by MySQL)</li>
-</ul>
-
-
-<h2>Creating PDFs</h2>
-
-<p><img src="/images/helpful-java-libraries/pdf.png"></p>
-
-<p>A good library to create PDFs is <a href="http://itextpdf.com/">iText</a>. It is a very powerful library but can also be used for very basic PDF file creation.</p>
-
-<ul>
-<li><a href="http://sourceforge.net/projects/itext/">iText download</a></li>
-</ul>
-
-
-<p>There are many iText tutorials, here are just a couple:</p>
-
-<ul>
-<li><a href="http://www.vogella.com/articles/JavaPDF/article.html">iText Tutorial</a></li>
-<li>Tutorials and <a href="http://www.roseindia.net/java/itext/index.shtml">many iText Examples</a></li>
 </ul>
 
 </div>
@@ -237,7 +217,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://edu.makery.ch/blog/2012/12/13/helpful-java-libraries/" data-via="marco_jakob" data-counturl="http://edu.makery.ch/blog/2012/12/13/helpful-java-libraries/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://edu.makery.ch/blog/2012/12/13/persisting-data-in-java/" data-via="marco_jakob" data-counturl="http://edu.makery.ch/blog/2012/12/13/persisting-data-in-java/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -251,7 +231,7 @@
         <a class="basic-alignment left" href="/blog/2012/12/04/javafx-tutorial-addressapp-6/" title="Previous Post: JavaFX 2 Tutorial Part VI - Statistics Chart">&laquo; JavaFX 2 Tutorial Part VI - Statistics Chart</a>
       
       
-        <a class="basic-alignment right" href="/blog/2012/12/18/javafx-tutorial-addressapp-7/" title="Next Post: JavaFX 2 Tutorial Part VII - Deployment with e(fx)clipse">JavaFX 2 Tutorial Part VII - Deployment with e(fx)clipse &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2012/12/13/creating-pdfs-in-java/" title="Next Post: Creating PDFs in Java">Creating PDFs in Java &raquo;</a>
       
     </p>
   </footer>
@@ -268,50 +248,29 @@
 <aside class="sidebar">
   
     <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2013/02/11/javafx-deployment-on-mac-os/">JavaFX Deployment on Mac OS</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/02/08/javafx-scene-builder-and-efxclipse-updates/">JavaFX Scene Builder and e(fx)clipse Updates</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/01/07/javafx-date-picker/">JavaFX Date Picker</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/01/04/javafx-snapshot-as-png-image/">JavaFX Snapshot as PNG Image</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/12/19/javafx-event-handlers-and-change-listeners/">JavaFX Event Handlers and Change Listeners</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/12/19/javafx-tableview-cell-renderer/">JavaFX TableView Cell Renderer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/12/18/javafx-tableview-filter/">JavaFX TableView Filter</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/12/18/new-java-and-javafx-learn-pages/">New Java and JavaFX Learn Pages</a>
-      </li>
-    
+  <h1>Projects</h1>
+  <ul>
+    <li>
+      <a href="/projects/learn-programming">Learn Programming</a>
+    </li>    
+    <li>
+      <a href="/projects/learn-javafx">Learn JavaFX</a>
+    </li>    
+    <li>
+      <a href="/projects/dart-html5-drag-and-drop">Dart HTML5 Drag and Drop</a>
+    </li>
+    <li>
+      <a href="/projects/dart-event-bus">Dart Event Bus</a>
+    </li>
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/'>All (22)</a><a title='subscribe via RSS' href='http://feeds.feedburner.com/edu-makery' class='feed-rss_16 category-icon'></a></li>
+    <li class='category'><a href='/'>All (23)</a><a title='subscribe via RSS' href='http://feeds.feedburner.com/edu-makery' class='feed-rss_16 category-icon'></a></li>
 <li class='category'><a href='/blog/categories/deutsch/'>Deutsch (1)</a><a title='subscribe via RSS: Deutsch' href='http://feeds.feedburner.com/edu-makery-deutsch' class='feed-rss_16 category-icon'></a></li>
-<li class='category'><a href='/blog/categories/english/'>English (21)</a><a title='subscribe via RSS: English' href='http://feeds.feedburner.com/edu-makery-english' class='feed-rss_16 category-icon'></a></li>
-<li class='category'><a href='/blog/categories/java/'>Java (5)</a><a title='subscribe via RSS: Java' href='http://feeds.feedburner.com/edu-makery-java' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/english/'>English (22)</a><a title='subscribe via RSS: English' href='http://feeds.feedburner.com/edu-makery-english' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/java/'>Java (6)</a><a title='subscribe via RSS: Java' href='http://feeds.feedburner.com/edu-makery-java' class='feed-rss_16 category-icon'></a></li>
 <li class='category'><a href='/blog/categories/javafx/'>JavaFX (16)</a><a title='subscribe via RSS: JavaFX' href='http://feeds.feedburner.com/edu-makery-javafx' class='feed-rss_16 category-icon'></a></li>
 
   </ul>
@@ -336,8 +295,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://edu.makery.ch/blog/2012/12/13/helpful-java-libraries/';
-        var disqus_url = 'http://edu.makery.ch/blog/2012/12/13/helpful-java-libraries/';
+        var disqus_identifier = 'http://edu.makery.ch/blog/2012/12/13/persisting-data-in-java/';
+        var disqus_url = 'http://edu.makery.ch/blog/2012/12/13/persisting-data-in-java/';
         var disqus_script = 'embed.js';
       
     (function () {

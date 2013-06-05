@@ -49,8 +49,12 @@
         <lastmod>2013-02-08T19:57:49+01:00</lastmod>
     </url>
     <url>
-        <loc>http://edu.makery.ch/blog/2012/12/13/helpful-java-libraries/</loc>
-        <lastmod>2012-12-18T13:53:35+01:00</lastmod>
+        <loc>http://edu.makery.ch/blog/2012/12/13/persisting-data-in-java/</loc>
+        <lastmod>2013-06-01T13:27:43+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://edu.makery.ch/blog/2012/12/13/creating-pdfs-in-java/</loc>
+        <lastmod>2013-06-01T13:28:53+02:00</lastmod>
     </url>
     <url>
         <loc>http://edu.makery.ch/blog/2012/12/18/javafx-tutorial-addressapp-7/</loc>
@@ -58,7 +62,7 @@
     </url>
     <url>
         <loc>http://edu.makery.ch/blog/2012/12/18/new-java-and-javafx-learn-pages/</loc>
-        <lastmod>2012-12-18T15:22:48+01:00</lastmod>
+        <lastmod>2013-06-05T02:46:04+02:00</lastmod>
     </url>
     <url>
         <loc>http://edu.makery.ch/blog/2012/12/18/javafx-tableview-filter/</loc>
@@ -98,34 +102,46 @@
     </url>
     <url>
         <loc>http://edu.makery.ch/blog/archives/</loc>
-        <lastmod>2013-05-22T15:38:40+02:00</lastmod>
+        <lastmod>2013-06-05T02:46:04+02:00</lastmod>
     </url>
     <url>
         <loc>http://edu.makery.ch/blog/categories/deutsch/</loc>
-        <lastmod>2013-05-22T15:38:40+02:00</lastmod>
+        <lastmod>2013-06-05T02:46:04+02:00</lastmod>
     </url>
     <url>
         <loc>http://edu.makery.ch/blog/categories/english/</loc>
-        <lastmod>2013-05-22T15:38:40+02:00</lastmod>
+        <lastmod>2013-06-05T02:46:04+02:00</lastmod>
     </url>
     <url>
         <loc>http://edu.makery.ch/blog/categories/java/</loc>
-        <lastmod>2013-05-22T15:38:40+02:00</lastmod>
+        <lastmod>2013-06-05T02:46:04+02:00</lastmod>
     </url>
     <url>
         <loc>http://edu.makery.ch/blog/categories/javafx/</loc>
-        <lastmod>2013-05-22T15:38:40+02:00</lastmod>
+        <lastmod>2013-06-05T02:46:04+02:00</lastmod>
     </url>
     <url>
         <loc>http://edu.makery.ch/</loc>
-        <lastmod>2013-05-22T15:38:40+02:00</lastmod>
+        <lastmod>2013-06-05T02:46:04+02:00</lastmod>
     </url>
     <url>
-        <loc>http://edu.makery.ch/learn-java/</loc>
-        <lastmod>2013-01-11T18:59:23+01:00</lastmod>
+        <loc>http://edu.makery.ch/projects/dart-event-bus/</loc>
+        <lastmod>2013-06-02T00:20:58+02:00</lastmod>
     </url>
     <url>
-        <loc>http://edu.makery.ch/learn-javafx/</loc>
-        <lastmod>2013-02-08T18:16:24+01:00</lastmod>
+        <loc>http://edu.makery.ch/projects/dart-html5-drag-and-drop/</loc>
+        <lastmod>2013-06-05T03:27:38+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://edu.makery.ch/projects/</loc>
+        <lastmod>2013-06-01T14:14:22+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://edu.makery.ch/projects/learn-javafx/</loc>
+        <lastmod>2013-06-01T14:14:42+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://edu.makery.ch/projects/learn-programming/</loc>
+        <lastmod>2013-06-01T14:14:53+02:00</lastmod>
     </url>
 </urlset>

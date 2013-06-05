@@ -9,7 +9,7 @@
   <meta name="author" content="Marco Jakob">
 
   
-  <meta name="description" content="→ English Post Ich liebe es zu programmieren, weil ich dabei kreativ sein kann und Sachen aus dem Nichts erschaffen kann. Das einzige, was ich dazu &hellip;">
+  <meta name="description" content="Kara offers a playful introduction to fundamental concepts of programming. Kara is a ladybug that lives in a simple world with trees, leafs and &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -25,9 +25,13 @@
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="http://feeds.feedburner.com/edu-makery" rel="alternate" title="edu.makery.ch" type="application/atom+xml">
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <!-- Fonts from Google"s Web font directory at http://google.com/webfonts -->
+  <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+
+
+
   
   <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -48,7 +52,7 @@
   <header role="banner"><hgroup>
   <h1><a href="/">edu.makery.ch</a></h1>
   
-    <h2>Learn How to Make Things.</h2>
+    <h2>How to Make Things.</h2>
   
 </hgroup>
 
@@ -64,9 +68,8 @@
   
 <ul class="main-navigation">
   <li><a href="/">Home</a></li>
-  <li><a href="/blog/archives">Blog Archives</a></li>
-  <li><a href="/learn-java">Learn Java</a></li>
-  <li><a href="/learn-javafx">Learn JavaFX</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/projects">Projects</a></li>
   <li><a href="/about">About</a></li>
 </ul>
 
@@ -74,7 +77,6 @@
   <div id="main">
     <div id="content">
       <div class="blog-index">
-  
   <ul class="blog-icons">
     <li>
       <a title="subscribe via RSS" href="http://feeds.feedburner.com/edu-makery" class="feed-rss_32"></a>
@@ -82,6 +84,115 @@
   </ul>
   
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/02/introduction-to-programming-with-kara/">Introduction to Programming With Kara</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-02T22:00:00+02:00" pubdate data-updated="true">Oct 2<span>nd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Kara offers a playful introduction to fundamental concepts of programming. Kara is a ladybug that lives in a simple world with trees, leafs and mushrooms.</p>
+
+<p><img src="/images/kara/kara.png" title="Kara" >
+<img src="/images/kara/mushroom.png" title="Mushroom" >
+<img src="/images/kara/leaf.png" title="Leaf" >
+<img src="/images/kara/tree.png" title="Tree" ></p>
+
+<p>The rules of Kara&#8217;s world are simple:</p>
+
+<h4>Actions</h4>
+
+<ul>
+<li>Kara can move around with <code>move()</code> (Kara can push a mushroom, can step on leafs but can&#8217;t walk through trees)</li>
+<li>Kara turns left or right with <code>turnLeft()</code> or <code>turnRight()</code></li>
+<li>Kara puts down a leaf with <code>putLeaf()</code></li>
+<li>Kara picks up a leaf with <code>removeLeaf()</code></li>
+</ul>
+
+
+<h4>Sensors</h4>
+
+<ul>
+<li>Kara checks if he stands on a leaf with <code>onLeaf()</code></li>
+<li>Kara checks if there is a tree with <code>treeFront()</code>, <code>treeLeft()</code>, or <code>treeRight()</code></li>
+<li>Kara checks if there is a mushroom in front with <code>mushroomFront()</code></li>
+</ul>
+
+
+<h2>A Sample Exercise</h2>
+
+<p>Kara is placed in the following world setup and must be programmed to collect all leafs until he reaches the tree:</p>
+
+<p><img src="/images/kara/kara-example-collect-leafs.png" title="Kara Collects Leafs" ></p>
+
+<p>One solution would be as follows:</p>
+
+<figure class='code'><figcaption><span>Kara collects leafs (Java)</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="k">while</span> <span class="o">(!</span><span class="n">treeFront</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="o">(</span><span class="n">onLeaf</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">removeLeaf</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">move</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Kara Versions - Which Kara Should I Use?</h2>
+
+<p>Kara has many different versions. The original Kara is designed as a finite state machine with a purely graphical program editor. See the full list of <a href="http://www.swisseduc.ch/informatik/karatojava/index.html">available Kara versions</a>.</p>
+
+<p>I usually prefer to start directly with writing Java code. Now there are three possible editors/libraries:</p>
+
+<h3>JavaKara</h3>
+
+<p>JavaKara is the original editor. You can find the <a href="http://www.swisseduc.ch/informatik/karatojava/javakara/index.html">JavaKara download and resources here</a> (in German).</p>
+
+<h3>GreenfootKara</h3>
+
+<p>Since I really like the editor of the <a href="http://greenfoot.org">Greenfoot IDE</a> I decided to create a Kara version that works with Greenfoot, it is called GreenfootKara. In addition to this I wrote an entire beginners course of 16-20 lessons with exercises and handouts to go along with GreenfootKara. You can find the links to the German and English versions on the <a href="/learn-java">Learn Java</a> page.</p>
+
+<h3>GameGridKara</h3>
+
+<p>Sometimes, especially if time is too short, it might be good to directly start with a professional development environment like Eclipse or NetBeans. Since it was not possible to integrate Greenfoot into Eclipse/NetBeans, I had to find another solution. Altough, we could start JavaKara from Eclipse/NetBeans, there are just some things that are not possible (like programming an interactive Kara game). The solution was to port the code to work with a library called <a href="http://gamegrid.ch">JGameGrid</a>.</p>
+
+<p>GameGridKara enables us to use Kara in any IDE of our choice by simply adding two jar files to a project. The link to GameGridKara with the adjusted beginners course in German and English can be found on the <a href="/learn-java">Learn Java</a> page.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -190,50 +301,29 @@
 <aside class="sidebar">
   
     <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2013/02/11/javafx-deployment-on-mac-os/">JavaFX Deployment on Mac OS</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/02/08/javafx-scene-builder-and-efxclipse-updates/">JavaFX Scene Builder and e(fx)clipse Updates</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/01/07/javafx-date-picker/">JavaFX Date Picker</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/01/04/javafx-snapshot-as-png-image/">JavaFX Snapshot as PNG Image</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/12/19/javafx-event-handlers-and-change-listeners/">JavaFX Event Handlers and Change Listeners</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/12/19/javafx-tableview-cell-renderer/">JavaFX TableView Cell Renderer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/12/18/javafx-tableview-filter/">JavaFX TableView Filter</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/12/18/new-java-and-javafx-learn-pages/">New Java and JavaFX Learn Pages</a>
-      </li>
-    
+  <h1>Projects</h1>
+  <ul>
+    <li>
+      <a href="/projects/learn-programming">Learn Programming</a>
+    </li>    
+    <li>
+      <a href="/projects/learn-javafx">Learn JavaFX</a>
+    </li>    
+    <li>
+      <a href="/projects/dart-html5-drag-and-drop">Dart HTML5 Drag and Drop</a>
+    </li>
+    <li>
+      <a href="/projects/dart-event-bus">Dart Event Bus</a>
+    </li>
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/'>All (22)</a><a title='subscribe via RSS' href='http://feeds.feedburner.com/edu-makery' class='feed-rss_16 category-icon'></a></li>
+    <li class='category'><a href='/'>All (23)</a><a title='subscribe via RSS' href='http://feeds.feedburner.com/edu-makery' class='feed-rss_16 category-icon'></a></li>
 <li class='category'><a href='/blog/categories/deutsch/'>Deutsch (1)</a><a title='subscribe via RSS: Deutsch' href='http://feeds.feedburner.com/edu-makery-deutsch' class='feed-rss_16 category-icon'></a></li>
-<li class='category'><a href='/blog/categories/english/'>English (21)</a><a title='subscribe via RSS: English' href='http://feeds.feedburner.com/edu-makery-english' class='feed-rss_16 category-icon'></a></li>
-<li class='category'><a href='/blog/categories/java/'>Java (5)</a><a title='subscribe via RSS: Java' href='http://feeds.feedburner.com/edu-makery-java' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/english/'>English (22)</a><a title='subscribe via RSS: English' href='http://feeds.feedburner.com/edu-makery-english' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/java/'>Java (6)</a><a title='subscribe via RSS: Java' href='http://feeds.feedburner.com/edu-makery-java' class='feed-rss_16 category-icon'></a></li>
 <li class='category'><a href='/blog/categories/javafx/'>JavaFX (16)</a><a title='subscribe via RSS: JavaFX' href='http://feeds.feedburner.com/edu-makery-javafx' class='feed-rss_16 category-icon'></a></li>
 
   </ul>
