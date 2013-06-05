@@ -1,11 +1,9 @@
 ---
 layout: page
 title: Learn JavaFX
-comments: true
+comments: false
 footer: true
 ---
-
-### What is JavaFX? ###
 {% img right /images/learn-javafx/javafx-logo.png 'JavaFX Logo' %}
 
 JavaFX provides Java developers with a very nice graphics platform. In October 2011, JavaFX 2.0 was released. It's intended to be the choice for new graphical user interfaces (GUI) rather than the older Java Swing.
@@ -24,7 +22,7 @@ For a first contact with JavaFX take a look at the [JavaFX 2 Dialogs](/blog/2012
 * [Part VII - Deployment with e(fx)clipse](/blog/2012/12/18/javafx-tutorial-addressapp-7)
 
 
-## JavaFX Blog Posts ##
+## Other JavaFX Blog Posts ##
 * [JavaFX 2 Dialogs](/blog/2012/10/30/javafx-2-dialogs) - Creating simple popup dialogs
 * [JavaFX TableView Filter](/blog/2012/12/18/javafx-tableview-filter) - Filtering a TableView
 * [JavaFX TableView Cell Renderer](/blog/2012/12/19/javafx-tableview-cell-renderer) - A custom cell renderer for TableView

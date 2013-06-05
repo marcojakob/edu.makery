@@ -8,5 +8,5 @@ published: true
 ---
 I created two new pages to structure content on this website. The pages will guide you through the learning resources about Java and JavaFX:
 
-* [Learn Java](/learn-java) - Java resources and blog posts
-* [Learn JavaFX](/learn-javafx) - JavaFX resources and blog posts
+* [Learn Programming](/projects/learn-programming) - Java resources and blog posts
+* [Learn JavaFX](/projects/learn-javafx) - JavaFX resources and blog posts

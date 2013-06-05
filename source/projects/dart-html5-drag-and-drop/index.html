@@ -1,0 +1,650 @@
+---
+layout: page
+title: Dart HTML5 Drag and Drop
+comments: true
+footer: true
+javascript: [html5_dnd_example.dart.js, dnd.polyfill.js, dart.js]
+css: [html5_dnd_example.css]
+---
+ 
+  <div id="intro">
+  <p>
+    Native HTML5 Drag and Drop is <a href="http://www.quirksmode.org/blog/archives/2009/09/the_html5_drag.html">is not easy to work with</a>! The 
+    <a href="https://github.com/marcojakob/dart-html5-dnd">Dart HTML5 Drag and Drop</a> library was created to make Drag and Drop fun again 
+    (hopefully). Here are some examples of how to use it.
+  </p>
+  <p>
+    API and Examples are inspired by 
+    </p><ul>
+      <li>
+        <a href="http://farhadi.ir/projects/html5sortable/">HTML5 Sortable</a> (thank you, Ali Farhadi!)
+      </li>
+      <li>
+        jQuery UI: <a href="http://api.jqueryui.com/draggable/">Draggable</a>, 
+        <a href="http://api.jqueryui.com/droppable/">Droppable</a> and 
+        <a href="http://api.jqueryui.com/sortable/">Sortable</a>
+      </li>
+    </ul>
+  <p></p>
+  <p>
+    </p><h3>Installation Instructions and Source Code</h3>
+      See <a href="https://github.com/marcojakob/dart-html5-dnd">Dart HTML5 Drag and Drop</a> on GitHub.
+  <p></p>
+</div>
+
+<h2>Draggable and Dropzone</h2>
+<p>
+  Drag the documents over the trash, and drop them.
+</p>
+<div id="draggable-dropzone" class="example-container">
+  <div class="trash"></div>
+  <img class="document nobox" src="dart-html5-drag-and-drop/icons/document.png" draggable="true">
+  <img class="document nobox" src="dart-html5-drag-and-drop/icons/document.png" draggable="true">
+  <img class="document nobox" src="dart-html5-drag-and-drop/icons/document.png" draggable="true">
+  <img class="document nobox" src="dart-html5-drag-and-drop/icons/document.png" draggable="true">
+</div><div class="example-code"><ul class="menu"><li><a href="#" tab="html" class="active">HTML</a><a href="#" tab="css">CSS</a><a href="#" tab="dart">Dart</a></li></ul><div class="content"><div tab="html" class="active">
+{% codeblock lang:html %}
+<div class="trash"></div>
+<img class="document" src="icons/document.png">
+<img class="document" src="icons/document.png">
+<img class="document" src="icons/document.png">
+<img class="document" src="icons/document.png">
+{% endcodeblock  %}
+</div><div tab="css">
+{% codeblock lang:css %}
+#draggable-dropzone .trash {
+  background: url(icons/trash.png) top left no-repeat;
+  /* ... */
+}
+
+#draggable-dropzone .trash.full {
+  background: url(icons/trash.png) top right no-repeat;
+}
+
+#draggable-dropzone .dnd-over {
+  opacity: 1;
+}
+
+#draggable-dropzone .dnd-dragging {
+  opacity: 0.5;
+}
+{% endcodeblock  %}
+</div><div tab="dart">
+{% codeblock lang:dart %}
+List documents = queryAll('#draggable-dropzone .document');
+for (var document in documents) {
+  new Draggable(document);
+}
+
+var trash = query('#draggable-dropzone .trash');
+new Dropzone(trash)
+  ..acceptDraggables.addAll(documents)
+  ..onDrop.listen((DropzoneEvent event) {
+    event.draggable.element.remove();
+    event.dropzone.element.classes.add('full');
+  });
+{% endcodeblock  %}
+</div></div></div>
+
+<h2>Dragging Divs</h2>
+<p>
+  All HTML elements with the <em>draggable="true"</em> attribute can be dragged - 
+  well...almost. Internet Explorer 9 does not support this attribute and 
+  thus by default only links and images are draggable in IE9. With a decent
+  <a href="http://stackoverflow.com/a/8986075/862411">workaround</a>, we 
+  can also tell IE9 to drag anything. Try the following example in IE9.
+</p>
+<p>
+  <strong>Note:</strong> The <em>draggable="true"</em> attribute is automatically
+  added by the Draggable class, so there is no need to set it in HTML.
+</p>
+<div id="dragging-divs" class="example-container">
+  <div class="dragme" draggable="true">
+    Drag me!  
+  </div>
+  <div class="dropzone example-box">
+    Drag here!
+  </div>
+</div><div class="example-code"><ul class="menu"><li><a href="#" tab="html" class="active">HTML</a><a href="#" tab="css">CSS</a><a href="#" tab="dart">Dart</a></li></ul><div class="content"><div tab="html" class="active">
+{% codeblock lang:html %}
+<div class="dragme">
+  Drag me!  
+</div>
+<div class="dropzone example-box">
+  Drag here!
+</div>
+{% endcodeblock  %}
+</div><div tab="css">
+{% codeblock lang:css %}
+#dragging-divs .dnd-dragging {
+  opacity: 0.5;
+}
+
+#dragging-divs .dnd-over {
+  background: #d387ca;
+}
+{% endcodeblock  %}
+</div><div tab="dart">
+{% codeblock lang:dart %}
+Element dragElement = query('#dragging-divs .dragme');
+new Draggable(dragElement);
+
+var dropElement = query('#dragging-divs .dropzone');
+new Dropzone(dropElement)
+  ..acceptDraggables.add(dragElement);
+{% endcodeblock  %}
+</div></div></div>
+
+<h2>Drop Effects</h2>
+<p>
+  The drop effect controls the feedback that is given when hovering over 
+  the target element. The browser's cursor can take on one of the following
+  forms: 'move', 'copy', 'link', and 'none'. If 'none' is used, dropping 
+  on the target is not possible.
+</p>
+<div id="drop-effects" class="example-container">
+  <div class="trash"></div>
+  <a href="#" class="move" draggable="true">move</a>
+  <a href="#" class="copy" draggable="true">copy</a>
+  <a href="#" class="link" draggable="true">link</a>
+  <a href="#" class="none" draggable="true">none</a>
+</div><div class="example-code"><ul class="menu"><li><a href="#" tab="html" class="active">HTML</a><a href="#" tab="css">CSS</a><a href="#" tab="dart">Dart</a></li></ul><div class="content"><div tab="html" class="active">
+
+{% codeblock lang:html %}
+<div class="trash"></div>
+<a href="#" class="move">move</a>
+<a href="#" class="copy">copy</a>
+<a href="#" class="link">link</a>
+<a href="#" class="none">none</a>
+{% endcodeblock  %}
+
+</div><div tab="css">
+{% codeblock lang:css %}
+#drop-effects .trash {
+  background: url(icons/trash.png) top left no-repeat;
+  opacity: 0.7;
+  /* ... */
+}
+
+#drop-effects .trash.full {
+  background: url(icons/trash.png) top right no-repeat;
+}
+
+#drop-effects a {
+  background: url(icons/document.png) no-repeat;
+  /* ... */
+}
+
+#drop-effects .dnd-over {
+  opacity: 1;
+}
+
+#drop-effects .dnd-dragging {
+  opacity: 0.5;
+}
+{% endcodeblock  %}
+</div><div tab="dart">
+{% codeblock lang:dart %}
+Draggable move = new Draggable(query('#drop-effects .move'))
+  ..dropEffect = 'move';
+Draggable copy = new Draggable(query('#drop-effects .copy'))
+  ..dropEffect = 'copy';
+Draggable link = new Draggable(query('#drop-effects .link'))
+  ..dropEffect = 'link';
+Draggable none = new Draggable(query('#drop-effects .none'))
+  ..dropEffect = 'none';
+
+new Dropzone(query('#drop-effects .trash'))
+  ..acceptDraggables.addAll([move.element, 
+                             copy.element, 
+                             link.element, 
+                             none.element])
+  ..onDrop.listen((DropzoneEvent event) {
+    event.draggable.element.remove();
+    event.dropzone.element.classes.add('full');
+  });
+{% endcodeblock  %}
+</div></div></div>
+
+<h2>Custom Drag Images</h2>
+<p>
+  That was a tough one to make work cross-browser! IE9 and IE10 do not 
+  support setting a custom drag image (as other modern browsers do). IE 
+  always creates a drag image from the element that the user picks up. 
+</p>
+<p>
+  So I had to implement a <strong>polyfill</strong> that draws a custom 
+  image and moves it around with the mouse (like jQuery and others do). The 
+  movement is not as smooth as with the native implementation but works 
+  quite well. (If you're curious how the polyfill works: 1. make sure the 
+  default image does not show, 2. draw the custom image, 3. ensure the mouse 
+  events are passed through to the layer underneath the drag image... more 
+  info in the source).
+</p>
+<p>
+  <strong>Note:</strong> The polyfill for drag images is automatically used
+  if the browser does not support it. But you can use the polyfill for any
+  browser by setting <em>alwaysUseDragImagePolyfill = true</em> on the Draggable.
+</p>      
+<div id="drag-images" class="example-container">
+  <div class="dropzone example-box">
+    Drag here!
+  </div>
+  <div class="dragme one" draggable="true">
+    png at position [40,40]
+  </div>
+  <div class="dragme two" draggable="true">
+    png at position [-20,-20]
+  </div>
+  <div class="dragme three" draggable="true">
+    custom drawn canvas
+  </div>
+  <div class="dragme four" draggable="true">
+    Always uses Polyfill
+  </div>
+</div><div class="example-code"><ul class="menu"><li><a href="#" tab="html" class="active">HTML</a><a href="#" tab="css">CSS</a><a href="#" tab="dart">Dart</a></li></ul><div class="content"><div tab="html" class="active">
+{% codeblock lang:html %}
+<div class="dropzone example-box">
+  Drag here!
+</div>
+<div class="dragme one">
+  png at position [40,40]
+</div>
+<div class="dragme two">
+  png at position [-20,-20]
+</div>
+<div class="dragme three">
+  custom drawn canvas
+</div>
+<div class="dragme four">
+  Always uses Polyfill
+</div>
+{% endcodeblock %}
+</div><div tab="css">
+{% codeblock lang:css %}
+#drag-images .dnd-dragging {
+  opacity: 0.5;
+}
+
+#drag-images .dnd-over {
+  background: #d387ca;
+}
+{% endcodeblock  %}
+</div><div tab="dart">
+{% codeblock lang:dart %}
+ImageElement png = new ImageElement(src: 'icons/smiley-happy.png');
+CanvasElement canvas = new CanvasElement();
+var ctx = canvas.context2D
+    ..fillStyle = "rgb(200,0,0)"
+    ..fillRect(10, 10, 55, 50);
+var dataUrl = canvas.toDataUrl("image/jpeg", 0.95);
+//Create a new image element from the data URL.
+ImageElement canvasImage = new ImageElement(src: dataUrl);
+
+Element dragmeOne = query('#drag-images .one');
+Element dragmeTwo= query('#drag-images .two');
+Element dragmeThree = query('#drag-images .three');
+Element dragmeFour = query('#drag-images .four');
+
+new Draggable(dragmeOne)
+  ..dragImageFunction = (Draggable draggable) {
+    return new DragImage(png, 40, 40);
+  };
+new Draggable(dragmeTwo)
+  ..dragImageFunction = (Draggable draggable) {
+    return new DragImage(png, -20, -20);
+  };
+new Draggable(dragmeThree)
+  ..dragImageFunction = (Draggable draggable) {
+    return new DragImage(canvasImage, 0, 0);
+  };
+new Draggable(dragmeFour)
+  ..dragImageFunction = (Draggable draggable) {
+    return new DragImage(canvasImage, 0, 0);
+  }
+  ..alwaysUseDragImagePolyfill = true;
+
+
+Element dropzone = query('#drag-images .dropzone');
+new Dropzone(dropzone)
+  ..acceptDraggables.addAll([dragmeOne, dragmeTwo, dragmeThree, dragmeFour]);
+{% endcodeblock  %}
+</div></div></div>
+
+<h2>Dropping on Nested Elements</h2>
+<p>
+  In its original form, HTML5 dragEnter and dragLeave events of an 
+  element also fire when dragging over a child element. This makes it very 
+  hard to distinguish important events from unimportant ones. The dart 
+  html5_dnd library ensures that only the relevant events (entering or 
+  leaving the main element) are fired.
+</p>
+<div id="nested-elements" class="example-container">
+  <div class="dragme" draggable="true">
+    Drag me!  
+  </div>
+  
+  <div class="dropzone example-box">
+    <div>
+      <input value="Drag here!">
+      <textarea rows="5">1 drag enter fired
+2 drag leave fired
+</textarea>
+      <button>Button</button>
+    </div>
+  </div>
+</div><div class="example-code"><ul class="menu"><li><a href="#" tab="html" class="active">HTML</a><a href="#" tab="css">CSS</a><a href="#" tab="dart">Dart</a></li></ul><div class="content"><div tab="html" class="active">
+{% codeblock lang:html %}
+<div class="dragme">
+  Drag me!  
+</div>
+
+<div class="dropzone example-box">
+  <div>
+    <input value="Drag here!"></input>
+    <textarea rows="5"></textarea>
+    <button>Button</button>
+  </div>
+</div>
+{% endcodeblock  %}
+</div><div tab="css">
+{% codeblock lang:css %}
+#nested-elements .dnd-dragging {
+  opacity: 0.5;
+}
+
+#nested-elements .dragme {
+  width: 64px;
+  height: 64px;
+  /* ... */
+}
+{% endcodeblock  %}
+</div><div tab="dart">
+{% codeblock lang:dart %}
+Element dragme = query('#nested-elements .dragme');
+Element dropzone = query('#nested-elements .dropzone');
+TextAreaElement textarea = query('#nested-elements .dropzone textarea');
+InputElement input = query('#nested-elements .dropzone input');
+input.value = 'Drag here!';
+
+new Draggable(dragme);
+
+int enterLeaveCounter = 1;
+int overCounter = 1;
+new Dropzone(dropzone)
+  ..acceptDraggables.add(dragme)
+  ..onDragEnter.listen((DropzoneEvent event) {
+    textarea.appendText('${enterLeaveCounter++} drag enter fired
+');
+    textarea.scrollTop = textarea.scrollHeight;
+  })
+  ..onDragOver.listen((DropzoneEvent event) {
+    input.value = '${overCounter++} drag over fired';
+  })
+  ..onDragLeave.listen((DropzoneEvent event) {
+    textarea.appendText('${enterLeaveCounter++} drag leave fired
+');
+    textarea.scrollTop = textarea.scrollHeight;
+  })
+  ..onDrop.listen((DropzoneEvent event) {
+    textarea.appendText('${enterLeaveCounter++} drop fired
+');
+    textarea.scrollTop = textarea.scrollHeight;
+  });
+{% endcodeblock  %}
+</div></div></div>
+
+<h2>Sortable List</h2>
+<p>
+  Reorder Elements. Notice the behaviour when dragging a smaller element
+  over a bigger element.
+</p>
+<div id="sortable-list" class="example-container">
+  <ul class="example-box">
+    <li draggable="true">Item 1</li>
+    <li draggable="true">Item 2</li>
+    <li draggable="true">Item 3</li>
+    <li class="higher" draggable="true">Item 4</li>
+    <li draggable="true">Item 5</li>
+    <li class="higher" draggable="true">Item 6</li>
+  </ul>
+</div><div class="example-code"><ul class="menu"><li><a href="#" tab="html" class="active">HTML</a><a href="#" tab="css">CSS</a><a href="#" tab="dart">Dart</a></li></ul><div class="content"><div tab="html" class="active">
+{% codeblock lang:html %}
+<ul class="example-box">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+  <li class="higher">Item 4</li>
+  <li>Item 5</li>
+  <li class="higher">Item 6</li>
+</ul>
+{% endcodeblock  %}
+</div><div tab="css">
+{% codeblock lang:css %}
+#sortable-list .dnd-placeholder {
+  border: 1px dashed #CCC;
+  background: none;  
+}
+
+#sortable-list li {
+  cursor: move;
+}
+{% endcodeblock  %}
+</div><div tab="dart">
+{% codeblock lang:dart %}
+var items = queryAll('#sortable-list li');
+
+new Sortable(items)
+  ..onSortableComplete.listen((SortableResult result) {
+    // do something when user sorted the elements...
+  });
+{% endcodeblock  %}
+</div></div></div>
+
+<h2>Sortable Grid</h2>
+<p>
+  Grid behaviour is applied when elements are floated.
+</p>
+<div id="sortable-grid" class="example-container">
+  <ul class="example-box grid">
+    <li draggable="true">Item 1</li>
+    <li draggable="true">Item 2</li>
+    <li draggable="true">Item 3</li>
+    <li draggable="true">Item 4</li>
+    <li class="wider" draggable="true">Item 5</li>
+    <li draggable="true">Item 6</li>
+    <li class="higher" draggable="true">Item 7</li>
+    <li draggable="true">Item 8</li>
+  </ul>
+</div><div class="example-code"><ul class="menu"><li><a href="#" tab="html" class="active">HTML</a><a href="#" tab="css">CSS</a><a href="#" tab="dart">Dart</a></li></ul><div class="content"><div tab="html" class="active">
+{% codeblock lang:html %}
+<ul class="example-box grid">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+  <li>Item 4</li>
+  <li class="wider">Item 5</li>
+  <li>Item 6</li>
+  <li class="higher">Item 7</li>
+  <li>Item 8</li>
+</ul>
+{% endcodeblock  %}
+</div><div tab="css">
+{% codeblock lang:css %}
+#sortable-grid .dnd-placeholder {
+  border: 1px dashed #CCC;
+  background: none;  
+}
+
+#sortable-grid li {
+  cursor: move;
+}
+{% endcodeblock  %}
+</div><div tab="dart">
+{% codeblock lang:dart %}
+var items = queryAll('#sortable-grid li');
+
+new Sortable(items);
+{% endcodeblock  %}
+</div></div></div>
+
+<h2>Exclude Items</h2>
+<p>
+  Exclude elements from beeing sortable.
+</p>
+<div id="sortable-list-exclude" class="example-container">
+  <ul class="example-box">
+    <li draggable="true">Item 1</li>
+    <li draggable="true">Item 2</li>
+    <li draggable="true">Item 3</li>
+    <li class="disabled">Item 4</li>
+    <li class="disabled">Item 5</li>
+    <li class="disabled">Item 6</li>
+  </ul>
+</div><div class="example-code"><ul class="menu"><li><a href="#" tab="html" class="active">HTML</a><a href="#" tab="css">CSS</a><a href="#" tab="dart">Dart</a></li></ul><div class="content"><div tab="html" class="active">
+{% codeblock lang:html %}
+<ul class="example-box">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+  <li class="disabled">Item 4</li>
+  <li class="disabled">Item 5</li>
+  <li class="disabled">Item 6</li>
+</ul>
+{% endcodeblock  %}
+</div><div tab="css">
+{% codeblock lang:css %}
+#sortable-list-exclude .dnd-placeholder {
+  border: 1px dashed #CCC;
+  background: none;  
+}
+
+#sortable-list-exclude li:not(.disabled) {
+  cursor: move;
+}
+{% endcodeblock  %}
+</div><div tab="dart">
+{% codeblock lang:dart %}
+var items = queryAll('#sortable-list-exclude li:not(.disabled)');
+
+new Sortable(items);
+{% endcodeblock  %}
+</div></div></div>
+
+<h2>Sortable List With Handles</h2>
+<p>
+  Items can only be dragged with the handle.
+</p>
+<div id="sortable-list-handles" class="example-container">
+  <ul class="example-box">
+    <li draggable="true"><span>::</span> Item 1</li>
+    <li draggable="true"><span>::</span> Item 2</li>
+    <li draggable="true"><span>::</span> Item 3</li>
+    <li draggable="true"><span>::</span> Item 4</li>
+    <li draggable="true"><span>::</span> Item 5</li>
+    <li draggable="true"><span>::</span> Item 6</li>
+  </ul>
+</div><div class="example-code"><ul class="menu"><li><a href="#" tab="html" class="active">HTML</a><a href="#" tab="css">CSS</a><a href="#" tab="dart">Dart</a></li></ul><div class="content"><div tab="html" class="active">
+{% codeblock lang:html %}
+<ul class="example-box">
+  <li><span>::</span> Item 1</li>
+  <li><span>::</span> Item 2</li>
+  <li><span>::</span> Item 3</li>
+  <li><span>::</span> Item 4</li>
+  <li><span>::</span> Item 5</li>
+  <li><span>::</span> Item 6</li>
+</ul>
+{% endcodeblock  %}
+</div><div tab="css">
+{% codeblock lang:css %}
+#sortable-list-handles .dnd-placeholder {
+  border: 1px dashed #CCC;
+  background: none;  
+}
+
+#sortable-list-handles span {
+  cursor: move;
+}
+{% endcodeblock  %}
+</div><div tab="dart">
+{% codeblock lang:dart %}
+var items = queryAll('#sortable-list-handles li');
+
+new Sortable(items, handle: 'span');
+{% endcodeblock  %}
+</div></div></div>
+
+<h2>Connected Sortable Lists</h2>
+<p>
+  Two connected lists.      
+</p>
+<div id="sortable-list-connected" class="example-container">
+  <ul class="example-box list1">
+    <li draggable="true">Item 1</li>
+    <li draggable="true">Item 2</li>
+    <li draggable="true">Item 3</li>
+    <li draggable="true">Item 4</li>
+    <li draggable="true">Item 5</li>
+    <li draggable="true">Item 6</li>
+  </ul>
+  <ul class="example-box list2">
+    <li class="other" draggable="true">Item 1</li>
+    <li class="other" draggable="true">Item 2</li>
+    <li class="other" draggable="true">Item 3</li>
+    <li class="other" draggable="true">Item 4</li>
+    <li class="other" draggable="true">Item 5</li>
+    <li class="other" draggable="true">Item 6</li>
+  </ul>
+</div><div class="example-code"><ul class="menu"><li><a href="#" tab="html" class="">HTML</a><a href="#" tab="css" class="">CSS</a><a href="#" tab="dart" class="active">Dart</a></li></ul><div class="content"><div tab="html" class="">
+{% codeblock lang:html %}
+<ul class="example-box list1">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+  <li>Item 4</li>
+  <li>Item 5</li>
+  <li>Item 6</li>
+</ul>
+<ul class="example-box list2">
+  <li class="other">Item 1</li>
+  <li class="other">Item 2</li>
+  <li class="other">Item 3</li>
+  <li class="other">Item 4</li>
+  <li class="other">Item 5</li>
+  <li class="other">Item 6</li>
+</ul>
+{% endcodeblock  %}
+</div><div tab="css" class="">
+{% codeblock lang:css %}
+#sortable-list-connected .dnd-placeholder {
+  border: 1px dashed #CCC;
+  background: none;  
+}
+
+#sortable-list-connected {
+  overflow: hidden;
+}
+
+#sortable-list-connected li {
+  cursor: move;
+}
+
+#sortable-list-connected .list1 {
+  float: left;
+  width: 150px;
+}
+
+#sortable-list-connected .list2 {
+  float: right;
+  width: 150px;
+}
+{% endcodeblock  %}
+</div><div tab="dart" class="active">
+{% codeblock lang:dart %}
+var items = queryAll('#sortable-list-connected li');
+
+new Sortable(items);
+{% endcodeblock  %}
+</div></div></div>
+
+<div style="clear:both"></div>
