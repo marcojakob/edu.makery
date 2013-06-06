@@ -10,7 +10,7 @@
 
   
   <meta name="description" content="Dart Event Bus A simple Event Bus using Dart Streams
-for decoupling applications. Source on GitHub Event Bus Pattern An Event Bus follows the &hellip;">
+for decoupling applications. Installation Instructions and Source Code Dart Event Bus on GitHub &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -31,7 +31,10 @@ for decoupling applications. Source on GitHub Event Bus Pattern An Event Bus fol
   <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
 
+  <script src="/projects/dart-event-bus/event_bus_example.dart.js"></script>
+  <script src="/projects/dart-event-bus/dart.js"></script>
 
+  <link href="/projects/dart-event-bus/event_bus_example.css" rel="stylesheet" type="text/css">
 
   
   <script type="text/javascript">
@@ -88,7 +91,41 @@ for decoupling applications. Source on GitHub Event Bus Pattern An Event Bus fol
   <p>A simple Event Bus using Dart <a href="http://api.dartlang.org/docs/releases/latest/dart_async/Stream.html">Streams</a>
 for decoupling applications.</p>
 
-<p><a href="https://github.com/marcojakob/dart-event-bus"><img class="nobox middle" src="/images/glyphicons_github.png" title="'Dart Event Bus on GitHub'" > Source on GitHub</a></p>
+<h2>Installation Instructions and Source Code</h2>
+
+<p><a href="https://github.com/marcojakob/dart-event-bus"><img class="nobox middle" src="/images/glyphicons_github.png" title="'Dart Event Bus on GitHub'" > Dart Event Bus</a> on GitHub.</p>
+
+<h2>Demo</h2>
+
+<div id="example-container">
+  <div class="listener" id="listener-1">
+    Listener 1
+    <textarea></textarea>
+    <button class="listen-a">Listen for Event A</button>
+    <button class="listen-b">Listen for Event B</button>
+    <button class="pause">Pause</button>
+    <button class="resume">Resume</button>
+    <button class="cancel">Cancel</button>
+  </div>
+  <div class="listener" id="listener-2">
+    Listener 2
+    <textarea></textarea>
+    <button class="listen-a">Listen for Event A</button>
+    <button class="listen-b">Listen for Event B</button>
+    <button class="pause">Pause</button>
+    <button class="resume">Resume</button>
+    <button class="cancel">Cancel</button>
+  </div>
+  <div class="event">
+    <button id="fire-button-a">Fire Event A [1]</button>
+    <label id="fire-label-a"></label>
+  </div>
+  <div class="event">
+    <button id="fire-button-b">Fire Event B [1]</button>
+    <label id="fire-label-b"></label>
+  </div>
+</div>
+
 
 <h2>Event Bus Pattern</h2>
 
@@ -117,97 +154,7 @@ to each other. This creates a tight coupling between the controllers.</p>
 
 <h2>Usage</h2>
 
-<h3>1. Add Dependency</h3>
-
-<p>Add the folowing to your <strong>pubspec.yaml</strong> and run <strong>pub install</strong></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">dependencies</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">event_bus</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">any</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>2. Define Events</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="k">import</span> <span class="s1">&#39;package:event_bus/event_bus.dart&#39;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">final</span> <span class="n">EventType</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">userLoggedInEvent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EventType</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="p">();</span>
-</span><span class='line'><span class="kd">final</span> <span class="n">EventType</span><span class="o">&lt;</span><span class="n">Order</span><span class="o">&gt;</span> <span class="n">newOrderEvent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EventType</span><span class="o">&lt;</span><span class="n">Order</span><span class="o">&gt;</span><span class="p">();</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Note: The generic type of the event (<code>User</code> and <code>Order</code> in this case) is the
-type of data that will be provided when the event is fired.</p>
-
-<h3>3. Create Event Bus</h3>
-
-<p>Create an instance of <code>EventBus</code> and make it available to other classes.</p>
-
-<p>Usually there is just one Event Bus per application, but more than one may be
-set up to group a specific set of events.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="n">EventBus</span> <span class="n">eventBus</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EventBus</span><span class="p">();</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This will instantiate the default implementation of <code>EventBus</code> which is
-<code>SimpleEventBus</code>. You may provide your own <code>EventBus</code> by either extending
-<code>SimpleEventBus</code> or implementing <code>EventBus</code>.</p>
-
-<h3>4. Register Listeners</h3>
-
-<p>Register listeners that will be called whenever the event is fired.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="n">eventBus</span><span class="p">.</span><span class="n">on</span><span class="p">(</span><span class="n">userLoggedInEvent</span><span class="p">).</span><span class="n">listen</span><span class="p">((</span><span class="n">User</span> <span class="n">user</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">print</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">name</span><span class="p">);</span> 
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><code>EventBus</code> uses Dart <a href="http://api.dartlang.org/docs/releases/latest/dart_async/Stream.html">Streams</a>
-as its underlying mechanism to keep track of listeners. You may use all
-functionality available by the <a href="http://api.dartlang.org/docs/releases/latest/dart_async/Stream.html">Stream</a>
-API. One example is the use of <a href="http://api.dartlang.org/docs/releases/latest/dart_async/StreamSubscription.html">StreamSubscriptions</a>
-to later unsubscribe from the events.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="n">StreamSubscription</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">subscription</span> <span class="o">=</span> <span class="n">eventBus</span><span class="p">.</span><span class="n">on</span><span class="p">(</span><span class="n">userLoggedInEvent</span><span class="p">).</span><span class="n">listen</span><span class="p">((</span><span class="n">User</span> <span class="n">user</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">print</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">name</span><span class="p">);</span> 
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">subscription</span><span class="p">.</span><span class="n">cancel</span><span class="p">();</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>5. Fire Events</h3>
-
-<p>Finally, we need to fire an event.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="n">eventBus</span><span class="p">.</span><span class="n">fire</span><span class="p">(</span><span class="n">userLoggedInEvent</span><span class="p">,</span> <span class="k">new</span> <span class="n">User</span><span class="p">(</span><span class="s1">&#39;Mickey&#39;</span><span class="p">));</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Examples</h2>
-
-<p>Examples are available in the <code>example</code> directory.</p>
-
-<h2>License</h2>
-
-<p>The MIT License (MIT)</p>
+<p>See <a href="https://github.com/marcojakob/dart-event-bus">Dart Event Bus on GitHub</a>.</p>
 
   
     <footer>
@@ -227,12 +174,6 @@ to later unsubscribe from the events.</p>
     </footer>
   
 </article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
 
 </div>
 
@@ -280,22 +221,6 @@ to later unsubscribe from the events.</p>
 
 </footer>
   
-
-<script type="text/javascript">
-      var disqus_shortname = 'edumakery';
-      
-        
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://edu.makery.ch/projects/dart-event-bus/index.html';
-        var disqus_url = 'http://edu.makery.ch/projects/dart-event-bus/index.html';
-        var disqus_script = 'embed.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
 
 
 
