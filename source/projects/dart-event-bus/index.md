@@ -1,14 +1,49 @@
 ---
 layout: page
 title: Dart Event Bus
-comments: true
+comments: false
 footer: true
+javascript: [event_bus_example.dart.js, dart.js]
+css: [event_bus_example.css]
 ---
 
 A simple Event Bus using Dart [Streams](http://api.dartlang.org/docs/releases/latest/dart_async/Stream.html) 
 for decoupling applications.
 
-[{% img nobox middle /images/glyphicons_github.png 'Dart Event Bus on GitHub' %} Source on GitHub](https://github.com/marcojakob/dart-event-bus)
+## Installation Instructions and Source Code ##
+[{% img nobox middle /images/glyphicons_github.png 'Dart Event Bus on GitHub' %} Dart Event Bus](https://github.com/marcojakob/dart-event-bus) on GitHub.
+
+
+## Demo ##
+
+<div id="example-container">
+  <div class="listener" id="listener-1">
+    Listener 1
+    <textarea></textarea>
+    <button class="listen-a">Listen for Event A</button>
+    <button class="listen-b">Listen for Event B</button>
+    <button class="pause">Pause</button>
+    <button class="resume">Resume</button>
+    <button class="cancel">Cancel</button>
+  </div>
+  <div class="listener" id="listener-2">
+    Listener 2
+    <textarea></textarea>
+    <button class="listen-a">Listen for Event A</button>
+    <button class="listen-b">Listen for Event B</button>
+    <button class="pause">Pause</button>
+    <button class="resume">Resume</button>
+    <button class="cancel">Cancel</button>
+  </div>
+  <div class="event">
+    <button id="fire-button-a">Fire Event A [1]</button>
+    <label id="fire-label-a"></label>
+  </div>
+  <div class="event">
+    <button id="fire-button-b">Fire Event B [1]</button>
+    <label id="fire-label-b"></label>
+  </div>
+</div>
 
 ## Event Bus Pattern ##
 An Event Bus follows the publish/subscribe pattern. It allows listeners to 
@@ -33,73 +68,5 @@ By communication through an **Event Bus**, the coupling is reduced.
 
 ![Event Bus](https://raw.github.com/marcojakob/dart-event-bus/master/doc/event-bus.png)
 
-
 ## Usage ##
-
-### 1. Add Dependency ###
-Add the folowing to your **pubspec.yaml** and run **pub install**
-```yaml
-	dependencies:
-	  event_bus: any
-```
-
-### 2. Define Events ###
-```dart
-import 'package:event_bus/event_bus.dart';
-
-final EventType<User> userLoggedInEvent = new EventType<User>();
-final EventType<Order> newOrderEvent = new EventType<Order>();
-```
-
-Note: The generic type of the event (`User` and `Order` in this case) is the 
-type of data that will be provided when the event is fired.
-
-### 3. Create Event Bus ###
-Create an instance of `EventBus` and make it available to other classes.
-
-Usually there is just one Event Bus per application, but more than one may be 
-set up to group a specific set of events.
-
-```dart
-EventBus eventBus = new EventBus();
-```
-
-This will instantiate the default implementation of `EventBus` which is
-`SimpleEventBus`. You may provide your own `EventBus` by either extending 
-`SimpleEventBus` or implementing `EventBus`.
-
-### 4. Register Listeners ###
-Register listeners that will be called whenever the event is fired.
-```dart
-eventBus.on(userLoggedInEvent).listen((User user) {
-  print(user.name);	
-});
-```
-
-`EventBus` uses Dart [Streams](http://api.dartlang.org/docs/releases/latest/dart_async/Stream.html)
-as its underlying mechanism to keep track of listeners. You may use all 
-functionality available by the [Stream](http://api.dartlang.org/docs/releases/latest/dart_async/Stream.html)
-API. One example is the use of [StreamSubscriptions](http://api.dartlang.org/docs/releases/latest/dart_async/StreamSubscription.html)
-to later unsubscribe from the events.
-
-```dart
-StreamSubscription<User> subscription = eventBus.on(userLoggedInEvent).listen((User user) {
-  print(user.name);	
-});
-
-subscription.cancel();
-```
-
-### 5. Fire Events ###
-Finally, we need to fire an event.
-
-```dart
-eventBus.fire(userLoggedInEvent, new User('Mickey'));
-```
-
-## Examples ##
-Examples are available in the `example` directory.
-
-
-## License ##
-The MIT License (MIT)
+See [Dart Event Bus on GitHub](https://github.com/marcojakob/dart-event-bus).

@@ -1,6 +1,12 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
 
+// Position of body is set to position: relative. This interferes with my drag and drop 
+// positionig (polyfill). So we overwrite it here.
+body {
+  position: static;
+}
+
 // Reset the img box if class nobox is added to an image tag
 article img.nobox, aside.sidebar img.nobox {
   @include border-radius(none);

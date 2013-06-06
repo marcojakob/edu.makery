@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Dart HTML5 Drag and Drop
-comments: true
+comments: false
 footer: true
 javascript: [html5_dnd_example.dart.js, dnd.polyfill.js, dart.js]
 css: [html5_dnd_example.css]
@@ -9,7 +9,7 @@ css: [html5_dnd_example.css]
  
   <div id="intro">
   <p>
-    Native HTML5 Drag and Drop is <a href="http://www.quirksmode.org/blog/archives/2009/09/the_html5_drag.html">is not easy to work with</a>! The 
+    Native HTML5 Drag and Drop is <a href="http://www.quirksmode.org/blog/archives/2009/09/the_html5_drag.html">not easy to work with</a>! The 
     <a href="https://github.com/marcojakob/dart-html5-dnd">Dart HTML5 Drag and Drop</a> library was created to make Drag and Drop fun again 
     (hopefully). Here are some examples of how to use it.
   </p>
@@ -27,8 +27,9 @@ css: [html5_dnd_example.css]
     </ul>
   <p></p>
   <p>
-    </p><h3>Installation Instructions and Source Code</h3>
-      See <a href="https://github.com/marcojakob/dart-html5-dnd">Dart HTML5 Drag and Drop</a> on GitHub.
+  </p>
+    <h3>Installation Instructions and Source Code</h3>
+    <a href="https://github.com/marcojakob/dart-html5-dnd"><img class="nobox middle" src="/images/glyphicons_github.png" title="'Dart HTML5 Drag and Drop on GitHub'">Dart HTML5 Drag and Drop</a> on GitHub.
   <p></p>
 </div>
 
@@ -38,10 +39,10 @@ css: [html5_dnd_example.css]
 </p>
 <div id="draggable-dropzone" class="example-container">
   <div class="trash"></div>
-  <img class="document nobox" src="dart-html5-drag-and-drop/icons/document.png" draggable="true">
-  <img class="document nobox" src="dart-html5-drag-and-drop/icons/document.png" draggable="true">
-  <img class="document nobox" src="dart-html5-drag-and-drop/icons/document.png" draggable="true">
-  <img class="document nobox" src="dart-html5-drag-and-drop/icons/document.png" draggable="true">
+  <img class="document nobox" src="icons/document.png" draggable="true">
+  <img class="document nobox" src="icons/document.png" draggable="true">
+  <img class="document nobox" src="icons/document.png" draggable="true">
+  <img class="document nobox" src="icons/document.png" draggable="true">
 </div><div class="example-code"><ul class="menu"><li><a href="#" tab="html" class="active">HTML</a><a href="#" tab="css">CSS</a><a href="#" tab="dart">Dart</a></li></ul><div class="content"><div tab="html" class="active">
 {% codeblock lang:html %}
 <div class="trash"></div>
@@ -595,7 +596,7 @@ new Sortable(items, handle: 'span');
     <li class="other" draggable="true">Item 5</li>
     <li class="other" draggable="true">Item 6</li>
   </ul>
-</div><div class="example-code"><ul class="menu"><li><a href="#" tab="html" class="">HTML</a><a href="#" tab="css" class="">CSS</a><a href="#" tab="dart" class="active">Dart</a></li></ul><div class="content"><div tab="html" class="">
+</div><div class="example-code"><ul class="menu"><li><a href="#" tab="html" class="active">HTML</a><a href="#" tab="css" class="">CSS</a><a href="#" tab="dart" class="">Dart</a></li></ul><div class="content"><div tab="html" class="active">
 {% codeblock lang:html %}
 <ul class="example-box list1">
   <li>Item 1</li>
@@ -639,7 +640,7 @@ new Sortable(items, handle: 'span');
   width: 150px;
 }
 {% endcodeblock  %}
-</div><div tab="dart" class="active">
+</div><div tab="dart">
 {% codeblock lang:dart %}
 var items = queryAll('#sortable-list-connected li');
 
