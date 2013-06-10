@@ -183,18 +183,18 @@
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="n">List</span> <span class="n">documents</span> <span class="o">=</span> <span class="n">queryAll</span><span class="p">(</span><span class="s1">&#39;#draggable-dropzone .document&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="n">document</span> <span class="k">in</span> <span class="n">documents</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">new</span> <span class="n">Draggable</span><span class="p">(</span><span class="n">document</span><span class="p">);</span>
-</span><span class='line'><span class="p">}</span>
+</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="c1">// Install draggables (documents).</span>
+</span><span class='line'><span class="n">DraggableGroup</span> <span class="n">dragGroup</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DraggableGroup</span><span class="p">()</span>
+</span><span class='line'><span class="p">..</span><span class="n">installAll</span><span class="p">(</span><span class="n">queryAll</span><span class="p">(</span><span class="s1">&#39;#draggable-dropzone .document&#39;</span><span class="p">));</span>
 </span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="n">trash</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="s1">&#39;#draggable-dropzone .trash&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="k">new</span> <span class="n">Dropzone</span><span class="p">(</span><span class="n">trash</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">..</span><span class="n">acceptDraggables</span><span class="p">.</span><span class="n">addAll</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">..</span><span class="n">onDrop</span><span class="p">.</span><span class="n">listen</span><span class="p">((</span><span class="n">DropzoneEvent</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="n">event</span><span class="p">.</span><span class="n">draggable</span><span class="p">.</span><span class="n">element</span><span class="p">.</span><span class="n">remove</span><span class="p">();</span>
-</span><span class='line'>    <span class="n">event</span><span class="p">.</span><span class="n">dropzone</span><span class="p">.</span><span class="n">element</span><span class="p">.</span><span class="n">classes</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;full&#39;</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="c1">// Install dropzone (trash).</span>
+</span><span class='line'><span class="n">DropzoneGroup</span> <span class="n">dropGroup</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DropzoneGroup</span><span class="p">()</span>
+</span><span class='line'><span class="p">..</span><span class="n">install</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#draggable-dropzone .trash&#39;</span><span class="p">))</span>
+</span><span class='line'><span class="p">..</span><span class="n">accept</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">dragGroup</span><span class="p">)</span>
+</span><span class='line'><span class="p">..</span><span class="n">onDrop</span><span class="p">.</span><span class="n">listen</span><span class="p">((</span><span class="n">DropzoneEvent</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">event</span><span class="p">.</span><span class="n">draggable</span><span class="p">.</span><span class="n">remove</span><span class="p">();</span>
+</span><span class='line'>  <span class="n">event</span><span class="p">.</span><span class="n">dropzone</span><span class="p">.</span><span class="n">classes</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;full&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
 </span></code></pre></td></tr></table></div></figure>
 </div></div></div>
 
@@ -254,12 +254,16 @@
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="n">Element</span> <span class="n">dragElement</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="s1">&#39;#dragging-divs .dragme&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="k">new</span> <span class="n">Draggable</span><span class="p">(</span><span class="n">dragElement</span><span class="p">);</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="c1">// Install draggable.</span>
+</span><span class='line'><span class="n">DraggableGroup</span> <span class="n">dragGroup</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DraggableGroup</span><span class="p">()</span>
+</span><span class='line'><span class="p">..</span><span class="n">installAll</span><span class="p">(</span><span class="n">queryAll</span><span class="p">(</span><span class="s1">&#39;#dragging-divs .dragme&#39;</span><span class="p">));</span>
 </span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="n">dropElement</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="s1">&#39;#dragging-divs .dropzone&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="k">new</span> <span class="n">Dropzone</span><span class="p">(</span><span class="n">dropElement</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">..</span><span class="n">acceptDraggables</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">dragElement</span><span class="p">);</span>
+</span><span class='line'><span class="c1">// Install dropzone.</span>
+</span><span class='line'><span class="n">DropzoneGroup</span> <span class="n">dropGroup</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DropzoneGroup</span><span class="p">()</span>
+</span><span class='line'><span class="p">..</span><span class="n">install</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#dragging-divs .dropzone&#39;</span><span class="p">))</span>
+</span><span class='line'><span class="p">..</span><span class="n">accept</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">dragGroup</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure>
 </div></div></div>
 
@@ -355,24 +359,38 @@
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="n">Draggable</span> <span class="n">move</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Draggable</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drop-effects .move&#39;</span><span class="p">))</span>
-</span><span class='line'>  <span class="p">..</span><span class="n">dropEffect</span> <span class="o">=</span> <span class="s1">&#39;move&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="n">Draggable</span> <span class="n">copy</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Draggable</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drop-effects .copy&#39;</span><span class="p">))</span>
-</span><span class='line'>  <span class="p">..</span><span class="n">dropEffect</span> <span class="o">=</span> <span class="s1">&#39;copy&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="n">Draggable</span> <span class="n">link</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Draggable</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drop-effects .link&#39;</span><span class="p">))</span>
-</span><span class='line'>  <span class="p">..</span><span class="n">dropEffect</span> <span class="o">=</span> <span class="s1">&#39;link&#39;</span><span class="p">;</span>
-</span><span class='line'><span class="n">Draggable</span> <span class="n">none</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Draggable</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drop-effects .none&#39;</span><span class="p">))</span>
-</span><span class='line'>  <span class="p">..</span><span class="n">dropEffect</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">;</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="c1">// Install draggables.</span>
+</span><span class='line'><span class="n">DraggableGroup</span> <span class="n">dragGroupMove</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DraggableGroup</span><span class="p">()</span>
+</span><span class='line'><span class="p">..</span><span class="n">install</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drop-effects .move&#39;</span><span class="p">))</span>
+</span><span class='line'><span class="p">..</span><span class="n">dropEffect</span> <span class="o">=</span> <span class="s1">&#39;move&#39;</span><span class="p">;</span>
 </span><span class='line'>
-</span><span class='line'><span class="k">new</span> <span class="n">Dropzone</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drop-effects .trash&#39;</span><span class="p">))</span>
-</span><span class='line'>  <span class="p">..</span><span class="n">acceptDraggables</span><span class="p">.</span><span class="n">addAll</span><span class="p">([</span><span class="n">move</span><span class="p">.</span><span class="n">element</span><span class="p">,</span>
-</span><span class='line'>                             <span class="n">copy</span><span class="p">.</span><span class="n">element</span><span class="p">,</span>
-</span><span class='line'>                             <span class="n">link</span><span class="p">.</span><span class="n">element</span><span class="p">,</span>
-</span><span class='line'>                             <span class="n">none</span><span class="p">.</span><span class="n">element</span><span class="p">])</span>
-</span><span class='line'>  <span class="p">..</span><span class="n">onDrop</span><span class="p">.</span><span class="n">listen</span><span class="p">((</span><span class="n">DropzoneEvent</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="n">event</span><span class="p">.</span><span class="n">draggable</span><span class="p">.</span><span class="n">element</span><span class="p">.</span><span class="n">remove</span><span class="p">();</span>
-</span><span class='line'>    <span class="n">event</span><span class="p">.</span><span class="n">dropzone</span><span class="p">.</span><span class="n">element</span><span class="p">.</span><span class="n">classes</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;full&#39;</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="n">DraggableGroup</span> <span class="n">dragGroupCopy</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DraggableGroup</span><span class="p">()</span>
+</span><span class='line'><span class="p">..</span><span class="n">install</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drop-effects .copy&#39;</span><span class="p">))</span>
+</span><span class='line'><span class="p">..</span><span class="n">dropEffect</span> <span class="o">=</span> <span class="s1">&#39;copy&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">DraggableGroup</span> <span class="n">dragGroupLink</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DraggableGroup</span><span class="p">()</span>
+</span><span class='line'><span class="p">..</span><span class="n">install</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drop-effects .link&#39;</span><span class="p">))</span>
+</span><span class='line'><span class="p">..</span><span class="n">dropEffect</span> <span class="o">=</span> <span class="s1">&#39;link&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">DraggableGroup</span> <span class="n">dragGroupNone</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DraggableGroup</span><span class="p">()</span>
+</span><span class='line'><span class="p">..</span><span class="n">install</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drop-effects .none&#39;</span><span class="p">))</span>
+</span><span class='line'><span class="p">..</span><span class="n">dropEffect</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Install dropzone.</span>
+</span><span class='line'><span class="n">DropzoneGroup</span> <span class="n">dropGroup</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DropzoneGroup</span><span class="p">()</span>
+</span><span class='line'><span class="p">..</span><span class="n">install</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drop-effects .trash&#39;</span><span class="p">))</span>
+</span><span class='line'><span class="p">..</span><span class="n">accept</span><span class="p">.</span><span class="n">addAll</span><span class="p">([</span><span class="n">dragGroupMove</span><span class="p">,</span> <span class="n">dragGroupCopy</span><span class="p">,</span> <span class="n">dragGroupLink</span><span class="p">,</span> <span class="n">dragGroupNone</span><span class="p">])</span>
+</span><span class='line'><span class="p">..</span><span class="n">onDrop</span><span class="p">.</span><span class="n">listen</span><span class="p">((</span><span class="n">DropzoneEvent</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">event</span><span class="p">.</span><span class="n">draggable</span><span class="p">.</span><span class="n">remove</span><span class="p">();</span>
+</span><span class='line'>  <span class="n">event</span><span class="p">.</span><span class="n">dropzone</span><span class="p">.</span><span class="n">classes</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;full&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
 </span></code></pre></td></tr></table></div></figure>
 </div></div></div>
 
@@ -497,6 +515,9 @@
 <span class='line-number'>34</span>
 <span class='line-number'>35</span>
 <span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
 </pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="n">ImageElement</span> <span class="n">png</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ImageElement</span><span class="p">(</span><span class="nl">src:</span> <span class="s1">&#39;icons/smiley-happy.png&#39;</span><span class="p">);</span>
 </span><span class='line'><span class="n">CanvasElement</span> <span class="n">canvas</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CanvasElement</span><span class="p">();</span>
 </span><span class='line'><span class="kd">var</span> <span class="n">ctx</span> <span class="o">=</span> <span class="n">canvas</span><span class="p">.</span><span class="n">context2D</span>
@@ -506,33 +527,36 @@
 </span><span class='line'><span class="c1">//Create a new image element from the data URL.</span>
 </span><span class='line'><span class="n">ImageElement</span> <span class="n">canvasImage</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ImageElement</span><span class="p">(</span><span class="nl">src:</span> <span class="n">dataUrl</span><span class="p">);</span>
 </span><span class='line'>
-</span><span class='line'><span class="n">Element</span> <span class="n">dragmeOne</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drag-images .one&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="n">Element</span> <span class="n">dragmeTwo</span><span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drag-images .two&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="n">Element</span> <span class="n">dragmeThree</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drag-images .three&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="n">Element</span> <span class="n">dragmeFour</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drag-images .four&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="c1">// Install draggables.</span>
+</span><span class='line'><span class="n">DraggableGroup</span> <span class="n">dragGroupOne</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DraggableGroup</span><span class="p">()</span>
+</span><span class='line'><span class="p">..</span><span class="n">install</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drag-images .one&#39;</span><span class="p">))</span>
+</span><span class='line'><span class="p">..</span><span class="n">dragImageFunction</span> <span class="o">=</span> <span class="p">(</span><span class="n">Element</span> <span class="n">draggable</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="k">new</span> <span class="n">DragImage</span><span class="p">(</span><span class="n">png</span><span class="p">,</span> <span class="m">40</span><span class="p">,</span> <span class="m">40</span><span class="p">);</span>
+</span><span class='line'><span class="p">};</span>
 </span><span class='line'>
-</span><span class='line'><span class="k">new</span> <span class="n">Draggable</span><span class="p">(</span><span class="n">dragmeOne</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">..</span><span class="n">dragImageFunction</span> <span class="o">=</span> <span class="p">(</span><span class="n">Draggable</span> <span class="n">draggable</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">return</span> <span class="k">new</span> <span class="n">DragImage</span><span class="p">(</span><span class="n">png</span><span class="p">,</span> <span class="m">40</span><span class="p">,</span> <span class="m">40</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">};</span>
-</span><span class='line'><span class="k">new</span> <span class="n">Draggable</span><span class="p">(</span><span class="n">dragmeTwo</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">..</span><span class="n">dragImageFunction</span> <span class="o">=</span> <span class="p">(</span><span class="n">Draggable</span> <span class="n">draggable</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">return</span> <span class="k">new</span> <span class="n">DragImage</span><span class="p">(</span><span class="n">png</span><span class="p">,</span> <span class="o">-</span><span class="m">20</span><span class="p">,</span> <span class="o">-</span><span class="m">20</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">};</span>
-</span><span class='line'><span class="k">new</span> <span class="n">Draggable</span><span class="p">(</span><span class="n">dragmeThree</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">..</span><span class="n">dragImageFunction</span> <span class="o">=</span> <span class="p">(</span><span class="n">Draggable</span> <span class="n">draggable</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">return</span> <span class="k">new</span> <span class="n">DragImage</span><span class="p">(</span><span class="n">canvasImage</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">};</span>
-</span><span class='line'><span class="k">new</span> <span class="n">Draggable</span><span class="p">(</span><span class="n">dragmeFour</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">..</span><span class="n">dragImageFunction</span> <span class="o">=</span> <span class="p">(</span><span class="n">Draggable</span> <span class="n">draggable</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">return</span> <span class="k">new</span> <span class="n">DragImage</span><span class="p">(</span><span class="n">canvasImage</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>  <span class="p">..</span><span class="n">alwaysUseDragImagePolyfill</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span><span class='line'><span class="n">DraggableGroup</span> <span class="n">dragGroupTwo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DraggableGroup</span><span class="p">()</span>
+</span><span class='line'><span class="p">..</span><span class="n">install</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drag-images .two&#39;</span><span class="p">))</span>
+</span><span class='line'><span class="p">..</span><span class="n">dragImageFunction</span> <span class="o">=</span> <span class="p">(</span><span class="n">Element</span> <span class="n">draggable</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="k">new</span> <span class="n">DragImage</span><span class="p">(</span><span class="n">png</span><span class="p">,</span> <span class="o">-</span><span class="m">20</span><span class="p">,</span> <span class="o">-</span><span class="m">20</span><span class="p">);</span>
+</span><span class='line'><span class="p">};</span>
 </span><span class='line'>
+</span><span class='line'><span class="n">DraggableGroup</span> <span class="n">dragGroupThree</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DraggableGroup</span><span class="p">()</span>
+</span><span class='line'><span class="p">..</span><span class="n">install</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drag-images .three&#39;</span><span class="p">))</span>
+</span><span class='line'><span class="p">..</span><span class="n">dragImageFunction</span> <span class="o">=</span> <span class="p">(</span><span class="n">Element</span> <span class="n">draggable</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="k">new</span> <span class="n">DragImage</span><span class="p">(</span><span class="n">canvasImage</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+</span><span class='line'><span class="p">};</span>
 </span><span class='line'>
-</span><span class='line'><span class="n">Element</span> <span class="n">dropzone</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drag-images .dropzone&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="k">new</span> <span class="n">Dropzone</span><span class="p">(</span><span class="n">dropzone</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">..</span><span class="n">acceptDraggables</span><span class="p">.</span><span class="n">addAll</span><span class="p">([</span><span class="n">dragmeOne</span><span class="p">,</span> <span class="n">dragmeTwo</span><span class="p">,</span> <span class="n">dragmeThree</span><span class="p">,</span> <span class="n">dragmeFour</span><span class="p">]);</span>
+</span><span class='line'><span class="n">DraggableGroup</span> <span class="n">dragGroupFour</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DraggableGroup</span><span class="p">()</span>
+</span><span class='line'><span class="p">..</span><span class="n">install</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drag-images .four&#39;</span><span class="p">))</span>
+</span><span class='line'><span class="p">..</span><span class="n">alwaysUseDragImagePolyfill</span> <span class="o">=</span> <span class="kc">true</span>
+</span><span class='line'><span class="p">..</span><span class="n">dragImageFunction</span> <span class="o">=</span> <span class="p">(</span><span class="n">Element</span> <span class="n">draggable</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="k">new</span> <span class="n">DragImage</span><span class="p">(</span><span class="n">canvasImage</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Install dropzone.</span>
+</span><span class='line'><span class="n">DropzoneGroup</span> <span class="n">dropGroup</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DropzoneGroup</span><span class="p">()</span>
+</span><span class='line'><span class="p">..</span><span class="n">install</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drag-images .dropzone&#39;</span><span class="p">))</span>
+</span><span class='line'><span class="p">..</span><span class="n">accept</span><span class="p">.</span><span class="n">addAll</span><span class="p">([</span><span class="n">dragGroupOne</span><span class="p">,</span> <span class="n">dragGroupTwo</span><span class="p">,</span> <span class="n">dragGroupThree</span><span class="p">,</span> <span class="n">dragGroupFour</span><span class="p">]);</span>
 </span></code></pre></td></tr></table></div></figure>
 </div></div></div>
 
@@ -633,36 +657,42 @@
 <span class='line-number'>28</span>
 <span class='line-number'>29</span>
 <span class='line-number'>30</span>
-</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="n">Element</span> <span class="n">dragme</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="s1">&#39;#nested-elements .dragme&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="n">Element</span> <span class="n">dropzone</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="s1">&#39;#nested-elements .dropzone&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="n">TextAreaElement</span> <span class="n">textarea</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="s1">&#39;#nested-elements .dropzone textarea&#39;</span><span class="p">);</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="n">TextAreaElement</span> <span class="n">textarea</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="s1">&#39;#nested-elements .dropzone textarea&#39;</span><span class="p">);</span>
 </span><span class='line'><span class="n">InputElement</span> <span class="n">input</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="s1">&#39;#nested-elements .dropzone input&#39;</span><span class="p">);</span>
 </span><span class='line'><span class="n">input</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;Drag here!&#39;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">new</span> <span class="n">Draggable</span><span class="p">(</span><span class="n">dragme</span><span class="p">);</span>
-</span><span class='line'>
+</span><span class='line'><span class="n">textarea</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
 </span><span class='line'><span class="kt">int</span> <span class="n">enterLeaveCounter</span> <span class="o">=</span> <span class="m">1</span><span class="p">;</span>
 </span><span class='line'><span class="kt">int</span> <span class="n">overCounter</span> <span class="o">=</span> <span class="m">1</span><span class="p">;</span>
-</span><span class='line'><span class="k">new</span> <span class="n">Dropzone</span><span class="p">(</span><span class="n">dropzone</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">..</span><span class="n">acceptDraggables</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">dragme</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">..</span><span class="n">onDragEnter</span><span class="p">.</span><span class="n">listen</span><span class="p">((</span><span class="n">DropzoneEvent</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="n">textarea</span><span class="p">.</span><span class="n">appendText</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">${</span><span class="n">enterLeaveCounter</span><span class="o">++</span><span class="si">}</span><span class="s1"> drag enter fired</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Install draggables.</span>
+</span><span class='line'><span class="n">DraggableGroup</span> <span class="n">dragGroup</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DraggableGroup</span><span class="p">()</span>
+</span><span class='line'><span class="p">..</span><span class="n">install</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#nested-elements .dragme&#39;</span><span class="p">));</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Install dropzone.</span>
+</span><span class='line'><span class="n">DropzoneGroup</span> <span class="n">dropGroup</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DropzoneGroup</span><span class="p">()</span>
+</span><span class='line'><span class="p">..</span><span class="n">install</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#nested-elements .dropzone&#39;</span><span class="p">))</span>
+</span><span class='line'><span class="p">..</span><span class="n">accept</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">dragGroup</span><span class="p">)</span>
+</span><span class='line'><span class="p">..</span><span class="n">onDragEnter</span><span class="p">.</span><span class="n">listen</span><span class="p">((</span><span class="n">DropzoneEvent</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">textarea</span><span class="p">.</span><span class="n">appendText</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">${</span><span class="n">enterLeaveCounter</span><span class="o">++</span><span class="si">}</span><span class="s1"> drag enter fired</span>
 </span><span class='line'><span class="s1">&#39;);</span>
-</span><span class='line'>    <span class="n">textarea</span><span class="p">.</span><span class="n">scrollTop</span> <span class="o">=</span> <span class="n">textarea</span><span class="p">.</span><span class="n">scrollHeight</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">})</span>
-</span><span class='line'>  <span class="p">..</span><span class="n">onDragOver</span><span class="p">.</span><span class="n">listen</span><span class="p">((</span><span class="n">DropzoneEvent</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="n">input</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">${</span><span class="n">overCounter</span><span class="o">++</span><span class="si">}</span><span class="s1"> drag over fired&#39;</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">})</span>
-</span><span class='line'>  <span class="p">..</span><span class="n">onDragLeave</span><span class="p">.</span><span class="n">listen</span><span class="p">((</span><span class="n">DropzoneEvent</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="n">textarea</span><span class="p">.</span><span class="n">appendText</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">${</span><span class="n">enterLeaveCounter</span><span class="o">++</span><span class="si">}</span><span class="s1"> drag leave fired</span>
+</span><span class='line'>  <span class="n">textarea</span><span class="p">.</span><span class="n">scrollTop</span> <span class="o">=</span> <span class="n">textarea</span><span class="p">.</span><span class="n">scrollHeight</span><span class="p">;</span>
+</span><span class='line'><span class="p">})</span>
+</span><span class='line'><span class="p">..</span><span class="n">onDragOver</span><span class="p">.</span><span class="n">listen</span><span class="p">((</span><span class="n">DropzoneEvent</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">input</span><span class="p">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">${</span><span class="n">overCounter</span><span class="o">++</span><span class="si">}</span><span class="s1"> drag over fired&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="p">})</span>
+</span><span class='line'><span class="p">..</span><span class="n">onDragLeave</span><span class="p">.</span><span class="n">listen</span><span class="p">((</span><span class="n">DropzoneEvent</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">textarea</span><span class="p">.</span><span class="n">appendText</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">${</span><span class="n">enterLeaveCounter</span><span class="o">++</span><span class="si">}</span><span class="s1"> drag leave fired</span>
 </span><span class='line'><span class="s1">&#39;);</span>
-</span><span class='line'>    <span class="n">textarea</span><span class="p">.</span><span class="n">scrollTop</span> <span class="o">=</span> <span class="n">textarea</span><span class="p">.</span><span class="n">scrollHeight</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">})</span>
-</span><span class='line'>  <span class="p">..</span><span class="n">onDrop</span><span class="p">.</span><span class="n">listen</span><span class="p">((</span><span class="n">DropzoneEvent</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="n">textarea</span><span class="p">.</span><span class="n">appendText</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">${</span><span class="n">enterLeaveCounter</span><span class="o">++</span><span class="si">}</span><span class="s1"> drop fired</span>
+</span><span class='line'>  <span class="n">textarea</span><span class="p">.</span><span class="n">scrollTop</span> <span class="o">=</span> <span class="n">textarea</span><span class="p">.</span><span class="n">scrollHeight</span><span class="p">;</span>
+</span><span class='line'><span class="p">})</span>
+</span><span class='line'><span class="p">..</span><span class="n">onDrop</span><span class="p">.</span><span class="n">listen</span><span class="p">((</span><span class="n">DropzoneEvent</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">textarea</span><span class="p">.</span><span class="n">appendText</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">${</span><span class="n">enterLeaveCounter</span><span class="o">++</span><span class="si">}</span><span class="s1"> drop fired</span>
 </span><span class='line'><span class="s1">&#39;);</span>
-</span><span class='line'>    <span class="n">textarea</span><span class="p">.</span><span class="n">scrollTop</span> <span class="o">=</span> <span class="n">textarea</span><span class="p">.</span><span class="n">scrollHeight</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>  <span class="n">textarea</span><span class="p">.</span><span class="n">scrollTop</span> <span class="o">=</span> <span class="n">textarea</span><span class="p">.</span><span class="n">scrollHeight</span><span class="p">;</span>
+</span><span class='line'><span class="p">});</span>
 </span></code></pre></td></tr></table></div></figure>
 </div></div></div>
 
@@ -723,12 +753,16 @@
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="kd">var</span> <span class="n">items</span> <span class="o">=</span> <span class="n">queryAll</span><span class="p">(</span><span class="s1">&#39;#sortable-list li&#39;</span><span class="p">);</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="n">SortableGroup</span> <span class="n">sortGroup</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SortableGroup</span><span class="p">()</span>
+</span><span class='line'><span class="p">..</span><span class="n">installAll</span><span class="p">(</span><span class="n">queryAll</span><span class="p">(</span><span class="s1">&#39;#sortable-list li&#39;</span><span class="p">))</span>
+</span><span class='line'><span class="p">..</span><span class="n">onSortUpdate</span><span class="p">.</span><span class="n">listen</span><span class="p">((</span><span class="n">SortableEvent</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// do something when user sorted the elements...</span>
+</span><span class='line'><span class="p">});</span>
 </span><span class='line'>
-</span><span class='line'><span class="k">new</span> <span class="n">Sortable</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
-</span><span class='line'>  <span class="p">..</span><span class="n">onSortableComplete</span><span class="p">.</span><span class="n">listen</span><span class="p">((</span><span class="n">SortableResult</span> <span class="n">result</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="c1">// do something when user sorted the elements...</span>
-</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="c1">// Only accept elements from this section.</span>
+</span><span class='line'><span class="n">sortGroup</span><span class="p">.</span><span class="n">accept</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">sortGroup</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure>
 </div></div></div>
 
@@ -791,9 +825,15 @@
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="kd">var</span> <span class="n">items</span> <span class="o">=</span> <span class="n">queryAll</span><span class="p">(</span><span class="s1">&#39;#sortable-grid li&#39;</span><span class="p">);</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="n">SortableGroup</span> <span class="n">sortGroup</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SortableGroup</span><span class="p">()</span>
+</span><span class='line'><span class="p">..</span><span class="n">installAll</span><span class="p">(</span><span class="n">queryAll</span><span class="p">(</span><span class="s1">&#39;#sortable-grid li&#39;</span><span class="p">))</span>
+</span><span class='line'><span class="p">..</span><span class="n">isGrid</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 </span><span class='line'>
-</span><span class='line'><span class="k">new</span> <span class="n">Sortable</span><span class="p">(</span><span class="n">items</span><span class="p">);</span>
+</span><span class='line'><span class="c1">// Only accept elements from this section.</span>
+</span><span class='line'><span class="n">sortGroup</span><span class="p">.</span><span class="n">accept</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">sortGroup</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure>
 </div></div></div>
 
@@ -850,9 +890,13 @@
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="kd">var</span> <span class="n">items</span> <span class="o">=</span> <span class="n">queryAll</span><span class="p">(</span><span class="s1">&#39;#sortable-list-exclude li:not(.disabled)&#39;</span><span class="p">);</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="n">SortableGroup</span> <span class="n">sortGroup</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SortableGroup</span><span class="p">()</span>
+</span><span class='line'><span class="p">..</span><span class="n">installAll</span><span class="p">(</span><span class="n">queryAll</span><span class="p">(</span><span class="s1">&#39;#sortable-list-exclude li:not(.disabled)&#39;</span><span class="p">));</span>
 </span><span class='line'>
-</span><span class='line'><span class="k">new</span> <span class="n">Sortable</span><span class="p">(</span><span class="n">items</span><span class="p">);</span>
+</span><span class='line'><span class="c1">// Only accept elements from this section.</span>
+</span><span class='line'><span class="n">sortGroup</span><span class="p">.</span><span class="n">accept</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">sortGroup</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure>
 </div></div></div>
 
@@ -909,18 +953,25 @@
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="kd">var</span> <span class="n">items</span> <span class="o">=</span> <span class="n">queryAll</span><span class="p">(</span><span class="s1">&#39;#sortable-list-handles li&#39;</span><span class="p">);</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="n">SortableGroup</span> <span class="n">sortGroup</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SortableGroup</span><span class="p">(</span><span class="nl">handle:</span> <span class="s1">&#39;span&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="p">..</span><span class="n">installAll</span><span class="p">(</span><span class="n">queryAll</span><span class="p">(</span><span class="s1">&#39;#sortable-list-handles li&#39;</span><span class="p">));</span>
 </span><span class='line'>
-</span><span class='line'><span class="k">new</span> <span class="n">Sortable</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="nl">handle:</span> <span class="s1">&#39;span&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="c1">// Only accept elements from this section.</span>
+</span><span class='line'><span class="n">sortGroup</span><span class="p">.</span><span class="n">accept</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">sortGroup</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure>
 </div></div></div>
 
-<h2>Connected Sortable Lists</h2>
+<h2>Two Sortable Groups</h2>
 <p>
-  Two connected lists.      
+  Two sortable groups that are connected with each other.      
 </p>
-<div id="sortable-list-connected" class="example-container">
-  <ul class="example-box list1">
+<p>
+  Elements in the right group display an icon when dragged, elements in the left group display the dragged element. Whenever an element changes group it is uninstalled from the previous group and installed in the new group.
+</p>
+<div id="sortable-two-groups" class="example-container">
+  <ul class="example-box group1">
     <li draggable="true">Item 1</li>
     <li draggable="true">Item 2</li>
     <li draggable="true">Item 3</li>
@@ -928,7 +979,7 @@
     <li draggable="true">Item 5</li>
     <li draggable="true">Item 6</li>
   </ul>
-  <ul class="example-box list2">
+  <ul class="example-box group2">
     <li class="other" draggable="true">Item 1</li>
     <li class="other" draggable="true">Item 2</li>
     <li class="other" draggable="true">Item 3</li>
@@ -993,25 +1044,25 @@
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
 <span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nf">#sortable-list-connected</span> <span class="nc">.dnd-placeholder</span> <span class="p">{</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nf">#sortable-two-groups</span> <span class="nc">.dnd-placeholder</span> <span class="p">{</span>
 </span><span class='line'>  <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">dashed</span> <span class="m">#CCC</span><span class="p">;</span>
 </span><span class='line'>  <span class="k">background</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'><span class="nf">#sortable-list-connected</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">overflow</span><span class="o">:</span> <span class="k">hidden</span><span class="p">;</span>
+</span><span class='line'><span class="nf">#sortable-two-groups</span> <span class="nc">.dnd-dragging</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">opacity</span><span class="o">:</span> <span class="m">0</span><span class="o">.</span><span class="m">5</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'><span class="nf">#sortable-list-connected</span> <span class="nt">li</span> <span class="p">{</span>
+</span><span class='line'><span class="nf">#sortable-two-groups</span> <span class="nt">li</span> <span class="p">{</span>
 </span><span class='line'>  <span class="k">cursor</span><span class="o">:</span> <span class="n">move</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'><span class="nf">#sortable-list-connected</span> <span class="nc">.list1</span> <span class="p">{</span>
+</span><span class='line'><span class="nf">#sortable-two-groups</span> <span class="nc">.group1</span> <span class="p">{</span>
 </span><span class='line'>  <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
 </span><span class='line'>  <span class="k">width</span><span class="o">:</span> <span class="m">150px</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'><span class="nf">#sortable-list-connected</span> <span class="nc">.list2</span> <span class="p">{</span>
+</span><span class='line'><span class="nf">#sortable-two-groups</span> <span class="nc">.group2</span> <span class="p">{</span>
 </span><span class='line'>  <span class="k">float</span><span class="o">:</span> <span class="k">right</span><span class="p">;</span>
 </span><span class='line'>  <span class="k">width</span><span class="o">:</span> <span class="m">150px</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
@@ -1020,9 +1071,219 @@
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="kd">var</span> <span class="n">items</span> <span class="o">=</span> <span class="n">queryAll</span><span class="p">(</span><span class="s1">&#39;#sortable-list-connected li&#39;</span><span class="p">);</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="n">ImageElement</span> <span class="n">png</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ImageElement</span><span class="p">(</span><span class="nl">src:</span> <span class="s1">&#39;icons/smiley-happy.png&#39;</span><span class="p">);</span>
 </span><span class='line'>
-</span><span class='line'><span class="k">new</span> <span class="n">Sortable</span><span class="p">(</span><span class="n">items</span><span class="p">);</span>
+</span><span class='line'><span class="n">SortableGroup</span> <span class="n">sortGroup1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SortableGroup</span><span class="p">()</span>
+</span><span class='line'><span class="p">..</span><span class="n">installAll</span><span class="p">(</span><span class="n">queryAll</span><span class="p">(</span><span class="s1">&#39;#sortable-two-groups .group1 li&#39;</span><span class="p">))</span>
+</span><span class='line'><span class="p">..</span><span class="n">onSortUpdate</span><span class="p">.</span><span class="n">listen</span><span class="p">((</span><span class="n">SortableEvent</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">event</span><span class="p">.</span><span class="n">originalGroup</span><span class="p">.</span><span class="n">uninstall</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">draggable</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">event</span><span class="p">.</span><span class="n">newGroup</span><span class="p">.</span><span class="n">install</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">draggable</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">SortableGroup</span> <span class="n">sortGroup2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SortableGroup</span><span class="p">()</span>
+</span><span class='line'><span class="p">..</span><span class="n">installAll</span><span class="p">(</span><span class="n">queryAll</span><span class="p">(</span><span class="s1">&#39;#sortable-two-groups .group2 li&#39;</span><span class="p">))</span>
+</span><span class='line'><span class="p">..</span><span class="n">dragImageFunction</span> <span class="o">=</span> <span class="p">(</span><span class="n">Element</span> <span class="n">draggable</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="k">new</span> <span class="n">DragImage</span><span class="p">(</span><span class="n">png</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="p">..</span><span class="n">onSortUpdate</span><span class="p">.</span><span class="n">listen</span><span class="p">((</span><span class="n">SortableEvent</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">event</span><span class="p">.</span><span class="n">originalGroup</span><span class="p">.</span><span class="n">uninstall</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">draggable</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">event</span><span class="p">.</span><span class="n">newGroup</span><span class="p">.</span><span class="n">install</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">draggable</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Only accept elements from this section.</span>
+</span><span class='line'><span class="n">sortGroup1</span><span class="p">.</span><span class="n">accept</span><span class="p">.</span><span class="n">addAll</span><span class="p">([</span><span class="n">sortGroup1</span><span class="p">,</span> <span class="n">sortGroup2</span><span class="p">]);</span>
+</span><span class='line'><span class="n">sortGroup2</span><span class="p">.</span><span class="n">accept</span><span class="p">.</span><span class="n">addAll</span><span class="p">([</span><span class="n">sortGroup1</span><span class="p">,</span> <span class="n">sortGroup2</span><span class="p">]);</span>
+</span></code></pre></td></tr></table></div></figure>
+</div></div></div>
+
+
+<h2>Draggables and a Sortable Group</h2>
+<p>
+  The draggable elements on the left can be dragged into the sortable group on the right.     
+</p>
+<div id="draggable-sortable" class="example-container">
+  <ul class="example-box group1">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+    <li>Item 5</li>
+    <li>Item 6</li>
+  </ul>
+  <ul class="example-box group2">
+    <li class="empty">Empty list!</li>
+  </ul>
+</div>
+<div class="example-code"><ul class="menu"><li><a href="#" tab="html" class="active">HTML</a><a href="#" tab="css" class="">CSS</a><a href="#" tab="dart" class="">Dart</a></li></ul><div class="content"><div tab="html" class="active">
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;example-box group1&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;</span>Item 1<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;</span>Item 2<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;</span>Item 3<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;</span>Item 4<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;</span>Item 5<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;</span>Item 6<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;example-box group2&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;empty&quot;</span><span class="nt">&gt;</span>Empty list!<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+</div><div tab="css" class="">
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nf">#draggable-sortable</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">height</span><span class="o">:</span> <span class="m">250px</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">#draggable-sortable</span> <span class="nc">.dnd-placeholder</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">dashed</span> <span class="m">#CCC</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">background</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">#draggable-sortable</span> <span class="nc">.dnd-dragging</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">opacity</span><span class="o">:</span> <span class="m">0</span><span class="o">.</span><span class="m">5</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">#draggable-sortable</span> <span class="nc">.dnd-over</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">background</span><span class="o">:</span> <span class="m">#d387ca</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">#draggable-sortable</span> <span class="nc">.group1</span> <span class="nt">li</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">cursor</span><span class="o">:</span> <span class="n">move</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">#draggable-sortable</span> <span class="nc">.group1</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">width</span><span class="o">:</span> <span class="m">150px</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">#draggable-sortable</span> <span class="nc">.group2</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">float</span><span class="o">:</span> <span class="k">right</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">width</span><span class="o">:</span> <span class="m">150px</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">#draggable-sortable</span> <span class="nc">.group2</span> <span class="nc">.empty</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">dashed</span> <span class="m">#CCC</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span> <span class="m">#333</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+</div><div tab="dart">
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="n">DraggableGroup</span> <span class="n">dragGroup</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DraggableGroup</span><span class="p">()</span>
+</span><span class='line'><span class="p">..</span><span class="n">installAll</span><span class="p">(</span><span class="n">queryAll</span><span class="p">(</span><span class="s1">&#39;#draggable-sortable .group1 li&#39;</span><span class="p">));</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Create sortable group with initially no installed elements.</span>
+</span><span class='line'><span class="n">SortableGroup</span> <span class="n">sortGroup</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SortableGroup</span><span class="p">()</span>
+</span><span class='line'><span class="p">..</span><span class="n">onSortUpdate</span><span class="p">.</span><span class="n">listen</span><span class="p">((</span><span class="n">SortableEvent</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">event</span><span class="p">.</span><span class="n">originalGroup</span><span class="p">.</span><span class="n">uninstall</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">draggable</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">event</span><span class="p">.</span><span class="n">newGroup</span><span class="p">.</span><span class="n">install</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">draggable</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="n">sortGroup</span><span class="p">.</span><span class="n">accept</span><span class="p">.</span><span class="n">addAll</span><span class="p">([</span><span class="n">dragGroup</span><span class="p">,</span> <span class="n">sortGroup</span><span class="p">]);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">LIElement</span> <span class="n">emptyItem</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="s1">&#39;#draggable-sortable .group2 .empty&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Install an empty item as a dropzone no element is in the list.</span>
+</span><span class='line'><span class="n">DropzoneGroup</span> <span class="n">emptyListDropzone</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DropzoneGroup</span><span class="p">()</span>
+</span><span class='line'><span class="p">..</span><span class="n">install</span><span class="p">(</span><span class="n">emptyItem</span><span class="p">)</span>
+</span><span class='line'><span class="p">..</span><span class="n">accept</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">dragGroup</span><span class="p">)</span>
+</span><span class='line'><span class="p">..</span><span class="n">onDrop</span><span class="p">.</span><span class="n">listen</span><span class="p">((</span><span class="n">DropzoneEvent</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// Hide empty item.</span>
+</span><span class='line'>  <span class="n">emptyItem</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">display</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Uninstall in old group and install in new group.</span>
+</span><span class='line'>  <span class="n">dragGroup</span><span class="p">.</span><span class="n">uninstall</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">draggable</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">event</span><span class="p">.</span><span class="n">draggable</span><span class="p">.</span><span class="n">remove</span><span class="p">();</span>
+</span><span class='line'>  <span class="n">sortGroup</span><span class="p">.</span><span class="n">install</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">draggable</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">query</span><span class="p">(</span><span class="s1">&#39;#draggable-sortable .group2&#39;</span><span class="p">).</span><span class="n">children</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">draggable</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
 </span></code></pre></td></tr></table></div></figure>
 </div></div></div>
 

@@ -59,7 +59,7 @@ $$.Blob = {"": "Interceptor;", $isBlob: true, $asBlob: null};
 
 $$.BodyElement = {"": "Element;"};
 
-$$.ButtonElement = {"": "Element;disabled=,name=,type},value%"};
+$$.ButtonElement = {"": "Element;name=,type},value%"};
 
 $$.CDataSection = {"": "Text;"};
 
@@ -148,10 +148,6 @@ $$.CssStyleDeclaration = {"": "Interceptor;cssText},length=",
   },
   set$display: function(receiver, value) {
     this.setProperty$3(receiver, "display", value, "");
-  },
-  get$$float: function(receiver) {
-    var propValue = receiver.getPropertyValue("float");
-    return propValue != null ? propValue : "";
   },
   get$height: function(receiver) {
     var propValue = receiver.getPropertyValue("height");
@@ -515,12 +511,12 @@ $$.Element = {"": "Node;$$dom_children:children=,draggable=,id=,innerHtml:innerH
 $$.EmbedElement = {"": "Element;height%,name=,src%,type},width%"};
 
 $$.Entry = {"": "Interceptor;name=",
-  _liblib$_remove$2: function(receiver, successCallback, errorCallback) {
+  _liblib0$_remove$2: function(receiver, successCallback, errorCallback) {
     return receiver.remove($.convertDartClosureToJS(successCallback, 0), $.convertDartClosureToJS(errorCallback, 1));
   },
   remove$0: function(receiver) {
     var completer = new $._AsyncCompleter(new $._FutureImpl(0, null), false);
-    this._liblib$_remove$2(receiver, new $.Entry_remove_closure(completer), new $.Entry_remove_closure0(completer));
+    this._liblib0$_remove$2(receiver, new $.Entry_remove_closure(completer), new $.Entry_remove_closure0(completer));
     return completer.future;
   }
 };
@@ -562,7 +558,7 @@ $$.EventTarget = {"": "Interceptor;",
   $asEventTarget: null
 };
 
-$$.FieldSetElement = {"": "Element;disabled=,name="};
+$$.FieldSetElement = {"": "Element;name="};
 
 $$.File = {"": "Blob;name=", $isFile: true, $asFile: null};
 
@@ -649,7 +645,7 @@ $$.FormData = {"": "Interceptor;"};
 
 $$.FormElement = {"": "Element;length=,name=,target="};
 
-$$.Gamepad = {"": "Interceptor;id=,index="};
+$$.Gamepad = {"": "Interceptor;id="};
 
 $$.Geolocation = {"": "Interceptor;"};
 
@@ -760,13 +756,13 @@ $$.ImageData = {"": "Interceptor;height=,width=", $isImageData: true, $asImageDa
 
 $$.ImageElement = {"": "Element;height%,src%,width%,x=,y="};
 
-$$.InputElement = {"": "Element;disabled=,height%,name=,src%,type},value%,width%", $isElement: true, $asElement: null, $isNode: true, $asNode: null, $isEventTarget: true, $asEventTarget: null};
+$$.InputElement = {"": "Element;accept=,height%,name=,src%,type},value%,width%", $isElement: true, $asElement: null, $isNode: true, $asNode: null, $isEventTarget: true, $asEventTarget: null};
 
 $$.InputMethodContext = {"": "Interceptor;"};
 
 $$.KeyboardEvent = {"": "UIEvent;"};
 
-$$.KeygenElement = {"": "Element;disabled=,name="};
+$$.KeygenElement = {"": "Element;name="};
 
 $$.LIElement = {"": "Element;type},value%"};
 
@@ -774,7 +770,7 @@ $$.LabelElement = {"": "Element;"};
 
 $$.LegendElement = {"": "Element;"};
 
-$$.LinkElement = {"": "Element;disabled=,type}"};
+$$.LinkElement = {"": "Element;type}"};
 
 $$.Location = {"": "Interceptor;",
   toString$0: function(receiver) {
@@ -788,19 +784,12 @@ $$.MediaController = {"": "EventTarget;",
   $$dom_addEventListener$3: function(receiver, type, listener, useCapture) {
     return receiver.addEventListener(type, $.convertDartClosureToJS(listener, 1), useCapture);
   },
-  pause$0: function(receiver) {
-    return receiver.pause();
-  },
   $$dom_removeEventListener$3: function(receiver, type, listener, useCapture) {
     return receiver.removeEventListener(type, $.convertDartClosureToJS(listener, 1), useCapture);
   }
 };
 
-$$.MediaElement = {"": "Element;src%",
-  pause$0: function(receiver) {
-    return receiver.pause();
-  }
-};
+$$.MediaElement = {"": "Element;src%"};
 
 $$.MediaError = {"": "Interceptor;"};
 
@@ -944,7 +933,7 @@ $$.Navigator = {"": "Interceptor;"};
 
 $$.NavigatorUserMediaError = {"": "Interceptor;"};
 
-$$.Node = {"": "EventTarget;parent:parentElement=,parentNode=",
+$$.Node = {"": "EventTarget;parent:parentElement=",
   get$nodes: function(receiver) {
     return new $._ChildNodeListLazy(receiver);
   },
@@ -1029,6 +1018,9 @@ $$.Notification = {"": "EventTarget;",
   $$dom_addEventListener$3: function(receiver, type, listener, useCapture) {
     return receiver.addEventListener(type, $.convertDartClosureToJS(listener, 1), useCapture);
   },
+  cancel$0: function(receiver) {
+    return receiver.cancel();
+  },
   $$dom_removeEventListener$3: function(receiver, type, listener, useCapture) {
     return receiver.removeEventListener(type, $.convertDartClosureToJS(listener, 1), useCapture);
   },
@@ -1043,9 +1035,9 @@ $$.OListElement = {"": "Element;type}"};
 
 $$.ObjectElement = {"": "Element;height%,name=,type},width%"};
 
-$$.OptGroupElement = {"": "Element;disabled="};
+$$.OptGroupElement = {"": "Element;"};
 
-$$.OptionElement = {"": "Element;disabled=,index=,value%"};
+$$.OptionElement = {"": "Element;value%"};
 
 $$.OutputElement = {"": "Element;name=,value%"};
 
@@ -1190,7 +1182,7 @@ $$.SecurityPolicy = {"": "Interceptor;"};
 
 $$.SecurityPolicyViolationEvent = {"": "Event;"};
 
-$$.SelectElement = {"": "Element;disabled=,length=,name=,value%"};
+$$.SelectElement = {"": "Element;length=,name=,value%"};
 
 $$.Selection = {"": "Interceptor;",
   toString$0: function(receiver) {
@@ -1300,11 +1292,8 @@ $$.SpeechRecognitionEvent = {"": "Event;"};
 $$.SpeechRecognitionResult = {"": "Interceptor;length="};
 
 $$.SpeechSynthesis = {"": "Interceptor;",
-  pause$0: function(receiver) {
-    return receiver.pause();
-  },
-  resume$0: function(receiver) {
-    return receiver.resume();
+  cancel$0: function(receiver) {
+    return receiver.cancel();
   }
 };
 
@@ -1364,11 +1353,11 @@ $$.StorageInfo = {"": "Interceptor;"};
 
 $$.StorageQuota = {"": "Interceptor;"};
 
-$$.StyleElement = {"": "Element;disabled=,type}"};
+$$.StyleElement = {"": "Element;type}"};
 
 $$.StyleMedia = {"": "Interceptor;"};
 
-$$.StyleSheet = {"": "Interceptor;disabled="};
+$$.StyleSheet = {"": "Interceptor;"};
 
 $$.TableCaptionElement = {"": "Element;"};
 
@@ -1386,7 +1375,7 @@ $$.TemplateElement = {"": "Element;"};
 
 $$.Text = {"": "CharacterData;"};
 
-$$.TextAreaElement = {"": "Element;disabled=,name=,value%"};
+$$.TextAreaElement = {"": "Element;name=,value%"};
 
 $$.TextEvent = {"": "UIEvent;"};
 
@@ -1527,14 +1516,7 @@ $$.TrackEvent = {"": "Event;"};
 
 $$.TransitionEvent = {"": "Event;"};
 
-$$.TreeWalker = {"": "Interceptor;",
-  parentNode$0: function(receiver) {
-    return receiver.parentNode();
-  },
-  get$parentNode: function(receiver) {
-    return new $.BoundClosure$i0(this, "parentNode$0", receiver);
-  }
-};
+$$.TreeWalker = {"": "Interceptor;"};
 
 $$.UIEvent = {"": "Event;detail=",
   get$page: function(receiver) {
@@ -2048,12 +2030,6 @@ $$.ObjectStore = {"": "Interceptor;name=",
   },
   $$dom_add$1: function($receiver, value) {
     return this.$$dom_add$2($receiver, value, $);
-  },
-  index$1: function(receiver, $name) {
-    return receiver.index($name);
-  },
-  get$index: function(receiver) {
-    return new $.BoundClosure$i1(this, "index$1", receiver);
   }
 };
 
@@ -2125,7 +2101,7 @@ $$.DefsElement = {"": "StyledElement;"};
 
 $$.DescElement = {"": "StyledElement;"};
 
-$$.ElementInstance = {"": "EventTarget;parentNode=",
+$$.ElementInstance = {"": "EventTarget;",
   get$onClick: function(receiver) {
     return new $._EventStream(receiver, $.EventStreamProvider_click._eventType, false);
   },
@@ -2419,7 +2395,7 @@ $$.StringList = {"": "Interceptor_ListMixin_ImmutableListMixin21;",
   $asJavaScriptIndexingBehavior: null
 };
 
-$$.StyleElement0 = {"": "SvgElement;disabled=,type}"};
+$$.StyleElement0 = {"": "SvgElement;type}"};
 
 $$.StyledElement = {"": "SvgElement;"};
 
@@ -2792,6 +2768,9 @@ $$.Float32List = {"": "TypedData;",
   add$1: function(receiver, value) {
     throw $.wrapException(new $.UnsupportedError("Cannot add to immutable List."));
   },
+  addAll$1: function(receiver, iterable) {
+    throw $.wrapException(new $.UnsupportedError("Cannot add to immutable List."));
+  },
   indexOf$2: function(receiver, element, start) {
     return $._Lists_indexOf(receiver, element, start, receiver.length);
   },
@@ -2904,6 +2883,9 @@ $$.Float64List = {"": "TypedData;",
     return receiver[index];
   },
   add$1: function(receiver, value) {
+    throw $.wrapException(new $.UnsupportedError("Cannot add to immutable List."));
+  },
+  addAll$1: function(receiver, iterable) {
     throw $.wrapException(new $.UnsupportedError("Cannot add to immutable List."));
   },
   indexOf$2: function(receiver, element, start) {
@@ -3020,6 +3002,9 @@ $$.Int16List = {"": "TypedData;",
   add$1: function(receiver, value) {
     throw $.wrapException(new $.UnsupportedError("Cannot add to immutable List."));
   },
+  addAll$1: function(receiver, iterable) {
+    throw $.wrapException(new $.UnsupportedError("Cannot add to immutable List."));
+  },
   indexOf$2: function(receiver, element, start) {
     return $._Lists_indexOf(receiver, element, start, receiver.length);
   },
@@ -3132,6 +3117,9 @@ $$.Int32List = {"": "TypedData;",
     return receiver[index];
   },
   add$1: function(receiver, value) {
+    throw $.wrapException(new $.UnsupportedError("Cannot add to immutable List."));
+  },
+  addAll$1: function(receiver, iterable) {
     throw $.wrapException(new $.UnsupportedError("Cannot add to immutable List."));
   },
   indexOf$2: function(receiver, element, start) {
@@ -3248,6 +3236,9 @@ $$.Int8List = {"": "TypedData;",
   add$1: function(receiver, value) {
     throw $.wrapException(new $.UnsupportedError("Cannot add to immutable List."));
   },
+  addAll$1: function(receiver, iterable) {
+    throw $.wrapException(new $.UnsupportedError("Cannot add to immutable List."));
+  },
   indexOf$2: function(receiver, element, start) {
     return $._Lists_indexOf(receiver, element, start, receiver.length);
   },
@@ -3360,6 +3351,9 @@ $$.Uint16List = {"": "TypedData;",
     return receiver[index];
   },
   add$1: function(receiver, value) {
+    throw $.wrapException(new $.UnsupportedError("Cannot add to immutable List."));
+  },
+  addAll$1: function(receiver, iterable) {
     throw $.wrapException(new $.UnsupportedError("Cannot add to immutable List."));
   },
   indexOf$2: function(receiver, element, start) {
@@ -3476,6 +3470,9 @@ $$.Uint32List = {"": "TypedData;",
   add$1: function(receiver, value) {
     throw $.wrapException(new $.UnsupportedError("Cannot add to immutable List."));
   },
+  addAll$1: function(receiver, iterable) {
+    throw $.wrapException(new $.UnsupportedError("Cannot add to immutable List."));
+  },
   indexOf$2: function(receiver, element, start) {
     return $._Lists_indexOf(receiver, element, start, receiver.length);
   },
@@ -3585,6 +3582,9 @@ $$.Uint8ClampedList = {"": "Uint8List;",
     return receiver[index];
   },
   add$1: function(receiver, value) {
+    throw $.wrapException(new $.UnsupportedError("Cannot add to immutable List."));
+  },
+  addAll$1: function(receiver, iterable) {
     throw $.wrapException(new $.UnsupportedError("Cannot add to immutable List."));
   },
   indexOf$2: function(receiver, element, start) {
@@ -3701,6 +3701,9 @@ $$.Uint8List = {"": "TypedData;",
   add$1: function(receiver, value) {
     throw $.wrapException(new $.UnsupportedError("Cannot add to immutable List."));
   },
+  addAll$1: function(receiver, iterable) {
+    throw $.wrapException(new $.UnsupportedError("Cannot add to immutable List."));
+  },
   indexOf$2: function(receiver, element, start) {
     return $._Lists_indexOf(receiver, element, start, receiver.length);
   },
@@ -3756,12 +3759,6 @@ $$.Bound_next_Cursor = {"": "BoundClosure;self,target,receiver",
   },
   call$0: function() {
     return this.call$1(null);
-  }
-};
-
-$$.BoundClosure$i1 = {"": "BoundClosure;self,target,receiver",
-  call$1: function(p0) {
-    return this.self[this.target](this.receiver, p0);
   }
 };
 
@@ -3831,7 +3828,7 @@ $$.Closure$_deserialize = {"": "Closure;call$1,$name"};
 _symbolMapToStringMap_closure0: {"": "Closure;result_0",
   call$2: function(key, value) {
     var t1 = this.result_0;
-    t1.$indexSet(t1, key.get$_liblib0$_name(), value);
+    t1.$indexSet(t1, key.get$_liblib$_name(), value);
   },
   $isFunction: true
 },
@@ -3847,7 +3844,7 @@ Interceptor: {"": "Object;",
     return "Instance of '" + $.Primitives_objectTypeName(receiver) + "'";
   },
   noSuchMethod$1: function(receiver, invocation) {
-    throw $.wrapException(new $.NoSuchMethodError(receiver, invocation.memberName._liblib0$_name, invocation.get$positionalArguments(), $._symbolMapToStringMap0(invocation.get$namedArguments()), null));
+    throw $.wrapException(new $.NoSuchMethodError(receiver, invocation.memberName._liblib$_name, invocation.get$positionalArguments(), $._symbolMapToStringMap0(invocation.get$namedArguments()), null));
   }
 },
 
@@ -3914,6 +3911,11 @@ JSArray: {"": "List/Interceptor;",
         return true;
       }
     return false;
+  },
+  addAll$1: function(receiver, collection) {
+    var t1;
+    for (t1 = $.get$iterator$ax(collection); t1.moveNext$0() === true;)
+      this.add$1(receiver, t1.get$current());
   },
   forEach$1: function(receiver, f) {
     return $.IterableMixinWorkaround_forEach(receiver, f);
@@ -3984,10 +3986,12 @@ JSArray: {"": "List/Interceptor;",
     return this.indexOf$2($receiver, element, 0);
   },
   contains$1: function(receiver, other) {
-    var t1, i;
-    for (t1 = $.getInterceptor(other), i = 0; i < receiver.length; ++i)
-      if (t1.$eq(other, receiver[i]))
+    var t1, i, t2;
+    for (t1 = receiver.length, i = 0; i < t1; ++i) {
+      t2 = receiver[i];
+      if (other == null ? t2 == null : other === t2)
         return true;
+    }
     return false;
   },
   get$isEmpty: function(receiver) {
@@ -4121,6 +4125,8 @@ JSNumber: {"": "num/Interceptor;",
     return receiver >> other >>> 0;
   },
   $and: function(receiver, other) {
+    if (typeof other !== "number")
+      throw $.wrapException(new $.ArgumentError(other));
     return (receiver & other) >>> 0;
   },
   $or: function(receiver, other) {
@@ -4518,7 +4524,7 @@ _IsolateContext: {"": "Object;id>,ports,isolateStatics",
   unregister$1: function(portId) {
     var t1 = this.ports;
     t1.remove$1(t1, portId);
-    if (this.ports._liblib1$_length === 0) {
+    if (this.ports._length === 0) {
       t1 = $globalState.isolates;
       t1.remove$1(t1, this.id);
     }
@@ -4535,7 +4541,7 @@ _EventLoop: {"": "Object;events,activeTimerCount",
   checkOpenReceivePortsFromCommandLine$0: function() {
     if ($globalState.rootContext != null) {
       var t1 = $globalState.isolates;
-      t1 = t1.containsKey$1(t1, $globalState.rootContext.id) && $globalState.fromCommandLine === true && $globalState.rootContext.ports._liblib1$_length === 0;
+      t1 = t1.containsKey$1(t1, $globalState.rootContext.id) && $globalState.fromCommandLine === true && $globalState.rootContext.ports._length === 0;
     } else
       t1 = false;
     if (t1)
@@ -4550,7 +4556,7 @@ _EventLoop: {"": "Object;events,activeTimerCount",
       if (t1.isWorker === true) {
         t2 = t1.isolates;
         t2.get$isEmpty;
-        t2 = t2._liblib1$_length === 0 && t1.topEventLoop.activeTimerCount === 0;
+        t2 = t2._length === 0 && t1.topEventLoop.activeTimerCount === 0;
       } else
         t2 = false;
       if (t2) {
@@ -5227,6 +5233,23 @@ _Deserializer: {"": "Object;_deserialized",
 },
 
 TimerImpl: {"": "Object;_once,_inEventLoop,_handle?",
+  cancel$0: function(_) {
+    var t1;
+    if ($.get$globalThis().setTimeout != null) {
+      if (this._inEventLoop)
+        throw $.wrapException(new $.UnsupportedError("Timer in event loop cannot be canceled."));
+      if (this._handle == null)
+        return;
+      t1 = $globalState.topEventLoop;
+      t1.activeTimerCount = t1.activeTimerCount - 1;
+      if (this._once)
+        $.get$globalThis().clearTimeout(this._handle);
+      else
+        $.get$globalThis().clearInterval(this._handle);
+      this._handle = null;
+    } else
+      throw $.wrapException(new $.UnsupportedError("Canceling a timer."));
+  },
   TimerImpl$2: function(milliseconds, callback) {
     var t1, t2;
     if (milliseconds === 0)
@@ -6569,7 +6592,7 @@ SubListIterable: {"": "ListIterable;_iterable,_start,_endOrLength",
   $asIterable: null
 },
 
-ListIterator: {"": "Object;_iterable,_liblib0$_length,_index,_current",
+ListIterator: {"": "Object;_iterable,_liblib$_length,_index,_current",
   get$current: function() {
     return this._current;
   },
@@ -6580,7 +6603,7 @@ ListIterator: {"": "Object;_iterable,_liblib0$_length,_index,_current",
     $length = t2.get$length(t1);
     if (typeof $length !== "number")
       return this.moveNext$0$bailout(1, t1, t2, $length);
-    t3 = this._liblib0$_length;
+    t3 = this._liblib$_length;
     if (typeof t3 !== "number")
       return this.moveNext$0$bailout(2, t1, t2, $length, t3);
     if (t3 !== $length)
@@ -6602,7 +6625,7 @@ ListIterator: {"": "Object;_iterable,_liblib0$_length,_index,_current",
         $length = t2.get$length(t1);
       case 1:
         state0 = 0;
-        t3 = this._liblib0$_length;
+        t3 = this._liblib$_length;
       case 2:
         state0 = 0;
         if (!$.$eq(t3, $length))
@@ -6723,20 +6746,20 @@ SkipIterator: {"": "Iterator;_iterator,_skipCount",
   }
 },
 
-Symbol: {"": "Object;_liblib0$_name<",
+Symbol: {"": "Object;_liblib$_name<",
   $eq: function(_, other) {
     if (other == null)
       return false;
-    return typeof other === "object" && other !== null && !!$.getInterceptor(other).$isSymbol && $.$eq(this._liblib0$_name, other._liblib0$_name);
+    return typeof other === "object" && other !== null && !!$.getInterceptor(other).$isSymbol && $.$eq(this._liblib$_name, other._liblib$_name);
   },
   get$hashCode: function(_) {
-    var t1 = $.get$hashCode$(this._liblib0$_name);
+    var t1 = $.get$hashCode$(this._liblib$_name);
     if (typeof t1 !== "number")
       throw $.iae(t1);
     return 536870911 & 664597 * t1;
   },
   toString$0: function(_) {
-    return "Symbol(\"" + $.S(this._liblib0$_name) + "\")";
+    return "Symbol(\"" + $.S(this._liblib$_name) + "\")";
   },
   $isSymbol: true
 },
@@ -6816,10 +6839,11 @@ Arrays_indexOf: function(a, element, startIndex, endIndex) {
 },
 
 IterableMixinWorkaround_contains: function(iterable, element) {
-  var t1, t2;
-  for (t1 = $.get$iterator$ax(iterable), t2 = $.getInterceptor(element); t1.moveNext$0();) {
+  var t1, e;
+  for (t1 = $.get$iterator$ax(iterable); t1.moveNext$0();) {
     t1.get$current;
-    if (t2.$eq(element, t1._current))
+    e = t1._current;
+    if (element == null ? e == null : element === e)
       return true;
   }
   return false;
@@ -7598,113 +7622,158 @@ StreamSubscription: {"": "Object;"},
 
 EventSink: {"": "Object;"},
 
-_StreamController: {"": "Object;_onListen<,_stream<,_subscription<,_state@",
-  get$isPaused: function() {
-    var t1 = this._subscription;
-    if (t1 != null) {
-      t1.get$_isInputPaused;
-      t1 = !$.$eq($.$and$n(t1._state, 4), 0);
-    } else
-      t1 = (this._state & 1) === 0;
-    return t1;
-  },
-  add$1: function(_, value) {
-    var t1 = this._state;
-    if ((t1 & 2) !== 0)
-      throw $.wrapException(new $.StateError("Adding event after close"));
-    if (this._subscription != null)
-      this._sendData$1(value);
-    else if ((t1 & 1) === 0)
-      this._addPendingEvent$1(new $._DelayedData(value, null));
-  },
-  _addPendingEvent$1: function($event) {
-    var events, t1;
-    if ((this._state & 1) !== 0)
-      return;
-    events = this._pendingEvents;
-    if (events == null) {
-      events = new $._StreamImplEvents(null, null, 0);
-      this._pendingEvents = events;
-    }
-    events.add$1;
-    t1 = events.lastPendingEvent;
-    if (t1 == null) {
-      events.lastPendingEvent = $event;
-      events.firstPendingEvent = $event;
-    } else {
-      $.set$next$x(t1, $event);
-      events.lastPendingEvent = $event;
-    }
-  },
-  _recordListen$1: function(subscription) {
-    this._subscription = subscription;
-    subscription._setPendingEvents$1(this._pendingEvents);
-    this._pendingEvents = null;
-    subscription._guardCallback$1(new $._StreamController__recordListen_closure(this));
-  }
-},
-
-_StreamController__recordListen_closure: {"": "Closure;this_0",
-  call$0: function() {
-    $._runGuarded(this.this_0.get$_onListen());
-  },
-  $isFunction: true
-},
-
-_SyncStreamController: {"": "_StreamController;_onListen,_onPause,_onResume,_onCancel,_stream,_subscription,_state,_pendingEvents",
-  _sendData$1: function(data) {
-    var t1 = this._subscription;
-    t1._liblib3$_add$1(t1, data);
-  },
-  _sendError$1: function(error) {
-    this._subscription._addError$1(error);
-  }
-},
-
-_AsyncStreamController: {"": "_StreamController;_onListen,_onPause,_onResume,_onCancel,_stream,_subscription,_state,_pendingEvents",
-  _sendData$1: function(data) {
-    this._subscription._addPending$1(new $._DelayedData(data, null));
-  },
-  _sendError$1: function(error) {
-    this._subscription._addPending$1(new $._DelayedError(error, null));
-  }
-},
-
-_ControllerStream: {"": "_StreamImpl;_controller,_hasListener",
-  _createSubscription$4: function(onData, onError, onDone, cancelOnError) {
-    var t1;
-    if (this._hasListener)
-      throw $.wrapException(new $.StateError("The stream has already been listened to."));
-    this._hasListener = true;
-    t1 = cancelOnError ? 1 : 0;
-    return new $._ControllerSubscription(this._controller, onData, onError, onDone, t1, null);
-  },
-  _onListen$1: function(subscription) {
-    this._controller._recordListen$1(subscription);
-  },
-  get$_onListen: function() {
-    return new $.BoundClosure$1(this, "_onListen$1", null);
-  }
-},
-
-_ControllerSubscription: {"": "_BufferingStreamSubscription;_controller,_liblib3$_onData,_onError,_onDone,_state,_pending",
+_ControllerSubscription: {"": "_BufferingStreamSubscription;_controller<,_liblib3$_onData,_onError,_onDone,_state,_pending",
   _onCancel$0: function() {
-    var t1 = this._controller;
-    t1._subscription = null;
-    t1._state = (t1._state | 1) >>> 0;
-    $._runGuarded(t1._onCancel);
+    this.get$_controller()._recordCancel$1(this);
   },
   _onPause$0: function() {
-    $._runGuarded(this._controller._onPause);
+    this.get$_controller();
   },
   get$_onPause: function() {
     return new $.BoundClosure$0(this, "_onPause$0", null);
   },
   _onResume$0: function() {
-    $._runGuarded(this._controller._onResume);
+    this.get$_controller();
   },
   get$_onResume: function() {
     return new $.BoundClosure$0(this, "_onResume$0", null);
+  }
+},
+
+_BroadcastStream: {"": "_StreamImpl;_controller",
+  _createSubscription$4: function(onData, onError, onDone, cancelOnError) {
+    var t1 = cancelOnError ? 1 : 0;
+    t1 = new $._BroadcastSubscription(null, null, null, this._controller, onData, onError, onDone, t1, null);
+    t1._liblib3$_previous = t1;
+    t1._liblib3$_next = t1;
+    return t1;
+  },
+  _onListen$1: function(subscription) {
+    var t1, t2, t3;
+    t1 = this._controller;
+    t1._addListener$1(subscription);
+    t2 = t1._liblib3$_next;
+    t3 = t1._liblib3$_previous;
+    if (t2 == null ? t3 == null : t2 === t3)
+      $._runGuarded(t1._onListen);
+  }
+},
+
+_BroadcastSubscription: {"": "_ControllerSubscription;_eventState@,_liblib3$_next@,_liblib3$_previous@,_controller,_liblib3$_onData,_onError,_onDone,_state,_pending",
+  get$_controller: function() {
+    return this._controller;
+  },
+  _expectsEvent$1: function(eventId) {
+    return $.$and$n(this._eventState, 1) === eventId;
+  },
+  _toggleEventId$0: function() {
+    this._eventState = $.$xor$n(this._eventState, 1);
+  },
+  get$_isFiring: function() {
+    return $.$and$n(this._eventState, 2) !== 0;
+  },
+  _setRemoveAfterFiring$0: function() {
+    this._eventState = $.$or$n(this._eventState, 4);
+  },
+  get$_removeAfterFiring: function() {
+    return $.$and$n(this._eventState, 4) !== 0;
+  }
+},
+
+_BroadcastStreamController: {"": "Object;_state@,_liblib3$_next@,_liblib3$_previous@",
+  _addListener$1: function(subscription) {
+    var previous = this._liblib3$_previous;
+    previous.set$_liblib3$_next(subscription);
+    this._liblib3$_previous = subscription.get$_liblib3$_previous();
+    subscription.get$_liblib3$_previous().set$_liblib3$_next(this);
+    subscription.set$_liblib3$_previous(previous);
+    subscription.set$_eventState(this._state & 1);
+  },
+  _removeListener$1: function(subscription) {
+    subscription.get$_liblib3$_previous().set$_liblib3$_next(subscription.get$_liblib3$_next());
+    subscription.get$_liblib3$_next().set$_liblib3$_previous(subscription.get$_liblib3$_previous());
+    subscription.set$_liblib3$_previous(subscription);
+    subscription.set$_liblib3$_next(subscription);
+  },
+  _recordCancel$1: function(subscription) {
+    if (subscription.get$_isFiring() === true)
+      subscription._setRemoveAfterFiring$0();
+    else {
+      this._removeListener$1(subscription);
+      if ((this._state & 2) === 0 && this._liblib3$_next === this)
+        $._runGuarded(this._onCancel);
+    }
+  },
+  add$1: function(_, data) {
+    if ((this._state & 4) !== 0)
+      throw $.wrapException(new $.StateError("Cannot add new events after calling close()"));
+    this._sendData$1(data);
+  },
+  _forEachListener$1: function(action) {
+    var t1, id, link, link0;
+    t1 = this._state;
+    if ((t1 & 2) !== 0)
+      throw $.wrapException(new $.StateError("Cannot fire new event. Controller is already firing an event"));
+    if (this._liblib3$_next === this)
+      return;
+    id = t1 & 1;
+    this._state = (t1 ^ 3) >>> 0;
+    link = this._liblib3$_next;
+    for (; link !== this;)
+      if (link._expectsEvent$1(id) === true) {
+        link.set$_eventState($.$or$n(link.get$_eventState(), 2));
+        action.call$1(link);
+        link._toggleEventId$0();
+        link0 = link.get$_liblib3$_next();
+        if (link.get$_removeAfterFiring() === true)
+          this._removeListener$1(link);
+        link.set$_eventState($.$and$n(link.get$_eventState(), 4294967293));
+        link = link0;
+      } else
+        link = link.get$_liblib3$_next();
+    this._state = (this._state & 4294967293) >>> 0;
+    if (this._liblib3$_next === this)
+      $._runGuarded(this._onCancel);
+  }
+},
+
+_SyncBroadcastStreamController: {"": "_BroadcastStreamController;_onListen,_onCancel,_state,_liblib3$_next,_liblib3$_previous",
+  _sendData$1: function(data) {
+    if (this._liblib3$_next === this)
+      return;
+    this._forEachListener$1(new $._SyncBroadcastStreamController__sendData_closure(this, data));
+  },
+  _sendError$1: function(error) {
+    if (this._liblib3$_next === this)
+      return;
+    this._forEachListener$1(new $._SyncBroadcastStreamController__sendError_closure(this, error));
+  }
+},
+
+_SyncBroadcastStreamController__sendData_closure: {"": "Closure;this_0,data_1",
+  call$1: function(subscription) {
+    $._liblib3$_add$1$x(subscription, this.data_1);
+  },
+  $isFunction: true
+},
+
+_SyncBroadcastStreamController__sendError_closure: {"": "Closure;this_0,error_1",
+  call$1: function(subscription) {
+    subscription._addError$1(this.error_1);
+  },
+  $isFunction: true
+},
+
+_AsyncBroadcastStreamController: {"": "_BroadcastStreamController;_onListen,_onCancel,_state,_liblib3$_next,_liblib3$_previous",
+  _sendData$1: function(data) {
+    var link;
+    for (link = this._liblib3$_next; link !== this; link = link.get$_liblib3$_next())
+      link._addPending$1(new $._DelayedData(data, null));
+  },
+  _sendError$1: function(error) {
+    var link;
+    for (link = this._liblib3$_next; link !== this; link = link.get$_liblib3$_next())
+      link._addPending$1(new $._DelayedError(error, null));
   }
 },
 
@@ -7733,16 +7802,6 @@ _BufferingStreamSubscription: {"": "Object;_liblib3$_onData,_onError,_onDone,_st
   },
   _onDone$0: function() {
     return this._onDone.call$0();
-  },
-  _setPendingEvents$1: function(pendingEvents) {
-    if (pendingEvents == null)
-      return;
-    this._pending = pendingEvents;
-    pendingEvents.get$isEmpty;
-    if (pendingEvents.lastPendingEvent != null) {
-      this._state = $.$or$n(this._state, 32);
-      this._pending.schedule$1(this);
-    }
   },
   pause$1: function(_, resumeSignal) {
     var wasPaused, t1, t2;
@@ -7803,9 +7862,6 @@ _BufferingStreamSubscription: {"": "Object;_liblib3$_onData,_onError,_onDone,_st
       this._pending = null;
       this._state = $.$and$n(this._state, 4294967279);
     }
-  },
-  get$isPaused: function() {
-    return $.$ge$n(this._state, 64);
   },
   _liblib3$_add$1: function(_, data) {
     if (!$.$eq($.$and$n(this._state, 8), 0))
@@ -7997,9 +8053,6 @@ _StreamImpl: {"": "Stream;",
     return new $._BufferingStreamSubscription(onData, onError, onDone, t1, null);
   },
   _onListen$1: function(subscription) {
-  },
-  get$_onListen: function() {
-    return new $.BoundClosure$1(this, "_onListen$1", null);
   }
 },
 
@@ -8120,7 +8173,7 @@ _ForwardingStream: {"": "Stream;",
   }
 },
 
-_ForwardingStreamSubscription: {"": "_BufferingStreamSubscription;_stream<,_subscription<,_liblib3$_onData,_onError,_onDone,_state,_pending",
+_ForwardingStreamSubscription: {"": "_BufferingStreamSubscription;_stream,_subscription,_liblib3$_onData,_onError,_onDone,_state,_pending",
   _liblib3$_add$1: function(_, data) {
     if (!$.$eq($.$and$n(this._state, 2), 0))
       return;
@@ -8357,12 +8410,19 @@ HashMap_values_closure: {"": "Closure;this_0",
   $isFunction: true
 },
 
+HashMap_addAll_closure: {"": "Closure;this_0",
+  call$2: function(key, value) {
+    $.$indexSet$ax(this.this_0, key, value);
+  },
+  $isFunction: true
+},
+
 HashMapKeyIterable: {"": "IterableBase;_map",
   get$length: function(_) {
-    return this._map._liblib1$_length;
+    return this._map._length;
   },
   get$isEmpty: function(_) {
-    return this._map._liblib1$_length === 0;
+    return this._map._length === 0;
   },
   get$iterator: function(_) {
     var t1 = this._map;
@@ -8414,14 +8474,21 @@ LinkedHashMap_values_closure: {"": "Closure;this_0",
   $isFunction: true
 },
 
+LinkedHashMap_addAll_closure: {"": "Closure;this_0",
+  call$2: function(key, value) {
+    $.$indexSet$ax(this.this_0, key, value);
+  },
+  $isFunction: true
+},
+
 LinkedHashMapCell: {"": "Object;_key<,_value@,_next@,_previous@"},
 
 LinkedHashMapKeyIterable: {"": "IterableBase;_map",
   get$length: function(_) {
-    return this._map._liblib1$_length;
+    return this._map._length;
   },
   get$isEmpty: function(_) {
-    return this._map._liblib1$_length === 0;
+    return this._map._length === 0;
   },
   get$iterator: function(_) {
     var t1 = this._map;
@@ -8516,12 +8583,12 @@ LinkedHashSetIterator: {"": "Object;_set,_modifications,_cell,_liblib1$_current"
   }
 },
 
-HashMap: {"": "Object;_liblib1$_length@,_strings?,_nums?,_rest?,_keys",
+HashMap: {"": "Object;_length<,_strings,_nums,_rest,_keys",
   get$length: function(_) {
-    return this._liblib1$_length;
+    return this._length;
   },
   get$isEmpty: function(_) {
-    return this._liblib1$_length === 0;
+    return this._length === 0;
   },
   get$keys: function(_) {
     return new $.HashMapKeyIterable(this);
@@ -8543,6 +8610,9 @@ HashMap: {"": "Object;_liblib1$_length@,_strings?,_nums?,_rest?,_keys",
         return false;
       return $.HashMap__findBucketIndex(rest[$.get$hashCode$(key) & 0x3ffffff], key) >= 0;
     }
+  },
+  addAll$1: function(_, other) {
+    $.forEach$1$ax(other, new $.HashMap_addAll_closure(this));
   },
   $index: function(_, key) {
     var strings, t1, entry, nums, rest, bucket, index;
@@ -8588,7 +8658,7 @@ HashMap: {"": "Object;_liblib1$_length@,_strings?,_nums?,_rest?,_keys",
         strings = table;
       }
       if (strings[key] == null) {
-        this._liblib1$_length = this._liblib1$_length + 1;
+        this._length = this._length + 1;
         this._keys = null;
       }
       if (value == null)
@@ -8608,7 +8678,7 @@ HashMap: {"": "Object;_liblib1$_length@,_strings?,_nums?,_rest?,_keys",
         nums = table;
       }
       if (nums[key] == null) {
-        this._liblib1$_length = this._liblib1$_length + 1;
+        this._length = this._length + 1;
         this._keys = null;
       }
       if (value == null)
@@ -8635,7 +8705,7 @@ HashMap: {"": "Object;_liblib1$_length@,_strings?,_nums?,_rest?,_keys",
           rest[hash] = rest;
         else
           rest[hash] = t1;
-        this._liblib1$_length = this._liblib1$_length + 1;
+        this._length = this._length + 1;
         this._keys = null;
       } else {
         index = $.HashMap__findBucketIndex(bucket, key);
@@ -8643,7 +8713,7 @@ HashMap: {"": "Object;_liblib1$_length@,_strings?,_nums?,_rest?,_keys",
           bucket[index + 1] = value;
         else {
           bucket.push(key, value);
-          this._liblib1$_length = this._liblib1$_length + 1;
+          this._length = this._length + 1;
           this._keys = null;
         }
       }
@@ -8663,7 +8733,7 @@ HashMap: {"": "Object;_liblib1$_length@,_strings?,_nums?,_rest?,_keys",
       index = $.HashMap__findBucketIndex(bucket, key);
       if (index < 0)
         return;
-      this._liblib1$_length = this._liblib1$_length - 1;
+      this._length = this._length - 1;
       this._keys = null;
       return bucket.splice(index, 2)[1];
     }
@@ -8689,7 +8759,7 @@ HashMap: {"": "Object;_liblib1$_length@,_strings?,_nums?,_rest?,_keys",
     t1 = this._keys;
     if (t1 != null)
       return t1;
-    result = $.List_List(this._liblib1$_length);
+    result = $.List_List(this._length);
     strings = this._strings;
     if (strings != null) {
       names = Object.getOwnPropertyNames(strings);
@@ -8731,7 +8801,7 @@ HashMap: {"": "Object;_liblib1$_length@,_strings?,_nums?,_rest?,_keys",
       entry = table[key];
       value = entry === table ? null : entry;
       delete table[key];
-      this._liblib1$_length = this._liblib1$_length - 1;
+      this._length = this._length - 1;
       this._keys = null;
       return value;
     } else
@@ -8752,15 +8822,15 @@ _HashSetBase: {"": "IterableBase;",
   $isIterable: true
 },
 
-HashSet: {"": "_HashSetBase;_liblib1$_length@,_strings?,_nums?,_rest?,_elements?",
+HashSet: {"": "_HashSetBase;_length<,_strings,_nums,_rest,_elements",
   get$iterator: function(_) {
     return new $.HashSetIterator(this, this._computeElements$0(), 0, null);
   },
   get$length: function(_) {
-    return this._liblib1$_length;
+    return this._length;
   },
   get$isEmpty: function(_) {
-    return this._liblib1$_length === 0;
+    return this._length === 0;
   },
   contains$1: function(_, object) {
     var strings, nums, rest;
@@ -8817,13 +8887,13 @@ HashSet: {"": "_HashSetBase;_liblib1$_length@,_strings?,_nums?,_rest?,_elements?
           return;
         bucket.push(element);
       }
-      this._liblib1$_length = this._liblib1$_length + 1;
+      this._length = this._length + 1;
       this._elements = null;
     }
   },
   addAll$1: function(_, objects) {
     var t1;
-    for (t1 = $.get$iterator$ax(objects); t1.moveNext$0();)
+    for (t1 = $.get$iterator$ax(objects); t1.moveNext$0() === true;)
       this.add$1(this, t1.get$current());
   },
   remove$1: function(_, object) {
@@ -8840,7 +8910,7 @@ HashSet: {"": "_HashSetBase;_liblib1$_length@,_strings?,_nums?,_rest?,_elements?
       index = $.HashSet__findBucketIndex(bucket, object);
       if (index < 0)
         return false;
-      this._liblib1$_length = this._liblib1$_length - 1;
+      this._length = this._length - 1;
       this._elements = null;
       bucket.splice(index, 1);
       return true;
@@ -8851,7 +8921,7 @@ HashSet: {"": "_HashSetBase;_liblib1$_length@,_strings?,_nums?,_rest?,_elements?
     t1 = this._elements;
     if (t1 != null)
       return t1;
-    result = $.List_List(this._liblib1$_length);
+    result = $.List_List(this._length);
     strings = this._strings;
     if (strings != null) {
       names = Object.getOwnPropertyNames(strings);
@@ -8891,13 +8961,13 @@ HashSet: {"": "_HashSetBase;_liblib1$_length@,_strings?,_nums?,_rest?,_elements?
     if (table[element] != null)
       return;
     table[element] = 0;
-    this._liblib1$_length = this._liblib1$_length + 1;
+    this._length = this._length + 1;
     this._elements = null;
   },
   _removeHashTableEntry$2: function(table, element) {
     if (table != null && table[element] != null) {
       delete table[element];
-      this._liblib1$_length = this._liblib1$_length - 1;
+      this._length = this._length - 1;
       this._elements = null;
       return true;
     } else
@@ -9018,7 +9088,7 @@ IterableBase: {"": "Object;",
   $asIterable: null
 },
 
-LinkedHashMap: {"": "Object;_liblib1$_length@,_strings?,_nums?,_rest?,_first,_last,_modifications",
+LinkedHashMap: {"": "Object;_length<,_strings,_nums,_rest,_first,_last,_modifications",
   containsKey$1: function(_, key) {
     var strings, nums, rest;
     if (typeof key === "string" && key !== "__proto__") {
@@ -9026,7 +9096,7 @@ LinkedHashMap: {"": "Object;_liblib1$_length@,_strings?,_nums?,_rest?,_first,_la
       if (strings == null)
         return false;
       return strings[key] != null;
-    } else if (typeof key === "number" && (key & 0x3ffffff) === key) {
+    } else if (false) {
       nums = this._nums;
       if (nums == null)
         return false;
@@ -9037,6 +9107,9 @@ LinkedHashMap: {"": "Object;_liblib1$_length@,_strings?,_nums?,_rest?,_first,_la
         return false;
       return $.LinkedHashMap__findBucketIndex(rest[$.get$hashCode$(key) & 0x3ffffff], key) >= 0;
     }
+  },
+  addAll$1: function(_, other) {
+    $.forEach$1$ax(other, new $.LinkedHashMap_addAll_closure(this));
   },
   $index: function(_, key) {
     var strings, cell, nums, rest, bucket, index;
@@ -9144,10 +9217,10 @@ LinkedHashMap: {"": "Object;_liblib1$_length@,_strings?,_nums?,_rest?,_first,_la
     return new $.MappedIterable(new $.LinkedHashMapKeyIterable(this), new $.LinkedHashMap_values_closure(this));
   },
   get$length: function(_) {
-    return this._liblib1$_length;
+    return this._length;
   },
   get$isEmpty: function(_) {
-    return this._liblib1$_length === 0;
+    return this._length === 0;
   },
   toString$0: function(_) {
     var result = new $.StringBuffer("");
@@ -9185,7 +9258,7 @@ LinkedHashMap: {"": "Object;_liblib1$_length@,_strings?,_nums?,_rest?,_first,_la
       last.set$_next(cell);
       this._last = cell;
     }
-    this._liblib1$_length = this._liblib1$_length + 1;
+    this._length = this._length + 1;
     this._modifications = $.$and$n($.$add$ns(this._modifications, 1), 67108863);
     return cell;
   },
@@ -9201,33 +9274,33 @@ LinkedHashMap: {"": "Object;_liblib1$_length@,_strings?,_nums?,_rest?,_first,_la
       this._last = previous;
     else
       next.set$_previous(previous);
-    this._liblib1$_length = this._liblib1$_length - 1;
+    this._length = this._length - 1;
     this._modifications = $.$and$n($.$add$ns(this._modifications, 1), 67108863);
   },
   $isMap: true,
   $asMap: null
 },
 
-LinkedHashSet: {"": "_HashSetBase;_liblib1$_length@,_strings?,_nums?,_rest?,_first,_last,_modifications",
+LinkedHashSet: {"": "_HashSetBase;_length<,_strings,_nums,_rest,_first,_last,_modifications",
   get$iterator: function(_) {
     var t1 = new $.LinkedHashSetIterator(this, this._modifications, null, null);
     t1._cell = t1._set._first;
     return t1;
   },
   get$length: function(_) {
-    return this._liblib1$_length;
+    return this._length;
   },
   get$isEmpty: function(_) {
-    return this._liblib1$_length === 0;
+    return this._length === 0;
   },
   contains$1: function(_, object) {
     var strings, nums, rest;
-    if (typeof object === "string" && object !== "__proto__") {
+    if (false) {
       strings = this._strings;
       if (strings == null)
         return false;
       return strings[object] != null;
-    } else if (typeof object === "number" && (object & 0x3ffffff) === object) {
+    } else if (false) {
       nums = this._nums;
       if (nums == null)
         return false;
@@ -9343,7 +9416,7 @@ LinkedHashSet: {"": "_HashSetBase;_liblib1$_length@,_strings?,_nums?,_rest?,_fir
       last.set$_next(cell);
       this._last = cell;
     }
-    this._liblib1$_length = this._liblib1$_length + 1;
+    this._length = this._length + 1;
     this._modifications = $.$and$n($.$add$ns(this._modifications, 1), 67108863);
     return cell;
   },
@@ -9359,7 +9432,7 @@ LinkedHashSet: {"": "_HashSetBase;_liblib1$_length@,_strings?,_nums?,_rest?,_fir
       this._last = previous;
     else
       next.set$_previous(previous);
-    this._liblib1$_length = this._liblib1$_length - 1;
+    this._length = this._length - 1;
     this._modifications = $.$and$n($.$add$ns(this._modifications, 1), 67108863);
   },
   $asIterable: null
@@ -9575,6 +9648,15 @@ ListMixin: {"": "Object;",
     this.set$length(receiver, $.$add$ns(t1, 1));
     this.$indexSet(receiver, t1, element);
   },
+  addAll$1: function(receiver, iterable) {
+    var t1, element, t2;
+    for (t1 = $.get$iterator$ax(iterable); t1.moveNext$0() === true;) {
+      element = t1.get$current();
+      t2 = this.get$length(receiver);
+      this.set$length(receiver, $.$add$ns(t2, 1));
+      this.$indexSet(receiver, t2, element);
+    }
+  },
   remove$1: function(receiver, element) {
     var i;
     for (i = 0; $.JSInt_methods.$lt(i, this.get$length(receiver)); ++i)
@@ -9787,6 +9869,47 @@ ListQueue: {"": "IterableBase;_table,_head,_tail,_modificationCount",
   add$1: function(_, element) {
     this._add$1(this, element);
   },
+  addAll$1: function(_, elements) {
+    var addCount, $length, t1, t2, endSpace, t3, preSpace;
+    if (typeof elements === "object" && elements !== null && (elements.constructor === Array || !!$.getInterceptor(elements).$isList)) {
+      addCount = $.get$length$asx(elements);
+      $length = $.$and$n($.$sub$n(this._tail, this._head), this._table.length - 1);
+      t1 = $.getInterceptor$ns($length);
+      if ($.$ge$n(t1.$add($length, addCount), this._table.length) === true) {
+        this._preGrow$1(t1.$add($length, addCount));
+        t2 = this._table;
+        t1 = t1.$add($length, addCount);
+        $.IterableMixinWorkaround_setRangeList(t2, $length, t1, elements, 0);
+        this._tail = $.$add$ns(this._tail, addCount);
+      } else {
+        t1 = this._table;
+        t2 = this._tail;
+        if (typeof t2 !== "number")
+          throw $.iae(t2);
+        endSpace = t1.length - t2;
+        t1 = $.getInterceptor$n(addCount);
+        if (t1.$lt(addCount, endSpace) === true) {
+          t1 = this._table;
+          t2 = this._tail;
+          t3 = $.$add$ns(t2, addCount);
+          $.IterableMixinWorkaround_setRangeList(t1, t2, t3, elements, 0);
+          this._tail = $.$add$ns(this._tail, addCount);
+        } else {
+          preSpace = t1.$sub(addCount, endSpace);
+          t1 = this._table;
+          t2 = this._tail;
+          t3 = $.$add$ns(t2, endSpace);
+          $.IterableMixinWorkaround_setRangeList(t1, t2, t3, elements, 0);
+          t1 = this._table;
+          $.IterableMixinWorkaround_setRangeList(t1, 0, preSpace, elements, endSpace);
+          this._tail = preSpace;
+        }
+      }
+      this._modificationCount = this._modificationCount + 1;
+    } else
+      for (t1 = $.get$iterator$ax(elements); t1.moveNext$0() === true;)
+        this._add$1(this, t1.get$current());
+  },
   remove$1: function(_, object) {
     var i, t1;
     for (i = this._head; i !== this._tail; i = (i + 1 & this._table.length - 1) >>> 0) {
@@ -9969,6 +10092,12 @@ ListQueue: {"": "IterableBase;_table,_head,_tail,_modificationCount",
       return $.$add$ns(this._tail, firstPartSize);
     }
   },
+  _preGrow$1: function(newElementCount) {
+    var newTable = $.List_List($.ListQueue__nextPowerOf2(newElementCount));
+    this._tail = this._writeToList$1(newTable);
+    this._table = newTable;
+    this._head = 0;
+  },
   ListQueue$1: function(initialCapacity) {
     if (true)
       initialCapacity = 8;
@@ -10054,6 +10183,14 @@ LinkedHashSet__findBucketIndex: function(bucket, element) {
   return -1;
 },
 
+HashMap$: function() {
+  return new $.HashMap(0, null, null, null, null);
+},
+
+HashSet$: function() {
+  return new $.HashSet(0, null, null, null, null);
+},
+
 ListQueue$: function(initialCapacity) {
   var t1 = new $.ListQueue(null, 0, 0, 0);
   t1.ListQueue$1(initialCapacity);
@@ -10062,10 +10199,22 @@ ListQueue$: function(initialCapacity) {
 
 ListQueue__nextPowerOf2: function(number) {
   var nextNumber;
-  number = $.JSNull_methods.$shl(number, 2) - 1;
+  number = $.$sub$n($.$shl$n(number, 2), 1);
+  if (number !== (number | 0))
+    return $.ListQueue__nextPowerOf2$bailout(1, number);
   for (; true; number = nextNumber) {
     nextNumber = (number & number - 1) >>> 0;
     if (nextNumber === 0)
+      return number;
+  }
+},
+
+ListQueue__nextPowerOf2$bailout: function(state0, number) {
+  var t1, nextNumber;
+  for (; true; number = nextNumber) {
+    t1 = $.getInterceptor$n(number);
+    nextNumber = t1.$and(number, t1.$sub(number, 1));
+    if ($.$eq(nextNumber, 0))
       return number;
   }
 }}],
@@ -10073,7 +10222,7 @@ ListQueue__nextPowerOf2: function(number) {
 _symbolMapToStringMap_closure: {"": "Closure;result_0",
   call$2: function(key, value) {
     var t1 = this.result_0;
-    t1.$indexSet(t1, key.get$_liblib0$_name(), value);
+    t1.$indexSet(t1, key.get$_liblib$_name(), value);
   },
   $isFunction: true
 },
@@ -10517,7 +10666,7 @@ Object: {"": ";",
     return "Instance of '" + $.Primitives_objectTypeName(this) + "'";
   },
   noSuchMethod$1: function(_, invocation) {
-    throw $.wrapException(new $.NoSuchMethodError(this, invocation.memberName._liblib0$_name, invocation.get$positionalArguments(), $._symbolMapToStringMap(invocation.get$namedArguments()), null));
+    throw $.wrapException(new $.NoSuchMethodError(this, invocation.memberName._liblib$_name, invocation.get$positionalArguments(), $._symbolMapToStringMap(invocation.get$namedArguments()), null));
   },
   $$dom_initCustomEvent$4: function($receiver, $0, $1, $2, $3) {
     return this.noSuchMethod$1(this, $.createInvocationMirror("$dom_initCustomEvent", "$$dom_initCustomEvent$4", 0, [$0, $1, $2, $3], []));
@@ -10570,6 +10719,9 @@ Object: {"": ";",
   add$1: function($receiver, $0) {
     return this.noSuchMethod$1(this, $.createInvocationMirror("add", "add$1", 0, [$0], []));
   },
+  addAll$1: function($receiver, $0) {
+    return this.noSuchMethod$1(this, $.createInvocationMirror("addAll", "addAll$1", 0, [$0], []));
+  },
   call$2$onError: function($0, $1) {
     return this.noSuchMethod$1(this, $.createInvocationMirror("call", "call$2$onError", 0, [$0, $1], ["onError"]));
   },
@@ -10578,6 +10730,9 @@ Object: {"": ";",
   },
   call$4$cancelOnError$onDone$onError: function($0, $1, $2, $3) {
     return this.noSuchMethod$1(this, $.createInvocationMirror("call", "call$4$cancelOnError$onDone$onError", 0, [$0, $1, $2, $3], ["cancelOnError", "onDone", "onError"]));
+  },
+  cancel$0: function($receiver) {
+    return this.noSuchMethod$1(this, $.createInvocationMirror("cancel", "cancel$0", 0, [], []));
   },
   clone$1: function($receiver, $0) {
     return this.noSuchMethod$1(this, $.createInvocationMirror("clone", "clone$1", 0, [$0], []));
@@ -10606,8 +10761,8 @@ Object: {"": ";",
   get$$$dom_className: function($receiver) {
     return this.noSuchMethod$1(this, $.createInvocationMirror("$dom_className", "get$$$dom_className", 1, [], []));
   },
-  get$$float: function($receiver) {
-    return this.noSuchMethod$1(this, $.createInvocationMirror("float", "get$$float", 1, [], []));
+  get$accept: function($receiver) {
+    return this.noSuchMethod$1(this, $.createInvocationMirror("accept", "get$accept", 1, [], []));
   },
   get$attributes: function($receiver) {
     return this.noSuchMethod$1(this, $.createInvocationMirror("attributes", "get$attributes", 1, [], []));
@@ -10636,9 +10791,6 @@ Object: {"": ";",
   get$detail: function($receiver) {
     return this.noSuchMethod$1(this, $.createInvocationMirror("detail", "get$detail", 1, [], []));
   },
-  get$disabled: function($receiver) {
-    return this.noSuchMethod$1(this, $.createInvocationMirror("disabled", "get$disabled", 1, [], []));
-  },
   get$display: function($receiver) {
     return this.noSuchMethod$1(this, $.createInvocationMirror("display", "get$display", 1, [], []));
   },
@@ -10656,9 +10808,6 @@ Object: {"": ";",
   },
   get$id: function($receiver) {
     return this.noSuchMethod$1(this, $.createInvocationMirror("id", "get$id", 1, [], []));
-  },
-  get$index: function($receiver) {
-    return this.noSuchMethod$1(this, $.createInvocationMirror("index", "get$index", 1, [], []));
   },
   get$isEmpty: function($receiver) {
     return this.noSuchMethod$1(this, $.createInvocationMirror("isEmpty", "get$isEmpty", 1, [], []));
@@ -10783,9 +10932,6 @@ Object: {"": ";",
   modify$1: function($receiver, $0) {
     return this.noSuchMethod$1(this, $.createInvocationMirror("modify", "modify$1", 0, [$0], []));
   },
-  pause$0: function($receiver) {
-    return this.noSuchMethod$1(this, $.createInvocationMirror("pause", "pause$0", 0, [], []));
-  },
   preventDefault$0: function($receiver) {
     return this.noSuchMethod$1(this, $.createInvocationMirror("preventDefault", "preventDefault$0", 0, [], []));
   },
@@ -10809,9 +10955,6 @@ Object: {"": ";",
   },
   replaceWith$1: function($receiver, $0) {
     return this.noSuchMethod$1(this, $.createInvocationMirror("replaceWith", "replaceWith$1", 0, [$0], []));
-  },
-  resume$0: function($receiver) {
-    return this.noSuchMethod$1(this, $.createInvocationMirror("resume", "resume$0", 0, [], []));
   },
   round$0: function($receiver) {
     return this.noSuchMethod$1(this, $.createInvocationMirror("round", "round$0", 0, [], []));
@@ -10891,9 +11034,6 @@ Object: {"": ";",
   severe$1: function($0) {
     return this.noSuchMethod$1(this, $.createInvocationMirror("severe", "severe$1", 0, [$0], []));
   },
-  showPlaceholderForBiggerDropzone$3: function($0, $1, $2) {
-    return this.noSuchMethod$1(this, $.createInvocationMirror("showPlaceholderForBiggerDropzone", "showPlaceholderForBiggerDropzone$3", 0, [$0, $1, $2], []));
-  },
   split$1: function($receiver, $0) {
     return this.noSuchMethod$1(this, $.createInvocationMirror("split", "split$1", 0, [$0], []));
   },
@@ -10955,21 +11095,24 @@ StringBuffer: {"": "Object;_contents@",
     if (typeof separator !== "string")
       return this.writeAll$2$bailout(1, objects, separator);
     iterator = $.get$iterator$ax(objects);
-    if (iterator.moveNext$0() !== true)
+    if (!iterator.moveNext$0())
       return;
     if ($.JSString_methods.get$isEmpty(separator))
       do {
-        str = iterator.get$current();
+        iterator.get$current;
+        str = iterator._current;
         str = typeof str === "string" ? str : $.S(str);
         this._contents = this._contents + str;
-      } while (iterator.moveNext$0() === true);
+      } while (iterator.moveNext$0());
     else {
-      str = iterator.get$current();
+      iterator.get$current;
+      str = iterator._current;
       str = typeof str === "string" ? str : $.S(str);
       this._contents = this._contents + str;
-      for (; iterator.moveNext$0() === true;) {
+      for (; iterator.moveNext$0();) {
         this._contents = this._contents + separator;
-        str = iterator.get$current();
+        iterator.get$current;
+        str = iterator._current;
         str = typeof str === "string" ? str : $.S(str);
         this._contents = this._contents + str;
       }
@@ -10978,22 +11121,25 @@ StringBuffer: {"": "Object;_contents@",
   writeAll$2$bailout: function(state0, objects, separator) {
     var iterator, str, t1;
     iterator = $.get$iterator$ax(objects);
-    if (iterator.moveNext$0() !== true)
+    if (!iterator.moveNext$0())
       return;
     if ($.get$isEmpty$asx(separator) === true)
       do {
-        str = iterator.get$current();
+        iterator.get$current;
+        str = iterator._current;
         str = typeof str === "string" ? str : $.S(str);
         this._contents = this._contents + str;
-      } while (iterator.moveNext$0() === true);
+      } while (iterator.moveNext$0());
     else {
-      str = iterator.get$current();
+      iterator.get$current;
+      str = iterator._current;
       str = typeof str === "string" ? str : $.S(str);
       this._contents = this._contents + str;
-      for (t1 = typeof separator === "string"; iterator.moveNext$0() === true;) {
+      for (t1 = typeof separator === "string"; iterator.moveNext$0();) {
         str = t1 ? separator : $.S(separator);
         this._contents = this._contents + str;
-        str = iterator.get$current();
+        iterator.get$current;
+        str = iterator._current;
         str = typeof str === "string" ? str : $.S(str);
         this._contents = this._contents + str;
       }
@@ -11103,6 +11249,11 @@ _ChildrenElementList: {"": "ListBase;_element,_childElements",
   },
   get$iterator: function(_) {
     return $.get$iterator$ax(this.toList$0(this));
+  },
+  addAll$1: function(_, iterable) {
+    var t1, t2;
+    for (t1 = $.get$iterator$ax(typeof iterable === "object" && iterable !== null && !!$.getInterceptor(iterable).$is_ChildNodeListLazy ? $.List_List$from(iterable, true) : iterable), t2 = this._element; t1.moveNext$0() === true;)
+      t2.appendChild(t1.get$current());
   },
   setRange$4: function(_, start, end, iterable, skipCount) {
     throw $.wrapException(new $.UnimplementedError(null));
@@ -11613,6 +11764,9 @@ ImmutableListMixin: {"": "Object;",
   add$1: function(receiver, value) {
     throw $.wrapException(new $.UnsupportedError("Cannot add to immutable List."));
   },
+  addAll$1: function(receiver, iterable) {
+    throw $.wrapException(new $.UnsupportedError("Cannot add to immutable List."));
+  },
   insert$2: function(receiver, index, element) {
     throw $.wrapException(new $.UnsupportedError("Cannot add to immutable List."));
   },
@@ -11675,20 +11829,20 @@ Rect: {"": "Object;left>,top>,width>,height>",
   $asRect: null
 },
 
-_JsSerializer0: {"": "_Serializer0;_liblib$_nextFreeRefId,_liblib$_visited",
+_JsSerializer0: {"": "_Serializer0;_liblib0$_nextFreeRefId,_liblib0$_visited",
   visitSendPortSync$1: function(x) {
     if (!!$.getInterceptor(x).$is_JsSendPortSync)
-      return ["sendport", "nativejs", x._liblib$_id];
+      return ["sendport", "nativejs", x._liblib0$_id];
     if (!!$.getInterceptor(x).$is_LocalSendPortSync) {
       if ($.ReceivePortSync__cachedIsolateId == null) {
         if (!window.$dart$isolate$counter)
           window.$dart$isolate$counter = 1;
         $.ReceivePortSync__cachedIsolateId = window.$dart$isolate$counter++;
       }
-      return ["sendport", "dart", $.ReceivePortSync__cachedIsolateId, x._liblib$_receivePort._portId];
+      return ["sendport", "dart", $.ReceivePortSync__cachedIsolateId, x._liblib0$_receivePort._portId];
     }
     if (!!$.getInterceptor(x).$is_RemoteSendPortSync)
-      return ["sendport", "dart", x._liblib$_isolateId, x._portId];
+      return ["sendport", "dart", x._liblib0$_isolateId, x._portId];
     throw $.wrapException("Unknown port type " + $.S(x));
   },
   visitSendPort$1: function(x) {
@@ -11696,7 +11850,7 @@ _JsSerializer0: {"": "_Serializer0;_liblib$_nextFreeRefId,_liblib$_visited",
   }
 },
 
-_JsDeserializer0: {"": "_Deserializer0;_liblib$_deserialized",
+_JsDeserializer0: {"": "_Deserializer0;_liblib0$_deserialized",
   deserializeSendPort$1: function(x) {
     var t1, tag;
     t1 = $.getInterceptor$asx(x);
@@ -11712,33 +11866,33 @@ _JsDeserializer0: {"": "_Deserializer0;_liblib$_deserialized",
   }
 },
 
-_JsSendPortSync: {"": "Object;_liblib$_id",
+_JsSendPortSync: {"": "Object;_liblib0$_id",
   callSync$1: function(message) {
-    return new $._JsDeserializer0(null).deserialize$1(ReceivePortSync.dispatchCall(this._liblib$_id, new $._JsSerializer0(0, new $._MessageTraverserVisitedMap0()).traverse$1(message)));
+    return new $._JsDeserializer0(null).deserialize$1(ReceivePortSync.dispatchCall(this._liblib0$_id, new $._JsSerializer0(0, new $._MessageTraverserVisitedMap0()).traverse$1(message)));
   },
   $eq: function(_, other) {
     if (other == null)
       return false;
-    return typeof other === "object" && other !== null && !!$.getInterceptor(other).$is_JsSendPortSync && $.$eq(this._liblib$_id, other._liblib$_id);
+    return typeof other === "object" && other !== null && !!$.getInterceptor(other).$is_JsSendPortSync && $.$eq(this._liblib0$_id, other._liblib0$_id);
   },
   get$hashCode: function(_) {
-    return this._liblib$_id;
+    return this._liblib0$_id;
   },
   $is_JsSendPortSync: true,
   $isSendPortSync: true
 },
 
-_RemoteSendPortSync: {"": "Object;_liblib$_isolateId,_portId",
+_RemoteSendPortSync: {"": "Object;_liblib0$_isolateId,_portId",
   callSync$1: function(message) {
     var serialized = new $._JsSerializer0(0, new $._MessageTraverserVisitedMap0()).traverse$1(message);
-    return new $._JsDeserializer0(null).deserialize$1($._RemoteSendPortSync__call(this._liblib$_isolateId, this._portId, serialized));
+    return new $._JsDeserializer0(null).deserialize$1($._RemoteSendPortSync__call(this._liblib0$_isolateId, this._portId, serialized));
   },
   $eq: function(_, other) {
     var t1;
     if (other == null)
       return false;
     if (typeof other === "object" && other !== null && !!$.getInterceptor(other).$is_RemoteSendPortSync)
-      t1 = $.$eq(this._liblib$_isolateId, other._liblib$_isolateId) && $.$eq(this._portId, other._portId);
+      t1 = $.$eq(this._liblib0$_isolateId, other._liblib0$_isolateId) && $.$eq(this._portId, other._portId);
     else
       t1 = false;
     return t1;
@@ -11747,7 +11901,7 @@ _RemoteSendPortSync: {"": "Object;_liblib$_isolateId,_portId",
     var t1 = this._portId;
     if (typeof t1 !== "number")
       throw $.iae(t1);
-    return $.$shr$n(this._liblib$_isolateId, 16 + t1);
+    return $.$shr$n(this._liblib0$_isolateId, 16 + t1);
   },
   $is_RemoteSendPortSync: true,
   $isSendPortSync: true
@@ -11760,29 +11914,29 @@ _RemoteSendPortSync__call_closure: {"": "Closure;box_0",
   $isFunction: true
 },
 
-_LocalSendPortSync: {"": "Object;_liblib$_receivePort",
+_LocalSendPortSync: {"": "Object;_liblib0$_receivePort",
   callSync$1: function(message) {
-    return new $._JsDeserializer0(null).deserialize$1(new $._JsSerializer0(0, new $._MessageTraverserVisitedMap0()).traverse$1(this._liblib$_receivePort._liblib$_callback$1(new $._JsDeserializer0(null).deserialize$1(new $._JsSerializer0(0, new $._MessageTraverserVisitedMap0()).traverse$1(message)))));
+    return new $._JsDeserializer0(null).deserialize$1(new $._JsSerializer0(0, new $._MessageTraverserVisitedMap0()).traverse$1(this._liblib0$_receivePort._liblib0$_callback$1(new $._JsDeserializer0(null).deserialize$1(new $._JsSerializer0(0, new $._MessageTraverserVisitedMap0()).traverse$1(message)))));
   },
   $eq: function(_, other) {
     if (other == null)
       return false;
-    return typeof other === "object" && other !== null && !!$.getInterceptor(other).$is_LocalSendPortSync && this._liblib$_receivePort === other._liblib$_receivePort;
+    return typeof other === "object" && other !== null && !!$.getInterceptor(other).$is_LocalSendPortSync && this._liblib0$_receivePort === other._liblib0$_receivePort;
   },
   get$hashCode: function(_) {
-    return $.Primitives_objectHashCode(this._liblib$_receivePort);
+    return $.Primitives_objectHashCode(this._liblib0$_receivePort);
   },
   $is_LocalSendPortSync: true,
   $isSendPortSync: true
 },
 
-ReceivePortSync: {"": "Object;_portId,_liblib$_callback,_portSubscription",
-  _liblib$_callback$1: function(arg0) {
-    return this._liblib$_callback.call$1(arg0);
+ReceivePortSync: {"": "Object;_portId,_liblib0$_callback,_portSubscription",
+  _liblib0$_callback$1: function(arg0) {
+    return this._liblib0$_callback.call$1(arg0);
   },
   receive$1: function(callback) {
     var t1, t2, t3;
-    this._liblib$_callback = callback;
+    this._liblib0$_callback = callback;
     if (this._portSubscription == null) {
       t1 = window;
       if ($.ReceivePortSync__cachedIsolateId == null) {
@@ -11822,7 +11976,7 @@ ReceivePortSync_receive_closure: {"": "Closure;this_0",
     data = $.parse($.get$detail$x(e), null);
     t1 = $.getInterceptor$asx(data);
     replyTo = t1.$index(data, 0);
-    t1 = new $._JsSerializer0(0, new $._MessageTraverserVisitedMap0()).traverse$1(this.this_0._liblib$_callback$1(new $._JsDeserializer0(null).deserialize$1(t1.$index(data, 1))));
+    t1 = new $._JsSerializer0(0, new $._MessageTraverserVisitedMap0()).traverse$1(this.this_0._liblib0$_callback$1(new $._JsDeserializer0(null).deserialize$1(t1.$index(data, 1))));
     output = new $.StringBuffer("");
     output.StringBuffer$1("");
     new $._JsonStringifier(output, []).stringifyValue$1(t1);
@@ -11850,12 +12004,12 @@ _MessageTraverser0: {"": "Object;",
       return this.visitPrimitive$1(x);
     result = null;
     try {
-      result = this._liblib$_dispatch$1(x);
+      result = this._liblib0$_dispatch$1(x);
     } finally {
     }
     return result;
   },
-  _liblib$_dispatch$1: function(x) {
+  _liblib0$_dispatch$1: function(x) {
     if (x == null || typeof x === "string" || typeof x === "number" || typeof x === "boolean")
       return this.visitPrimitive$1(x);
     if (typeof x === "object" && x !== null && (x.constructor === Array || !!$.getInterceptor(x).$isList))
@@ -11876,31 +12030,31 @@ _Serializer0: {"": "_MessageTraverser0;",
     return x;
   },
   visitList$1: function(list) {
-    var id = this._liblib$_nextFreeRefId;
-    this._liblib$_nextFreeRefId = id + 1;
-    return ["list", id, this._liblib$_serializeList$1(list)];
+    var id = this._liblib0$_nextFreeRefId;
+    this._liblib0$_nextFreeRefId = id + 1;
+    return ["list", id, this._liblib0$_serializeList$1(list)];
   },
   visitMap$1: function(map) {
     var id, t1;
-    id = this._liblib$_nextFreeRefId;
-    this._liblib$_nextFreeRefId = id + 1;
+    id = this._liblib0$_nextFreeRefId;
+    this._liblib0$_nextFreeRefId = id + 1;
     t1 = $.getInterceptor$x(map);
-    return ["map", id, this._liblib$_serializeList$1($.toList$0$ax(t1.get$keys(map))), this._liblib$_serializeList$1($.toList$0$ax(t1.get$values(map)))];
+    return ["map", id, this._liblib0$_serializeList$1($.toList$0$ax(t1.get$keys(map))), this._liblib0$_serializeList$1($.toList$0$ax(t1.get$values(map)))];
   },
-  _liblib$_serializeList$1: function(list) {
+  _liblib0$_serializeList$1: function(list) {
     var len, result, i;
     if (typeof list !== "string" && (typeof list !== "object" || list === null || list.constructor !== Array && !$.isJsIndexable(list, list[$.dispatchPropertyName])))
-      return this._liblib$_serializeList$1$bailout(1, list);
+      return this._liblib0$_serializeList$1$bailout(1, list);
     len = list.length;
     result = $.List_List(len);
     for (i = 0; i < len; ++i) {
       if (i >= list.length)
         throw $.ioore(i);
-      result[i] = this._liblib$_dispatch$1(list[i]);
+      result[i] = this._liblib0$_dispatch$1(list[i]);
     }
     return result;
   },
-  _liblib$_serializeList$1$bailout: function(state0, list, t1, len) {
+  _liblib0$_serializeList$1$bailout: function(state0, list, t1, len) {
     switch (state0) {
       case 0:
       case 1:
@@ -11912,7 +12066,7 @@ _Serializer0: {"": "_MessageTraverser0;",
         state0 = 0;
         result = $.List_List(len);
         for (t2 = result.length, i = 0; $.JSInt_methods.$lt(i, len); ++i) {
-          t3 = this._liblib$_dispatch$1(t1.$index(list, i));
+          t3 = this._liblib0$_dispatch$1(t1.$index(list, i));
           if (i >= t2)
             throw $.ioore(i);
           result[i] = t3;
@@ -11926,10 +12080,10 @@ _Deserializer0: {"": "Object;",
   deserialize$1: function(x) {
     if (x == null || typeof x === "string" || typeof x === "number" || typeof x === "boolean")
       return x;
-    this._liblib$_deserialized = new $.HashMap(0, null, null, null, null);
-    return this._liblib$_deserializeHelper$1(x);
+    this._liblib0$_deserialized = new $.HashMap(0, null, null, null, null);
+    return this._liblib0$_deserializeHelper$1(x);
   },
-  _liblib$_deserializeHelper$1: function(x) {
+  _liblib0$_deserializeHelper$1: function(x) {
     var t1, id;
     t1 = $.getInterceptor$asx(x);
     if (x == null || typeof x === "string" || typeof x === "number" || typeof x === "boolean")
@@ -11937,12 +12091,12 @@ _Deserializer0: {"": "Object;",
     switch (t1.$index(x, 0)) {
       case "ref":
         id = t1.$index(x, 1);
-        t1 = this._liblib$_deserialized;
+        t1 = this._liblib0$_deserialized;
         return t1.$index(t1, id);
       case "list":
-        return this._liblib$_deserializeList$1(x);
+        return this._liblib0$_deserializeList$1(x);
       case "map":
-        return this._liblib$_deserializeMap$1(x);
+        return this._liblib0$_deserializeMap$1(x);
       case "sendport":
         return this.deserializeSendPort$1(x);
       default:
@@ -11950,67 +12104,67 @@ _Deserializer0: {"": "Object;",
         return;
     }
   },
-  _liblib$_deserializeList$1: function(x) {
+  _liblib0$_deserializeList$1: function(x) {
     var t1, id, dartList, len, i;
     t1 = $.getInterceptor$asx(x);
     id = t1.$index(x, 1);
     dartList = t1.$index(x, 2);
     if (typeof dartList !== "object" || dartList === null || (dartList.constructor !== Array || !!dartList.immutable$list) && !$.isJsIndexable(dartList, dartList[$.dispatchPropertyName]))
-      return this._liblib$_deserializeList$1$bailout(1, dartList, id);
-    t1 = this._liblib$_deserialized;
+      return this._liblib0$_deserializeList$1$bailout(1, dartList, id);
+    t1 = this._liblib0$_deserialized;
     t1.$indexSet(t1, id, dartList);
     len = dartList.length;
     for (i = 0; i < len; ++i) {
       if (i >= dartList.length)
         throw $.ioore(i);
-      t1 = this._liblib$_deserializeHelper$1(dartList[i]);
+      t1 = this._liblib0$_deserializeHelper$1(dartList[i]);
       if (i >= dartList.length)
         throw $.ioore(i);
       dartList[i] = t1;
     }
     return dartList;
   },
-  _liblib$_deserializeList$1$bailout: function(state0, dartList, id) {
+  _liblib0$_deserializeList$1$bailout: function(state0, dartList, id) {
     var t1, len, i;
-    t1 = this._liblib$_deserialized;
+    t1 = this._liblib0$_deserialized;
     t1.$indexSet(t1, id, dartList);
     t1 = $.getInterceptor$asx(dartList);
     len = t1.get$length(dartList);
     for (i = 0; $.JSInt_methods.$lt(i, len); ++i)
-      t1.$indexSet(dartList, i, this._liblib$_deserializeHelper$1(t1.$index(dartList, i)));
+      t1.$indexSet(dartList, i, this._liblib0$_deserializeHelper$1(t1.$index(dartList, i)));
     return dartList;
   },
-  _liblib$_deserializeMap$1: function(x) {
+  _liblib0$_deserializeMap$1: function(x) {
     var result, t1, id, t2, keys, values, len, i, key;
     result = new $.HashMap(0, null, null, null, null);
     t1 = $.getInterceptor$asx(x);
     id = t1.$index(x, 1);
-    t2 = this._liblib$_deserialized;
+    t2 = this._liblib0$_deserialized;
     t2.$indexSet(t2, id, result);
     keys = t1.$index(x, 2);
     if (typeof keys !== "string" && (typeof keys !== "object" || keys === null || keys.constructor !== Array && !$.isJsIndexable(keys, keys[$.dispatchPropertyName])))
-      return this._liblib$_deserializeMap$1$bailout(1, x, result, keys, t1);
+      return this._liblib0$_deserializeMap$1$bailout(1, x, result, keys, t1);
     values = t1.$index(x, 3);
     if (typeof values !== "string" && (typeof values !== "object" || values === null || values.constructor !== Array && !$.isJsIndexable(values, values[$.dispatchPropertyName])))
-      return this._liblib$_deserializeMap$1$bailout(2, 0, result, keys, 0, values);
+      return this._liblib0$_deserializeMap$1$bailout(2, 0, result, keys, 0, values);
     len = keys.length;
     for (i = 0; i < len; ++i) {
       if (i >= keys.length)
         throw $.ioore(i);
-      key = this._liblib$_deserializeHelper$1(keys[i]);
+      key = this._liblib0$_deserializeHelper$1(keys[i]);
       if (i >= values.length)
         throw $.ioore(i);
-      result.$indexSet(result, key, this._liblib$_deserializeHelper$1(values[i]));
+      result.$indexSet(result, key, this._liblib0$_deserializeHelper$1(values[i]));
     }
     return result;
   },
-  _liblib$_deserializeMap$1$bailout: function(state0, x, result, keys, t1, values, len) {
+  _liblib0$_deserializeMap$1$bailout: function(state0, x, result, keys, t1, values, len) {
     switch (state0) {
       case 0:
         result = new $.HashMap(0, null, null, null, null);
         t1 = $.getInterceptor$asx(x);
         id = t1.$index(x, 1);
-        t2 = this._liblib$_deserialized;
+        t2 = this._liblib0$_deserialized;
         t2.$indexSet(t2, id, result);
         keys = t1.$index(x, 2);
       case 1:
@@ -12024,7 +12178,7 @@ _Deserializer0: {"": "Object;",
         var id, t2, i;
         state0 = 0;
         for (t2 = $.getInterceptor$asx(values), i = 0; $.JSInt_methods.$lt(i, len); ++i)
-          result.$indexSet(result, this._liblib$_deserializeHelper$1(t1.$index(keys, i)), this._liblib$_deserializeHelper$1(t2.$index(values, i)));
+          result.$indexSet(result, this._liblib0$_deserializeHelper$1(t1.$index(keys, i)), this._liblib0$_deserializeHelper$1(t2.$index(values, i)));
         return result;
     }
   }
@@ -12039,14 +12193,14 @@ _DOMWindowCrossFrame: {"": "Object;_window",
   }
 },
 
-FixedSizeListIterator: {"": "Object;_array,_length,_position,_liblib$_current",
+FixedSizeListIterator: {"": "Object;_array,_liblib0$_length,_position,_liblib0$_current",
   moveNext$0: function() {
     var t1, nextPosition;
     t1 = this._position;
     if (typeof t1 !== "number")
       return this.moveNext$0$bailout(1, t1);
     nextPosition = t1 + 1;
-    t1 = this._length;
+    t1 = this._liblib0$_length;
     if (t1 !== (t1 | 0))
       return this.moveNext$0$bailout(2, t1, nextPosition);
     if (nextPosition < t1) {
@@ -12055,11 +12209,11 @@ FixedSizeListIterator: {"": "Object;_array,_length,_position,_liblib$_current",
         return this.moveNext$0$bailout(3, t1, nextPosition);
       if (nextPosition >>> 0 !== nextPosition || nextPosition >= t1.length)
         throw $.ioore(nextPosition);
-      this._liblib$_current = t1[nextPosition];
+      this._liblib0$_current = t1[nextPosition];
       this._position = nextPosition;
       return true;
     }
-    this._liblib$_current = null;
+    this._liblib0$_current = null;
     this._position = t1;
     return false;
   },
@@ -12070,7 +12224,7 @@ FixedSizeListIterator: {"": "Object;_array,_length,_position,_liblib$_current",
       case 1:
         state0 = 0;
         nextPosition = $.$add$ns(t1, 1);
-        t1 = this._length;
+        t1 = this._liblib0$_length;
       case 2:
         state0 = 0;
       case 3:
@@ -12080,17 +12234,17 @@ FixedSizeListIterator: {"": "Object;_array,_length,_position,_liblib$_current",
               t1 = this._array;
             case 3:
               state0 = 0;
-              this._liblib$_current = $.$index$asx(t1, nextPosition);
+              this._liblib0$_current = $.$index$asx(t1, nextPosition);
               this._position = nextPosition;
               return true;
           }
-        this._liblib$_current = null;
+        this._liblib0$_current = null;
         this._position = t1;
         return false;
     }
   },
   get$current: function() {
-    return this._liblib$_current;
+    return this._liblib0$_current;
   }
 },
 
@@ -12684,7 +12838,7 @@ _Lists_indexOf: function(a, element, startIndex, endIndex) {
   return -1;
 }}],
 ["html5_dnd", "package:html5_dnd/html5_dnd.dart", , {
-Draggable: {"": "Object;element<,draggingClass<,dragOccurringClass<,dropEffect*,disabled>,dragDataFunction,dragImageFunction,alwaysUseDragImagePolyfill<,_onDragStart<,_onDrag<,_onDragEnd<",
+DraggableGroup: {"": "Group;dragOccurringClass<,draggingClass<,overClass,dropEffect*,dragDataFunction,dragImageFunction,alwaysUseDragImagePolyfill<,_onDragStart@,_onDrag@,_onDragEnd@,_liblib4$_handle<,installedElements",
   dragDataFunction$1: function(arg0) {
     return this.dragDataFunction.call$1(arg0);
   },
@@ -12692,73 +12846,109 @@ Draggable: {"": "Object;element<,draggingClass<,dragOccurringClass<,dropEffect*,
     return this.dragImageFunction.call$1(arg0);
   },
   get$onDragStart: function(_) {
-    return this._onDragStart._stream;
+    var t1;
+    if (this._onDragStart == null) {
+      t1 = new $.DraggableGroup_onDragStart_closure(this);
+      t1 = new $._SyncBroadcastStreamController(null, t1, 0, null, null);
+      t1._liblib3$_previous = t1;
+      t1._liblib3$_next = t1;
+      this._onDragStart = t1;
+    }
+    t1 = this._onDragStart;
+    t1.get$stream;
+    return new $._BroadcastStream(t1);
   },
   get$onDrag: function(_) {
-    return this._onDrag._stream;
+    var t1;
+    if (this._onDrag == null) {
+      t1 = new $.DraggableGroup_onDrag_closure(this);
+      t1 = new $._SyncBroadcastStreamController(null, t1, 0, null, null);
+      t1._liblib3$_previous = t1;
+      t1._liblib3$_next = t1;
+      this._onDrag = t1;
+    }
+    t1 = this._onDrag;
+    t1.get$stream;
+    return new $._BroadcastStream(t1);
   },
   get$onDragEnd: function(_) {
-    return this._onDragEnd._stream;
+    var t1;
+    if (this._onDragEnd == null) {
+      t1 = new $.DraggableGroup_onDragEnd_closure(this);
+      t1 = new $._SyncBroadcastStreamController(null, t1, 0, null, null);
+      t1._liblib3$_previous = t1;
+      t1._liblib3$_next = t1;
+      this._onDragEnd = t1;
+    }
+    t1 = this._onDragEnd;
+    t1.get$stream;
+    return new $._BroadcastStream(t1);
   },
-  _polyfillDraggable$0: function() {
-    $.get$onSelectStart$x(this.element).listen$1(new $.Draggable__polyfillDraggable_closure(this));
+  install$1: function(element) {
+    var t1, subs, t2, t3, handleElement;
+    t1 = {};
+    $.Group.prototype.install$1.call(this, element);
+    subs = $.List_List($);
+    t2 = $.getInterceptor$x(element);
+    $.$indexSet$ax(t2.get$attributes(element), "draggable", "true");
+    if ($._supportsDraggable == null)
+      $._supportsDraggable = $.get$draggable$x(document.createElement("span")) != null;
+    if ($._supportsDraggable !== true) {
+      $.get$_logger().finest$1("Draggable is not supported, installing draggable polyfill");
+      subs.push(this._polyfillDraggable$1(element));
+    }
+    t1.dragImage_0 = null;
+    t1.usingDragImagePolyfill_1 = false;
+    t1.polyfillDragOverSubscription_2 = null;
+    t1.isHandle_3 = false;
+    t3 = this._liblib4$_handle;
+    if (t3 != null) {
+      handleElement = t2.query$1(element, t3);
+      t3 = $.getInterceptor$x(handleElement);
+      if (handleElement != null) {
+        subs.push(t3.get$onMouseDown(handleElement).listen$1(new $.DraggableGroup_install_closure(t1)));
+        subs.push(t3.get$onMouseUp(handleElement).listen$1(new $.DraggableGroup_install_closure0(t1)));
+      }
+    }
+    subs.push(t2.get$onDragStart(element).listen$1(new $.DraggableGroup_install_closure1(t1, this, element)));
+    subs.push(t2.get$onDrag(element).listen$1(new $.DraggableGroup_install_closure2(this, element)));
+    subs.push(t2.get$onDragEnd(element).listen$1(new $.DraggableGroup_install_closure3(t1, this, element)));
+    t1 = this.installedElements;
+    $.addAll$1$ax(t1.$index(t1, element), subs);
   },
-  _polyfillSetDragImage$2: function(mouseEvent, dragImage) {
-    var t1, subscription;
-    this._preventDefaultDragImage$1(mouseEvent);
+  _polyfillDraggable$1: function(element) {
+    return $.get$onSelectStart$x(element).listen$1(new $.DraggableGroup__polyfillDraggable_closure(element));
+  },
+  _polyfillSetDragImage$3: function(element, mouseEvent, dragImage) {
+    var t1, t2;
+    this._preventDefaultDragImage$2(element, mouseEvent);
     t1 = document.body;
     t1.get$children;
     new $._ChildrenElementList(t1, t1.children)._element.appendChild(dragImage.get$polyfill());
     $.set$position$x($.get$style$x(dragImage.get$polyfill()), "absolute");
     $.set$visibility$x($.get$style$x(dragImage.get$polyfill()), "hidden");
     t1 = new $._EventStream(document, $.EventStreamProvider_dragover._eventType, false);
-    subscription = new $._EventStreamSubscription(0, t1._target, t1._eventType, new $.Draggable__polyfillSetDragImage_closure(dragImage), t1._useCapture);
-    t1 = subscription._onData;
-    if (t1 != null && !subscription.get$isPaused())
-      $.$$dom_addEventListener$3$x(subscription._target, subscription._eventType, t1, subscription._useCapture);
-    return subscription;
+    t1 = new $._EventStreamSubscription(0, t1._target, t1._eventType, new $.DraggableGroup__polyfillSetDragImage_closure(dragImage), t1._useCapture);
+    t2 = t1._onData;
+    if (t2 != null && !t1.get$isPaused())
+      $.$$dom_addEventListener$3$x(t1._target, t1._eventType, t2, t1._useCapture);
+    return t1;
   },
-  _preventDefaultDragImage$1: function(mouseEvent) {
-    var t1, t2, tempReplacement, display, milliseconds;
+  _preventDefaultDragImage$2: function(element, mouseEvent) {
+    var t1, tempReplacement, display, milliseconds;
     if ($.supportsSetDragImage() === true)
       $.setDragImage$3$x($.get$dataTransfer$x(mouseEvent), $.ImageElement_ImageElement(null, "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", null), 0, 0);
     else {
-      t1 = this.element;
-      t2 = $.getInterceptor$x(t1);
-      tempReplacement = t2.clone$1(t1, true);
-      display = $.get$display$x(t2.get$style(t1));
-      $.insertBefore$2$x(t2.get$parent(t1), tempReplacement, t1);
-      $.set$display$x(t2.get$style(t1), "none");
+      t1 = $.getInterceptor$x(element);
+      tempReplacement = t1.clone$1(element, true);
+      display = $.get$display$x(t1.get$style(element));
+      $.insertBefore$2$x(t1.get$parent(element), tempReplacement, element);
+      $.set$display$x(t1.get$style(element), "none");
       milliseconds = $.JSNumber_methods.$tdiv($.Duration_0._duration, 1000);
       if (milliseconds < 0)
         milliseconds = 0;
-      $.TimerImpl$(milliseconds, new $.Draggable__preventDefaultDragImage_closure(this, tempReplacement, display));
+      $.TimerImpl$(milliseconds, new $.DraggableGroup__preventDefaultDragImage_closure(element, tempReplacement, display));
     }
-  },
-  Draggable$2$handle: function(element, handle, box_0) {
-    var t1, t2, t3, t4;
-    t1 = this.element;
-    t2 = $.getInterceptor$x(t1);
-    $.$indexSet$ax(t2.get$attributes(t1), "draggable", "true");
-    if ($._supportsDraggable == null)
-      $._supportsDraggable = $.get$draggable$x(document.createElement("span")) != null;
-    if ($._supportsDraggable !== true) {
-      $.get$_logger0().finest$1("Draggable is not supported, installing draggable polyfill");
-      this._polyfillDraggable$0();
-    }
-    box_0.dragImage_0 = null;
-    box_0.usingDragImagePolyfill_1 = false;
-    box_0.polyfillDragOverSubscription_2 = null;
-    box_0.isHandle_3 = false;
-    if (handle != null) {
-      t3 = t2.query$1(t1, handle);
-      t4 = $.getInterceptor$x(t3);
-      t4.get$onMouseDown(t3).listen$1(new $.Draggable_closure(box_0));
-      t4.get$onMouseUp(t3).listen$1(new $.Draggable_closure0(box_0));
-    }
-    t2.get$onDragStart(t1).listen$1(new $.Draggable_closure1(box_0, this, handle));
-    t2.get$onDrag(t1).listen$1(new $.Draggable_closure2(this));
-    t2.get$onDragEnd(t1).listen$1(new $.Draggable_closure3(box_0, this));
   }
 },
 
@@ -12776,149 +12966,138 @@ closure0: {"": "Closure;",
   $isFunction: true
 },
 
-Draggable_closure: {"": "Closure;box_0",
+DraggableGroup_onDragStart_closure: {"": "Closure;this_0",
+  call$0: function() {
+    this.this_0.set$_onDragStart(null);
+    return;
+  },
+  $isFunction: true
+},
+
+DraggableGroup_onDrag_closure: {"": "Closure;this_0",
+  call$0: function() {
+    this.this_0.set$_onDrag(null);
+    return;
+  },
+  $isFunction: true
+},
+
+DraggableGroup_onDragEnd_closure: {"": "Closure;this_0",
+  call$0: function() {
+    this.this_0.set$_onDragEnd(null);
+    return;
+  },
+  $isFunction: true
+},
+
+DraggableGroup_install_closure: {"": "Closure;box_0",
   call$1: function(_) {
-    $.get$_logger0().finest$1("handle onMouseDown");
+    $.get$_logger().finest$1("handle onMouseDown");
     this.box_0.isHandle_3 = true;
   },
   $isFunction: true
 },
 
-Draggable_closure0: {"": "Closure;box_0",
+DraggableGroup_install_closure0: {"": "Closure;box_0",
   call$1: function(_) {
-    $.get$_logger0().finest$1("handle onMouseUp");
+    $.get$_logger().finest$1("handle onMouseUp");
     this.box_0.isHandle_3 = false;
   },
   $isFunction: true
 },
 
-Draggable_closure1: {"": "Closure;box_0,this_1,handle_2",
+DraggableGroup_install_closure1: {"": "Closure;box_0,this_1,element_2",
   call$1: function(mouseEvent) {
-    var t1, t2, t3, milliseconds, t4, dragData;
+    var t1, t2, t3, milliseconds, t4, dragData, t5;
     t1 = this.this_1;
-    t2 = $.getInterceptor$x(t1);
-    if (t2.get$disabled(t1) !== true)
-      t3 = this.handle_2 != null && !this.box_0.isHandle_3;
-    else
-      t3 = true;
-    if (t3) {
+    if (t1.get$_liblib4$_handle() != null && !this.box_0.isHandle_3) {
       $.preventDefault$0$x(mouseEvent);
       return;
     }
-    $.get$_logger0().finest$1("onDragStart");
+    $.get$_logger().finest$1("onDragStart");
     if ($.$gt$n(window.getSelection().rangeCount, 0))
       window.getSelection().removeAllRanges();
-    t3 = this.box_0;
-    t3.isHandle_3 = false;
-    $.currentDraggable = t1;
+    t2 = this.box_0;
+    t2.isHandle_3 = false;
+    t3 = this.element_2;
+    $.currentDraggable = t3;
+    $.currentDraggableGroup = t1;
     if (t1.get$draggingClass() != null) {
       milliseconds = $.JSNumber_methods.$tdiv($.Duration_0._duration, 1000);
       if (milliseconds < 0)
         milliseconds = 0;
-      $.TimerImpl$(milliseconds, new $.Draggable__closure(t1));
+      $.TimerImpl$(milliseconds, new $.DraggableGroup_install__closure(t1, t3));
     }
     t4 = t1.get$dragOccurringClass();
     if (t4 != null)
       $.addCssClass(document.body, t4, false);
     t4 = $.getInterceptor$x(mouseEvent);
-    $.set$effectAllowed$x(t4.get$dataTransfer(mouseEvent), t2.get$dropEffect(t1));
-    dragData = t1.dragDataFunction$1(t1);
+    $.set$effectAllowed$x(t4.get$dataTransfer(mouseEvent), $.get$dropEffect$x(t1));
+    dragData = t1.dragDataFunction$1(t3);
     if (dragData != null)
-      $.forEach$1$ax(dragData, new $.Draggable__closure0(mouseEvent));
-    t3.dragImage_0 = t1.dragImageFunction$1(t1);
-    if (t3.dragImage_0 != null)
+      $.forEach$1$ax(dragData, new $.DraggableGroup_install__closure0(mouseEvent));
+    t2.dragImage_0 = t1.dragImageFunction$1(t3);
+    if (t2.dragImage_0 != null)
       if (t1.get$alwaysUseDragImagePolyfill() === true || $.supportsSetDragImage() !== true) {
-        t3.usingDragImagePolyfill_1 = true;
-        t3.polyfillDragOverSubscription_2 = t1._polyfillSetDragImage$2(mouseEvent, t3.dragImage_0);
+        t2.usingDragImagePolyfill_1 = true;
+        t2.polyfillDragOverSubscription_2 = t1._polyfillSetDragImage$3(t3, mouseEvent, t2.dragImage_0);
       } else {
-        t2 = t4.get$dataTransfer(mouseEvent);
-        t3 = t3.dragImage_0;
-        t4 = $.getInterceptor$x(t3);
-        $.setDragImage$3$x(t2, t3.get$image(), t4.get$x(t3), t4.get$y(t3));
+        t4 = t4.get$dataTransfer(mouseEvent);
+        t2 = t2.dragImage_0;
+        t5 = $.getInterceptor$x(t2);
+        $.setDragImage$3$x(t4, t2.get$image(), t5.get$x(t2), t5.get$y(t2));
       }
-    t2 = t1.get$_onDragStart();
-    t3 = t2.get$_subscription();
-    t4 = t3 != null;
-    if (t4) {
-      if (t4) {
-        t3.get$_isInputPaused;
-        t2 = !$.$eq($.$and$n(t3.get$_state(), 4), 0);
-      } else
-        t2 = $.$eq($.$and$n(t2.get$_state(), 1), 0);
-      t2 = !t2 && $.$eq($.$and$n(t1.get$_onDragStart().get$_state(), 2), 0);
-    } else
-      t2 = false;
-    if (t2) {
-      t2 = t1.get$_onDragStart();
-      t1 = new $.DraggableEvent(t1, mouseEvent);
-      if (!$.$eq($.$and$n(t2.get$_state(), 2), 0))
-        $.throwExpression(new $.StateError("Adding event after close"));
-      if (t2.get$_subscription() != null)
-        t2._sendData$1(t1);
-      else if ($.$eq($.$and$n(t2.get$_state(), 1), 0))
-        t2._addPendingEvent$1(new $._DelayedData(t1, null));
+    t1 = t1.get$_onDragStart();
+    if (t1 != null) {
+      t1.add$1;
+      if (!$.$eq($.$and$n(t1.get$_state(), 4), 0))
+        $.throwExpression(new $.StateError("Cannot add new events after calling close()"));
+      t1._sendData$1(new $.DraggableEvent(t3, mouseEvent));
     }
   },
   $isFunction: true
 },
 
-Draggable__closure: {"": "Closure;this_3",
+DraggableGroup_install__closure: {"": "Closure;this_3,element_4",
   call$0: function() {
-    var t1 = this.this_3;
-    $.addCssClass(t1.get$element(), t1.get$draggingClass(), false);
+    $.addCssClass(this.element_4, this.this_3.get$draggingClass(), false);
   },
   $isFunction: true
 },
 
-Draggable__closure0: {"": "Closure;mouseEvent_4",
+DraggableGroup_install__closure0: {"": "Closure;mouseEvent_5",
   call$2: function(type, data) {
-    $.setData$2$x($.get$dataTransfer$x(this.mouseEvent_4), type, data);
+    $.setData$2$x($.get$dataTransfer$x(this.mouseEvent_5), type, data);
   },
   $isFunction: true
 },
 
-Draggable_closure2: {"": "Closure;this_5",
+DraggableGroup_install_closure2: {"": "Closure;this_6,element_7",
   call$1: function(mouseEvent) {
-    var t1, t2, t3, t4;
-    if ($.currentDraggable == null || $.get$disabled$x(this.this_5) === true)
+    var t1;
+    if ($.currentDraggable == null)
       return;
-    t1 = this.this_5;
-    t2 = t1.get$_onDrag();
-    t3 = t2.get$_subscription();
-    t4 = t3 != null;
-    if (t4) {
-      if (t4) {
-        t3.get$_isInputPaused;
-        t2 = !$.$eq($.$and$n(t3.get$_state(), 4), 0);
-      } else
-        t2 = $.$eq($.$and$n(t2.get$_state(), 1), 0);
-      t2 = !t2 && $.$eq($.$and$n(t1.get$_onDrag().get$_state(), 2), 0);
-    } else
-      t2 = false;
-    if (t2) {
-      t2 = t1.get$_onDrag();
-      t1 = new $.DraggableEvent(t1, mouseEvent);
-      if (!$.$eq($.$and$n(t2.get$_state(), 2), 0))
-        $.throwExpression(new $.StateError("Adding event after close"));
-      if (t2.get$_subscription() != null)
-        t2._sendData$1(t1);
-      else if ($.$eq($.$and$n(t2.get$_state(), 1), 0))
-        t2._addPendingEvent$1(new $._DelayedData(t1, null));
+    t1 = this.this_6.get$_onDrag();
+    if (t1 != null) {
+      t1.add$1;
+      if (!$.$eq($.$and$n(t1.get$_state(), 4), 0))
+        $.throwExpression(new $.StateError("Cannot add new events after calling close()"));
+      t1._sendData$1(new $.DraggableEvent(this.element_7, mouseEvent));
     }
   },
   $isFunction: true
 },
 
-Draggable_closure3: {"": "Closure;box_0,this_6",
+DraggableGroup_install_closure3: {"": "Closure;box_0,this_8,element_9",
   call$1: function(mouseEvent) {
-    var t1, t2, t3, t4, t5;
-    if ($.currentDraggable == null || $.get$disabled$x(this.this_6) === true)
+    var t1, t2, t3;
+    if ($.currentDraggable == null)
       return;
-    $.get$_logger0().finest$1("onDragEnd");
-    t1 = this.this_6;
+    $.get$_logger().finest$1("onDragEnd");
+    t1 = this.this_8;
     t2 = t1.get$draggingClass();
     if (t2 != null)
-      $.removeCssClass(t1.get$element(), t2, false);
+      $.removeCssClass(this.element_9, t2, false);
     t2 = t1.get$dragOccurringClass();
     if (t2 != null)
       $.removeCssClass(document.body, t2, false);
@@ -12928,29 +13107,23 @@ Draggable_closure3: {"": "Closure;box_0,this_6",
       t3 = t2.polyfillDragOverSubscription_2;
       t3.cancel$0(t3);
     }
-    t3 = t1.get$_onDragEnd();
-    t4 = t3.get$_subscription();
-    t5 = t4 != null;
-    if (t5) {
-      if (t5) {
-        t4.get$_isInputPaused;
-        t3 = !$.$eq($.$and$n(t4.get$_state(), 4), 0);
-      } else
-        t3 = $.$eq($.$and$n(t3.get$_state(), 1), 0);
-      t3 = !t3 && $.$eq($.$and$n(t1.get$_onDragEnd().get$_state(), 2), 0);
-    } else
-      t3 = false;
-    if (t3) {
-      t3 = t1.get$_onDragEnd();
-      t1 = new $.DraggableEvent(t1, mouseEvent);
-      if (!$.$eq($.$and$n(t3.get$_state(), 2), 0))
-        $.throwExpression(new $.StateError("Adding event after close"));
-      if (t3.get$_subscription() != null)
-        t3._sendData$1(t1);
-      else if ($.$eq($.$and$n(t3.get$_state(), 1), 0))
-        t3._addPendingEvent$1(new $._DelayedData(t1, null));
+    t1 = t1.get$_onDragEnd();
+    if (t1 != null) {
+      t1.add$1;
+      if (!$.$eq($.$and$n(t1.get$_state(), 4), 0))
+        $.throwExpression(new $.StateError("Cannot add new events after calling close()"));
+      t1._sendData$1(new $.DraggableEvent(this.element_9, mouseEvent));
     }
     $.currentDraggable = null;
+    $.currentDraggableGroup = null;
+    t1 = $.get$currentDragOverElements();
+    if (t1._length > 0) {
+      t1._elements = null;
+      t1._rest = null;
+      t1._nums = null;
+      t1._strings = null;
+      t1._length = 0;
+    }
     t2.dragImage_0 = null;
     t2.usingDragImagePolyfill_1 = false;
     t2.polyfillDragOverSubscription_2 = null;
@@ -12958,25 +13131,22 @@ Draggable_closure3: {"": "Closure;box_0,this_6",
   $isFunction: true
 },
 
-Draggable__polyfillDraggable_closure: {"": "Closure;this_0",
+DraggableGroup__polyfillDraggable_closure: {"": "Closure;element_0",
   call$1: function(mouseEvent) {
-    var e, t1, t2, exception;
-    t1 = this.this_0;
-    if ($.get$disabled$x(t1) === true)
-      return;
-    $.get$_logger0().finest$1("Draggable Polyfill: onSelectStart");
+    var e, t1, exception;
+    $.get$_logger().finest$1("Draggable Polyfill: onSelectStart");
     $.preventDefault$0$x(mouseEvent);
     try {
       $._enterScopeIfNeeded();
-      t2 = $._deserialize($._jsPortSync.callSync$1([]));
-      t2.callDragDrop$1(t1.get$element());
+      t1 = $._deserialize($._jsPortSync.callSync$1([]));
+      t1.callDragDrop$1(this.element_0);
     } catch (exception) {
       t1 = $.unwrapException(exception);
       if (typeof t1 === "object" && t1 !== null && !!$.getInterceptor(t1).$isNoSuchMethodError)
-        $.get$_logger0().severe$1($.JSString_methods.$add("JavaScript method \"callDragDrop\" not found. Please", " load the file \"dnd.polyfill.js\" in your application html."));
+        $.get$_logger().severe$1($.JSString_methods.$add("JavaScript method \"callDragDrop\" not found. Please", " load the file \"dnd.polyfill.js\" in your application html."));
       else {
         e = t1;
-        $.get$_logger0().severe$1($.JSString_methods.$add("Calling \"dragDrop()\" polyfill via JavaScript failed: ", $.toString$0(e)));
+        $.get$_logger().severe$1($.JSString_methods.$add("Calling \"dragDrop()\" polyfill via JavaScript failed: ", $.toString$0(e)));
       }
     }
 
@@ -12984,7 +13154,7 @@ Draggable__polyfillDraggable_closure: {"": "Closure;this_0",
   $isFunction: true
 },
 
-Draggable__polyfillSetDragImage_closure: {"": "Closure;dragImage_0",
+DraggableGroup__polyfillSetDragImage_closure: {"": "Closure;dragImage_0",
   call$1: function(docMouseEvent) {
     var mousePosition, t1, t2;
     mousePosition = $.getMousePosition(docMouseEvent);
@@ -12997,232 +13167,15 @@ Draggable__polyfillSetDragImage_closure: {"": "Closure;dragImage_0",
   $isFunction: true
 },
 
-Draggable__preventDefaultDragImage_closure: {"": "Closure;this_0,tempReplacement_1,display_2",
+DraggableGroup__preventDefaultDragImage_closure: {"": "Closure;element_0,tempReplacement_1,display_2",
   call$0: function() {
-    $.set$display$x($.get$style$x(this.this_0.get$element()), this.display_2);
+    $.set$display$x($.get$style$x(this.element_0), this.display_2);
     $.remove$0$ax(this.tempReplacement_1);
   },
   $isFunction: true
 },
 
-Dropzone: {"": "Object;element<,overClass<,disabled>,acceptDraggables<,_onDragEnter<,_onDragOver<,_onDragLeave<,_onDrop<,_dragOverElements<",
-  get$onDragEnter: function(_) {
-    return this._onDragEnter._stream;
-  },
-  get$onDragOver: function(_) {
-    return this._onDragOver._stream;
-  },
-  get$onDragLeave: function(_) {
-    return this._onDragLeave._stream;
-  },
-  get$onDrop: function(_) {
-    return this._onDrop._stream;
-  },
-  resetDragOverElements$0: function() {
-    var t1 = this._dragOverElements;
-    if (t1._liblib1$_length > 0) {
-      t1._elements = null;
-      t1._rest = null;
-      t1._nums = null;
-      t1._strings = null;
-      t1._liblib1$_length = 0;
-    }
-  },
-  Dropzone$1: function(element, box_0) {
-    var t1, t2;
-    box_0.dropAccept_0 = false;
-    t1 = this.element;
-    t2 = $.getInterceptor$x(t1);
-    t2.get$onDragEnter(t1).listen$1(new $.Dropzone_closure(box_0, this));
-    t2.get$onDragOver(t1).listen$1(new $.Dropzone_closure0(box_0, this));
-    t2.get$onDragLeave(t1).listen$1(new $.Dropzone_closure1(box_0, this));
-    t2.get$onDrop(t1).listen$1(new $.Dropzone_closure2(box_0, this));
-  }
-},
-
-Dropzone_closure: {"": "Closure;box_0,this_1",
-  call$1: function(mouseEvent) {
-    var t1, t2, dropAccept, t3, t4, t5;
-    if ($.currentDraggable == null || $.get$disabled$x(this.this_1) === true)
-      return;
-    t1 = $.getInterceptor$x(mouseEvent);
-    t1.preventDefault$0(mouseEvent);
-    t2 = this.this_1;
-    dropAccept = $.$eq(t2.get$acceptDraggables().get$_liblib1$_length(), 0) || $.contains$1$asx(t2.get$acceptDraggables(), $.currentDraggable.element) === true;
-    t3 = this.box_0;
-    t3.dropAccept_0 = dropAccept;
-    t3 = t3.dropAccept_0;
-    t4 = t1.get$dataTransfer(mouseEvent);
-    if (t3)
-      $.set$dropEffect$x(t4, $.currentDraggable.dropEffect);
-    else {
-      $.set$dropEffect$x(t4, "none");
-      return;
-    }
-    if ($.$eq(t2.get$_dragOverElements().get$_liblib1$_length(), 0)) {
-      t3 = t2.get$overClass();
-      if (t3 != null)
-        $.addCssClass(t2.get$element(), t3, false);
-      t3 = t2.get$_onDragEnter();
-      t4 = t3.get$_subscription();
-      t5 = t4 != null;
-      if (t5) {
-        if (t5) {
-          t4.get$_isInputPaused;
-          t3 = !$.$eq($.$and$n(t4.get$_state(), 4), 0);
-        } else
-          t3 = $.$eq($.$and$n(t3.get$_state(), 1), 0);
-        t3 = !t3 && $.$eq($.$and$n(t2.get$_onDragEnter().get$_state(), 2), 0);
-      } else
-        t3 = false;
-      if (t3) {
-        t3 = t2.get$_onDragEnter();
-        t4 = new $.DropzoneEvent($.currentDraggable, t2, mouseEvent);
-        if (!$.$eq($.$and$n(t3.get$_state(), 2), 0))
-          $.throwExpression(new $.StateError("Adding event after close"));
-        if (t3.get$_subscription() != null)
-          t3._sendData$1(t4);
-        else if ($.$eq($.$and$n(t3.get$_state(), 1), 0))
-          t3._addPendingEvent$1(new $._DelayedData(t4, null));
-      }
-    }
-    $.add$1$ax(t2.get$_dragOverElements(), t1.get$target(mouseEvent));
-    $.get$_logger0().finest$1("onDragEnter {dragOverElements.length: " + $.S(t2.get$_dragOverElements().get$_liblib1$_length()) + "}");
-  },
-  $isFunction: true
-},
-
-Dropzone_closure0: {"": "Closure;box_0,this_2",
-  call$1: function(mouseEvent) {
-    var t1, t2, t3, t4;
-    t1 = $.currentDraggable;
-    if (t1 == null || $.get$disabled$x(this.this_2) === true)
-      return;
-    t2 = $.getInterceptor$x(mouseEvent);
-    if (this.box_0.dropAccept_0)
-      $.set$dropEffect$x(t2.get$dataTransfer(mouseEvent), t1.dropEffect);
-    else {
-      $.set$dropEffect$x(t2.get$dataTransfer(mouseEvent), "none");
-      return;
-    }
-    t2.preventDefault$0(mouseEvent);
-    t1 = this.this_2;
-    t2 = t1.get$_onDragOver();
-    t3 = t2.get$_subscription();
-    t4 = t3 != null;
-    if (t4) {
-      if (t4) {
-        t3.get$_isInputPaused;
-        t2 = !$.$eq($.$and$n(t3.get$_state(), 4), 0);
-      } else
-        t2 = $.$eq($.$and$n(t2.get$_state(), 1), 0);
-      t2 = !t2 && $.$eq($.$and$n(t1.get$_onDragOver().get$_state(), 2), 0);
-    } else
-      t2 = false;
-    if (t2) {
-      t2 = t1.get$_onDragOver();
-      t1 = new $.DropzoneEvent($.currentDraggable, t1, mouseEvent);
-      if (!$.$eq($.$and$n(t2.get$_state(), 2), 0))
-        $.throwExpression(new $.StateError("Adding event after close"));
-      if (t2.get$_subscription() != null)
-        t2._sendData$1(t1);
-      else if ($.$eq($.$and$n(t2.get$_state(), 1), 0))
-        t2._addPendingEvent$1(new $._DelayedData(t1, null));
-    }
-  },
-  $isFunction: true
-},
-
-Dropzone_closure1: {"": "Closure;box_0,this_3",
-  call$1: function(mouseEvent) {
-    var t1, t2, t3, t4;
-    if ($.currentDraggable == null || $.get$disabled$x(this.this_3) === true || !this.box_0.dropAccept_0)
-      return;
-    t1 = $.getInterceptor$x(mouseEvent);
-    if (!$.$eq(t1.get$target(mouseEvent), t1.get$relatedTarget(mouseEvent)))
-      $.remove$1$ax(this.this_3.get$_dragOverElements(), t1.get$target(mouseEvent));
-    t1 = this.this_3;
-    $.get$_logger0().finest$1("onDragLeave {dragOverElements.length: " + $.S(t1.get$_dragOverElements().get$_liblib1$_length()) + "}");
-    if ($.$eq(t1.get$_dragOverElements().get$_liblib1$_length(), 0)) {
-      t2 = t1.get$overClass();
-      if (t2 != null)
-        $.removeCssClass(t1.get$element(), t2, false);
-      t2 = t1.get$_onDragLeave();
-      t3 = t2.get$_subscription();
-      t4 = t3 != null;
-      if (t4) {
-        if (t4) {
-          t3.get$_isInputPaused;
-          t2 = !$.$eq($.$and$n(t3.get$_state(), 4), 0);
-        } else
-          t2 = $.$eq($.$and$n(t2.get$_state(), 1), 0);
-        t2 = !t2 && $.$eq($.$and$n(t1.get$_onDragLeave().get$_state(), 2), 0);
-      } else
-        t2 = false;
-      if (t2) {
-        t2 = t1.get$_onDragLeave();
-        t1 = new $.DropzoneEvent($.currentDraggable, t1, mouseEvent);
-        if (!$.$eq($.$and$n(t2.get$_state(), 2), 0))
-          $.throwExpression(new $.StateError("Adding event after close"));
-        if (t2.get$_subscription() != null)
-          t2._sendData$1(t1);
-        else if ($.$eq($.$and$n(t2.get$_state(), 1), 0))
-          t2._addPendingEvent$1(new $._DelayedData(t1, null));
-      }
-    }
-  },
-  $isFunction: true
-},
-
-Dropzone_closure2: {"": "Closure;box_0,this_4",
-  call$1: function(mouseEvent) {
-    var t1, t2, t3, t4;
-    if ($.currentDraggable == null || $.get$disabled$x(this.this_4) === true)
-      return;
-    $.get$_logger0().finest$1("onDrop");
-    $.preventDefault$0$x(mouseEvent);
-    t1 = this.this_4;
-    t2 = t1.get$overClass();
-    if (t2 != null)
-      $.removeCssClass(t1.get$element(), t2, false);
-    t2 = t1.get$_onDrop();
-    t3 = t2.get$_subscription();
-    t4 = t3 != null;
-    if (t4) {
-      if (t4) {
-        t3.get$_isInputPaused;
-        t2 = !$.$eq($.$and$n(t3.get$_state(), 4), 0);
-      } else
-        t2 = $.$eq($.$and$n(t2.get$_state(), 1), 0);
-      t2 = !t2 && $.$eq($.$and$n(t1.get$_onDrop().get$_state(), 2), 0);
-    } else
-      t2 = false;
-    if (t2) {
-      t2 = t1.get$_onDrop();
-      t3 = new $.DropzoneEvent($.currentDraggable, t1, mouseEvent);
-      if (!$.$eq($.$and$n(t2.get$_state(), 2), 0))
-        $.throwExpression(new $.StateError("Adding event after close"));
-      if (t2.get$_subscription() != null)
-        t2._sendData$1(t3);
-      else if ($.$eq($.$and$n(t2.get$_state(), 1), 0))
-        t2._addPendingEvent$1(new $._DelayedData(t3, null));
-    }
-    t1 = t1.get$_dragOverElements();
-    if ($.$gt$n(t1.get$_liblib1$_length(), 0) === true) {
-      t1.set$_elements(null);
-      t1.set$_rest(null);
-      t1.set$_nums(null);
-      t1.set$_strings(null);
-      t1.set$_liblib1$_length(0);
-    }
-    this.box_0.dropAccept_0 = false;
-  },
-  $isFunction: true
-},
-
-DraggableEvent: {"": "Object;draggable>,mouseEvent<"},
-
-DropzoneEvent: {"": "Object;draggable>,dropzone>,mouseEvent<"},
+DraggableEvent: {"": "Object;draggable>,mouseEvent"},
 
 DragImage: {"": "Object;image<,x>,y>,polyfillOpacity,_polyfill",
   get$polyfill: function() {
@@ -13246,32 +13199,252 @@ DragImage: {"": "Object;image<,x>,y>,polyfillOpacity,_polyfill",
   }
 },
 
-Draggable$: function(element, handle) {
-  var t1, t2, t3;
-  t1 = new $._SyncStreamController(null, null, null, null, null, null, 0, null);
-  t1._stream = new $._ControllerStream(t1, false);
-  t2 = new $._SyncStreamController(null, null, null, null, null, null, 0, null);
-  t2._stream = new $._ControllerStream(t2, false);
-  t3 = new $._SyncStreamController(null, null, null, null, null, null, 0, null);
-  t3._stream = new $._ControllerStream(t3, false);
-  t3 = new $.Draggable(element, "dnd-dragging", "dnd-drag-occurring", "move", false, new $.closure(), new $.closure0(), false, t1, t2, t3);
-  t3.Draggable$2$handle(element, handle, {});
-  return t3;
+DropzoneGroup: {"": "Group;accept>,_onDragEnter@,_onDragOver@,_onDragLeave@,_onDrop@,installedElements",
+  get$onDragEnter: function(_) {
+    var t1;
+    if (this._onDragEnter == null) {
+      t1 = new $.DropzoneGroup_onDragEnter_closure(this);
+      t1 = new $._SyncBroadcastStreamController(null, t1, 0, null, null);
+      t1._liblib3$_previous = t1;
+      t1._liblib3$_next = t1;
+      this._onDragEnter = t1;
+    }
+    t1 = this._onDragEnter;
+    t1.get$stream;
+    return new $._BroadcastStream(t1);
+  },
+  get$onDragOver: function(_) {
+    var t1;
+    if (this._onDragOver == null) {
+      t1 = new $.DropzoneGroup_onDragOver_closure(this);
+      t1 = new $._SyncBroadcastStreamController(null, t1, 0, null, null);
+      t1._liblib3$_previous = t1;
+      t1._liblib3$_next = t1;
+      this._onDragOver = t1;
+    }
+    t1 = this._onDragOver;
+    t1.get$stream;
+    return new $._BroadcastStream(t1);
+  },
+  get$onDragLeave: function(_) {
+    var t1;
+    if (this._onDragLeave == null) {
+      t1 = new $.DropzoneGroup_onDragLeave_closure(this);
+      t1 = new $._SyncBroadcastStreamController(null, t1, 0, null, null);
+      t1._liblib3$_previous = t1;
+      t1._liblib3$_next = t1;
+      this._onDragLeave = t1;
+    }
+    t1 = this._onDragLeave;
+    t1.get$stream;
+    return new $._BroadcastStream(t1);
+  },
+  get$onDrop: function(_) {
+    var t1;
+    if (this._onDrop == null) {
+      t1 = new $.DropzoneGroup_onDrop_closure(this);
+      t1 = new $._SyncBroadcastStreamController(null, t1, 0, null, null);
+      t1._liblib3$_previous = t1;
+      t1._liblib3$_next = t1;
+      this._onDrop = t1;
+    }
+    t1 = this._onDrop;
+    t1.get$stream;
+    return new $._BroadcastStream(t1);
+  },
+  install$1: function(element) {
+    var t1, subs, t2;
+    t1 = {};
+    $.Group.prototype.install$1.call(this, element);
+    subs = $.List_List($);
+    t1.dropAccept_0 = false;
+    t2 = $.getInterceptor$x(element);
+    subs.push(t2.get$onDragEnter(element).listen$1(new $.DropzoneGroup_install_closure(t1, this, element)));
+    subs.push(t2.get$onDragOver(element).listen$1(new $.DropzoneGroup_install_closure0(t1, this, element)));
+    subs.push(t2.get$onDragLeave(element).listen$1(new $.DropzoneGroup_install_closure1(t1, this, element)));
+    subs.push(t2.get$onDrop(element).listen$1(new $.DropzoneGroup_install_closure2(t1, this, element)));
+    t1 = this.installedElements;
+    $.addAll$1$ax(t1.$index(t1, element), subs);
+  }
 },
 
-Dropzone$: function(element) {
-  var t1, t2, t3, t4;
-  t1 = new $._SyncStreamController(null, null, null, null, null, null, 0, null);
-  t1._stream = new $._ControllerStream(t1, false);
-  t2 = new $._SyncStreamController(null, null, null, null, null, null, 0, null);
-  t2._stream = new $._ControllerStream(t2, false);
-  t3 = new $._SyncStreamController(null, null, null, null, null, null, 0, null);
-  t3._stream = new $._ControllerStream(t3, false);
-  t4 = new $._SyncStreamController(null, null, null, null, null, null, 0, null);
-  t4._stream = new $._ControllerStream(t4, false);
-  t4 = new $.Dropzone(element, "dnd-over", false, new $.HashSet(0, null, null, null, null), t1, t2, t3, t4, new $.HashSet(0, null, null, null, null));
-  t4.Dropzone$1(element, {});
-  return t4;
+DropzoneGroup_onDragEnter_closure: {"": "Closure;this_0",
+  call$0: function() {
+    this.this_0.set$_onDragEnter(null);
+    return;
+  },
+  $isFunction: true
+},
+
+DropzoneGroup_onDragOver_closure: {"": "Closure;this_0",
+  call$0: function() {
+    this.this_0.set$_onDragOver(null);
+    return;
+  },
+  $isFunction: true
+},
+
+DropzoneGroup_onDragLeave_closure: {"": "Closure;this_0",
+  call$0: function() {
+    this.this_0.set$_onDragLeave(null);
+    return;
+  },
+  $isFunction: true
+},
+
+DropzoneGroup_onDrop_closure: {"": "Closure;this_0",
+  call$0: function() {
+    this.this_0.set$_onDrop(null);
+    return;
+  },
+  $isFunction: true
+},
+
+DropzoneGroup_install_closure: {"": "Closure;box_0,this_1,element_2",
+  call$1: function(mouseEvent) {
+    var t1, t2, t3, t4, dropAccept;
+    if ($.currentDraggable == null)
+      return;
+    t1 = $.getInterceptor$x(mouseEvent);
+    t1.preventDefault$0(mouseEvent);
+    t2 = this.this_1;
+    t3 = $.getInterceptor$x(t2);
+    t4 = t3.get$accept(t2);
+    dropAccept = t4 == null || $.$eq(t4.get$_length(), 0) || $.contains$1$asx(t3.get$accept(t2), $.currentDraggableGroup) === true;
+    t3 = this.box_0;
+    t3.dropAccept_0 = dropAccept;
+    t3 = t3.dropAccept_0;
+    t4 = t1.get$dataTransfer(mouseEvent);
+    if (t3)
+      $.set$dropEffect$x(t4, $.currentDraggableGroup.dropEffect);
+    else {
+      $.set$dropEffect$x(t4, "none");
+      return;
+    }
+    $.get$_logger().finest$1("onDragEnter {dragOverElements.length before adding: " + $.S($.get$currentDragOverElements()._length) + "}");
+    t3 = $.get$currentDragOverElements();
+    t3.add$1(t3, t1.get$target(mouseEvent));
+    if ($.get$currentDragOverElements()._length === 1) {
+      $.get$_logger().finest$1("firing onDragEnter");
+      t1 = $.currentDraggableGroup.overClass;
+      $.addCssClass(this.element_2, t1, false);
+      t1 = t2.get$_onDragEnter();
+      if (t1 != null) {
+        t2 = $.currentDraggable;
+        t1.add$1;
+        if (!$.$eq($.$and$n(t1.get$_state(), 4), 0))
+          $.throwExpression(new $.StateError("Cannot add new events after calling close()"));
+        t1._sendData$1(new $.DropzoneEvent(t2, this.element_2, mouseEvent));
+      }
+    }
+  },
+  $isFunction: true
+},
+
+DropzoneGroup_install_closure0: {"": "Closure;box_0,this_3,element_4",
+  call$1: function(mouseEvent) {
+    var t1, t2;
+    if ($.currentDraggable == null)
+      return;
+    t1 = $.getInterceptor$x(mouseEvent);
+    if (this.box_0.dropAccept_0)
+      $.set$dropEffect$x(t1.get$dataTransfer(mouseEvent), $.currentDraggableGroup.dropEffect);
+    else {
+      $.set$dropEffect$x(t1.get$dataTransfer(mouseEvent), "none");
+      return;
+    }
+    t1.preventDefault$0(mouseEvent);
+    t1 = this.this_3.get$_onDragOver();
+    if (t1 != null) {
+      t2 = $.currentDraggable;
+      t1.add$1;
+      if (!$.$eq($.$and$n(t1.get$_state(), 4), 0))
+        $.throwExpression(new $.StateError("Cannot add new events after calling close()"));
+      t1._sendData$1(new $.DropzoneEvent(t2, this.element_4, mouseEvent));
+    }
+  },
+  $isFunction: true
+},
+
+DropzoneGroup_install_closure1: {"": "Closure;box_0,this_5,element_6",
+  call$1: function(mouseEvent) {
+    var t1, t2;
+    if ($.currentDraggable == null || !this.box_0.dropAccept_0)
+      return;
+    t1 = $.getInterceptor$x(mouseEvent);
+    if (!$.$eq(t1.get$target(mouseEvent), t1.get$relatedTarget(mouseEvent))) {
+      $.get$_logger().finest$1("onDragLeave {dragOverElements.length before removing: " + $.S($.get$currentDragOverElements()._length) + "}");
+      t2 = $.get$currentDragOverElements();
+      t2.remove$1(t2, t1.get$target(mouseEvent));
+    }
+    if ($.get$currentDragOverElements()._length === 0) {
+      t1 = $.currentDraggableGroup.overClass;
+      $.removeCssClass(this.element_6, t1, false);
+      t1 = this.this_5.get$_onDragLeave();
+      if (t1 != null) {
+        t2 = $.currentDraggable;
+        t1.add$1;
+        if (!$.$eq($.$and$n(t1.get$_state(), 4), 0))
+          $.throwExpression(new $.StateError("Cannot add new events after calling close()"));
+        t1._sendData$1(new $.DropzoneEvent(t2, this.element_6, mouseEvent));
+      }
+    }
+  },
+  $isFunction: true
+},
+
+DropzoneGroup_install_closure2: {"": "Closure;box_0,this_7,element_8",
+  call$1: function(mouseEvent) {
+    var t1, t2;
+    if ($.currentDraggable == null || !this.box_0.dropAccept_0)
+      return;
+    $.get$_logger().finest$1("onDrop");
+    $.preventDefault$0$x(mouseEvent);
+    t1 = $.currentDraggableGroup.overClass;
+    $.removeCssClass(this.element_8, t1, false);
+    t1 = this.this_7.get$_onDrop();
+    if (t1 != null) {
+      t2 = $.currentDraggable;
+      t1.add$1;
+      if (!$.$eq($.$and$n(t1.get$_state(), 4), 0))
+        $.throwExpression(new $.StateError("Cannot add new events after calling close()"));
+      t1._sendData$1(new $.DropzoneEvent(t2, this.element_8, mouseEvent));
+    }
+  },
+  $isFunction: true
+},
+
+DropzoneEvent: {"": "Object;draggable>,dropzone>,mouseEvent"},
+
+Group: {"": "Object;",
+  install$1: function(element) {
+    var t1 = this.installedElements;
+    t1.$indexSet(t1, element, $.List_List($));
+  },
+  installAll$1: function(elements) {
+    elements.forEach$1(elements, new $.Group_installAll_closure(this));
+  },
+  uninstall$1: function(element) {
+    var t1 = this.installedElements;
+    if (t1.$index(t1, element) != null) {
+      $.forEach$1$ax(t1.$index(t1, element), new $.Group_uninstall_closure());
+      t1.remove$1(t1, element);
+    }
+  }
+},
+
+Group_installAll_closure: {"": "Closure;this_0",
+  call$1: function(e) {
+    return this.this_0.install$1(e);
+  },
+  $isFunction: true
+},
+
+Group_uninstall_closure: {"": "Closure;",
+  call$1: function(s) {
+    return $.cancel$0$x(s);
+  },
+  $isFunction: true
 }}],
 ["html5_dnd.css_utils", "package:html5_dnd/src/css_utils.dart", , {
 getMousePosition: function($event) {
@@ -13382,8 +13555,8 @@ installCodeblockTabs__closure: {"": "Closure;",
 sectionDraggableAndDropzone_closure: {"": "Closure;",
   call$1: function($event) {
     var t1 = $.getInterceptor$x($event);
-    $.remove$0$ax(t1.get$draggable($event).get$element());
-    $.add$1$ax($.get$classes$x(t1.get$dropzone($event).get$element()), "full");
+    $.remove$0$ax(t1.get$draggable($event));
+    $.add$1$ax($.get$classes$x(t1.get$dropzone($event)), "full");
   },
   $isFunction: true
 },
@@ -13391,8 +13564,8 @@ sectionDraggableAndDropzone_closure: {"": "Closure;",
 sectionDropEffects_closure: {"": "Closure;",
   call$1: function($event) {
     var t1 = $.getInterceptor$x($event);
-    $.remove$0$ax(t1.get$draggable($event).get$element());
-    $.add$1$ax($.get$classes$x(t1.get$dropzone($event).get$element()), "full");
+    $.remove$0$ax(t1.get$draggable($event));
+    $.add$1$ax($.get$classes$x(t1.get$dropzone($event)), "full");
   },
   $isFunction: true
 },
@@ -13482,26 +13655,84 @@ sectionNestedElements_closure2: {"": "Closure;box_0,textarea_4",
 },
 
 sectionSortableList_closure: {"": "Closure;",
-  call$1: function(result) {
+  call$1: function($event) {
+  },
+  $isFunction: true
+},
+
+sectionSortableTwoGroups_closure: {"": "Closure;",
+  call$1: function($event) {
+    var t1 = $.getInterceptor$x($event);
+    $event.get$originalGroup().uninstall$1(t1.get$draggable($event));
+    $event.get$newGroup().install$1(t1.get$draggable($event));
+  },
+  $isFunction: true
+},
+
+sectionSortableTwoGroups_closure0: {"": "Closure;png_0",
+  call$1: function(draggable) {
+    return new $.DragImage(this.png_0, 0, 0, "0.75", null);
+  },
+  $isFunction: true
+},
+
+sectionSortableTwoGroups_closure1: {"": "Closure;",
+  call$1: function($event) {
+    var t1 = $.getInterceptor$x($event);
+    $event.get$originalGroup().uninstall$1(t1.get$draggable($event));
+    $event.get$newGroup().install$1(t1.get$draggable($event));
+  },
+  $isFunction: true
+},
+
+sectionDraggableSortable_closure: {"": "Closure;",
+  call$1: function($event) {
+    var t1 = $.getInterceptor$x($event);
+    $event.get$originalGroup().uninstall$1(t1.get$draggable($event));
+    $event.get$newGroup().install$1(t1.get$draggable($event));
+  },
+  $isFunction: true
+},
+
+sectionDraggableSortable_closure0: {"": "Closure;dragGroup_0,sortGroup_1,emptyItem_2",
+  call$1: function($event) {
+    var t1, t2;
+    t1 = this.emptyItem_2.style;
+    t1.set$display;
+    $.setProperty$3$x(t1, "display", "none", "");
+    t1 = $.getInterceptor$x($event);
+    this.dragGroup_0.uninstall$1(t1.get$draggable($event));
+    $.remove$0$ax(t1.get$draggable($event));
+    this.sortGroup_1.install$1(t1.get$draggable($event));
+    t2 = $.get$children$x(document.querySelector("#draggable-sortable .group2"));
+    t2.add$1(t2, t1.get$draggable($event));
   },
   $isFunction: true
 },
 
 main: function() {
-  var dragElement, t1;
+  var sortGroup, t1;
   $.sectionDraggableAndDropzone();
-  dragElement = document.querySelector("#dragging-divs .dragme");
-  $.Draggable$(dragElement, null);
-  t1 = $.Dropzone$(document.querySelector("#dragging-divs .dropzone")).acceptDraggables;
-  t1.add$1(t1, dragElement);
+  $.sectionDraggingDivs();
   $.sectionDropEffects();
   $.sectionDragImages();
   $.sectionNestedElements();
   $.sectionSortableList();
-  $.Sortable$(new $._FrozenElementList(document.querySelectorAll("#sortable-grid li")), null);
-  $.Sortable$(new $._FrozenElementList(document.querySelectorAll("#sortable-list-exclude li:not(.disabled)")), null);
-  $.Sortable$(new $._FrozenElementList(document.querySelectorAll("#sortable-list-handles li")), "span");
-  $.Sortable$(new $._FrozenElementList(document.querySelectorAll("#sortable-list-connected li")), null);
+  sortGroup = new $.SortableGroup("dnd-placeholder", true, false, null, new $.DropzoneGroup($.HashSet$(), null, null, null, null, $.HashMap$()), null, null, "dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", new $.closure(), new $.closure0(), false, null, null, null, null, new $.HashMap(0, null, null, null, null));
+  sortGroup.installAll$1(new $._FrozenElementList(document.querySelectorAll("#sortable-grid li")));
+  sortGroup.isGrid = true;
+  t1 = sortGroup.get$accept(sortGroup);
+  t1.add$1(t1, sortGroup);
+  sortGroup = new $.SortableGroup("dnd-placeholder", true, false, null, new $.DropzoneGroup($.HashSet$(), null, null, null, null, $.HashMap$()), null, null, "dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", new $.closure(), new $.closure0(), false, null, null, null, null, new $.HashMap(0, null, null, null, null));
+  sortGroup.installAll$1(new $._FrozenElementList(document.querySelectorAll("#sortable-list-exclude li:not(.disabled)")));
+  t1 = sortGroup.get$accept(sortGroup);
+  t1.add$1(t1, sortGroup);
+  sortGroup = new $.SortableGroup("dnd-placeholder", true, false, null, new $.DropzoneGroup($.HashSet$(), null, null, null, null, $.HashMap$()), null, null, "dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", new $.closure(), new $.closure0(), false, null, null, null, "span", new $.HashMap(0, null, null, null, null));
+  sortGroup.installAll$1(new $._FrozenElementList(document.querySelectorAll("#sortable-list-handles li")));
+  t1 = sortGroup.get$accept(sortGroup);
+  t1.add$1(t1, sortGroup);
+  $.sectionSortableTwoGroups();
+  $.sectionDraggableSortable();
   $.installCodeblockTabs();
 },
 
@@ -13515,34 +13746,49 @@ installCodeblockTabs: function() {
 },
 
 sectionDraggableAndDropzone: function() {
-  var documents, t1, t2;
-  documents = new $._FrozenElementList(document.querySelectorAll("#draggable-dropzone .document"));
-  for (t1 = documents.get$iterator(documents); t1.moveNext$0();)
-    $.Draggable$(t1._current, null);
-  t1 = $.Dropzone$(document.querySelector("#draggable-dropzone .trash"));
-  t2 = t1.acceptDraggables;
-  t2.addAll$1(t2, documents);
-  t1.get$onDrop(t1).listen$1(new $.sectionDraggableAndDropzone_closure());
+  var dragGroup, dropGroup, t1;
+  dragGroup = new $.DraggableGroup("dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", new $.closure(), new $.closure0(), false, null, null, null, null, new $.HashMap(0, null, null, null, null));
+  dragGroup.installAll$1(new $._FrozenElementList(document.querySelectorAll("#draggable-dropzone .document")));
+  dropGroup = new $.DropzoneGroup(new $.HashSet(0, null, null, null, null), null, null, null, null, new $.HashMap(0, null, null, null, null));
+  dropGroup.install$1(document.querySelector("#draggable-dropzone .trash"));
+  t1 = dropGroup.accept;
+  t1.add$1(t1, dragGroup);
+  dropGroup.get$onDrop(dropGroup).listen$1(new $.sectionDraggableAndDropzone_closure());
+},
+
+sectionDraggingDivs: function() {
+  var dragGroup, dropGroup, t1;
+  dragGroup = new $.DraggableGroup("dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", new $.closure(), new $.closure0(), false, null, null, null, null, new $.HashMap(0, null, null, null, null));
+  dragGroup.installAll$1(new $._FrozenElementList(document.querySelectorAll("#dragging-divs .dragme")));
+  dropGroup = new $.DropzoneGroup(new $.HashSet(0, null, null, null, null), null, null, null, null, new $.HashMap(0, null, null, null, null));
+  dropGroup.install$1(document.querySelector("#dragging-divs .dropzone"));
+  t1 = dropGroup.accept;
+  t1.add$1(t1, dragGroup);
 },
 
 sectionDropEffects: function() {
-  var move, copy, link, none, t1, t2;
-  move = $.Draggable$(document.querySelector("#drop-effects .move"), null);
-  move.dropEffect = "move";
-  copy = $.Draggable$(document.querySelector("#drop-effects .copy"), null);
-  copy.dropEffect = "copy";
-  link = $.Draggable$(document.querySelector("#drop-effects .link"), null);
-  link.dropEffect = "link";
-  none = $.Draggable$(document.querySelector("#drop-effects .none"), null);
-  none.dropEffect = "none";
-  t1 = $.Dropzone$(document.querySelector("#drop-effects .trash"));
-  t2 = t1.acceptDraggables;
-  t2.addAll$1(t2, [move.element, copy.element, link.element, none.element]);
-  t1.get$onDrop(t1).listen$1(new $.sectionDropEffects_closure());
+  var dragGroupMove, dragGroupCopy, dragGroupLink, dragGroupNone, dropGroup, t1;
+  dragGroupMove = new $.DraggableGroup("dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", new $.closure(), new $.closure0(), false, null, null, null, null, new $.HashMap(0, null, null, null, null));
+  dragGroupMove.install$1(document.querySelector("#drop-effects .move"));
+  dragGroupMove.dropEffect = "move";
+  dragGroupCopy = new $.DraggableGroup("dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", new $.closure(), new $.closure0(), false, null, null, null, null, new $.HashMap(0, null, null, null, null));
+  dragGroupCopy.install$1(document.querySelector("#drop-effects .copy"));
+  dragGroupCopy.dropEffect = "copy";
+  dragGroupLink = new $.DraggableGroup("dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", new $.closure(), new $.closure0(), false, null, null, null, null, new $.HashMap(0, null, null, null, null));
+  dragGroupLink.install$1(document.querySelector("#drop-effects .link"));
+  dragGroupLink.dropEffect = "link";
+  dragGroupNone = new $.DraggableGroup("dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", new $.closure(), new $.closure0(), false, null, null, null, null, new $.HashMap(0, null, null, null, null));
+  dragGroupNone.install$1(document.querySelector("#drop-effects .none"));
+  dragGroupNone.dropEffect = "none";
+  dropGroup = new $.DropzoneGroup(new $.HashSet(0, null, null, null, null), null, null, null, null, new $.HashMap(0, null, null, null, null));
+  dropGroup.install$1(document.querySelector("#drop-effects .trash"));
+  t1 = dropGroup.accept;
+  t1.addAll$1(t1, [dragGroupMove, dragGroupCopy, dragGroupLink, dragGroupNone]);
+  dropGroup.get$onDrop(dropGroup).listen$1(new $.sectionDropEffects_closure());
 },
 
 sectionDragImages: function() {
-  var png, canvas, t1, ctx, t2, canvasImage, dragmeOne, dragmeTwo, dragmeThree, dragmeFour;
+  var png, canvas, t1, ctx, t2, canvasImage, dragGroupOne, dragGroupTwo, dragGroupThree, dragGroupFour, dropGroup;
   png = $.ImageElement_ImageElement(null, "icons/smiley-happy.png", null);
   canvas = $.CanvasElement_CanvasElement(null, null);
   t1 = $.getInterceptor$x(canvas);
@@ -13551,313 +13797,168 @@ sectionDragImages: function() {
   t2.set$fillStyle(ctx, "rgb(200,0,0)");
   t2.fillRect$4(ctx, 10, 10, 55, 50);
   canvasImage = $.ImageElement_ImageElement(null, t1.toDataUrl$2(canvas, "image/jpeg", 0.95), null);
-  dragmeOne = document.querySelector("#drag-images .one");
-  dragmeTwo = document.querySelector("#drag-images .two");
-  dragmeThree = document.querySelector("#drag-images .three");
-  dragmeFour = document.querySelector("#drag-images .four");
-  $.Draggable$(dragmeOne, null).dragImageFunction = new $.sectionDragImages_closure(png);
-  $.Draggable$(dragmeTwo, null).dragImageFunction = new $.sectionDragImages_closure0(png);
-  $.Draggable$(dragmeThree, null).dragImageFunction = new $.sectionDragImages_closure1(canvasImage);
-  t1 = $.Draggable$(dragmeFour, null);
-  t1.dragImageFunction = new $.sectionDragImages_closure2(canvasImage);
-  t1.alwaysUseDragImagePolyfill = true;
-  t1 = $.Dropzone$(document.querySelector("#drag-images .dropzone")).acceptDraggables;
-  t1.addAll$1(t1, [dragmeOne, dragmeTwo, dragmeThree, dragmeFour]);
+  dragGroupOne = new $.DraggableGroup("dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", new $.closure(), new $.closure0(), false, null, null, null, null, new $.HashMap(0, null, null, null, null));
+  dragGroupOne.install$1(document.querySelector("#drag-images .one"));
+  dragGroupOne.dragImageFunction = new $.sectionDragImages_closure(png);
+  dragGroupTwo = new $.DraggableGroup("dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", new $.closure(), new $.closure0(), false, null, null, null, null, new $.HashMap(0, null, null, null, null));
+  dragGroupTwo.install$1(document.querySelector("#drag-images .two"));
+  dragGroupTwo.dragImageFunction = new $.sectionDragImages_closure0(png);
+  dragGroupThree = new $.DraggableGroup("dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", new $.closure(), new $.closure0(), false, null, null, null, null, new $.HashMap(0, null, null, null, null));
+  dragGroupThree.install$1(document.querySelector("#drag-images .three"));
+  dragGroupThree.dragImageFunction = new $.sectionDragImages_closure1(canvasImage);
+  dragGroupFour = new $.DraggableGroup("dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", new $.closure(), new $.closure0(), false, null, null, null, null, new $.HashMap(0, null, null, null, null));
+  dragGroupFour.install$1(document.querySelector("#drag-images .four"));
+  dragGroupFour.alwaysUseDragImagePolyfill = true;
+  dragGroupFour.dragImageFunction = new $.sectionDragImages_closure2(canvasImage);
+  dropGroup = new $.DropzoneGroup(new $.HashSet(0, null, null, null, null), null, null, null, null, new $.HashMap(0, null, null, null, null));
+  dropGroup.install$1(document.querySelector("#drag-images .dropzone"));
+  t1 = dropGroup.accept;
+  t1.addAll$1(t1, [dragGroupOne, dragGroupTwo, dragGroupThree, dragGroupFour]);
 },
 
 sectionNestedElements: function() {
-  var t1, dragme, dropzone, textarea, input, t2, t3;
+  var t1, textarea, input, dragGroup, dropGroup, t2;
   t1 = {};
-  dragme = document.querySelector("#nested-elements .dragme");
-  dropzone = document.querySelector("#nested-elements .dropzone");
   textarea = document.querySelector("#nested-elements .dropzone textarea");
   input = document.querySelector("#nested-elements .dropzone input");
   $.set$value$x(input, "Drag here!");
   textarea.textContent = "";
-  $.Draggable$(dragme, null);
   t1.enterLeaveCounter_0 = 1;
   t1.overCounter_1 = 1;
-  t2 = $.Dropzone$(dropzone);
-  t3 = t2.acceptDraggables;
-  t3.add$1(t3, dragme);
-  t2.get$onDragEnter(t2).listen$1(new $.sectionNestedElements_closure(t1, textarea));
-  t2.get$onDragOver(t2).listen$1(new $.sectionNestedElements_closure0(t1, input));
-  t2.get$onDragLeave(t2).listen$1(new $.sectionNestedElements_closure1(t1, textarea));
-  t2.get$onDrop(t2).listen$1(new $.sectionNestedElements_closure2(t1, textarea));
+  dragGroup = new $.DraggableGroup("dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", new $.closure(), new $.closure0(), false, null, null, null, null, new $.HashMap(0, null, null, null, null));
+  dragGroup.install$1(document.querySelector("#nested-elements .dragme"));
+  dropGroup = new $.DropzoneGroup(new $.HashSet(0, null, null, null, null), null, null, null, null, new $.HashMap(0, null, null, null, null));
+  dropGroup.install$1(document.querySelector("#nested-elements .dropzone"));
+  t2 = dropGroup.accept;
+  t2.add$1(t2, dragGroup);
+  dropGroup.get$onDragEnter(dropGroup).listen$1(new $.sectionNestedElements_closure(t1, textarea));
+  dropGroup.get$onDragOver(dropGroup).listen$1(new $.sectionNestedElements_closure0(t1, input));
+  dropGroup.get$onDragLeave(dropGroup).listen$1(new $.sectionNestedElements_closure1(t1, textarea));
+  dropGroup.get$onDrop(dropGroup).listen$1(new $.sectionNestedElements_closure2(t1, textarea));
 },
 
 sectionSortableList: function() {
-  $.Sortable$(new $._FrozenElementList(document.querySelectorAll("#sortable-list li")), null).get$onSortableComplete().listen$1(new $.sectionSortableList_closure());
+  var sortGroup, t1;
+  sortGroup = new $.SortableGroup("dnd-placeholder", true, false, null, new $.DropzoneGroup(new $.HashSet(0, null, null, null, null), null, null, null, null, new $.HashMap(0, null, null, null, null)), null, null, "dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", new $.closure(), new $.closure0(), false, null, null, null, null, new $.HashMap(0, null, null, null, null));
+  sortGroup.installAll$1(new $._FrozenElementList(document.querySelectorAll("#sortable-list li")));
+  sortGroup.get$onSortUpdate().listen$1(new $.sectionSortableList_closure());
+  t1 = sortGroup.get$accept(sortGroup);
+  t1.add$1(t1, sortGroup);
+},
+
+sectionSortableTwoGroups: function() {
+  var png, sortGroup1, sortGroup2, t1;
+  png = $.ImageElement_ImageElement(null, "icons/smiley-happy.png", null);
+  sortGroup1 = new $.SortableGroup("dnd-placeholder", true, false, null, new $.DropzoneGroup(new $.HashSet(0, null, null, null, null), null, null, null, null, new $.HashMap(0, null, null, null, null)), null, null, "dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", new $.closure(), new $.closure0(), false, null, null, null, null, new $.HashMap(0, null, null, null, null));
+  sortGroup1.installAll$1(new $._FrozenElementList(document.querySelectorAll("#sortable-two-groups .group1 li")));
+  sortGroup1.get$onSortUpdate().listen$1(new $.sectionSortableTwoGroups_closure());
+  sortGroup2 = new $.SortableGroup("dnd-placeholder", true, false, null, new $.DropzoneGroup(new $.HashSet(0, null, null, null, null), null, null, null, null, new $.HashMap(0, null, null, null, null)), null, null, "dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", new $.closure(), new $.closure0(), false, null, null, null, null, new $.HashMap(0, null, null, null, null));
+  sortGroup2.installAll$1(new $._FrozenElementList(document.querySelectorAll("#sortable-two-groups .group2 li")));
+  sortGroup2.dragImageFunction = new $.sectionSortableTwoGroups_closure0(png);
+  sortGroup2.get$onSortUpdate().listen$1(new $.sectionSortableTwoGroups_closure1());
+  t1 = sortGroup1.get$accept(sortGroup1);
+  t1.addAll$1(t1, [sortGroup1, sortGroup2]);
+  t1 = sortGroup2.get$accept(sortGroup2);
+  t1.addAll$1(t1, [sortGroup1, sortGroup2]);
+},
+
+sectionDraggableSortable: function() {
+  var dragGroup, sortGroup, t1, emptyItem, emptyListDropzone;
+  dragGroup = new $.DraggableGroup("dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", new $.closure(), new $.closure0(), false, null, null, null, null, new $.HashMap(0, null, null, null, null));
+  dragGroup.installAll$1(new $._FrozenElementList(document.querySelectorAll("#draggable-sortable .group1 li")));
+  sortGroup = new $.SortableGroup("dnd-placeholder", true, false, null, new $.DropzoneGroup(new $.HashSet(0, null, null, null, null), null, null, null, null, new $.HashMap(0, null, null, null, null)), null, null, "dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", new $.closure(), new $.closure0(), false, null, null, null, null, new $.HashMap(0, null, null, null, null));
+  sortGroup.get$onSortUpdate().listen$1(new $.sectionDraggableSortable_closure());
+  t1 = sortGroup.get$accept(sortGroup);
+  t1.addAll$1(t1, [dragGroup, sortGroup]);
+  emptyItem = document.querySelector("#draggable-sortable .group2 .empty");
+  emptyListDropzone = new $.DropzoneGroup(new $.HashSet(0, null, null, null, null), null, null, null, null, new $.HashMap(0, null, null, null, null));
+  emptyListDropzone.install$1(emptyItem);
+  t1 = emptyListDropzone.accept;
+  t1.add$1(t1, dragGroup);
+  emptyListDropzone.get$onDrop(emptyListDropzone).listen$1(new $.sectionDraggableSortable_closure0(dragGroup, sortGroup, emptyItem));
 }}],
 ["html5_sortable", "package:html5_dnd/html5_sortable.dart", , {
-Sortable: {"": "Object;sortableElements,placeholderClass<,forcePlaceholderSize<,_placeholder@,_originalPosition@,_dropped@,_isGrid<,_onSortableComplete",
-  get$onSortableComplete: function() {
-    return this._onSortableComplete._stream;
-  },
-  _installDraggable$2: function(sortableElement, handle) {
-    var t1 = $.Draggable$(sortableElement, handle);
-    t1.dropEffect = "move";
-    t1.get$onDragStart(t1).listen$1(new $.Sortable__installDraggable_closure(this));
-    t1.get$onDragEnd(t1).listen$1(new $.Sortable__installDraggable_closure0(this));
-  },
-  _installDropzone$2: function(sortableElement, acceptDraggables) {
-    var dropzone, t1, overSubscription;
-    dropzone = $.Dropzone$(sortableElement);
-    dropzone.overClass = null;
-    t1 = dropzone.acceptDraggables;
-    t1.addAll$1(t1, acceptDraggables);
-    overSubscription = dropzone.get$onDragOver(dropzone).listen$1(new $.Sortable__installDropzone_closure(this, dropzone));
-    dropzone.get$onDragEnter(dropzone).listen$1(new $.Sortable__installDropzone_closure0(this, overSubscription));
-  },
-  _showDraggable$1: function(newPosition) {
-    var t1, t2, t3, t4;
-    $.remove$0$ax(this._placeholder.placeholderElement);
-    t1 = $.currentDraggable.element;
-    newPosition.insert$1;
-    $.insert$2$ax($.get$children$x(newPosition.parent), newPosition.index, t1);
-    if (!$.$eq(newPosition, this._originalPosition)) {
-      $.get$_logger().finest$1("firing onSortableComplete event");
-      t1 = this._onSortableComplete;
-      t2 = t1._subscription;
-      t3 = t2 != null;
-      if (t3) {
-        t4 = t1._state;
-        if ((t4 & 2) === 0) {
-          if (t3) {
-            t2.get$_isInputPaused;
-            t2 = !$.$eq($.$and$n(t2._state, 4), 0);
-          } else
-            t2 = (t4 & 1) === 0;
-          t2 = !t2;
-        } else
-          t2 = false;
-      } else
-        t2 = false;
-      if (t2) {
-        t2 = new $.SortableResult($.currentDraggable, this._originalPosition, this._placeholder.placeholderPosition);
-        t3 = t1._state;
-        if ((t3 & 2) !== 0)
-          $.throwExpression(new $.StateError("Adding event after close"));
-        if (t1._subscription != null)
-          t1._sendData$1(t2);
-        else if ((t3 & 1) === 0)
-          t1._addPendingEvent$1(new $._DelayedData(t2, null));
-      }
+SortableGroup: {"": "DraggableGroup;placeholderClass,forcePlaceholderSize,isGrid,_onSortUpdate?,_dropzoneGroup,_dragEnterSub,_dragStartSub,dragOccurringClass,draggingClass,overClass,dropEffect,dragDataFunction,dragImageFunction,alwaysUseDragImagePolyfill,_onDragStart,_onDrag,_onDragEnd,_liblib4$_handle,installedElements",
+  get$onSortUpdate: function() {
+    if (this._onSortUpdate == null) {
+      var t1 = new $.SortableGroup_onSortUpdate_closure(this);
+      t1 = new $._SyncBroadcastStreamController(null, t1, 0, null, null);
+      t1._liblib3$_previous = t1;
+      t1._liblib3$_next = t1;
+      this._onSortUpdate = t1;
     }
+    t1 = this._onSortUpdate;
+    t1.get$stream;
+    return new $._BroadcastStream(t1);
   },
-  Sortable$2$handle: function(sortableElements, handle) {
-    var t1, t2, sortableElement, t3, t4;
-    for (t1 = this.sortableElements, t2 = t1.get$iterator(t1); t2.moveNext$0();) {
-      sortableElement = t2._current;
-      if (!this._isGrid) {
-        t3 = $.get$Sortable__floatRegExp();
-        t4 = $.get$$float$x($.getComputedStyle$0$x(sortableElement));
-        if (typeof t4 !== "string")
-          $.throwExpression(new $.ArgumentError(t4));
-        t3 = t3._nativeRegExp.test(t4);
-      } else
-        t3 = false;
-      if (t3) {
-        $.get$_logger().finest$1("floating element detected --> handle as grid");
-        this._isGrid = true;
-      }
-      this._installDraggable$2(sortableElement, handle);
-      this._installDropzone$2(sortableElement, t1);
-    }
-  }
-},
-
-Sortable__installDraggable_closure: {"": "Closure;this_0",
-  call$1: function($event) {
-    var t1, t2;
-    $.get$_logger().finest$1("onDragStart");
-    t1 = this.this_0;
-    t1.set$_originalPosition(new $.Position($.get$parent$x($.currentDraggable.element), $.getElementIndexInParent($.currentDraggable.element)));
-    t1.set$_placeholder($._Placeholder$($.get$draggable$x($event).get$element(), t1.get$placeholderClass(), t1.get$forcePlaceholderSize()));
-    t2 = t1.get$_placeholder();
-    t2.get$onDrop;
-    t2.get$_liblib5$_onDrop().get$_stream().listen$1(new $.Sortable__installDraggable__closure(t1));
+  get$accept: function(_) {
+    return this._dropzoneGroup.accept;
   },
-  $isFunction: true
-},
-
-Sortable__installDraggable__closure: {"": "Closure;this_1",
-  call$1: function(_) {
-    var t1 = this.this_1;
-    t1.set$_dropped(true);
-    t1._showDraggable$1(t1.get$_placeholder().get$placeholderPosition());
-  },
-  $isFunction: true
-},
-
-Sortable__installDraggable_closure0: {"": "Closure;this_2",
-  call$1: function($event) {
+  install$1: function(element) {
     var t1;
-    $.get$_logger().finest$1("onDragEnd");
-    t1 = this.this_2;
-    if (t1.get$_dropped() !== true) {
-      $.get$_logger().finest$1("onDragEnd not dropped -> Revert to state before dragging");
-      t1._showDraggable$1(t1.get$_originalPosition());
-    }
-    t1.set$_originalPosition(null);
-    t1.set$_placeholder(null);
-    t1.set$_dropped(false);
-  },
-  $isFunction: true
-},
-
-Sortable__installDropzone_closure: {"": "Closure;this_0,dropzone_1",
-  call$1: function($event) {
-    var t1 = this.this_0;
-    if (t1.get$_placeholder() == null)
-      return;
-    $.get$_logger().finest$1("onDragOver");
-    t1.get$_placeholder().showPlaceholderForBiggerDropzone$3(this.dropzone_1, $event.get$mouseEvent(), t1.get$_isGrid());
-  },
-  $isFunction: true
-},
-
-Sortable__installDropzone_closure0: {"": "Closure;this_2,overSubscription_3",
-  call$1: function($event) {
-    var t1, t2, t3, t4;
-    t1 = this.this_2;
-    if (t1.get$_placeholder() == null)
-      return;
-    $.get$_logger().finest$1("onDragEnter");
-    t2 = t1.get$_placeholder();
-    t3 = $.getInterceptor$x($event);
-    t4 = t3.get$dropzone($event);
-    t2.isDropzoneHigher$1;
-    if ($.$gt$n($.get$clientHeight$x(t2.get$placeholderElement()), 0) === true && $.$gt$n($.get$clientHeight$x(t4.get$element()), $.get$clientHeight$x(t2.get$placeholderElement())) === true) {
-      $.get$_logger().finest$1("dropzone is higher than placeholder, resuming onDragOver events");
-      $.resume$0$x(this.overSubscription_3);
-    } else {
-      if (t1.get$_isGrid() === true) {
-        t2 = t1.get$_placeholder();
-        t4 = t3.get$dropzone($event);
-        t2.isDropzoneWider$1;
-        t2 = $.$gt$n($.get$clientWidth$x(t2.get$placeholderElement()), 0) === true && $.$gt$n($.get$clientWidth$x(t4.get$element()), $.get$clientWidth$x(t2.get$placeholderElement())) === true;
-      } else
-        t2 = false;
-      if (t2) {
-        $.get$_logger().finest$1("dropzone is wider than placeholder, resuming onDragOver events");
-        $.resume$0$x(this.overSubscription_3);
-      } else {
-        t1 = t1.get$_placeholder();
-        t3 = t3.get$dropzone($event);
-        t1.showPlaceholder$1;
-        $.get$_logger().finest$1("showPlaceholder");
-        t1._doShowPlaceholder$2(t3, new $.Position($.get$parent$x(t3.get$element()), $.getElementIndexInParent(t3.get$element())));
-        $.get$_logger().finest$1("dropzone is not bigger than placeholder, pausing onDragOver events");
-        t1 = this.overSubscription_3;
-        if (t1.get$isPaused() !== true)
-          $.pause$0$x(t1);
-      }
+    $.get$_logger0().finest$1("installing sortable");
+    $.DraggableGroup.prototype.install$1.call(this, element);
+    t1 = this._dropzoneGroup;
+    t1.install$1(element);
+    if (this.installedElements._length === 1) {
+      $.get$_logger0().finest$1("first element in this sortable group installed, add listeners");
+      this._dragStartSub = this.get$onDragStart(this).listen$1(new $.SortableGroup_install_closure());
+      this._dragEnterSub = t1.get$onDragEnter(t1).listen$1(new $.SortableGroup_install_closure0(this));
     }
   },
-  $isFunction: true
-},
-
-_Placeholder: {"": "Object;placeholderElement<,placeholderPosition<,_liblib5$_onDrop<",
-  get$onDrop: function(_) {
-    return this._liblib5$_onDrop._stream;
-  },
-  showPlaceholderForBiggerDropzone$3: function(dropzone, $event, isGrid) {
-    var dropzonePosition = new $.Position($.get$parent$x(dropzone.get$element()), $.getElementIndexInParent(dropzone.get$element()));
-    if ($.$gt$n($.get$clientHeight$x(this.placeholderElement), 0) === true && $.$gt$n($.get$clientHeight$x(dropzone.get$element()), $.get$clientHeight$x(this.placeholderElement)) === true)
-      if (this._isInDisabledVerticalRegion$3(dropzone, dropzonePosition, $event))
-        return;
-    if (isGrid === true)
-      if ($.$gt$n($.get$clientWidth$x(this.placeholderElement), 0) === true && $.$gt$n($.get$clientWidth$x(dropzone.get$element()), $.get$clientWidth$x(this.placeholderElement)) === true)
-        if (this._isInDisabledHorizontalRegion$3(dropzone, dropzonePosition, $event))
-          return;
-    this._doShowPlaceholder$2(dropzone, dropzonePosition);
-  },
-  _doShowPlaceholder$2: function(dropzone, dropzonePosition) {
-    var t1, t2;
-    this.placeholderPosition = dropzonePosition;
-    $.get$_logger().finest$1("showing placeholder at index " + $.S(this.placeholderPosition.index));
-    $.remove$0$ax(this.placeholderElement);
-    t1 = this.placeholderPosition;
-    t2 = this.placeholderElement;
-    t1.insert$1;
-    $.insert$2$ax($.get$children$x(t1.parent), t1.index, t2);
-    $.remove$0$ax($.currentDraggable.element);
-    dropzone.resetDragOverElements$0();
-  },
-  _isInDisabledVerticalRegion$3: function(dropzone, dropzonePosition, $event) {
-    var t1, t2, t3;
-    t1 = this.placeholderPosition;
-    if (t1 != null && t1.$gt(t1, dropzonePosition) === true) {
-      t1 = $.get$y$x($.get$page$x($event));
-      t2 = $.$add$ns($.get$top$x($.getBoundingClientRect$0$x(dropzone.get$element())), window.pageYOffset);
-      t3 = document.documentElement;
-      t3.get$client;
-      if ($.$gt$n($.$sub$n(t1, $.$sub$n(t2, new $.Rect(t3.clientLeft, t3.clientTop, t3.clientWidth, t3.clientHeight).top)), $.get$clientHeight$x(this.placeholderElement)) === true)
-        return true;
+  uninstall$1: function(element) {
+    var t1;
+    $.get$_logger0().finest$1("uninstalling sortable");
+    $.Group.prototype.uninstall$1.call(this, element);
+    this._dropzoneGroup.uninstall$1(element);
+    if (this.installedElements._length === 0) {
+      $.get$_logger0().finest$1("last element in this sortable group uninstalled, cancel group subscriptions");
+      t1 = this._dragEnterSub;
+      t1.cancel$0(t1);
+      this._dragEnterSub = null;
+      t1 = this._dragStartSub;
+      t1.cancel$0(t1);
+      this._dragStartSub = null;
     }
-    return false;
-  },
-  _isInDisabledHorizontalRegion$3: function(dropzone, dropzonePosition, $event) {
-    var t1, t2, t3, mouseRelativeLeft;
-    t1 = $.get$x$x($.get$page$x($event));
-    t2 = $.$add$ns($.get$left$x($.getBoundingClientRect$0$x(dropzone.get$element())), window.pageXOffset);
-    t3 = document.documentElement;
-    t3.get$client;
-    mouseRelativeLeft = $.$sub$n(t1, $.$sub$n(t2, new $.Rect(t3.clientLeft, t3.clientTop, t3.clientWidth, t3.clientHeight).left));
-    t1 = this.placeholderPosition;
-    if (t1 != null && t1.$gt(t1, dropzonePosition) === true)
-      if ($.$gt$n(mouseRelativeLeft, $.get$clientWidth$x(this.placeholderElement)) === true)
-        return true;
-    t1 = this.placeholderPosition;
-    if (t1 != null && t1.$lt(t1, dropzonePosition) === true)
-      if ($.$lt$n(mouseRelativeLeft, $.get$clientWidth$x(this.placeholderElement)) === true)
-        return true;
-    return false;
-  },
-  _Placeholder$3: function(draggableElement, placeholderClass, forcePlaceholderSize) {
-    var t1 = $.getInterceptor$x(draggableElement);
-    this.placeholderElement = document.createElement(t1.get$tagName(draggableElement));
-    $.add$1$ax($.get$classes$x(this.placeholderElement), placeholderClass);
-    if (forcePlaceholderSize) {
-      $.set$height$x($.get$style$x(this.placeholderElement), $.get$height$x(t1.getComputedStyle$0(draggableElement)));
-      $.set$width$x($.get$style$x(this.placeholderElement), $.get$width$x(t1.getComputedStyle$0(draggableElement)));
-    }
-    t1 = $.Dropzone$(this.placeholderElement);
-    t1.overClass = null;
-    t1.get$onDrop(t1).listen$1(new $._Placeholder_closure(this));
   }
 },
 
-_Placeholder_closure: {"": "Closure;this_0",
-  call$1: function($event) {
-    var t1, t2;
-    $.get$_logger().finest$1("placeholder onDrop");
-    t1 = this.this_0;
-    t2 = t1.get$_liblib5$_onDrop();
-    if (!$.$eq($.$and$n(t2.get$_state(), 2), 0))
-      $.throwExpression(new $.StateError("Adding event after close"));
-    if (t2.get$_subscription() != null)
-      t2._sendData$1(t1);
-    else if ($.$eq($.$and$n(t2.get$_state(), 1), 0))
-      t2._addPendingEvent$1(new $._DelayedData(t1, null));
+SortableGroup_onSortUpdate_closure: {"": "Closure;this_0",
+  call$0: function() {
+    this.this_0.set$_onSortUpdate(null);
+    return;
   },
   $isFunction: true
 },
 
-Position: {"": "Object;parent>,index>",
-  $gt: function(_, other) {
-    var t1 = $.getInterceptor$x(other);
-    if ($.$eq(t1.get$parent(other), this.parent))
-      return $.$gt$n(this.index, t1.get$index(other));
-    return;
+SortableGroup_install_closure: {"": "Closure;",
+  call$1: function($event) {
+    var t1, t2;
+    $.get$_logger0().finest$1("onDragStart");
+    t1 = new $._Placeholder($.get$draggable$x($event), null, null, $.currentDraggableGroup, null, null, false, null, null, null, null, null);
+    t2 = t1.draggable;
+    t1.originalPosition = new $.Position($.get$parent$x(t2), $.getElementIndexInParent(t2));
+    $._currentPlaceholder = t1;
   },
-  $lt: function(_, other) {
-    var t1 = $.getInterceptor$x(other);
-    if ($.$eq(t1.get$parent(other), this.parent))
-      return $.$lt$n(this.index, t1.get$index(other));
-    return;
+  $isFunction: true
+},
+
+SortableGroup_install_closure0: {"": "Closure;this_0",
+  call$1: function($event) {
+    var t1, t2;
+    $.get$_logger0().finest$1("onDragEnter");
+    if ($._currentPlaceholder == null) {
+      t1 = new $._Placeholder($.get$draggable$x($event), null, null, $.currentDraggableGroup, null, null, false, null, null, null, null, null);
+      t2 = t1.draggable;
+      t1.originalPosition = new $.Position($.get$parent$x(t2), $.getElementIndexInParent(t2));
+      $._currentPlaceholder = t1;
+    }
+    $._currentPlaceholder.showPlaceholder$2($.get$dropzone$x($event), this.this_0);
   },
+  $isFunction: true
+},
+
+Position: {"": "Object;parent>,index",
   get$hashCode: function(_) {
     var t1 = $.get$hashCode$(this.parent);
     if (typeof t1 !== "number")
@@ -13885,22 +13986,205 @@ Position: {"": "Object;parent>,index>",
   $isPosition: true
 },
 
-SortableResult: {"": "Object;draggable>,originalPosition,newPosition"},
+SortableEvent: {"": "Object;draggable>,originalPosition,newPosition,originalGroup<,newGroup<"},
 
-Sortable$: function(sortableElements, handle) {
-  var t1 = new $._SyncStreamController(null, null, null, null, null, null, 0, null);
-  t1._stream = new $._ControllerStream(t1, false);
-  t1 = new $.Sortable(sortableElements, "dnd-placeholder", true, null, null, false, false, t1);
-  t1.Sortable$2$handle(sortableElements, handle);
-  return t1;
+_Placeholder: {"": "Object;draggable>,originalPosition,newPosition,originalGroup<,newGroup<,placeholderElement,_dropped@,_dropzoneOverSub<,_dropzoneDropSub<,_placeholderDropSub<,_placeholderOverSub<,_draggableEndSub<",
+  showPlaceholder$2: function(dropzone, group) {
+    var t1, t2;
+    $.get$_logger0().finest$1("showPlaceholder");
+    this.newGroup = group;
+    if (this.placeholderElement == null)
+      this._createPlaceholderElement$0();
+    if (!($.$gt$n($.get$clientHeight$x(this.placeholderElement), 0) === true && $.$gt$n($.get$clientHeight$x(dropzone), $.get$clientHeight$x(this.placeholderElement)) === true))
+      t1 = this.newGroup.isGrid && $.$gt$n($.get$clientWidth$x(this.placeholderElement), 0) === true && $.$gt$n($.get$clientWidth$x(dropzone), $.get$clientWidth$x(this.placeholderElement)) === true;
+    else
+      t1 = true;
+    if (t1) {
+      $.get$_logger0().finest$1("dropzone is bigger than placeholder, listening to onDragOver events");
+      t1 = this._dropzoneOverSub;
+      if (t1 != null)
+        $.cancel$0$x(t1);
+      t1 = $.getInterceptor$x(dropzone);
+      this._dropzoneOverSub = t1.get$onDragOver(dropzone).listen$1(new $._Placeholder_showPlaceholder_closure(this, dropzone));
+      t2 = this._dropzoneDropSub;
+      if (t2 != null)
+        $.cancel$0$x(t2);
+      this._dropzoneDropSub = t1.get$onDrop(dropzone).listen$1(new $._Placeholder_showPlaceholder_closure0(this));
+    } else {
+      $.get$_logger0().finest$1("dropzone is not bigger than placeholder, not listening to onDragOver events");
+      this._doShowPlaceholder$2(dropzone, new $.Position($.get$parent$x(dropzone), $.getElementIndexInParent(dropzone)));
+    }
+  },
+  hidePlaceholder$1$revertToOriginal: function(revertToOriginal) {
+    var t1, t2, t3, t4, t5;
+    $.remove$0$ax(this.placeholderElement);
+    t1 = this.draggable;
+    if (revertToOriginal) {
+      t2 = this.originalPosition;
+      $.insert$2$ax($.get$children$x(t2.parent), t2.index, t1);
+    } else {
+      t2 = this.newPosition;
+      t2.insert$1;
+      $.insert$2$ax($.get$children$x(t2.parent), t2.index, t1);
+      if (!$.$eq(this.newPosition, this.originalPosition)) {
+        $.get$_logger0().finest$1("firing onSortableComplete event");
+        t2 = this.newGroup;
+        t3 = t2._onSortUpdate;
+        if (t3 != null) {
+          t4 = this.originalPosition;
+          t5 = this.newPosition;
+          t3.add$1;
+          if ((t3._state & 4) !== 0)
+            $.throwExpression(new $.StateError("Cannot add new events after calling close()"));
+          t3._sendData$1(new $.SortableEvent(t1, t4, t5, this.originalGroup, t2));
+        }
+      }
+    }
+  },
+  hidePlaceholder$0: function() {
+    return this.hidePlaceholder$1$revertToOriginal(false);
+  },
+  _createPlaceholderElement$0: function() {
+    var t1, t2;
+    $.get$_logger0().finest$1("creating new placeholder");
+    t1 = this.draggable;
+    t2 = $.getInterceptor$x(t1);
+    this.placeholderElement = document.createElement(t2.get$tagName(t1));
+    this.newGroup.placeholderClass;
+    $.add$1$ax($.get$classes$x(this.placeholderElement), this.newGroup.placeholderClass);
+    if (this.newGroup.forcePlaceholderSize) {
+      $.set$height$x($.get$style$x(this.placeholderElement), $.get$height$x(t2.getComputedStyle$0(t1)));
+      $.set$width$x($.get$style$x(this.placeholderElement), $.get$width$x(t2.getComputedStyle$0(t1)));
+    }
+    this._placeholderDropSub = $.get$onDrop$x(this.placeholderElement).listen$1(new $._Placeholder__createPlaceholderElement_closure(this));
+    this._placeholderOverSub = $.get$onDragOver$x(this.placeholderElement).listen$1(new $._Placeholder__createPlaceholderElement_closure0(this));
+    this._draggableEndSub = t2.get$onDragEnd(t1).listen$1(new $._Placeholder__createPlaceholderElement_closure1(this));
+  },
+  _showPlaceholderForBiggerDropzone$2: function(dropzone, $event) {
+    var t1, dropzonePosition;
+    t1 = $.getInterceptor$x(dropzone);
+    dropzonePosition = new $.Position(t1.get$parent(dropzone), $.getElementIndexInParent(dropzone));
+    if ($.$gt$n($.get$clientHeight$x(this.placeholderElement), 0) === true && $.$gt$n(t1.get$clientHeight(dropzone), $.get$clientHeight$x(this.placeholderElement)) === true)
+      if (this._isInDisabledVerticalRegion$3(dropzone, dropzonePosition, $event))
+        return;
+    if (this.newGroup.isGrid)
+      if ($.$gt$n($.get$clientWidth$x(this.placeholderElement), 0) === true && $.$gt$n(t1.get$clientWidth(dropzone), $.get$clientWidth$x(this.placeholderElement)) === true)
+        if (this._isInDisabledHorizontalRegion$3(dropzone, dropzonePosition, $event))
+          return;
+    $.get$_logger0().finest$1("showing placeholder for bigger dropzone");
+    this._doShowPlaceholder$2(dropzone, dropzonePosition);
+  },
+  _doShowPlaceholder$2: function(dropzone, dropzonePosition) {
+    var t1, t2;
+    this.newPosition = dropzonePosition;
+    $.get$_logger0().finest$1("showing placeholder at index " + $.S(this.newPosition.index));
+    $.remove$0$ax(this.placeholderElement);
+    t1 = this.newPosition;
+    t2 = this.placeholderElement;
+    t1.insert$1;
+    $.insert$2$ax($.get$children$x(t1.parent), t1.index, t2);
+    $.remove$0$ax($.currentDraggable);
+    $.get$_logger0().finest$1("clearing dragOverElements {dragOverElements.length before clearing: " + $.S($.get$currentDragOverElements()._length) + "}");
+    t2 = $.get$currentDragOverElements();
+    if (t2._length > 0) {
+      t2._elements = null;
+      t2._rest = null;
+      t2._nums = null;
+      t2._strings = null;
+      t2._length = 0;
+    }
+  },
+  _isInDisabledVerticalRegion$3: function(dropzone, dropzonePosition, $event) {
+    var t1, t2, t3;
+    t1 = this.newPosition;
+    if (t1 != null && $.$eq(t1.parent, dropzonePosition.parent) && $.$gt$n(this.newPosition.index, dropzonePosition.index)) {
+      t1 = $.get$y$x($.get$page$x($event));
+      t2 = $.$add$ns($.get$top$x($.getBoundingClientRect$0$x(dropzone)), window.pageYOffset);
+      t3 = document.documentElement;
+      t3.get$client;
+      if ($.$gt$n($.$sub$n(t1, $.$sub$n(t2, new $.Rect(t3.clientLeft, t3.clientTop, t3.clientWidth, t3.clientHeight).top)), $.get$clientHeight$x(this.placeholderElement)) === true)
+        return true;
+    }
+    return false;
+  },
+  _isInDisabledHorizontalRegion$3: function(dropzone, dropzonePosition, $event) {
+    var t1, t2, t3, mouseRelativeLeft;
+    t1 = $.get$x$x($.get$page$x($event));
+    t2 = $.$add$ns($.get$left$x($.getBoundingClientRect$0$x(dropzone)), window.pageXOffset);
+    t3 = document.documentElement;
+    t3.get$client;
+    mouseRelativeLeft = $.$sub$n(t1, $.$sub$n(t2, new $.Rect(t3.clientLeft, t3.clientTop, t3.clientWidth, t3.clientHeight).left));
+    t1 = this.newPosition;
+    if (t1 != null && $.$eq(t1.parent, dropzonePosition.parent)) {
+      t1 = dropzonePosition.index;
+      if ($.$gt$n(this.newPosition.index, t1))
+        if ($.$gt$n(mouseRelativeLeft, $.get$clientWidth$x(this.placeholderElement)) === true)
+          return true;
+      if ($.$lt$n(this.newPosition.index, t1))
+        if ($.$lt$n(mouseRelativeLeft, $.get$clientWidth$x(this.placeholderElement)) === true)
+          return true;
+    }
+    return false;
+  }
 },
 
-_Placeholder$: function(draggableElement, placeholderClass, forcePlaceholderSize) {
-  var t1 = new $._SyncStreamController(null, null, null, null, null, null, 0, null);
-  t1._stream = new $._ControllerStream(t1, false);
-  t1 = new $._Placeholder(null, null, t1);
-  t1._Placeholder$3(draggableElement, placeholderClass, forcePlaceholderSize);
-  return t1;
+_Placeholder_showPlaceholder_closure: {"": "Closure;this_0,dropzone_1",
+  call$1: function($event) {
+    $.get$_logger0().finest$1("placeholder (dropzone) onDragOver");
+    this.this_0._showPlaceholderForBiggerDropzone$2(this.dropzone_1, $event);
+  },
+  $isFunction: true
+},
+
+_Placeholder_showPlaceholder_closure0: {"": "Closure;this_2",
+  call$1: function($event) {
+    $.get$_logger0().finest$1("placeholder (dropzone) onDrop");
+    this.this_2.set$_dropped(true);
+  },
+  $isFunction: true
+},
+
+_Placeholder__createPlaceholderElement_closure: {"": "Closure;this_0",
+  call$1: function(_) {
+    $.get$_logger0().finest$1("placeholder onDrop");
+    this.this_0.set$_dropped(true);
+  },
+  $isFunction: true
+},
+
+_Placeholder__createPlaceholderElement_closure0: {"": "Closure;this_1",
+  call$1: function(mouseEvent) {
+    var t1 = $.getInterceptor$x(mouseEvent);
+    $.set$dropEffect$x(t1.get$dataTransfer(mouseEvent), $.get$dropEffect$x(this.this_1.get$originalGroup()));
+    t1.preventDefault$0(mouseEvent);
+  },
+  $isFunction: true
+},
+
+_Placeholder__createPlaceholderElement_closure1: {"": "Closure;this_2",
+  call$1: function($event) {
+    var t1, t2;
+    $.get$_logger0().finest$1("placeholder onDragEnd");
+    t1 = this.this_2;
+    if (t1.get$_dropped() === true) {
+      $.get$_logger0().finest$1("placeholder was dropped -> Show draggable at new position");
+      $._currentPlaceholder.hidePlaceholder$0();
+    } else {
+      $.get$_logger0().finest$1("placeholder not dropped -> Revert to state before dragging");
+      $._currentPlaceholder.hidePlaceholder$1$revertToOriginal(true);
+    }
+    $._currentPlaceholder = null;
+    t2 = t1.get$_dropzoneOverSub();
+    if (t2 != null)
+      $.cancel$0$x(t2);
+    t2 = t1.get$_dropzoneDropSub();
+    if (t2 != null)
+      $.cancel$0$x(t2);
+    $.cancel$0$x(t1.get$_placeholderDropSub());
+    $.cancel$0$x(t1.get$_placeholderOverSub());
+    $.cancel$0$x(t1.get$_draggableEndSub());
+  },
+  $isFunction: true
 }}],
 ["html_common", "dart:html_common", , {
 convertDartToNative_Dictionary_closure: {"": "Closure;object_0",
@@ -14348,10 +14632,10 @@ CssClassSetImpl: {"": "Object;",
     return new $.MappedIterable(this.readClasses$0(), f);
   },
   get$isEmpty: function(_) {
-    return this.readClasses$0()._liblib1$_length === 0;
+    return this.readClasses$0()._length === 0;
   },
   get$length: function(_) {
-    return this.readClasses$0()._liblib1$_length;
+    return this.readClasses$0()._length;
   },
   contains$1: function(_, value) {
     var t1 = this.readClasses$0();
@@ -14368,6 +14652,9 @@ CssClassSetImpl: {"": "Object;",
     result = s.remove$1(s, value);
     this.writeClasses$1(s);
     return result;
+  },
+  addAll$1: function(_, iterable) {
+    this.modify$1(this, new $.CssClassSetImpl_addAll_closure(iterable));
   },
   toList$1$growable: function(_, growable) {
     return $.List_List$from(this.readClasses$0(), growable);
@@ -14391,6 +14678,13 @@ CssClassSetImpl: {"": "Object;",
 CssClassSetImpl_add_closure: {"": "Closure;value_0",
   call$1: function(s) {
     return $.add$1$ax(s, this.value_0);
+  },
+  $isFunction: true
+},
+
+CssClassSetImpl_addAll_closure: {"": "Closure;iterable_0",
+  call$1: function(s) {
+    return $.addAll$1$ax(s, this.iterable_0);
   },
   $isFunction: true
 },
@@ -14439,7 +14733,9 @@ FilteredElementList: {"": "ListBase;_node,_childNodes",
       t2.appendChild(t1.get$current());
   },
   contains$1: function(_, element) {
-    return element != null && $.$eq($.get$parentNode$x(element), this._node);
+    if (element != null)
+      element.get$parentNode(element);
+    return false;
   },
   setRange$4: function(_, start, end, iterable, skipCount) {
     throw $.wrapException(new $.UnsupportedError("Cannot setRange on filtered list"));
@@ -14573,7 +14869,7 @@ _enterScopeIfNeeded_closure: {"": "Closure;depth_0",
 
 _Undefined: {"": "Object;"},
 
-Proxy: {"": "Object;_liblib4$_port,_liblib4$_id",
+Proxy: {"": "Object;_liblib5$_port,_liblib5$_id",
   toJs$0: function() {
     return this;
   },
@@ -14607,7 +14903,7 @@ Proxy: {"": "Object;_liblib4$_port,_liblib4$_id",
   noSuchMethod$1: function(_, invocation) {
     var symbol, member, t1, args, kind;
     symbol = invocation.memberName;
-    member = symbol._liblib0$_name;
+    member = symbol._liblib$_name;
     t1 = $.getInterceptor$asx(member);
     if (!$.$eq(t1.indexOf$1(member, "@"), -1))
       member = t1.substring$2(member, 0, t1.indexOf$1(member, "@"));
@@ -14645,7 +14941,7 @@ Proxy: {"": "Object;_liblib4$_port,_liblib4$_id",
   $asSerializable: function() { return [$.Proxy]; }
 },
 
-FunctionProxy: {"": "Proxy;_liblib4$_port,_liblib4$_id",
+FunctionProxy: {"": "Proxy;_liblib5$_port,_liblib5$_id",
   call$6: function(arg1, arg2, arg3, arg4, arg5, arg6) {
     return $.Proxy__forward(this, "", "apply", $._pruneUndefined(arg1, arg2, arg3, arg4, arg5, arg6));
   },
@@ -14670,7 +14966,7 @@ FunctionProxy: {"": "Proxy;_liblib4$_port,_liblib4$_id",
   $asSerializable: function() { return [$.Proxy]; }
 },
 
-_ProxiedObjectTable: {"": "Object;_name,_nextId,_deletedCount,_registry<,_liblib4$_port,_globalIds,_handleStack,_scopeIndices",
+_ProxiedObjectTable: {"": "Object;_name,_nextId,_deletedCount,_registry<,_liblib5$_port,_globalIds,_handleStack,_scopeIndices",
   exitScope$0: function() {
     var t1, start, t2, t3, i, t4;
     t1 = this._scopeIndices;
@@ -14724,7 +15020,7 @@ _ProxiedObjectTable: {"": "Object;_name,_nextId,_deletedCount,_registry<,_liblib
     return id;
   },
   _ProxiedObjectTable$0: function() {
-    this._liblib4$_port.receive$1(new $._ProxiedObjectTable_closure(this));
+    this._liblib5$_port.receive$1(new $._ProxiedObjectTable_closure(this));
   }
 },
 
@@ -14757,7 +15053,7 @@ _deserialize_deserializeFunction: {"": "Closure;",
     t1 = $.getInterceptor$asx(message);
     id = t1.$index(message, 1);
     port = t1.$index(message, 2);
-    if ($.$eq(port, new $._LocalSendPortSync($.get$_proxiedObjectTable()._liblib4$_port))) {
+    if ($.$eq(port, new $._LocalSendPortSync($.get$_proxiedObjectTable()._liblib5$_port))) {
       t1 = $.get$_proxiedObjectTable()._registry;
       return t1.$index(t1, id);
     } else
@@ -14772,7 +15068,7 @@ _deserialize_deserializeObject: {"": "Closure;",
     t1 = $.getInterceptor$asx(message);
     id = t1.$index(message, 1);
     port = t1.$index(message, 2);
-    if ($.$eq(port, new $._LocalSendPortSync($.get$_proxiedObjectTable()._liblib4$_port))) {
+    if ($.$eq(port, new $._LocalSendPortSync($.get$_proxiedObjectTable()._liblib5$_port))) {
       t1 = $.get$_proxiedObjectTable()._registry;
       return t1.$index(t1, id);
     } else
@@ -14867,7 +15163,7 @@ Proxy__forward: function(receiver, member, kind, args) {
   var t1, result;
   $._enterScopeIfNeeded();
   t1 = $.JSArray_methods.map$1(args, $._serialize$closure);
-  result = receiver._liblib4$_port.callSync$1([receiver._liblib4$_id, member, kind, t1.toList$0(t1)]);
+  result = receiver._liblib5$_port.callSync$1([receiver._liblib5$_id, member, kind, t1.toList$0(t1)]);
   t1 = $.getInterceptor$asx(result);
   switch (t1.$index(result, 0)) {
     case "return":
@@ -14904,9 +15200,9 @@ _serialize: function(message) {
     if (t1)
       return ["domref", $._serializeElement(message)];
     else if (typeof message === "object" && message !== null && !!$.getInterceptor(message).$isFunctionProxy)
-      return ["funcref", message._liblib4$_id, message._liblib4$_port];
+      return ["funcref", message._liblib5$_id, message._liblib5$_port];
     else if (typeof message === "object" && message !== null && !!$.getInterceptor(message).$isProxy)
-      return ["objref", message._liblib4$_id, message._liblib4$_port];
+      return ["objref", message._liblib5$_id, message._liblib5$_port];
     else if (typeof message === "object" && message !== null && !!$.getInterceptor(message).$isSerializable)
       return $._serialize(message.toJs$0());
     else {
@@ -14919,7 +15215,7 @@ _serialize: function(message) {
       t3 = t1._registry;
       t3.$indexSet(t3, id, message);
       t1._handleStack.push(id);
-      return ["objref", id, new $._LocalSendPortSync($.get$_proxiedObjectTable()._liblib4$_port)];
+      return ["objref", id, new $._LocalSendPortSync($.get$_proxiedObjectTable()._liblib5$_port)];
     }
   }
 },
@@ -15557,9 +15853,9 @@ $.DomName_46y0 = new $.DomName("MimeType.enabledPlugin");
 $.DomName_LlV = new $.DomName("EventSource.url");
 $.DomName_omC = new $.DomName("HTMLScriptElement.type");
 $.DomName_Kqg = new $.DomName("RTCPeerConnection.remoteDescription");
-$.DomName_3Kn0 = new $.DomName("Document.ondragover");
-$.DomName_W8O = new $.DomName("ProcessingInstruction.data");
 $.DomName_uQ3 = new $.DomName("SVGPathSegCurvetoCubicSmoothRel.x");
+$.DomName_W8O = new $.DomName("ProcessingInstruction.data");
+$.DomName_3Kn0 = new $.DomName("Document.ondragover");
 $.DomName_tto = new $.DomName("StyleMedia.type");
 $.DomName_hkQ = new $.DomName("RTCDTMFSender.addEventListener");
 $.DomName_ValidityState = new $.DomName("ValidityState");
@@ -15933,13 +16229,13 @@ $.DomName_dCN = new $.DomName("FileException.toString");
 $.SupportedBrowser_Chrome_null = new $.SupportedBrowser("Chrome", null);
 $.DomName_k2a0 = new $.DomName("SVGElementInstance.ondrag");
 $.DomName_HTMLDirectoryElement = new $.DomName("HTMLDirectoryElement");
-$.C__Override = new $._Override();
 $.DomName_HTMLLabelElement = new $.DomName("HTMLLabelElement");
 $.DomName_yvP = new $.DomName("Document.documentElement");
 $.C__Undefined = new $._Undefined();
 $.DomName_B8J0 = new $.DomName("CustomEvent.initCustomEvent");
 $.DomName_Pds = new $.DomName("SVGForeignObjectElement.height");
 $.DomName_O9i0 = new $.DomName("SVGRectElement.y");
+$.C__Override = new $._Override();
 $.DomName_qBr = new $.DomName("Notification.onclick");
 $.DomName_ET7 = new $.DomName("SVGFEImageElement.xmlspace");
 $.DomName_MIo = new $.DomName("HTMLImageElement.x");
@@ -16173,12 +16469,11 @@ $.DomName_L1G = new $.DomName("HTMLInputElement.min");
 $.DomName_o6N = new $.DomName("SVGFEBlendElement.height");
 $.DomName_coJ = new $.DomName("HTMLObjectElement.name");
 $.NodeList_methods = $.NodeList.prototype;
-$.DomName_Yu20 = new $.DomName("Element.ondragenter");
+$.DomName_6m40 = new $.DomName("StyleSheet.href");
 $.DomName_WfL = new $.DomName("CSSRule.type");
 $.DomName_DOMParser = new $.DomName("DOMParser");
 $.DomName_gg40 = new $.DomName("SVGSymbolElement.xmllang");
 $.DomName_Eer = new $.DomName("SVGGradientElement.href");
-$.DomName_6m40 = new $.DomName("StyleSheet.href");
 $.DomName_IK6 = new $.DomName("DynamicsCompressorNode.release");
 $.DomName_ki2 = new $.DomName("UIEvent.pageX");
 $.DomName_CSSValue = new $.DomName("CSSValue");
@@ -16226,7 +16521,7 @@ $.DomName_EW9 = new $.DomName("SpeechSynthesis.cancel");
 $.DomName_MPk = new $.DomName("HTMLMediaElement.currentSrc");
 $.DomName_DataTransferItem = new $.DomName("DataTransferItem");
 $.DomName_Lx4 = new $.DomName("SVGFEConvolveMatrixElement.x");
-$.DomName_efl0 = new $.DomName("Element.getBoundingClientRect");
+$.DomName_h3a = new $.DomName("WebSocket.dispatchEvent");
 $.DomName_wAl = new $.DomName("Document.ondragstart");
 $.DomName_Nm5 = new $.DomName("Window.styleMedia");
 $.DomName_B6W = new $.DomName("MouseEvent.button");
@@ -16237,10 +16532,11 @@ $.DomName_cJC2 = new $.DomName("TreeWalker.expandEntityReferences");
 $.JSName_getComputedStyle = new $.JSName("getComputedStyle");
 $.DomName_mF3 = new $.DomName("HTMLAnchorElement.ping");
 $.DomName_CSSRule = new $.DomName("CSSRule");
+$.DomName_efl0 = new $.DomName("Element.getBoundingClientRect");
 $.DomName_k2M = new $.DomName("HTMLMediaElement.seekable");
-$.DomName_h3a = new $.DomName("WebSocket.dispatchEvent");
 $.DomName_Z9b = new $.DomName("HTMLMeterElement.max");
 $.DomName_MediaKeyEvent = new $.DomName("MediaKeyEvent");
+$.DomName_Yu20 = new $.DomName("Element.ondragenter");
 $.DomName_Geolocation = new $.DomName("Geolocation");
 $.DomName_O160 = new $.DomName("PerformanceResourceTiming.responseEnd");
 $.DomName_Z61 = new $.DomName("TextTrackCue.position");
@@ -16409,20 +16705,20 @@ $.JSName_webkitDroppedFrameCount = new $.JSName("webkitDroppedFrameCount");
 $.DomName_d0o = new $.DomName("SVGFEDisplacementMapElement.height");
 $.DomName_33b = new $.DomName("CanvasRenderingContext2D.currentPath");
 $.DomName_SVGLocatable = new $.DomName("SVGLocatable");
-$.DomName_PgW0 = new $.DomName("Window.ondragover");
+$.DomName_Vfn = new $.DomName("RTCDataChannel.binaryType");
 $.DomName_Y0l = new $.DomName("SVGFESpotLightElement.pointsAtZ");
 $.DomName_S7Y = new $.DomName("AudioBufferSourceNode.playbackRate");
 $.DomName_HTMLLinkElement = new $.DomName("HTMLLinkElement");
 $.DomName_SVGStyledElement = new $.DomName("SVGStyledElement");
 $.DomName_vpx = new $.DomName("AnalyserNode.maxDecibels");
 $.SupportedBrowser_pqE = new $.SupportedBrowser("Chrome", "26");
-$.DomName_Vfn = new $.DomName("RTCDataChannel.binaryType");
 $.DomName_kUZ0 = new $.DomName("AudioDestinationNode.maxChannelCount");
 $.DomName_efl1 = new $.DomName("SVGComponentTransferFunctionElement");
 $.DomName_SQLTransactionCallback = new $.DomName("SQLTransactionCallback");
 $.DomName_E4y0 = new $.DomName("CanvasRenderingContext2D.globalCompositeOperation");
 $.DomName_ATp = new $.DomName("HTMLSelectElement.value");
 $.DomName_NQk = new $.DomName("HTMLInputElement.valueAsNumber");
+$.DomName_PgW0 = new $.DomName("Window.ondragover");
 $.DomName_j7R1 = new $.DomName("SVGRadialGradientElement.fr");
 $.DomName_uQ30 = new $.DomName("SVGPathSegCurvetoCubicSmoothRel.y");
 $.DomName_CjA = new $.DomName("BeforeLoadEvent.url");
@@ -16851,7 +17147,7 @@ $.DomName_Os50 = new $.DomName("TextTrackCue.line");
 $.Level_INFO_800 = new $.Level("INFO", 800);
 $.DomName_jSl4 = new $.DomName("Element.ondrop");
 $.DomName_s4r = new $.DomName("HTMLFormElement.enctype");
-$.DomName_yHZ0 = new $.DomName("SVGTransformList.clear");
+$.DomName_cHS = new $.DomName("AudioContext.sampleRate");
 $.DomName_UBc = new $.DomName("SVGSVGElement.externalResourcesRequired");
 $.DomName_Y6D4 = new $.DomName("IDBObjectStore.get");
 $.DomName_ocC = new $.DomName("Element.onselectstart");
@@ -16871,8 +17167,7 @@ $.DomName_pF6 = new $.DomName("SVGMarkerElement.markerWidth");
 $.DomName_uQ9 = new $.DomName("HTMLAreaElement.pathname");
 $.DomName_lbd1 = new $.DomName("RTCDTMFSender.dispatchEvent");
 $.DomName_WfA = new $.DomName("SVGRectElement.ry");
-$.DomName_qRH0 = new $.DomName("MediaController.dispatchEvent");
-$.DomName_cHS = new $.DomName("AudioContext.sampleRate");
+$.DomName_yHZ0 = new $.DomName("SVGTransformList.clear");
 $.DomName_2Vu = new $.DomName("SVGFESpotLightElement.specularExponent");
 $.DomName_HTMLFormControlsCollection = new $.DomName("HTMLFormControlsCollection");
 $.DomName_oRp = new $.DomName("HTMLMediaElement.webkitVideoDecodedByteCount");
@@ -16887,7 +17182,7 @@ $.DomName_e3S = new $.DomName("Element.offsetWidth");
 $.DomName_016 = new $.DomName("NavigatorUserMediaErrorCallback");
 $.DomName_3uR6 = new $.DomName("HTMLInputElement.list");
 $.DomName_G3O0 = new $.DomName("MouseEvent.webkitMovementY");
-$.DomName_wEo3 = new $.DomName("Element.dragendEvent");
+$.DomName_TJV = new $.DomName("Window.getSelection");
 $.DomName_UE7 = new $.DomName("Element.clientLeft");
 $.DomName_OdR = new $.DomName("HTMLTextAreaElement.willValidate");
 $.DomName_CHK1 = new $.DomName("SVGEllipseElement.rx");
@@ -16900,7 +17195,7 @@ $.DomName_MediaKeyError = new $.DomName("MediaKeyError");
 $.DomName_FIw0 = new $.DomName("HTMLMediaElement.seeking");
 $.DomName_cct = new $.DomName("SpeechSynthesisEvent.elapsedTime");
 $.DomName_X9k = new $.DomName("CanvasRenderingContext2D.globalAlpha");
-$.DomName_TJV = new $.DomName("Window.getSelection");
+$.DomName_qRH0 = new $.DomName("MediaController.dispatchEvent");
 $.DomName_qJ40 = new $.DomName("PannerNode.coneInnerAngle");
 $.DomName_bdS0 = new $.DomName("Element.spellcheck");
 $.DomName_Odl = new $.DomName("WebKitNamedFlow.overset");
@@ -16914,6 +17209,7 @@ $.DomName_4aj = new $.DomName("SVGElement.viewportElement");
 $.DomName_gc62 = new $.DomName("MediaKeyEvent.keySystem");
 $.DomName_OverflowEvent = new $.DomName("OverflowEvent");
 $.Creates_kHV = new $.Creates("String|CanvasGradient|CanvasPattern");
+$.DomName_wEo3 = new $.DomName("Element.dragendEvent");
 $.Returns_SkJ = new $.Returns("String|CanvasGradient|CanvasPattern");
 $.JSName_appendChild = new $.JSName("appendChild");
 $.DomName_F801 = new $.DomName("SVGPathSegLinetoHorizontalRel.x");
@@ -17002,7 +17298,7 @@ $.DomName_KDX = new $.DomName("MessageEvent.ports");
 $.DomName_HTMLAudioElement = new $.DomName("HTMLAudioElement");
 $.JSName_webkitAudioDecodedByteCount = new $.JSName("webkitAudioDecodedByteCount");
 $.DomName_gWR = new $.DomName("Element.offsetLeft");
-$.DomName_Kro = new $.DomName("WebSocket.onerror");
+$.DomName_EkK = new $.DomName("CSSStyleDeclaration.setProperty");
 $.Creates_fct = new $.Creates("Element|Document");
 $.DomName_Z3d = new $.DomName("SVGPolygonElement.xmllang");
 $.DomName_AKW0 = new $.DomName("SVGException.code");
@@ -17011,7 +17307,6 @@ $.DomName_oQ5 = new $.DomName("OverflowEvent.orient");
 $.DomName_Zon = new $.DomName("MediaController.pause");
 $.DomName_Ikh = new $.DomName("OverflowEvent.verticalOverflow");
 $.DomName_L4B = new $.DomName("StorageEvent.oldValue");
-$.DomName_EkK = new $.DomName("CSSStyleDeclaration.setProperty");
 $.DomName_HTMLDetailsElement = new $.DomName("HTMLDetailsElement");
 $.DomName_gfn0 = new $.DomName("XMLHttpRequest.response");
 $.DomName_23B = new $.DomName("SourceBufferList.addEventListener");
@@ -17026,6 +17321,7 @@ $.DomName_SpeechInputEvent = new $.DomName("SpeechInputEvent");
 $.DomName_TouchList = new $.DomName("TouchList");
 $.DomName_CustomElementConstructor = new $.DomName("CustomElementConstructor");
 $.Returns_IKV = new $.Returns("Element|Document");
+$.DomName_Kro = new $.DomName("WebSocket.onerror");
 $.DomName_PIY = new $.DomName("DeviceMotionEvent.interval");
 $.DomName_613 = new $.DomName("SVGMaskElement.xmlspace");
 $.DomName_6Hv = new $.DomName("HTMLEmbedElement.height");
@@ -17066,10 +17362,10 @@ $.DomName_V7S = new $.DomName("IDBVersionChangeEvent.oldVersion");
 $.DomName_KNu = new $.DomName("HTMLInputElement.validationMessage");
 $.DomName_CKg = new $.DomName("Window.parent");
 $.DomName_SVGFontFaceFormatElement = new $.DomName("SVGFontFaceFormatElement");
-$.DomName_q5x = new $.DomName("Element.ondragover");
+$.DomName_Gci = new $.DomName("DataTransferItem.type");
 $.DomName_43h5 = new $.DomName("AbstractWorker.removeEventListener");
 $.DomName_SQLStatementCallback = new $.DomName("SQLStatementCallback");
-$.DomName_Gci = new $.DomName("DataTransferItem.type");
+$.DomName_q5x = new $.DomName("Element.ondragover");
 $.DomName_AbstractWorker = new $.DomName("AbstractWorker");
 $.DomName_f4E0 = new $.DomName("Window.window");
 $.DomName_USZ = new $.DomName("HTMLImageElement.width");
@@ -17219,12 +17515,12 @@ $.Creates_DomStringList = new $.Creates("DomStringList");
 $.DomName_a27 = new $.DomName("EventException.message");
 $.DomName_8lB5 = new $.DomName("SVGImageElement.xmlspace");
 $.DomName_89t0 = new $.DomName("PerformanceTiming.domainLookupStart");
-$.DomName_kWM1 = new $.DomName("DataTransferItemList.clear");
+$.DomName_62s = new $.DomName("MutationRecord.oldValue");
 $.DomName_7BT0 = new $.DomName("SVGPathSegArcAbs.angle");
 $.DomName_ww81 = new $.DomName("MIDIPort.id");
+$.DomName_kWM1 = new $.DomName("DataTransferItemList.clear");
 $.DomName_Q96 = new $.DomName("SVGImageElement.systemLanguage");
 $.DomName_SEN0 = new $.DomName("SVGClipPathElement.clipPathUnits");
-$.DomName_62s = new $.DomName("MutationRecord.oldValue");
 $.DomName_mnK0 = new $.DomName("HTMLImageElement.src");
 $.DomName_rR40 = new $.DomName("SVGFEDisplacementMapElement.in2");
 $.DomName_EXTDrawBuffers = new $.DomName("EXTDrawBuffers");
@@ -17421,13 +17717,13 @@ $.DomName_ACe1 = new $.DomName("Navigator.mimeTypes");
 $.DomName_PerformanceTiming = new $.DomName("PerformanceTiming");
 $.DomName_kaS = new $.DomName("SVGSVGElement.contentScriptType");
 $.DomName_Lx41 = new $.DomName("SVGSVGElement.requiredFeatures");
-$.DomName_7Re = new $.DomName("Element.dragenterEvent");
+$.DomName_U43 = new $.DomName("CanvasRenderingContext2D.strokeStyle");
 $.DomName_yBF = new $.DomName("SpeechRecognitionEvent.results");
 $.DomName_OnH = new $.DomName("PerformanceTiming.connectEnd");
 $.DomName_Ujq = new $.DomName("MouseEvent.altKey");
 $.DomName_Crypto = new $.DomName("Crypto");
 $.DomName_JpJ = new $.DomName("SVGFEColorMatrixElement.width");
-$.DomName_U43 = new $.DomName("CanvasRenderingContext2D.strokeStyle");
+$.DomName_ECn = new $.DomName("CSSValueList.length");
 $.DomName_SVGAltGlyphDefElement = new $.DomName("SVGAltGlyphDefElement");
 $.DomName_qTT0 = new $.DomName("HTMLInputElement.formAction");
 $.DomName_FZB = new $.DomName("XMLHttpRequest.addEventListener");
@@ -17498,7 +17794,8 @@ $.DomName_8Gl3 = new $.DomName("SVGMarkerElement.refY");
 $.DomName_Cpp = new $.DomName("MediaStreamAudioSourceNode.mediaStream");
 $.JSName_byteOffset = new $.JSName("byteOffset");
 $.DomName_y36 = new $.DomName("Geoposition.timestamp");
-$.DomName_U2T = new $.DomName("SVGNumberList.clear");
+$.DomName_7Re = new $.DomName("Element.dragenterEvent");
+$.DomName_WZH = new $.DomName("PannerNode.refDistance");
 $.DomName_6dr = new $.DomName("Navigator.appCodeName");
 $.DomName_Jsp3 = new $.DomName("HTMLSelectElement.validity");
 $.DomName_SVGTransformList = new $.DomName("SVGTransformList");
@@ -17510,8 +17807,7 @@ $.DomName_kOG0 = new $.DomName("SpeechRecognition.continuous");
 $.DomName_k450 = new $.DomName("MIDIPort.version");
 $.DomName_wDt = new $.DomName("HTMLStyleElement.sheet");
 $.DomName_wQ8 = new $.DomName("Node.parentNode");
-$.DomName_WZH = new $.DomName("PannerNode.refDistance");
-$.DomName_3uR10 = new $.DomName("SVGElementInstance.selectstartEvent");
+$.DomName_U2T = new $.DomName("SVGNumberList.clear");
 $.DomName_woc7 = new $.DomName("MediaKeyEvent.message");
 $.DomName_ADx1 = new $.DomName("WebSocket.close");
 $.DomName_i7B1 = new $.DomName("Notation.systemId");
@@ -17598,7 +17894,8 @@ $.DomName_mnh = new $.DomName("PerformanceTiming.unloadEventEnd");
 $.DomName_VoA = new $.DomName("SVGAElement.xmllang");
 $.DomName_GnZ = new $.DomName("SVGFEColorMatrixElement.values");
 $.DomName_yzX = new $.DomName("Range.toString");
-$.DomName_3uR11 = new $.DomName("SpeechRecognitionAlternative.transcript");
+$.DomName_3uR10 = new $.DomName("SpeechRecognitionAlternative.transcript");
+$.DomName_3uR11 = new $.DomName("SVGElementInstance.selectstartEvent");
 $.JSName_toDataURL = new $.JSName("toDataURL");
 $.DomName_E9d1 = new $.DomName("SVGPointList.getItem");
 $.DomName_SVGPathSegMovetoRel = new $.DomName("SVGPathSegMovetoRel");
@@ -17676,7 +17973,6 @@ $.DomName_nz5 = new $.DomName("HTMLImageElement.crossOrigin");
 $.DomName_CharacterData = new $.DomName("CharacterData");
 $.DomName_irB = new $.DomName("HTMLTextAreaElement.textLength");
 $.DomName_3uR12 = new $.DomName("Window.screenX");
-$.DomName_ECn = new $.DomName("CSSValueList.length");
 $.DomName_HFD = new $.DomName("Coordinates.longitude");
 $.DomName_CTk0 = new $.DomName("ValidityState.rangeOverflow");
 $.DomName_PerformanceResourceTiming = new $.DomName("PerformanceResourceTiming");
@@ -17799,16 +18095,16 @@ $.Returns_NodeList = new $.Returns("NodeList");
 $.DomName_QoX = new $.DomName("HTMLModElement.cite");
 $.DomName_eDw0 = new $.DomName("Window.ondrag");
 $.DomName_MQk1 = new $.DomName("SVGUseElement.farthestViewportElement");
-$.DomName_iUw1 = new $.DomName("Window.ondragenter");
-$.DomName_IDBCursor = new $.DomName("IDBCursor");
 $.DomName_np30 = new $.DomName("MediaController.duration");
+$.DomName_IDBCursor = new $.DomName("IDBCursor");
+$.DomName_EWB3 = new $.DomName("SVGPathSegCurvetoQuadraticRel.y");
 $.DomName_OPD = new $.DomName("Document.onselectstart");
 $.DomName_gc64 = new $.DomName("PerformanceTiming.domLoading");
-$.DomName_EWB3 = new $.DomName("SVGPathSegCurvetoQuadraticRel.y");
+$.DomName_iUw1 = new $.DomName("Window.ondragenter");
+$.JSName_clear = new $.JSName("clear");
 $.DomName_AHF2 = new $.DomName("SVGElementInstance.onmouseup");
 $.Creates_NodeList = new $.Creates("NodeList");
 $.DomName_3RQ = new $.DomName("SVGMaskElement.requiredExtensions");
-$.JSName_clear = new $.JSName("clear");
 $.DomName_ELu = new $.DomName("Document.webkitIsFullScreen");
 $.DomName_2No7 = new $.DomName("SVGStyleElement.xmlspace");
 $.DomName_9ST = new $.DomName("SpeechSynthesisVoice.localService");
@@ -18090,9 +18386,9 @@ $.DomName_II2 = new $.DomName("Element.dragoverEvent");
 $.DomName_tto0 = new $.DomName("SVGSVGElement.preserveAspectRatio");
 $.DomName_7BT1 = new $.DomName("Element.querySelectorAll");
 $.DomName_EntryCallback = new $.DomName("EntryCallback");
-$.DomName_MPR = new $.DomName("Document.ondragenter");
 $.DomName_6pW = new $.DomName("MediaController.addEventListener");
 $.DomName_yHF1 = new $.DomName("WebSocket.extensions");
+$.DomName_muX = new $.DomName("Window.dispatchEvent");
 $.DomName_8650 = new $.DomName("DeviceOrientationEvent.gamma");
 $.DomName_HTMLUListElement = new $.DomName("HTMLUListElement");
 $.DomName_gkc8 = new $.DomName("FileList.item");
@@ -18117,9 +18413,9 @@ $.DomName_Gr9 = new $.DomName("ValidityState.badInput");
 $.EventStreamProvider_click = new $.EventStreamProvider("click");
 $.DomName_W0P0 = new $.DomName("Element.dragstartEvent");
 $.DomName_ES10 = new $.DomName("SpeechSynthesis.resume");
-$.DomName_muX = new $.DomName("Window.dispatchEvent");
 $.DomName_MYA2 = new $.DomName("Window.onmouseup");
 $.JSName_webkitHasClosedCaptions = new $.JSName("webkitHasClosedCaptions");
+$.DomName_MPR = new $.DomName("Document.ondragenter");
 $.DomName_W3i = new $.DomName("MediaController.removeEventListener");
 $.DomName_66f0 = new $.DomName("RTCDTMFSender.duration");
 $.DomName_upb = new $.DomName("IDBTransaction.db");
@@ -18188,9 +18484,11 @@ $.ReceivePortSync__portMap = null;
 $.ReceivePortSync__portIdCount = null;
 $.ReceivePortSync__cachedIsolateId = null;
 $.currentDraggable = null;
+$.currentDraggableGroup = null;
 $._supportsDraggable = null;
 $._supportsSetDragImage = null;
 $._supportsPointerEvents = null;
+$._currentPlaceholder = null;
 $.Device__isOpera = null;
 $.Device__isWebKit = null;
 $._jsPortSync = null;
@@ -18296,6 +18594,12 @@ $.abs$0$n = function(receiver) {
 $.add$1$ax = function(receiver, a0) {
   return $.getInterceptor$ax(receiver).add$1(receiver, a0);
 };
+$.addAll$1$ax = function(receiver, a0) {
+  return $.getInterceptor$ax(receiver).addAll$1(receiver, a0);
+};
+$.cancel$0$x = function(receiver) {
+  return $.getInterceptor$x(receiver).cancel$0(receiver);
+};
 $.contains$1$asx = function(receiver, a0) {
   return $.getInterceptor$asx(receiver).contains$1(receiver, a0);
 };
@@ -18313,9 +18617,6 @@ $.forEach$1$ax = function(receiver, a0) {
 };
 $.get$$$dom_className$x = function(receiver) {
   return $.getInterceptor$x(receiver).get$$$dom_className(receiver);
-};
-$.get$$float$x = function(receiver) {
-  return $.getInterceptor$x(receiver).get$$float(receiver);
 };
 $.get$children$x = function(receiver) {
   return $.getInterceptor$x(receiver).get$children(receiver);
@@ -18335,14 +18636,17 @@ $.get$dataTransfer$x = function(receiver) {
 $.get$detail$x = function(receiver) {
   return $.getInterceptor$x(receiver).get$detail(receiver);
 };
-$.get$disabled$x = function(receiver) {
-  return $.getInterceptor$x(receiver).get$disabled(receiver);
-};
 $.get$display$x = function(receiver) {
   return $.getInterceptor$x(receiver).get$display(receiver);
 };
 $.get$draggable$x = function(receiver) {
   return $.getInterceptor$x(receiver).get$draggable(receiver);
+};
+$.get$dropEffect$x = function(receiver) {
+  return $.getInterceptor$x(receiver).get$dropEffect(receiver);
+};
+$.get$dropzone$x = function(receiver) {
+  return $.getInterceptor$x(receiver).get$dropzone(receiver);
 };
 $.get$hashCode$ = function(receiver) {
   return $.getInterceptor(receiver).get$hashCode(receiver);
@@ -18374,6 +18678,12 @@ $.get$next$x = function(receiver) {
 $.get$onClick$x = function(receiver) {
   return $.getInterceptor$x(receiver).get$onClick(receiver);
 };
+$.get$onDragOver$x = function(receiver) {
+  return $.getInterceptor$x(receiver).get$onDragOver(receiver);
+};
+$.get$onDrop$x = function(receiver) {
+  return $.getInterceptor$x(receiver).get$onDrop(receiver);
+};
 $.get$onSelectStart$x = function(receiver) {
   return $.getInterceptor$x(receiver).get$onSelectStart(receiver);
 };
@@ -18382,9 +18692,6 @@ $.get$page$x = function(receiver) {
 };
 $.get$parent$x = function(receiver) {
   return $.getInterceptor$x(receiver).get$parent(receiver);
-};
-$.get$parentNode$x = function(receiver) {
-  return $.getInterceptor$x(receiver).get$parentNode(receiver);
 };
 $.get$pointerEvents$x = function(receiver) {
   return $.getInterceptor$x(receiver).get$pointerEvents(receiver);
@@ -18416,9 +18723,6 @@ $.get$y$x = function(receiver) {
 $.getBoundingClientRect$0$x = function(receiver) {
   return $.getInterceptor$x(receiver).getBoundingClientRect$0(receiver);
 };
-$.getComputedStyle$0$x = function(receiver) {
-  return $.getInterceptor$x(receiver).getComputedStyle$0(receiver);
-};
 $.insert$2$ax = function(receiver, a0, a1) {
   return $.getInterceptor$ax(receiver).insert$2(receiver, a0, a1);
 };
@@ -18437,9 +18741,6 @@ $.map$1$ax = function(receiver, a0) {
 $.modify$1$x = function(receiver, a0) {
   return $.getInterceptor$x(receiver).modify$1(receiver, a0);
 };
-$.pause$0$x = function(receiver) {
-  return $.getInterceptor$x(receiver).pause$0(receiver);
-};
 $.preventDefault$0$x = function(receiver) {
   return $.getInterceptor$x(receiver).preventDefault$0(receiver);
 };
@@ -18457,9 +18758,6 @@ $.removeLast$0$ax = function(receiver) {
 };
 $.replaceWith$1$x = function(receiver, a0) {
   return $.getInterceptor$x(receiver).replaceWith$1(receiver, a0);
-};
-$.resume$0$x = function(receiver) {
-  return $.getInterceptor$x(receiver).resume$0(receiver);
 };
 $.round$0$nx = function(receiver) {
   return $.getInterceptor$nx(receiver).round$0(receiver);
@@ -18523,6 +18821,9 @@ $.setData$2$x = function(receiver, a0, a1) {
 };
 $.setDragImage$3$x = function(receiver, a0, a1, a2) {
   return $.getInterceptor$x(receiver).setDragImage$3(receiver, a0, a1, a2);
+};
+$.setProperty$3$x = function(receiver, a0, a1, a2) {
+  return $.getInterceptor$x(receiver).setProperty$3(receiver, a0, a1, a2);
 };
 $.split$1$s = function(receiver, a0) {
   return $.getInterceptor$s(receiver).split$1(receiver, a0);
@@ -18678,17 +18979,17 @@ Isolate.$lazy($, "_asyncCallbacks", "_asyncCallbacks", "get$_asyncCallbacks", fu
 Isolate.$lazy($, "_START_TAG_REGEXP", "_START_TAG_REGEXP", "get$_START_TAG_REGEXP", function() {
   return new $.JSSyntaxRegExp("<(\\w+)", false, true, $.JSSyntaxRegExp_makeNative("<(\\w+)", false, true, false));
 });
-Isolate.$lazy($, "_logger", "_logger0", "get$_logger0", function() {
+Isolate.$lazy($, "_logger", "_logger", "get$_logger", function() {
   return $.Logger_Logger("html5_dnd");
+});
+Isolate.$lazy($, "currentDragOverElements", "currentDragOverElements", "get$currentDragOverElements", function() {
+  return new $.HashSet(0, null, null, null, null);
 });
 Isolate.$lazy($, "_logger", "_logger1", "get$_logger1", function() {
   return $.Logger_Logger("html5_dnd.html5_utils");
 });
-Isolate.$lazy($, "_logger", "_logger", "get$_logger", function() {
+Isolate.$lazy($, "_logger", "_logger0", "get$_logger0", function() {
   return $.Logger_Logger("html5_sortable");
-});
-Isolate.$lazy($, "_floatRegExp", "Sortable__floatRegExp", "get$Sortable__floatRegExp", function() {
-  return new $.JSSyntaxRegExp("left|right", false, true, $.JSSyntaxRegExp_makeNative("left|right", false, true, false));
 });
 Isolate.$lazy($, "_proxiedObjectTable", "_proxiedObjectTable", "get$_proxiedObjectTable", function() {
   return $._ProxiedObjectTable$();
@@ -19853,7 +20154,7 @@ function init() {
         }
       }
     }
-    var objectClassObject = collectedClasses.Object, shortNames = "get$p,call$0,call$1,call$2,call$3,call$4,eval$1,get$sb,then$1,get$_id,finest$1,get$_key,listen$1,lookup$1,toJson$0,get$_next,get$image,get$level,perform$1,process$0,set$_next,set$_nums,set$_rest,_publish$1,callSync$1,get$_state,get$_value,moveNext$0,set$_state,set$_value,visitMap$1,_addError$1,_callback$2,_dispatch$1,_sendData$1,_setError$1,_setValue$1,get$_isGrid,get$_onDrag,get$_onDrop,get$_stream,get$current,get$element,set$_handle,visitList$1,_sendError$1,_sendValue$1,catchError$1,get$_dropped,get$fullName,get$isPaused,get$polyfill,handleNext$1,set$_dropped,set$_strings,toSendPort$0,unregister$1,_setGlobals$0,get$_callback,get$_contents,get$_duration,get$_onListen,get$_previous,get$_registry,get$_workerId,get$overClass,readClasses$0,set$_contents,set$_elements,set$_previous,callDragDrop$1,get$_isolateId,get$_onDragEnd,get$mouseEvent,runIteration$0,_checkReplyTo$1,get$_futurePort,get$_onDragOver,visitSendPort$1,_showDraggable$1,get$_onDragEnter,get$_onDragLeave,get$_onDragStart,get$_placeholder,get$_receivePort,set$_placeholder,visitPrimitive$1,get$_nextListener,get$_subscription,get$draggingClass,set$_nextListener,visitCloseToken$1,_addPendingEvent$1,dragDataFunction$1,get$_liblib0$_name,get$inMilliseconds,visitIsolateSink$1,_liblib$_callback$1,dragImageFunction$1,visitSendPortSync$1,_doShowPlaceholder$2,get$_liblib1$_length,get$_liblib5$_onDrop,get$acceptDraggables,get$placeholderClass,set$_liblib1$_length,deserializeSendPort$1,get$_dragOverElements,get$_liblib1$_element,get$_originalPosition,set$_originalPosition,get$_resultOrListeners,get$dragOccurringClass,get$placeholderElement,_polyfillSetDragImage$2,deserializeCloseToken$1,get$placeholderPosition,resetDragOverElements$0,deserializeIsolateSink$1,get$forcePlaceholderSize,get$alwaysUseDragImagePolyfill".split(","), longNames = "p,call,call,call,call,call,eval,sb,then,_id,finest,_key,listen,lookup,toJson,_next,image,level,perform,process,_next=,_nums=,_rest=,_publish,callSync,_state,_value,moveNext,_state=,_value=,visitMap,_addError,_callback,_dispatch,_sendData,_setError,_setValue,_isGrid,_onDrag,_onDrop,_stream,current,element,_handle=,visitList,_sendError,_sendValue,catchError,_dropped,fullName,isPaused,polyfill,handleNext,_dropped=,_strings=,toSendPort,unregister,_setGlobals,_callback,_contents,_duration,_onListen,_previous,_registry,_workerId,overClass,readClasses,_contents=,_elements=,_previous=,callDragDrop,_isolateId,_onDragEnd,mouseEvent,runIteration,_checkReplyTo,_futurePort,_onDragOver,visitSendPort,_showDraggable,_onDragEnter,_onDragLeave,_onDragStart,_placeholder,_receivePort,_placeholder=,visitPrimitive,_nextListener,_subscription,draggingClass,_nextListener=,visitCloseToken,_addPendingEvent,dragDataFunction,_name,inMilliseconds,visitIsolateSink,_callback,dragImageFunction,visitSendPortSync,_doShowPlaceholder,_length,_onDrop,acceptDraggables,placeholderClass,_length=,deserializeSendPort,_dragOverElements,_element,_originalPosition,_originalPosition=,_resultOrListeners,dragOccurringClass,placeholderElement,_polyfillSetDragImage,deserializeCloseToken,placeholderPosition,resetDragOverElements,deserializeIsolateSink,forcePlaceholderSize,alwaysUseDragImagePolyfill".split(",");
+    var objectClassObject = collectedClasses.Object, shortNames = "get$p,call$0,call$1,call$2,call$3,call$4,eval$1,get$sb,then$1,get$_id,finest$1,get$_key,listen$1,lookup$1,toJson$0,get$_next,get$image,get$level,install$1,perform$1,process$0,set$_next,_publish$1,callSync$1,get$_state,get$_value,moveNext$0,set$_state,set$_value,visitMap$1,_addError$1,_callback$2,_dispatch$1,_sendData$1,_setError$1,_setValue$1,get$_length,get$_onDrag,get$_onDrop,get$current,set$_handle,set$_onDrag,set$_onDrop,uninstall$1,visitList$1,_sendError$1,_sendValue$1,catchError$1,get$_dropped,get$fullName,get$newGroup,get$polyfill,handleNext$1,set$_dropped,toSendPort$0,unregister$1,_addPending$1,_setGlobals$0,get$_callback,get$_contents,get$_duration,get$_isFiring,get$_previous,get$_registry,get$_workerId,readClasses$0,set$_contents,set$_previous,callDragDrop$1,get$_isolateId,get$_onDragEnd,runIteration$0,set$_onDragEnd,_checkReplyTo$1,_expectsEvent$1,get$_eventState,get$_futurePort,get$_onDragOver,set$_eventState,set$_onDragOver,visitSendPort$1,_toggleEventId$0,get$_onDragEnter,get$_onDragLeave,get$_onDragStart,get$_receivePort,set$_onDragEnter,set$_onDragLeave,set$_onDragStart,visitPrimitive$1,get$_liblib$_name,get$_nextListener,get$draggingClass,get$originalGroup,set$_nextListener,set$_onSortUpdate,visitCloseToken$1,dragDataFunction$1,get$_liblib3$_next,get$inMilliseconds,set$_liblib3$_next,visitIsolateSink$1,dragImageFunction$1,visitSendPortSync$1,_liblib0$_callback$1,get$_draggableEndSub,get$_dropzoneDropSub,get$_dropzoneOverSub,get$_liblib4$_handle,deserializeSendPort$1,get$_liblib1$_element,get$_liblib3$_previous,get$_removeAfterFiring,get$_resultOrListeners,get$dragOccurringClass,set$_liblib3$_previous,_polyfillSetDragImage$3,_setRemoveAfterFiring$0,deserializeCloseToken$1,get$_placeholderDropSub,get$_placeholderOverSub,deserializeIsolateSink$1,get$alwaysUseDragImagePolyfill,_showPlaceholderForBiggerDropzone$2".split(","), longNames = "p,call,call,call,call,call,eval,sb,then,_id,finest,_key,listen,lookup,toJson,_next,image,level,install,perform,process,_next=,_publish,callSync,_state,_value,moveNext,_state=,_value=,visitMap,_addError,_callback,_dispatch,_sendData,_setError,_setValue,_length,_onDrag,_onDrop,current,_handle=,_onDrag=,_onDrop=,uninstall,visitList,_sendError,_sendValue,catchError,_dropped,fullName,newGroup,polyfill,handleNext,_dropped=,toSendPort,unregister,_addPending,_setGlobals,_callback,_contents,_duration,_isFiring,_previous,_registry,_workerId,readClasses,_contents=,_previous=,callDragDrop,_isolateId,_onDragEnd,runIteration,_onDragEnd=,_checkReplyTo,_expectsEvent,_eventState,_futurePort,_onDragOver,_eventState=,_onDragOver=,visitSendPort,_toggleEventId,_onDragEnter,_onDragLeave,_onDragStart,_receivePort,_onDragEnter=,_onDragLeave=,_onDragStart=,visitPrimitive,_name,_nextListener,draggingClass,originalGroup,_nextListener=,_onSortUpdate=,visitCloseToken,dragDataFunction,_next,inMilliseconds,_next=,visitIsolateSink,dragImageFunction,visitSendPortSync,_callback,_draggableEndSub,_dropzoneDropSub,_dropzoneOverSub,_handle,deserializeSendPort,_element,_previous,_removeAfterFiring,_resultOrListeners,dragOccurringClass,_previous=,_polyfillSetDragImage,_setRemoveAfterFiring,deserializeCloseToken,_placeholderDropSub,_placeholderOverSub,deserializeIsolateSink,alwaysUseDragImagePolyfill,_showPlaceholderForBiggerDropzone".split(",");
     for (var j = 0; j < shortNames.length; j++) {
       var type = 0;
       var short = shortNames[j];
