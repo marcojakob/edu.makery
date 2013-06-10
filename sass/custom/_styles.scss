@@ -9,7 +9,7 @@ body {
 
 // Reset the img box if class nobox is added to an image tag
 article img.nobox, aside.sidebar img.nobox {
-  @include border-radius(none);
+  @include border-radius(0);
   @include box-shadow(none);
   border: 0;
   margin-bottom: 0;

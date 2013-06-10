@@ -1,7 +1,7 @@
 /* --------------------------------------------------------------------------
  * General styles
  * ------------------------------------------------------------------------*/
- h2 {
+h2 {
   clear: both; 
 }
  
@@ -114,14 +114,18 @@
   color: #93a1a1;
 }
 
-.example-code .content > div.active {
+.example-code .content div.active {
   display: block;
+}
+
+.example-code .content code {
+  font-family: monospace;
+  white-space: pre;
 }
 
 .example-code .content figure {
   margin: 0;
 }
-
 
 /* --------------------------------------------------------------------------
  * Section: draggable-dropzone 
@@ -143,11 +147,6 @@
   margin: 10px 0 0 5px;
   display: block;
   cursor: move;
-  -webkit-border-radius: 0;
-     -moz-border-radius: 0;
-      -ms-border-radius: 0;
-       -o-border-radius: 0;
-          border-radius: 0;
 }
 
 #draggable-dropzone .dnd-over {
@@ -162,11 +161,6 @@
 /* --------------------------------------------------------------------------
  * Section: dragging-divs
  * ------------------------------------------------------------------------*/
-
-#dragging-divs div {
-  font-size: 14px;
-} 
-
 #dragging-divs .dnd-dragging {
   opacity: 0.5;
 }
@@ -222,7 +216,6 @@
   text-align: center;
   display: block;
   font-weight: bold;
-  font-size: 14px;
   text-decoration: none;
   color: #000;
   cursor: move;
@@ -240,16 +233,12 @@
 /* --------------------------------------------------------------------------
  * Section: drag-images
  * ------------------------------------------------------------------------*/
-#drag-images div {
- font-size: 14px;
-}
- 
 #drag-images .dnd-dragging {
   opacity: 0.5;
 }
 
 #drag-images .dragme {
-  width: 100px;
+  width: 64px;
   height: 64px;
   padding: 5px;
   margin-top: 10px;
@@ -259,7 +248,7 @@
 }
 
 #drag-images .dropzone {
-  width: 100px;
+  width: 64px;
   height: 64px;
   padding: 5px;
   margin-top: 100px;
@@ -339,27 +328,66 @@
 }
  
 /* --------------------------------------------------------------------------
- * Section: sortable-list-connected
+ * Section: sortable-two-groups
  * ------------------------------------------------------------------------*/
-#sortable-list-connected .dnd-placeholder {
+#sortable-two-groups .dnd-placeholder {
   border: 1px dashed #CCC;
   background: none;  
 }
 
-#sortable-list-connected {
-  overflow: hidden;
+#sortable-two-groups .dnd-dragging {
+  opacity: 0.5;
 }
 
-#sortable-list-connected li {
+#sortable-two-groups li {
   cursor: move;
 }
 
-#sortable-list-connected .list1 {
+#sortable-two-groups .group1 {
   float: left;
   width: 150px;
 }
 
-#sortable-list-connected .list2 {
+#sortable-two-groups .group2 {
   float: right;
   width: 150px;
+}
+ 
+/* --------------------------------------------------------------------------
+ * Section: draggable-sortable
+ * ------------------------------------------------------------------------*/
+#draggable-sortable {
+  height: 250px;
+}
+
+#draggable-sortable .dnd-placeholder {
+  border: 1px dashed #CCC;
+  background: none;  
+}
+
+#draggable-sortable .dnd-dragging {
+  opacity: 0.5;
+}
+
+#draggable-sortable .dnd-over {
+  background: #d387ca;
+}
+
+#draggable-sortable .group1 li {
+  cursor: move;
+}
+
+#draggable-sortable .group1 {
+  float: left;
+  width: 150px;
+}
+
+#draggable-sortable .group2 {
+  float: right;
+  width: 150px;
+}
+
+#draggable-sortable .group2 .empty {
+  border: 1px dashed #CCC;
+  color: #333;
 }
