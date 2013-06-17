@@ -7,7 +7,6 @@ javascript: [html5_dnd_example.dart.js, dnd.polyfill.js, dart.js]
 css: [html5_dnd_example.css]
 ---
  
-  <div id="intro">
   <p>
     Native HTML5 Drag and Drop is <a href="http://www.quirksmode.org/blog/archives/2009/09/the_html5_drag.html">not easy to work with</a>! The 
     <a href="https://github.com/marcojakob/dart-html5-dnd">Dart HTML5 Drag and Drop</a> library was created to make Drag and Drop fun again 
@@ -15,23 +14,25 @@ css: [html5_dnd_example.css]
   </p>
   <p>
     API and Examples are inspired by 
-    </p><ul>
-      <li>
-        <a href="http://farhadi.ir/projects/html5sortable/">HTML5 Sortable</a> (thank you, Ali Farhadi!)
-      </li>
-      <li>
-        jQuery UI: <a href="http://api.jqueryui.com/draggable/">Draggable</a>, 
-        <a href="http://api.jqueryui.com/droppable/">Droppable</a> and 
-        <a href="http://api.jqueryui.com/sortable/">Sortable</a>
-      </li>
-    </ul>
-  <p></p>
-  <p>
   </p>
-    <h3>Installation Instructions and Source Code</h3>
+  <ul>
+    <li>
+      <a href="http://farhadi.ir/projects/html5sortable/">HTML5 Sortable</a> (thank you, Ali Farhadi!)
+    </li>
+    <li>
+      jQuery UI: <a href="http://api.jqueryui.com/draggable/">Draggable</a>, 
+      <a href="http://api.jqueryui.com/droppable/">Droppable</a> and 
+      <a href="http://api.jqueryui.com/sortable/">Sortable</a>
+    </li>
+  </ul>
+    
+  <h3>Installation Instructions and Source Code</h3>
+  <p>
     <a href="https://github.com/marcojakob/dart-html5-dnd"><img class="nobox middle" src="/images/glyphicons_github.png" title="'Dart HTML5 Drag and Drop on GitHub'">Dart HTML5 Drag and Drop</a> on GitHub.
-  <p></p>
-</div>
+  </p>
+  <p>You are welcome to contribute by reporting an <a href="https://github.com/marcojakob/dart-html5-dnd/issues">Issue</a> or <a href="https://help.github.com/articles/fork-a-repo">forking the repository</a>.
+  </p>
+<p></p>
 
 <h2>Draggable and Dropzone</h2>
 <p>
@@ -91,13 +92,13 @@ DropzoneGroup dropGroup = new DropzoneGroup()
 <p>
   All HTML elements with the <em>draggable="true"</em> attribute can be dragged - 
   well...almost. Internet Explorer 9 does not support this attribute and 
-  thus by default only links and images are draggable in IE9. With a decent
+  thus by default only links and images are draggable in IE9. With a 
   <a href="http://stackoverflow.com/a/8986075/862411">workaround</a>, we 
   can also tell IE9 to drag anything. Try the following example in IE9.
 </p>
 <p>
   <strong>Note:</strong> The <em>draggable="true"</em> attribute is automatically
-  added by the Draggable class, so there is no need to set it in HTML.
+  added to draggables, so there is no need to set it in HTML.
 </p>
 <div id="dragging-divs" class="example-container">
   <div class="dragme" draggable="true">
@@ -219,8 +220,7 @@ DropzoneGroup dropGroup = new DropzoneGroup()
 <h2>Custom Drag Images</h2>
 <p>
   That was a tough one to make work cross-browser! IE9 and IE10 do not 
-  support setting a custom drag image (as other modern browsers do). IE 
-  always creates a drag image from the element that the user picks up. 
+  support setting a custom drag image (as other modern browsers do).
 </p>
 <p>
   So I had to implement a <strong>polyfill</strong> that draws a custom 
@@ -230,12 +230,7 @@ DropzoneGroup dropGroup = new DropzoneGroup()
   default image does not show, 2. draw the custom image, 3. ensure the mouse 
   events are passed through to the layer underneath the drag image... more 
   info in the source).
-</p>
-<p>
-  <strong>Note:</strong> The polyfill for drag images is automatically used
-  if the browser does not support it. But you can use the polyfill for any
-  browser by setting <em>alwaysUseDragImagePolyfill = true</em> on the Draggable.
-</p>      
+</p>    
 <div id="drag-images" class="example-container">
   <div class="dropzone example-box">
     Drag here!
@@ -248,9 +243,6 @@ DropzoneGroup dropGroup = new DropzoneGroup()
   </div>
   <div class="dragme three" draggable="true">
     custom drawn canvas
-  </div>
-  <div class="dragme four" draggable="true">
-    Always uses Polyfill
   </div>
 </div><div class="example-code"><ul class="menu"><li><a href="#" tab="html" class="active">HTML</a><a href="#" tab="css">CSS</a><a href="#" tab="dart">Dart</a></li></ul><div class="content"><div tab="html" class="active">
 {% codeblock lang:html %}
@@ -265,9 +257,6 @@ DropzoneGroup dropGroup = new DropzoneGroup()
 </div>
 <div class="dragme three">
   custom drawn canvas
-</div>
-<div class="dragme four">
-  Always uses Polyfill
 </div>
 {% endcodeblock %}
 </div><div tab="css">
@@ -310,17 +299,10 @@ DraggableGroup dragGroupThree = new DraggableGroup()
   return new DragImage(canvasImage, 0, 0);
 };
 
-DraggableGroup dragGroupFour = new DraggableGroup()
-..install(query('#drag-images .four'))
-..alwaysUseDragImagePolyfill = true
-..dragImageFunction = (Element draggable) {
-  return new DragImage(canvasImage, 0, 0);
-};
-
 // Install dropzone.
 DropzoneGroup dropGroup = new DropzoneGroup()
 ..install(query('#drag-images .dropzone'))
-..accept.addAll([dragGroupOne, dragGroupTwo, dragGroupThree, dragGroupFour]);
+..accept.addAll([dragGroupOne, dragGroupTwo, dragGroupThree]);
 {% endcodeblock  %}
 </div></div></div>
 
@@ -691,108 +673,6 @@ SortableGroup sortGroup2 = new SortableGroup()
 // Only accept elements from this section.
 sortGroup1.accept.addAll([sortGroup1, sortGroup2]);
 sortGroup2.accept.addAll([sortGroup1, sortGroup2]);
-{% endcodeblock  %}
-</div></div></div>
-
-
-<h2>Draggables and a Sortable Group</h2>
-<p>
-  The draggable elements on the left can be dragged into the sortable group on the right.     
-</p>
-<div id="draggable-sortable" class="example-container">
-  <ul class="example-box group1">
-    <li>Item 1</li>
-    <li>Item 2</li>
-    <li>Item 3</li>
-    <li>Item 4</li>
-    <li>Item 5</li>
-    <li>Item 6</li>
-  </ul>
-  <ul class="example-box group2">
-    <li class="empty">Empty list!</li>
-  </ul>
-</div>
-<div class="example-code"><ul class="menu"><li><a href="#" tab="html" class="active">HTML</a><a href="#" tab="css" class="">CSS</a><a href="#" tab="dart" class="">Dart</a></li></ul><div class="content"><div tab="html" class="active">
-{% codeblock lang:html %}
-<ul class="example-box group1">
-  <li>Item 1</li>
-  <li>Item 2</li>
-  <li>Item 3</li>
-  <li>Item 4</li>
-  <li>Item 5</li>
-  <li>Item 6</li>
-</ul>
-<ul class="example-box group2">
-  <li class="empty">Empty list!</li>
-</ul>
-{% endcodeblock  %}
-</div><div tab="css" class="">
-{% codeblock lang:css %}
-#draggable-sortable {
-  height: 250px;
-}
-
-#draggable-sortable .dnd-placeholder {
-  border: 1px dashed #CCC;
-  background: none;  
-}
-
-#draggable-sortable .dnd-dragging {
-  opacity: 0.5;
-}
-
-#draggable-sortable .dnd-over {
-  background: #d387ca;
-}
-
-#draggable-sortable .group1 li {
-  cursor: move;
-}
-
-#draggable-sortable .group1 {
-  float: left;
-  width: 150px;
-}
-
-#draggable-sortable .group2 {
-  float: right;
-  width: 150px;
-}
-
-#draggable-sortable .group2 .empty {
-  border: 1px dashed #CCC;
-  color: #333;
-}
-{% endcodeblock  %}
-</div><div tab="dart">
-{% codeblock lang:dart %}
-DraggableGroup dragGroup = new DraggableGroup()
-..installAll(queryAll('#draggable-sortable .group1 li'));
-
-// Create sortable group with initially no installed elements.
-SortableGroup sortGroup = new SortableGroup()
-..onSortUpdate.listen((SortableEvent event) {
-  event.originalGroup.uninstall(event.draggable);
-  event.newGroup.install(event.draggable);
-});
-sortGroup.accept.addAll([dragGroup, sortGroup]);
-
-LIElement emptyItem = query('#draggable-sortable .group2 .empty');
-
-// Install an empty item as a dropzone no element is in the list.
-DropzoneGroup emptyListDropzone = new DropzoneGroup()
-..install(emptyItem)
-..accept.add(dragGroup)
-..onDrop.listen((DropzoneEvent event) {
-  // Hide empty item.
-  emptyItem.style.display = 'none';
-  
-  // Uninstall in old group and install in new group.
-  dragGroup.uninstall(event.draggable);
-  event.draggable.remove();
-  sortGroup.install(event.draggable);
-  query('#draggable-sortable .group2').children.add(event.draggable);
-});
 {% endcodeblock  %}
 </div></div></div>
 
