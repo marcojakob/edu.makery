@@ -280,6 +280,11 @@ $$.CssStyleDeclaration = {"": ["Interceptor;cssText},length=", function() {
     this.setProperty$3(receiver, "position", value, "");
   },
   "+position=": 0,
+  get$src: function(receiver) {
+    var propValue = receiver.getPropertyValue("src");
+    return propValue != null ? propValue : "";
+  },
+  "+src": 0,
   get$top: function(receiver) {
     var propValue = receiver.getPropertyValue("top");
     return propValue != null ? propValue : "";
@@ -630,7 +635,7 @@ $$.DomTokenList = {"": ["Interceptor;length=", function() {
   "+toString:0:0": 0
 };
 
-$$.Element = {"": ["Node;draggable=,id=,innerHtml:innerHTML},dropzone:webkitdropzone=,$$dom_children:children=,$$dom_className:className%,clientHeight=,clientWidth=,offsetParent=,offsetTop=,previousElementSibling=,scrollTop=,style=,tagName=", function() {
+$$.Element = {"": ["Node;draggable=,id=,innerHtml:innerHTML},dropzone:webkitdropzone=,$$dom_children:children=,$$dom_className:className%,clientHeight=,clientWidth=,previousElementSibling=,style=,tagName=", function() {
     return [$.DomName_U0y, $.Type_cOY];
   }, function() {
     return [$.DomName_87v, $.Type_cOY];
@@ -647,13 +652,7 @@ $$.Element = {"": ["Node;draggable=,id=,innerHtml:innerHTML},dropzone:webkitdrop
   }, function() {
     return [$.DomName_YUI, $.Type_cOY];
   }, function() {
-    return [$.DomName_i7B, $.Type_cOY];
-  }, function() {
-    return [$.DomName_C3O, $.Type_cOY];
-  }, function() {
     return [$.DomName_0Ir, $.Type_cOY];
-  }, function() {
-    return [$.DomName_4YB, $.Type_cOY];
   }, function() {
     return [$.DomName_Xt8, $.Type_cOY];
   }, function() {
@@ -820,7 +819,7 @@ $$.Element = {"": ["Node;draggable=,id=,innerHtml:innerHTML},dropzone:webkitdrop
   $asElement: null
 };
 
-$$.EmbedElement = {"": ["Element;height%,name=,src},type},width%", function() {
+$$.EmbedElement = {"": ["Element;height%,name=,src%,type},width%", function() {
     return [$.DomName_6Hv, $.Type_cOY];
   }, function() {
     return [$.DomName_6pl, $.Type_cOY];
@@ -1206,7 +1205,7 @@ $$.HttpRequestUpload = {"": "EventTarget;",
   "+$dom_removeEventListener:2:1": 0
 };
 
-$$.IFrameElement = {"": ["Element;height%,name=,src},width%", function() {
+$$.IFrameElement = {"": ["Element;height%,name=,src%,width%", function() {
     return [$.DomName_NO4, $.Type_cOY];
   }, function() {
     return [$.DomName_G04, $.Type_cOY];
@@ -1222,7 +1221,7 @@ $$.ImageData = {"": ["Interceptor;height=,width=", function() {
     return [$.DomName_W3x, $.Type_cOY];
   }], $isImageData: true, $asImageData: null};
 
-$$.ImageElement = {"": ["Element;height%,src},width%,x=,y=", function() {
+$$.ImageElement = {"": ["Element;height%,src%,width%,x=,y=", function() {
     return [$.DomName_ccK, $.Type_cOY];
   }, function() {
     return [$.DomName_mnK, $.Type_cOY];
@@ -1234,7 +1233,7 @@ $$.ImageElement = {"": ["Element;height%,src},width%,x=,y=", function() {
     return [$.DomName_MIo0, $.Type_cOY, 0];
   }], $isImageElement: true, $asImageElement: null};
 
-$$.InputElement = {"": ["Element;accept=,height%,name=,src},type},value%,width%", function() {
+$$.InputElement = {"": ["Element;accept=,height%,name=,src%,type},value%,width%", function() {
     return [$.DomName_cBV, $.Type_cOY];
   }, function() {
     return [$.DomName_Nhy, $.Type_cOY];
@@ -1303,7 +1302,7 @@ $$.MediaController = {"": "EventTarget;",
   "+$dom_removeEventListener:2:1": 0
 };
 
-$$.MediaElement = {"": ["Element;src}", function() {
+$$.MediaElement = {"": ["Element;src%", function() {
     return [$.DomName_U43, $.Type_cOY];
   }]};
 
@@ -1475,7 +1474,7 @@ $$.MidiOutput = {"": "MidiPort;",
 $$.MidiPort = {"": ["EventTarget;id=,name=", function() {
     return [$.DomName_ww8, $.Type_cOY];
   }, function() {
-    return [$.DomName_4YB0, $.Type_cOY];
+    return [$.DomName_4YB, $.Type_cOY];
   }],
   $$dom_addEventListener$3: function(receiver, type, listener, useCapture) {
     return receiver.addEventListener(type, $.convertDartClosureToJS(listener, 1), useCapture);
@@ -1961,7 +1960,7 @@ $$.Screen = {"": ["Interceptor;height=,width=", function() {
     return [$.DomName_U8b, $.Type_cOY];
   }]};
 
-$$.ScriptElement = {"": ["Element;src},type}", function() {
+$$.ScriptElement = {"": ["Element;src%,type}", function() {
     return [$.DomName_3uR0, $.Type_cOY];
   }, function() {
     return [$.DomName_omC, $.Type_cOY];
@@ -2056,7 +2055,7 @@ $$.SourceBufferList = {"": "EventTarget_ListMixin_ImmutableListMixin;",
   $asJavaScriptIndexingBehavior: null
 };
 
-$$.SourceElement = {"": ["Element;src},type}", function() {
+$$.SourceElement = {"": ["Element;src%,type}", function() {
     return [$.DomName_pMC, $.Type_cOY];
   }, function() {
     return [$.DomName_IoN, $.Type_cOY];
@@ -2064,7 +2063,9 @@ $$.SourceElement = {"": ["Element;src},type}", function() {
 
 $$.SpanElement = {"": "Element;"};
 
-$$.SpeechGrammar = {"": "Interceptor;"};
+$$.SpeechGrammar = {"": ["Interceptor;src=", function() {
+    return [$.DomName_SWO, $.Type_cOY];
+  }]};
 
 $$.SpeechGrammarList = {"": "Interceptor_ListMixin_ImmutableListMixin6;",
   get$length: function(receiver) {
@@ -2437,7 +2438,7 @@ $$.TouchList = {"": "Interceptor_ListMixin_ImmutableListMixin8;",
   $asJavaScriptIndexingBehavior: null
 };
 
-$$.TrackElement = {"": ["Element;src}", function() {
+$$.TrackElement = {"": ["Element;src%", function() {
     return [$.DomName_SXh, $.Type_cOY];
   }]};
 
@@ -5539,7 +5540,7 @@ $$.Closure$_serialize = {"": "Closure;call$1,$name"};
 
 $$.Closure$_deserialize = {"": "Closure;call$1,$name"};
 
-init.mangledNames = {get$$$dom_children: "$dom_children", get$$$dom_className: "$dom_className", get$_action: "_action", get$_arguments: "_arguments", get$_array: "_array", get$_callback: "_callback", get$_cell: "_cell", get$_childElements: "_childElements", get$_childNodes: "_childNodes", get$_className: "_className", get$_contents: "_contents", get$_controller: "_controller", get$_current: "_current", get$_deletedCount: "_deletedCount", get$_deserialized: "_deserialized", get$_dragEnterSub: "_dragEnterSub", get$_dragStartSub: "_dragStartSub", get$_draggableEndSub: "_draggableEndSub", get$_dropped: "_dropped", get$_dropzoneDropSub: "_dropzoneDropSub", get$_dropzoneGroup: "_dropzoneGroup", get$_dropzoneOverSub: "_dropzoneOverSub", get$_duration: "_duration", get$_element: "_element", get$_elementCssClassSetIterable: "_elementCssClassSetIterable", get$_elementIterable: "_elementIterable", get$_elements: "_elements", get$_end: "_end", get$_endOrLength: "_endOrLength", get$_eventState: "_eventState", get$_eventType: "_eventType", get$_existingArgumentNames: "_existingArgumentNames", get$_f: "_f", get$_first: "_first", get$_globalIds: "_globalIds", get$_groups: "_groups", get$_handle: "_handle", get$_handleStack: "_handleStack", get$_head: "_head", get$_id: "_id", get$_inEventLoop: "_inEventLoop", get$_index: "_index", get$_internalName: "_internalName", get$_isCaseSensitive: "_isCaseSensitive", get$_isClosed: "_isClosed", get$_isComplete: "_isComplete", get$_isMultiLine: "_isMultiLine", get$_isolateId: "_isolateId", get$_iterable: "_iterable", get$_iterator: "_iterator", get$_key: "_key", get$_keys: "_keys", get$_kind: "_kind", get$_last: "_last", get$_length: "_length", get$_level: "_level", get$_liblib$_length: "_length", get$_liblib$_name: "_name", get$_liblib0$_callback: "_callback", get$_liblib0$_current: "_current", get$_liblib0$_deserialized: "_deserialized", get$_liblib0$_id: "_id", get$_liblib0$_isolateId: "_isolateId", get$_liblib0$_length: "_length", get$_liblib0$_nextFreeRefId: "_nextFreeRefId", get$_liblib0$_receivePort: "_receivePort", get$_liblib0$_target: "_target", get$_liblib0$_visited: "_visited", get$_liblib1$_current: "_current", get$_liblib1$_element: "_element", get$_liblib1$_position: "_position", get$_liblib2$_arguments: "_arguments", get$_liblib2$_current: "_current", get$_liblib2$_receiver: "_receiver", get$_liblib3$_element: "_element", get$_liblib4$_next: "_next", get$_liblib4$_onData: "_onData", get$_liblib4$_previous: "_previous", get$_liblib4$_source: "_source", get$_liblib5$_handle: "_handle", get$_liblib6$_id: "_id", get$_liblib6$_port: "_port", get$_liblib7$_controller: "_controller", get$_liblib7$_stream: "_stream", get$_littleEndian: "_littleEndian", get$_map: "_map", get$_memberName: "_memberName", get$_modificationCount: "_modificationCount", get$_modifications: "_modifications", get$_name: "_name", get$_namedArgumentNames: "_namedArgumentNames", get$_namedArguments: "_namedArguments", get$_namedIndices: "_namedIndices", get$_nativeRegExp: "_nativeRegExp", get$_next: "_next", get$_nextFreeRefId: "_nextFreeRefId", get$_nextId: "_nextId", get$_nextListener: "_nextListener", get$_node: "_node", get$_nodeList: "_nodeList", get$_nums: "_nums", get$_offset: "_offset", get$_onCancel: "_onCancel", get$_onData: "_onData", get$_onDone: "_onDone", get$_onDrag: "_onDrag", get$_onDragEnd: "_onDragEnd", get$_onDragEnter: "_onDragEnter", get$_onDragLeave: "_onDragLeave", get$_onDragOver: "_onDragOver", get$_onDragStart: "_onDragStart", get$_onDrop: "_onDrop", get$_onError: "_onError", get$_onListen: "_onListen", get$_onSortUpdate: "_onSortUpdate", get$_onValue: "_onValue", get$_once: "_once", get$_pattern: "_pattern", get$_pauseCount: "_pauseCount", get$_pending: "_pending", get$_placeholderDropSub: "_placeholderDropSub", get$_placeholderOverSub: "_placeholderOverSub", get$_polyfill: "_polyfill", get$_port: "_port", get$_portId: "_portId", get$_portSubscription: "_portSubscription", get$_position: "_position", get$_previous: "_previous", get$_ptr: "_ptr", get$_queue: "_queue", get$_re: "_re", get$_receivePort: "_receivePort", get$_receivePortId: "_receivePortId", get$_receiver: "_receiver", get$_registry: "_registry", get$_remaining: "_remaining", get$_rest: "_rest", get$_resultOrListeners: "_resultOrListeners", get$_scopeIndices: "_scopeIndices", get$_self: "_self", get$_set: "_set", get$_skipCount: "_skipCount", get$_source: "_source", get$_stack: "_stack", get$_start: "_start", get$_state: "_state", get$_str: "_str", get$_stream: "_stream", get$_strings: "_strings", get$_subscription: "_subscription", get$_table: "_table", get$_tail: "_tail", get$_target: "_target", get$_test: "_test", get$_this: "_this", get$_transform: "_transform", get$_typeName: "_typeName", get$_useCapture: "_useCapture", get$_value: "_value", get$_visited: "_visited", get$_window: "_window", get$_workerId: "_workerId", get$accept: "accept", get$action_1: "action_1", get$action_3: "action_3", get$activeTimerCount: "activeTimerCount", get$arg1_2: "arg1_2", get$arg1_4: "arg1_4", get$arg2_5: "arg2_5", get$box_0: "box_0", get$box_1: "box_1", get$browserName: "browserName", get$callback_0: "callback_0", get$callback_1: "callback_1", get$canvasImage_2: "canvasImage_2", get$cause: "cause", get$children: "children", get$clientHeight: "clientHeight", get$clientWidth: "clientWidth", get$closure_0: "closure_0", get$closure_1: "closure_1", get$closure_3: "closure_3", get$completer_0: "completer_0", get$completer_1: "completer_1", get$completer_2: "completer_2", get$copies_1: "copies_1", get$copies_2: "copies_2", get$copies_3: "copies_3", get$copies_4: "copies_4", get$cssText: "cssText", get$currentContext: "currentContext", get$currentManagerId: "currentManagerId", get$dataTransfer: "dataTransfer", get$data_1: "data_1", get$depth_0: "depth_0", get$detail: "detail", get$dispatch_1: "dispatch_1", get$display_2: "display_2", get$dragDataFunction: "dragDataFunction", get$dragImageFunction: "dragImageFunction", get$dragImage_1: "dragImage_1", get$dragOccurringClass: "dragOccurringClass", get$draggable: "draggable", get$draggingClass: "draggingClass", get$dropEffect: "dropEffect", get$dropzone: "dropzone", get$dropzone_1: "dropzone_1", get$effectAllowed: "effectAllowed", get$element: "element", get$element_0: "element_0", get$element_11: "element_11", get$element_2: "element_2", get$element_3: "element_3", get$element_4: "element_4", get$element_7: "element_7", get$element_9: "element_9", get$end: "end", get$entry: "entry", get$entryPoint_0: "entryPoint_0", get$error: "error", get$error_0: "error_0", get$error_1: "error_1", get$events: "events", get$exception: "exception", get$exceptionText: "exceptionText", get$f_0: "f_0", get$fillStyle: "fillStyle", get$findSlot_5: "findSlot_5", get$firstPendingEvent: "firstPendingEvent", get$fn: "fn", get$forcePlaceholderSize: "forcePlaceholderSize", get$fromCommandLine: "fromCommandLine", get$future: "future", get$future_1: "future_1", get$future_2: "future_2", get$future_5: "future_5", get$future_6: "future_6", get$height: "height", get$id: "id", get$index: "index", get$innerHtml: "innerHtml", get$input_2: "input_2", get$installedElements: "installedElements", get$isGrid: "isGrid", get$isUtc: "isUtc", get$isWorker: "isWorker", get$isolate: "isolate", get$isolateStatics: "isolateStatics", get$isolates: "isolates", get$iterable_0: "iterable_0", get$keys_0: "keys_0", get$lastPendingEvent: "lastPendingEvent", get$left: "left", get$length: "length", get$level: "level", get$link_0: "link_0", get$listener_1: "listener_1", get$loggerName: "loggerName", get$mainManager: "mainManager", get$managers: "managers", get$match_1: "match_1", get$match_3: "match_3", get$memberName: "memberName", get$message: "message", get$message_1: "message_1", get$message_2: "message_2", get$millisecondsSinceEpoch: "millisecondsSinceEpoch", get$minimumVersion: "minimumVersion", get$modifiedObject: "modifiedObject", get$mouseEvent: "mouseEvent", get$mouseEvent_5: "mouseEvent_5", get$mustCopy_4: "mustCopy_4", get$name: "name", get$newGroup: "newGroup", get$newPosition: "newPosition", get$next: "next", get$nextIsolateId: "nextIsolateId", get$nextManagerId: "nextManagerId", get$object_0: "object_0", get$offsetParent: "offsetParent", get$offsetTop: "offsetTop", get$originalGroup: "originalGroup", get$originalPosition: "originalPosition", get$overClass: "overClass", get$overClass_5: "overClass_5", get$parent: "parent", get$pattern: "pattern", get$placeholderClass: "placeholderClass", get$placeholderElement: "placeholderElement", get$png_0: "png_0", get$png_1: "png_1", get$polyfillOpacity: "polyfillOpacity", get$port_1: "port_1", get$ports: "ports", get$pos_1: "pos_1", get$position: "position", get$previousElementSibling: "previousElementSibling", get$readSlot_6: "readSlot_6", get$replyTo_1: "replyTo_1", get$replyTo_2: "replyTo_2", get$replyTo_3: "replyTo_3", get$request_0: "request_0", get$result_0: "result_0", get$result_1: "result_1", get$revive_0: "revive_0", get$rootContext: "rootContext", get$s_0: "s_0", get$sb: "sb", get$scrollTop: "scrollTop", get$seen: "seen", get$sequenceNumber: "sequenceNumber", get$shouldSerialize_5: "shouldSerialize_5", get$src: "src", get$stackTrace_1: "stackTrace_1", get$start: "start", get$str: "str", get$style: "style", get$subscription_0: "subscription_0", get$supportsWorkers: "supportsWorkers", get$tagName: "tagName", get$tagged: "tagged", get$target: "target", get$tempReplacement_1: "tempReplacement_1", get$textarea_1: "textarea_1", get$textarea_3: "textarea_3", get$textarea_4: "textarea_4", get$this_0: "this_0", get$this_1: "this_1", get$this_10: "this_10", get$this_2: "this_2", get$this_3: "this_3", get$this_4: "this_4", get$this_6: "this_6", get$this_8: "this_8", get$time: "time", get$top: "top", get$topEventLoop: "topEventLoop", get$type: "type", get$types: "types", get$unsupportedObject: "unsupportedObject", get$value: "value", get$value_0: "value_0", get$value_1: "value_1", get$values_0: "values_0", get$values_1: "values_1", get$variableName: "variableName", get$visiting_2: "visiting_2", get$walk_8: "walk_8", get$width: "width", get$writeSlot_7: "writeSlot_7", get$x: "x", get$y: "y", set$$$dom_children: "$dom_children=", set$$$dom_className: "$dom_className=", set$_action: "_action=", set$_arguments: "_arguments=", set$_array: "_array=", set$_callback: "_callback=", set$_cell: "_cell=", set$_childElements: "_childElements=", set$_childNodes: "_childNodes=", set$_className: "_className=", set$_contents: "_contents=", set$_controller: "_controller=", set$_current: "_current=", set$_deletedCount: "_deletedCount=", set$_deserialized: "_deserialized=", set$_dragEnterSub: "_dragEnterSub=", set$_dragStartSub: "_dragStartSub=", set$_draggableEndSub: "_draggableEndSub=", set$_dropped: "_dropped=", set$_dropzoneDropSub: "_dropzoneDropSub=", set$_dropzoneGroup: "_dropzoneGroup=", set$_dropzoneOverSub: "_dropzoneOverSub=", set$_duration: "_duration=", set$_element: "_element=", set$_elementCssClassSetIterable: "_elementCssClassSetIterable=", set$_elementIterable: "_elementIterable=", set$_elements: "_elements=", set$_end: "_end=", set$_endOrLength: "_endOrLength=", set$_eventState: "_eventState=", set$_eventType: "_eventType=", set$_existingArgumentNames: "_existingArgumentNames=", set$_f: "_f=", set$_first: "_first=", set$_globalIds: "_globalIds=", set$_groups: "_groups=", set$_handle: "_handle=", set$_handleStack: "_handleStack=", set$_head: "_head=", set$_id: "_id=", set$_inEventLoop: "_inEventLoop=", set$_index: "_index=", set$_internalName: "_internalName=", set$_isCaseSensitive: "_isCaseSensitive=", set$_isClosed: "_isClosed=", set$_isComplete: "_isComplete=", set$_isMultiLine: "_isMultiLine=", set$_isolateId: "_isolateId=", set$_iterable: "_iterable=", set$_iterator: "_iterator=", set$_key: "_key=", set$_keys: "_keys=", set$_kind: "_kind=", set$_last: "_last=", set$_length: "_length=", set$_level: "_level=", set$_liblib$_length: "_length=", set$_liblib$_name: "_name=", set$_liblib0$_callback: "_callback=", set$_liblib0$_current: "_current=", set$_liblib0$_deserialized: "_deserialized=", set$_liblib0$_id: "_id=", set$_liblib0$_isolateId: "_isolateId=", set$_liblib0$_length: "_length=", set$_liblib0$_nextFreeRefId: "_nextFreeRefId=", set$_liblib0$_receivePort: "_receivePort=", set$_liblib0$_target: "_target=", set$_liblib0$_visited: "_visited=", set$_liblib1$_current: "_current=", set$_liblib1$_element: "_element=", set$_liblib1$_position: "_position=", set$_liblib2$_arguments: "_arguments=", set$_liblib2$_current: "_current=", set$_liblib2$_receiver: "_receiver=", set$_liblib3$_element: "_element=", set$_liblib4$_next: "_next=", set$_liblib4$_onData: "_onData=", set$_liblib4$_previous: "_previous=", set$_liblib4$_source: "_source=", set$_liblib5$_handle: "_handle=", set$_liblib6$_id: "_id=", set$_liblib6$_port: "_port=", set$_liblib7$_controller: "_controller=", set$_liblib7$_stream: "_stream=", set$_littleEndian: "_littleEndian=", set$_map: "_map=", set$_memberName: "_memberName=", set$_modificationCount: "_modificationCount=", set$_modifications: "_modifications=", set$_name: "_name=", set$_namedArgumentNames: "_namedArgumentNames=", set$_namedArguments: "_namedArguments=", set$_namedIndices: "_namedIndices=", set$_nativeRegExp: "_nativeRegExp=", set$_next: "_next=", set$_nextFreeRefId: "_nextFreeRefId=", set$_nextId: "_nextId=", set$_nextListener: "_nextListener=", set$_node: "_node=", set$_nodeList: "_nodeList=", set$_nums: "_nums=", set$_offset: "_offset=", set$_onCancel: "_onCancel=", set$_onData: "_onData=", set$_onDone: "_onDone=", set$_onDrag: "_onDrag=", set$_onDragEnd: "_onDragEnd=", set$_onDragEnter: "_onDragEnter=", set$_onDragLeave: "_onDragLeave=", set$_onDragOver: "_onDragOver=", set$_onDragStart: "_onDragStart=", set$_onDrop: "_onDrop=", set$_onError: "_onError=", set$_onListen: "_onListen=", set$_onSortUpdate: "_onSortUpdate=", set$_onValue: "_onValue=", set$_once: "_once=", set$_pattern: "_pattern=", set$_pauseCount: "_pauseCount=", set$_pending: "_pending=", set$_placeholderDropSub: "_placeholderDropSub=", set$_placeholderOverSub: "_placeholderOverSub=", set$_polyfill: "_polyfill=", set$_port: "_port=", set$_portId: "_portId=", set$_portSubscription: "_portSubscription=", set$_position: "_position=", set$_previous: "_previous=", set$_ptr: "_ptr=", set$_queue: "_queue=", set$_re: "_re=", set$_receivePort: "_receivePort=", set$_receivePortId: "_receivePortId=", set$_receiver: "_receiver=", set$_registry: "_registry=", set$_remaining: "_remaining=", set$_rest: "_rest=", set$_resultOrListeners: "_resultOrListeners=", set$_scopeIndices: "_scopeIndices=", set$_self: "_self=", set$_set: "_set=", set$_skipCount: "_skipCount=", set$_source: "_source=", set$_stack: "_stack=", set$_start: "_start=", set$_state: "_state=", set$_str: "_str=", set$_stream: "_stream=", set$_strings: "_strings=", set$_subscription: "_subscription=", set$_table: "_table=", set$_tail: "_tail=", set$_target: "_target=", set$_test: "_test=", set$_this: "_this=", set$_transform: "_transform=", set$_typeName: "_typeName=", set$_useCapture: "_useCapture=", set$_value: "_value=", set$_visited: "_visited=", set$_window: "_window=", set$_workerId: "_workerId=", set$accept: "accept=", set$action_1: "action_1=", set$action_3: "action_3=", set$activeTimerCount: "activeTimerCount=", set$arg1_2: "arg1_2=", set$arg1_4: "arg1_4=", set$arg2_5: "arg2_5=", set$box_0: "box_0=", set$box_1: "box_1=", set$browserName: "browserName=", set$callback_0: "callback_0=", set$callback_1: "callback_1=", set$canvasImage_2: "canvasImage_2=", set$cause: "cause=", set$children: "children=", set$clientHeight: "clientHeight=", set$clientWidth: "clientWidth=", set$closure_0: "closure_0=", set$closure_1: "closure_1=", set$closure_3: "closure_3=", set$completer_0: "completer_0=", set$completer_1: "completer_1=", set$completer_2: "completer_2=", set$copies_1: "copies_1=", set$copies_2: "copies_2=", set$copies_3: "copies_3=", set$copies_4: "copies_4=", set$cssText: "cssText=", set$currentContext: "currentContext=", set$currentManagerId: "currentManagerId=", set$dataTransfer: "dataTransfer=", set$data_1: "data_1=", set$depth_0: "depth_0=", set$detail: "detail=", set$dispatch_1: "dispatch_1=", set$display_2: "display_2=", set$dragDataFunction: "dragDataFunction=", set$dragImageFunction: "dragImageFunction=", set$dragImage_1: "dragImage_1=", set$dragOccurringClass: "dragOccurringClass=", set$draggable: "draggable=", set$draggingClass: "draggingClass=", set$dropEffect: "dropEffect=", set$dropzone: "dropzone=", set$dropzone_1: "dropzone_1=", set$effectAllowed: "effectAllowed=", set$element: "element=", set$element_0: "element_0=", set$element_11: "element_11=", set$element_2: "element_2=", set$element_3: "element_3=", set$element_4: "element_4=", set$element_7: "element_7=", set$element_9: "element_9=", set$end: "end=", set$entry: "entry=", set$entryPoint_0: "entryPoint_0=", set$error: "error=", set$error_0: "error_0=", set$error_1: "error_1=", set$events: "events=", set$exception: "exception=", set$exceptionText: "exceptionText=", set$f_0: "f_0=", set$fillStyle: "fillStyle=", set$findSlot_5: "findSlot_5=", set$firstPendingEvent: "firstPendingEvent=", set$fn: "fn=", set$forcePlaceholderSize: "forcePlaceholderSize=", set$fromCommandLine: "fromCommandLine=", set$future: "future=", set$future_1: "future_1=", set$future_2: "future_2=", set$future_5: "future_5=", set$future_6: "future_6=", set$height: "height=", set$id: "id=", set$index: "index=", set$innerHtml: "innerHtml=", set$input_2: "input_2=", set$installedElements: "installedElements=", set$isGrid: "isGrid=", set$isUtc: "isUtc=", set$isWorker: "isWorker=", set$isolate: "isolate=", set$isolateStatics: "isolateStatics=", set$isolates: "isolates=", set$iterable_0: "iterable_0=", set$keys_0: "keys_0=", set$lastPendingEvent: "lastPendingEvent=", set$left: "left=", set$length: "length=", set$level: "level=", set$link_0: "link_0=", set$listener_1: "listener_1=", set$loggerName: "loggerName=", set$mainManager: "mainManager=", set$managers: "managers=", set$match_1: "match_1=", set$match_3: "match_3=", set$memberName: "memberName=", set$message: "message=", set$message_1: "message_1=", set$message_2: "message_2=", set$millisecondsSinceEpoch: "millisecondsSinceEpoch=", set$minimumVersion: "minimumVersion=", set$modifiedObject: "modifiedObject=", set$mouseEvent: "mouseEvent=", set$mouseEvent_5: "mouseEvent_5=", set$mustCopy_4: "mustCopy_4=", set$name: "name=", set$newGroup: "newGroup=", set$newPosition: "newPosition=", set$next: "next=", set$nextIsolateId: "nextIsolateId=", set$nextManagerId: "nextManagerId=", set$object_0: "object_0=", set$offsetParent: "offsetParent=", set$offsetTop: "offsetTop=", set$originalGroup: "originalGroup=", set$originalPosition: "originalPosition=", set$overClass: "overClass=", set$overClass_5: "overClass_5=", set$parent: "parent=", set$pattern: "pattern=", set$placeholderClass: "placeholderClass=", set$placeholderElement: "placeholderElement=", set$png_0: "png_0=", set$png_1: "png_1=", set$polyfillOpacity: "polyfillOpacity=", set$port_1: "port_1=", set$ports: "ports=", set$pos_1: "pos_1=", set$position: "position=", set$previousElementSibling: "previousElementSibling=", set$readSlot_6: "readSlot_6=", set$replyTo_1: "replyTo_1=", set$replyTo_2: "replyTo_2=", set$replyTo_3: "replyTo_3=", set$request_0: "request_0=", set$result_0: "result_0=", set$result_1: "result_1=", set$revive_0: "revive_0=", set$rootContext: "rootContext=", set$s_0: "s_0=", set$sb: "sb=", set$scrollTop: "scrollTop=", set$seen: "seen=", set$sequenceNumber: "sequenceNumber=", set$shouldSerialize_5: "shouldSerialize_5=", set$src: "src=", set$stackTrace_1: "stackTrace_1=", set$start: "start=", set$str: "str=", set$style: "style=", set$subscription_0: "subscription_0=", set$supportsWorkers: "supportsWorkers=", set$tagName: "tagName=", set$tagged: "tagged=", set$target: "target=", set$tempReplacement_1: "tempReplacement_1=", set$textarea_1: "textarea_1=", set$textarea_3: "textarea_3=", set$textarea_4: "textarea_4=", set$this_0: "this_0=", set$this_1: "this_1=", set$this_10: "this_10=", set$this_2: "this_2=", set$this_3: "this_3=", set$this_4: "this_4=", set$this_6: "this_6=", set$this_8: "this_8=", set$time: "time=", set$top: "top=", set$topEventLoop: "topEventLoop=", set$type: "type=", set$types: "types=", set$unsupportedObject: "unsupportedObject=", set$value: "value=", set$value_0: "value_0=", set$value_1: "value_1=", set$values_0: "values_0=", set$values_1: "values_1=", set$variableName: "variableName=", set$visiting_2: "visiting_2=", set$walk_8: "walk_8=", set$width: "width=", set$writeSlot_7: "writeSlot_7=", set$x: "x=", set$y: "y="};
+init.mangledNames = {get$$$dom_children: "$dom_children", get$$$dom_className: "$dom_className", get$_action: "_action", get$_arguments: "_arguments", get$_array: "_array", get$_callback: "_callback", get$_cell: "_cell", get$_childElements: "_childElements", get$_childNodes: "_childNodes", get$_className: "_className", get$_contents: "_contents", get$_controller: "_controller", get$_current: "_current", get$_deletedCount: "_deletedCount", get$_deserialized: "_deserialized", get$_dragEnterSub: "_dragEnterSub", get$_dragStartSub: "_dragStartSub", get$_draggableEndSub: "_draggableEndSub", get$_dropped: "_dropped", get$_dropzoneDropSub: "_dropzoneDropSub", get$_dropzoneGroup: "_dropzoneGroup", get$_dropzoneOverSub: "_dropzoneOverSub", get$_duration: "_duration", get$_element: "_element", get$_elementCssClassSetIterable: "_elementCssClassSetIterable", get$_elementIterable: "_elementIterable", get$_elements: "_elements", get$_end: "_end", get$_endOrLength: "_endOrLength", get$_eventState: "_eventState", get$_eventType: "_eventType", get$_existingArgumentNames: "_existingArgumentNames", get$_f: "_f", get$_first: "_first", get$_globalIds: "_globalIds", get$_groups: "_groups", get$_handle: "_handle", get$_handleStack: "_handleStack", get$_head: "_head", get$_id: "_id", get$_inEventLoop: "_inEventLoop", get$_index: "_index", get$_internalName: "_internalName", get$_isCaseSensitive: "_isCaseSensitive", get$_isClosed: "_isClosed", get$_isComplete: "_isComplete", get$_isMultiLine: "_isMultiLine", get$_isolateId: "_isolateId", get$_iterable: "_iterable", get$_iterator: "_iterator", get$_key: "_key", get$_keys: "_keys", get$_kind: "_kind", get$_last: "_last", get$_length: "_length", get$_level: "_level", get$_liblib$_length: "_length", get$_liblib$_name: "_name", get$_liblib0$_callback: "_callback", get$_liblib0$_current: "_current", get$_liblib0$_deserialized: "_deserialized", get$_liblib0$_id: "_id", get$_liblib0$_isolateId: "_isolateId", get$_liblib0$_length: "_length", get$_liblib0$_nextFreeRefId: "_nextFreeRefId", get$_liblib0$_receivePort: "_receivePort", get$_liblib0$_target: "_target", get$_liblib0$_visited: "_visited", get$_liblib1$_current: "_current", get$_liblib1$_element: "_element", get$_liblib1$_position: "_position", get$_liblib2$_arguments: "_arguments", get$_liblib2$_current: "_current", get$_liblib2$_receiver: "_receiver", get$_liblib3$_element: "_element", get$_liblib4$_next: "_next", get$_liblib4$_onData: "_onData", get$_liblib4$_previous: "_previous", get$_liblib4$_source: "_source", get$_liblib5$_handle: "_handle", get$_liblib6$_id: "_id", get$_liblib6$_port: "_port", get$_liblib7$_controller: "_controller", get$_liblib7$_stream: "_stream", get$_littleEndian: "_littleEndian", get$_map: "_map", get$_memberName: "_memberName", get$_modificationCount: "_modificationCount", get$_modifications: "_modifications", get$_name: "_name", get$_namedArgumentNames: "_namedArgumentNames", get$_namedArguments: "_namedArguments", get$_namedIndices: "_namedIndices", get$_nativeRegExp: "_nativeRegExp", get$_next: "_next", get$_nextFreeRefId: "_nextFreeRefId", get$_nextId: "_nextId", get$_nextListener: "_nextListener", get$_node: "_node", get$_nodeList: "_nodeList", get$_nums: "_nums", get$_offset: "_offset", get$_onCancel: "_onCancel", get$_onData: "_onData", get$_onDone: "_onDone", get$_onDrag: "_onDrag", get$_onDragEnd: "_onDragEnd", get$_onDragEnter: "_onDragEnter", get$_onDragLeave: "_onDragLeave", get$_onDragOver: "_onDragOver", get$_onDragStart: "_onDragStart", get$_onDrop: "_onDrop", get$_onError: "_onError", get$_onListen: "_onListen", get$_onSortUpdate: "_onSortUpdate", get$_onValue: "_onValue", get$_once: "_once", get$_pattern: "_pattern", get$_pauseCount: "_pauseCount", get$_pending: "_pending", get$_placeholderDropSub: "_placeholderDropSub", get$_placeholderOverSub: "_placeholderOverSub", get$_polyfill: "_polyfill", get$_port: "_port", get$_portId: "_portId", get$_portSubscription: "_portSubscription", get$_position: "_position", get$_previous: "_previous", get$_ptr: "_ptr", get$_queue: "_queue", get$_re: "_re", get$_receivePort: "_receivePort", get$_receivePortId: "_receivePortId", get$_receiver: "_receiver", get$_registry: "_registry", get$_remaining: "_remaining", get$_rest: "_rest", get$_resultOrListeners: "_resultOrListeners", get$_scopeIndices: "_scopeIndices", get$_self: "_self", get$_set: "_set", get$_skipCount: "_skipCount", get$_source: "_source", get$_stack: "_stack", get$_start: "_start", get$_state: "_state", get$_str: "_str", get$_stream: "_stream", get$_strings: "_strings", get$_subscription: "_subscription", get$_table: "_table", get$_tail: "_tail", get$_target: "_target", get$_test: "_test", get$_this: "_this", get$_transform: "_transform", get$_typeName: "_typeName", get$_useCapture: "_useCapture", get$_value: "_value", get$_visited: "_visited", get$_window: "_window", get$_workerId: "_workerId", get$accept: "accept", get$action_1: "action_1", get$action_3: "action_3", get$activeTimerCount: "activeTimerCount", get$arg1_2: "arg1_2", get$arg1_4: "arg1_4", get$arg2_5: "arg2_5", get$box_0: "box_0", get$box_1: "box_1", get$browserName: "browserName", get$callback_0: "callback_0", get$callback_1: "callback_1", get$canvasImage_2: "canvasImage_2", get$cause: "cause", get$children: "children", get$clientHeight: "clientHeight", get$clientWidth: "clientWidth", get$closure_0: "closure_0", get$closure_1: "closure_1", get$closure_3: "closure_3", get$completer_0: "completer_0", get$completer_1: "completer_1", get$completer_2: "completer_2", get$copies_1: "copies_1", get$copies_2: "copies_2", get$copies_3: "copies_3", get$copies_4: "copies_4", get$cssText: "cssText", get$currentContext: "currentContext", get$currentManagerId: "currentManagerId", get$dataTransfer: "dataTransfer", get$data_1: "data_1", get$depth_0: "depth_0", get$detail: "detail", get$dispatch_1: "dispatch_1", get$display_2: "display_2", get$dragDataFunction: "dragDataFunction", get$dragImageFunction: "dragImageFunction", get$dragImage_0: "dragImage_0", get$dragOccurringClass: "dragOccurringClass", get$draggable: "draggable", get$draggingClass: "draggingClass", get$dropEffect: "dropEffect", get$dropzone: "dropzone", get$dropzone_1: "dropzone_1", get$effectAllowed: "effectAllowed", get$element: "element", get$element_0: "element_0", get$element_11: "element_11", get$element_2: "element_2", get$element_3: "element_3", get$element_4: "element_4", get$element_7: "element_7", get$element_9: "element_9", get$end: "end", get$entry: "entry", get$entryPoint_0: "entryPoint_0", get$error: "error", get$error_0: "error_0", get$error_1: "error_1", get$events: "events", get$exception: "exception", get$exceptionText: "exceptionText", get$f_0: "f_0", get$fillStyle: "fillStyle", get$findSlot_5: "findSlot_5", get$firstPendingEvent: "firstPendingEvent", get$fn: "fn", get$forcePlaceholderSize: "forcePlaceholderSize", get$fromCommandLine: "fromCommandLine", get$future: "future", get$future_1: "future_1", get$future_2: "future_2", get$future_5: "future_5", get$future_6: "future_6", get$height: "height", get$id: "id", get$index: "index", get$innerHtml: "innerHtml", get$input_2: "input_2", get$installedElements: "installedElements", get$isGrid: "isGrid", get$isUtc: "isUtc", get$isWorker: "isWorker", get$isolate: "isolate", get$isolateStatics: "isolateStatics", get$isolates: "isolates", get$iterable_0: "iterable_0", get$keys_0: "keys_0", get$lastPendingEvent: "lastPendingEvent", get$left: "left", get$length: "length", get$level: "level", get$link_0: "link_0", get$listener_1: "listener_1", get$loggerName: "loggerName", get$mainManager: "mainManager", get$managers: "managers", get$match_1: "match_1", get$match_3: "match_3", get$memberName: "memberName", get$message: "message", get$message_1: "message_1", get$message_2: "message_2", get$millisecondsSinceEpoch: "millisecondsSinceEpoch", get$minimumVersion: "minimumVersion", get$modifiedObject: "modifiedObject", get$mouseEvent: "mouseEvent", get$mouseEvent_5: "mouseEvent_5", get$mustCopy_4: "mustCopy_4", get$name: "name", get$newGroup: "newGroup", get$newPosition: "newPosition", get$next: "next", get$nextIsolateId: "nextIsolateId", get$nextManagerId: "nextManagerId", get$object_0: "object_0", get$originalGroup: "originalGroup", get$originalPosition: "originalPosition", get$overClass: "overClass", get$overClass_5: "overClass_5", get$parent: "parent", get$pattern: "pattern", get$placeholderClass: "placeholderClass", get$placeholderElement: "placeholderElement", get$png_0: "png_0", get$png_1: "png_1", get$polyfillOpacity: "polyfillOpacity", get$port_1: "port_1", get$ports: "ports", get$pos_1: "pos_1", get$position: "position", get$previousElementSibling: "previousElementSibling", get$readSlot_6: "readSlot_6", get$replyTo_1: "replyTo_1", get$replyTo_2: "replyTo_2", get$replyTo_3: "replyTo_3", get$request_0: "request_0", get$result_0: "result_0", get$result_1: "result_1", get$revive_0: "revive_0", get$rootContext: "rootContext", get$s_0: "s_0", get$sb: "sb", get$seen: "seen", get$sequenceNumber: "sequenceNumber", get$shouldSerialize_5: "shouldSerialize_5", get$src: "src", get$stackTrace_1: "stackTrace_1", get$start: "start", get$str: "str", get$style: "style", get$subscription_0: "subscription_0", get$supportsWorkers: "supportsWorkers", get$tagName: "tagName", get$tagged: "tagged", get$target: "target", get$tempReplacement_1: "tempReplacement_1", get$textarea_1: "textarea_1", get$textarea_3: "textarea_3", get$textarea_4: "textarea_4", get$this_0: "this_0", get$this_1: "this_1", get$this_10: "this_10", get$this_2: "this_2", get$this_3: "this_3", get$this_4: "this_4", get$this_6: "this_6", get$this_8: "this_8", get$time: "time", get$top: "top", get$topEventLoop: "topEventLoop", get$type: "type", get$types: "types", get$unsupportedObject: "unsupportedObject", get$value: "value", get$value_0: "value_0", get$value_1: "value_1", get$values_0: "values_0", get$values_1: "values_1", get$variableName: "variableName", get$visiting_2: "visiting_2", get$walk_8: "walk_8", get$width: "width", get$writeSlot_7: "writeSlot_7", get$x: "x", get$y: "y", set$$$dom_children: "$dom_children=", set$$$dom_className: "$dom_className=", set$_action: "_action=", set$_arguments: "_arguments=", set$_array: "_array=", set$_callback: "_callback=", set$_cell: "_cell=", set$_childElements: "_childElements=", set$_childNodes: "_childNodes=", set$_className: "_className=", set$_contents: "_contents=", set$_controller: "_controller=", set$_current: "_current=", set$_deletedCount: "_deletedCount=", set$_deserialized: "_deserialized=", set$_dragEnterSub: "_dragEnterSub=", set$_dragStartSub: "_dragStartSub=", set$_draggableEndSub: "_draggableEndSub=", set$_dropped: "_dropped=", set$_dropzoneDropSub: "_dropzoneDropSub=", set$_dropzoneGroup: "_dropzoneGroup=", set$_dropzoneOverSub: "_dropzoneOverSub=", set$_duration: "_duration=", set$_element: "_element=", set$_elementCssClassSetIterable: "_elementCssClassSetIterable=", set$_elementIterable: "_elementIterable=", set$_elements: "_elements=", set$_end: "_end=", set$_endOrLength: "_endOrLength=", set$_eventState: "_eventState=", set$_eventType: "_eventType=", set$_existingArgumentNames: "_existingArgumentNames=", set$_f: "_f=", set$_first: "_first=", set$_globalIds: "_globalIds=", set$_groups: "_groups=", set$_handle: "_handle=", set$_handleStack: "_handleStack=", set$_head: "_head=", set$_id: "_id=", set$_inEventLoop: "_inEventLoop=", set$_index: "_index=", set$_internalName: "_internalName=", set$_isCaseSensitive: "_isCaseSensitive=", set$_isClosed: "_isClosed=", set$_isComplete: "_isComplete=", set$_isMultiLine: "_isMultiLine=", set$_isolateId: "_isolateId=", set$_iterable: "_iterable=", set$_iterator: "_iterator=", set$_key: "_key=", set$_keys: "_keys=", set$_kind: "_kind=", set$_last: "_last=", set$_length: "_length=", set$_level: "_level=", set$_liblib$_length: "_length=", set$_liblib$_name: "_name=", set$_liblib0$_callback: "_callback=", set$_liblib0$_current: "_current=", set$_liblib0$_deserialized: "_deserialized=", set$_liblib0$_id: "_id=", set$_liblib0$_isolateId: "_isolateId=", set$_liblib0$_length: "_length=", set$_liblib0$_nextFreeRefId: "_nextFreeRefId=", set$_liblib0$_receivePort: "_receivePort=", set$_liblib0$_target: "_target=", set$_liblib0$_visited: "_visited=", set$_liblib1$_current: "_current=", set$_liblib1$_element: "_element=", set$_liblib1$_position: "_position=", set$_liblib2$_arguments: "_arguments=", set$_liblib2$_current: "_current=", set$_liblib2$_receiver: "_receiver=", set$_liblib3$_element: "_element=", set$_liblib4$_next: "_next=", set$_liblib4$_onData: "_onData=", set$_liblib4$_previous: "_previous=", set$_liblib4$_source: "_source=", set$_liblib5$_handle: "_handle=", set$_liblib6$_id: "_id=", set$_liblib6$_port: "_port=", set$_liblib7$_controller: "_controller=", set$_liblib7$_stream: "_stream=", set$_littleEndian: "_littleEndian=", set$_map: "_map=", set$_memberName: "_memberName=", set$_modificationCount: "_modificationCount=", set$_modifications: "_modifications=", set$_name: "_name=", set$_namedArgumentNames: "_namedArgumentNames=", set$_namedArguments: "_namedArguments=", set$_namedIndices: "_namedIndices=", set$_nativeRegExp: "_nativeRegExp=", set$_next: "_next=", set$_nextFreeRefId: "_nextFreeRefId=", set$_nextId: "_nextId=", set$_nextListener: "_nextListener=", set$_node: "_node=", set$_nodeList: "_nodeList=", set$_nums: "_nums=", set$_offset: "_offset=", set$_onCancel: "_onCancel=", set$_onData: "_onData=", set$_onDone: "_onDone=", set$_onDrag: "_onDrag=", set$_onDragEnd: "_onDragEnd=", set$_onDragEnter: "_onDragEnter=", set$_onDragLeave: "_onDragLeave=", set$_onDragOver: "_onDragOver=", set$_onDragStart: "_onDragStart=", set$_onDrop: "_onDrop=", set$_onError: "_onError=", set$_onListen: "_onListen=", set$_onSortUpdate: "_onSortUpdate=", set$_onValue: "_onValue=", set$_once: "_once=", set$_pattern: "_pattern=", set$_pauseCount: "_pauseCount=", set$_pending: "_pending=", set$_placeholderDropSub: "_placeholderDropSub=", set$_placeholderOverSub: "_placeholderOverSub=", set$_polyfill: "_polyfill=", set$_port: "_port=", set$_portId: "_portId=", set$_portSubscription: "_portSubscription=", set$_position: "_position=", set$_previous: "_previous=", set$_ptr: "_ptr=", set$_queue: "_queue=", set$_re: "_re=", set$_receivePort: "_receivePort=", set$_receivePortId: "_receivePortId=", set$_receiver: "_receiver=", set$_registry: "_registry=", set$_remaining: "_remaining=", set$_rest: "_rest=", set$_resultOrListeners: "_resultOrListeners=", set$_scopeIndices: "_scopeIndices=", set$_self: "_self=", set$_set: "_set=", set$_skipCount: "_skipCount=", set$_source: "_source=", set$_stack: "_stack=", set$_start: "_start=", set$_state: "_state=", set$_str: "_str=", set$_stream: "_stream=", set$_strings: "_strings=", set$_subscription: "_subscription=", set$_table: "_table=", set$_tail: "_tail=", set$_target: "_target=", set$_test: "_test=", set$_this: "_this=", set$_transform: "_transform=", set$_typeName: "_typeName=", set$_useCapture: "_useCapture=", set$_value: "_value=", set$_visited: "_visited=", set$_window: "_window=", set$_workerId: "_workerId=", set$accept: "accept=", set$action_1: "action_1=", set$action_3: "action_3=", set$activeTimerCount: "activeTimerCount=", set$arg1_2: "arg1_2=", set$arg1_4: "arg1_4=", set$arg2_5: "arg2_5=", set$box_0: "box_0=", set$box_1: "box_1=", set$browserName: "browserName=", set$callback_0: "callback_0=", set$callback_1: "callback_1=", set$canvasImage_2: "canvasImage_2=", set$cause: "cause=", set$children: "children=", set$clientHeight: "clientHeight=", set$clientWidth: "clientWidth=", set$closure_0: "closure_0=", set$closure_1: "closure_1=", set$closure_3: "closure_3=", set$completer_0: "completer_0=", set$completer_1: "completer_1=", set$completer_2: "completer_2=", set$copies_1: "copies_1=", set$copies_2: "copies_2=", set$copies_3: "copies_3=", set$copies_4: "copies_4=", set$cssText: "cssText=", set$currentContext: "currentContext=", set$currentManagerId: "currentManagerId=", set$dataTransfer: "dataTransfer=", set$data_1: "data_1=", set$depth_0: "depth_0=", set$detail: "detail=", set$dispatch_1: "dispatch_1=", set$display_2: "display_2=", set$dragDataFunction: "dragDataFunction=", set$dragImageFunction: "dragImageFunction=", set$dragImage_0: "dragImage_0=", set$dragOccurringClass: "dragOccurringClass=", set$draggable: "draggable=", set$draggingClass: "draggingClass=", set$dropEffect: "dropEffect=", set$dropzone: "dropzone=", set$dropzone_1: "dropzone_1=", set$effectAllowed: "effectAllowed=", set$element: "element=", set$element_0: "element_0=", set$element_11: "element_11=", set$element_2: "element_2=", set$element_3: "element_3=", set$element_4: "element_4=", set$element_7: "element_7=", set$element_9: "element_9=", set$end: "end=", set$entry: "entry=", set$entryPoint_0: "entryPoint_0=", set$error: "error=", set$error_0: "error_0=", set$error_1: "error_1=", set$events: "events=", set$exception: "exception=", set$exceptionText: "exceptionText=", set$f_0: "f_0=", set$fillStyle: "fillStyle=", set$findSlot_5: "findSlot_5=", set$firstPendingEvent: "firstPendingEvent=", set$fn: "fn=", set$forcePlaceholderSize: "forcePlaceholderSize=", set$fromCommandLine: "fromCommandLine=", set$future: "future=", set$future_1: "future_1=", set$future_2: "future_2=", set$future_5: "future_5=", set$future_6: "future_6=", set$height: "height=", set$id: "id=", set$index: "index=", set$innerHtml: "innerHtml=", set$input_2: "input_2=", set$installedElements: "installedElements=", set$isGrid: "isGrid=", set$isUtc: "isUtc=", set$isWorker: "isWorker=", set$isolate: "isolate=", set$isolateStatics: "isolateStatics=", set$isolates: "isolates=", set$iterable_0: "iterable_0=", set$keys_0: "keys_0=", set$lastPendingEvent: "lastPendingEvent=", set$left: "left=", set$length: "length=", set$level: "level=", set$link_0: "link_0=", set$listener_1: "listener_1=", set$loggerName: "loggerName=", set$mainManager: "mainManager=", set$managers: "managers=", set$match_1: "match_1=", set$match_3: "match_3=", set$memberName: "memberName=", set$message: "message=", set$message_1: "message_1=", set$message_2: "message_2=", set$millisecondsSinceEpoch: "millisecondsSinceEpoch=", set$minimumVersion: "minimumVersion=", set$modifiedObject: "modifiedObject=", set$mouseEvent: "mouseEvent=", set$mouseEvent_5: "mouseEvent_5=", set$mustCopy_4: "mustCopy_4=", set$name: "name=", set$newGroup: "newGroup=", set$newPosition: "newPosition=", set$next: "next=", set$nextIsolateId: "nextIsolateId=", set$nextManagerId: "nextManagerId=", set$object_0: "object_0=", set$originalGroup: "originalGroup=", set$originalPosition: "originalPosition=", set$overClass: "overClass=", set$overClass_5: "overClass_5=", set$parent: "parent=", set$pattern: "pattern=", set$placeholderClass: "placeholderClass=", set$placeholderElement: "placeholderElement=", set$png_0: "png_0=", set$png_1: "png_1=", set$polyfillOpacity: "polyfillOpacity=", set$port_1: "port_1=", set$ports: "ports=", set$pos_1: "pos_1=", set$position: "position=", set$previousElementSibling: "previousElementSibling=", set$readSlot_6: "readSlot_6=", set$replyTo_1: "replyTo_1=", set$replyTo_2: "replyTo_2=", set$replyTo_3: "replyTo_3=", set$request_0: "request_0=", set$result_0: "result_0=", set$result_1: "result_1=", set$revive_0: "revive_0=", set$rootContext: "rootContext=", set$s_0: "s_0=", set$sb: "sb=", set$seen: "seen=", set$sequenceNumber: "sequenceNumber=", set$shouldSerialize_5: "shouldSerialize_5=", set$src: "src=", set$stackTrace_1: "stackTrace_1=", set$start: "start=", set$str: "str=", set$style: "style=", set$subscription_0: "subscription_0=", set$supportsWorkers: "supportsWorkers=", set$tagName: "tagName=", set$tagged: "tagged=", set$target: "target=", set$tempReplacement_1: "tempReplacement_1=", set$textarea_1: "textarea_1=", set$textarea_3: "textarea_3=", set$textarea_4: "textarea_4=", set$this_0: "this_0=", set$this_1: "this_1=", set$this_10: "this_10=", set$this_2: "this_2=", set$this_3: "this_3=", set$this_4: "this_4=", set$this_6: "this_6=", set$this_8: "this_8=", set$time: "time=", set$top: "top=", set$topEventLoop: "topEventLoop=", set$type: "type=", set$types: "types=", set$unsupportedObject: "unsupportedObject=", set$value: "value=", set$value_0: "value_0=", set$value_1: "value_1=", set$values_0: "values_0=", set$values_1: "values_1=", set$variableName: "variableName=", set$visiting_2: "visiting_2=", set$walk_8: "walk_8=", set$width: "width=", set$writeSlot_7: "writeSlot_7=", set$x: "x=", set$y: "y="};
 (function (reflectionData) {
   if (!init.libraries) init.libraries = [];
   if (!init.mangledNames) init.mangledNames = {};
@@ -13093,12 +13094,6 @@ Object: {"": ";",
   get$nodes: function($receiver) {
     return this.noSuchMethod$1(this, $.createInvocationMirror("nodes", "get$nodes", 1, [], []));
   },
-  get$offsetParent: function($receiver) {
-    return this.noSuchMethod$1(this, $.createInvocationMirror("offsetParent", "get$offsetParent", 1, [], []));
-  },
-  get$offsetTop: function($receiver) {
-    return this.noSuchMethod$1(this, $.createInvocationMirror("offsetTop", "get$offsetTop", 1, [], []));
-  },
   get$onClick: function($receiver) {
     return this.noSuchMethod$1(this, $.createInvocationMirror("onClick", "get$onClick", 1, [], []));
   },
@@ -13150,8 +13145,8 @@ Object: {"": ";",
   get$relatedTarget: function($receiver) {
     return this.noSuchMethod$1(this, $.createInvocationMirror("relatedTarget", "get$relatedTarget", 1, [], []));
   },
-  get$scrollTop: function($receiver) {
-    return this.noSuchMethod$1(this, $.createInvocationMirror("scrollTop", "get$scrollTop", 1, [], []));
+  get$src: function($receiver) {
+    return this.noSuchMethod$1(this, $.createInvocationMirror("src", "get$src", 1, [], []));
   },
   get$style: function($receiver) {
     return this.noSuchMethod$1(this, $.createInvocationMirror("style", "get$style", 1, [], []));
@@ -14643,6 +14638,10 @@ ImageElement_ImageElement: function(height, src, width) {
   var e = document.createElement("img");
   if (src != null)
     $.set$src$x(e, src);
+  if (width != null)
+    $.set$width$x(e, width);
+  if (height != null)
+    $.set$height$x(e, height);
   return e;
 },
 
@@ -15323,14 +15322,18 @@ DraggableGroup: {"": "Group;dragOccurringClass<,draggingClass<,overClass,dropEff
   },
   "+_polyfillDraggable:1:0": 0,
   _polyfillSetDragImage$3: function(element, mouseEvent, dragImage) {
-    var t1;
+    var t1, t2;
     $.get$_logger().finest$1("Polyfilling setDragImage function.");
     this._preventDefaultDragImage$2(element, mouseEvent);
-    t1 = $.getInterceptor$x(element);
-    $.add$1$ax($.get$children$x(t1.get$parent(element)), dragImage.get$polyfill());
+    $.add$1$ax($.get$children$x($.get$parent$x(element)), dragImage.get$polyfill());
     $.set$position$x($.get$style$x(dragImage.get$polyfill()), "absolute");
     $.set$visibility$x($.get$style$x(dragImage.get$polyfill()), "hidden");
-    return t1.get$onDrag(element).listen$1(new $.DraggableGroup__polyfillSetDragImage_closure(element, dragImage));
+    t1 = new $._EventStream(document, $.EventStreamProvider_dragover._eventType, false);
+    t1 = new $._EventStreamSubscription(0, t1._liblib0$_target, t1._eventType, new $.DraggableGroup__polyfillSetDragImage_closure(dragImage), t1._useCapture);
+    t2 = t1._onData;
+    if (t2 != null && !t1.get$isPaused())
+      $.$$dom_addEventListener$3$x(t1._liblib0$_target, t1._eventType, t2, t1._useCapture);
+    return t1;
   },
   "+_polyfillSetDragImage:3:0": 0,
   _preventDefaultDragImage$2: function(element, mouseEvent) {
@@ -15419,7 +15422,7 @@ DraggableGroup_install_closure0: {"": "Closure;box_0",
 
 DraggableGroup_install_closure1: {"": "Closure;box_0,this_1,element_2",
   call$1: function(mouseEvent) {
-    var t1, t2, t3, milliseconds, t4, t5, dragData, clone;
+    var t1, t2, t3, milliseconds, t4, t5, dragData, t6, t7, t8, mouseRelativeLeft, mouseRelativeTop, clone;
     t1 = this.this_1;
     if (t1.get$_liblib5$_handle() != null && !this.box_0.isHandle_3) {
       $.preventDefault$0$x(mouseEvent);
@@ -15468,13 +15471,29 @@ DraggableGroup_install_closure1: {"": "Closure;box_0,this_1,element_2",
       if ($._supportsDraggable !== true) {
         $.get$_logger().finest$1("Manually creating drag image from current drag element.");
         t2.usingDragImagePolyfill_1 = true;
-        t4 = $.getInterceptor$x(t3);
-        clone = t4.clone$1(t3, true);
-        t5 = $.getInterceptor$x(clone);
-        $.remove$1$ax(t5.get$attributes(clone), "id");
-        $.set$width$x(t5.get$style(clone), $.get$width$x(t4.getComputedStyle$0(t3)));
-        $.set$height$x(t5.get$style(clone), $.get$height$x(t4.getComputedStyle$0(t3)));
-        t2.dragImage_0 = new $.DragImage(clone, 0, -5, "0.75", null);
+        t5 = $.getInterceptor$x(t3);
+        if (typeof t3 === "object" && t3 !== null && !!$.getInterceptor(t3).$isImageElement) {
+          t6 = $.get$x$x(t4.get$page(mouseEvent));
+          t7 = $.$add$ns($.get$left$x(t5.getBoundingClientRect$0(t3)), window.pageXOffset);
+          t8 = document.documentElement;
+          t8.get$client;
+          mouseRelativeLeft = $.$sub$n(t6, $.$sub$n(t7, new $.Rect(t8.clientLeft, t8.clientTop, t8.clientWidth, t8.clientHeight).left));
+          t4 = $.get$y$x(t4.get$page(mouseEvent));
+          t8 = $.$add$ns($.get$top$x(t5.getBoundingClientRect$0(t3)), window.pageYOffset);
+          t7 = document.documentElement;
+          t7.get$client;
+          mouseRelativeTop = $.$sub$n(t4, $.$sub$n(t8, new $.Rect(t7.clientLeft, t7.clientTop, t7.clientWidth, t7.clientHeight).top));
+          t7 = t5.get$src(t3);
+          t8 = t5.get$width(t3);
+          t2.dragImage_0 = new $.DragImage($.ImageElement_ImageElement(t5.get$height(t3), t7, t8), $.round$0$nx(mouseRelativeLeft), $.round$0$nx(mouseRelativeTop), "0.75", null);
+        } else {
+          clone = t5.clone$1(t3, true);
+          t4 = $.getInterceptor$x(clone);
+          $.remove$1$ax(t4.get$attributes(clone), "id");
+          $.set$width$x(t4.get$style(clone), $.get$width$x(t5.getComputedStyle$0(t3)));
+          $.set$height$x(t4.get$style(clone), $.get$height$x(t5.getComputedStyle$0(t3)));
+          t2.dragImage_0 = new $.DragImage(clone, 0, -5, "0.75", null);
+        }
         t2.polyfillDragOverSubscription_2 = t1._polyfillSetDragImage$3(t3, mouseEvent, t2.dragImage_0);
       }
     }
@@ -15542,7 +15561,8 @@ DraggableGroup_install_closure3: {"": "Closure;box_0,this_8,element_9",
     t2 = this.box_0;
     if (t2.usingDragImagePolyfill_1) {
       $.remove$0$ax(t2.dragImage_0.get$polyfill());
-      $.cancel$0$x(t2.polyfillDragOverSubscription_2);
+      t3 = t2.polyfillDragOverSubscription_2;
+      t3.cancel$0(t3);
     }
     t1 = t1.get$_onDragEnd();
     if (t1 != null) {
@@ -15593,19 +15613,15 @@ DraggableGroup__polyfillDraggable_closure: {"": "Closure;element_0",
   $isFunction: true
 },
 
-DraggableGroup__polyfillSetDragImage_closure: {"": "Closure;element_0,dragImage_1",
+DraggableGroup__polyfillSetDragImage_closure: {"": "Closure;dragImage_0",
   call$1: function(docMouseEvent) {
-    var mousePosition, t1, t2, t3, t4;
+    var mousePosition, t1, t2;
     mousePosition = $.getMousePosition(docMouseEvent);
-    t1 = mousePosition.y;
-    t2 = this.dragImage_1;
-    t3 = $.getInterceptor$x(t2);
-    t4 = $.getInterceptor$n(t1);
-    $.Primitives_printString("mouse: " + $.S(t4.$sub(t1, t3.get$y(t2))) + "px");
-    $.Primitives_printString("absoluteTop: " + $.S($.getAbsoluteTop(this.element_0)));
-    $.set$left$x($.get$style$x(t2.get$polyfill()), $.S($.$sub$n(mousePosition.x, t3.get$x(t2))) + "px");
-    $.set$top$x($.get$style$x(t2.get$polyfill()), $.S(t4.$sub(t1, t3.get$y(t2))) + "px");
-    $.set$visibility$x($.get$style$x(t2.get$polyfill()), "visible");
+    t1 = this.dragImage_0;
+    t2 = $.getInterceptor$x(t1);
+    $.set$left$x($.get$style$x(t1.get$polyfill()), $.S($.$sub$n(mousePosition.x, t2.get$x(t1))) + "px");
+    $.set$top$x($.get$style$x(t1.get$polyfill()), $.S($.$sub$n(mousePosition.y, t2.get$y(t1))) + "px");
+    $.set$visibility$x($.get$style$x(t1.get$polyfill()), "visible");
   },
   "+call:1:0": 0,
   $isFunction: true
@@ -15925,27 +15941,6 @@ Group_uninstall_closure: {"": "Closure;",
   $isFunction: true
 }}],
 ["html5_dnd.css_utils", "package:html5_dnd/src/css_utils.dart", , {
-getAbsoluteTop: function(element) {
-  var absoluteTop, t1;
-  absoluteTop = $.get$offsetTop$x(element);
-  if (typeof absoluteTop !== "number")
-    return $.getAbsoluteTop$bailout(1, element, absoluteTop);
-  for (; element = $.get$offsetParent$x(element), t1 = $.getInterceptor$x(element), element != null;) {
-    t1 = $.$sub$n(t1.get$offsetTop(element), t1.get$scrollTop(element));
-    if (typeof t1 !== "number")
-      throw $.iae(t1);
-    absoluteTop += t1;
-  }
-  return absoluteTop;
-},
-
-getAbsoluteTop$bailout: function(state0, element, absoluteTop) {
-  var t1;
-  for (; element = $.get$offsetParent$x(element), t1 = $.getInterceptor$x(element), element != null;)
-    absoluteTop = $.$add$ns(absoluteTop, $.$sub$n(t1.get$offsetTop(element), t1.get$scrollTop(element)));
-  return absoluteTop;
-},
-
 getMousePosition: function($event) {
   var t1, x, y;
   t1 = $.getInterceptor$x($event);
@@ -18107,7 +18102,7 @@ $.DomName_0Wv = new $.DomName("RTCDTMFSender.interToneGap");
 $.DomName_Y6D0 = new $.DomName("IDBObjectStore.add");
 $.DomName_nZd = new $.DomName("SVGGradientElement.externalResourcesRequired");
 $.DomName_XPathExpression = new $.DomName("XPathExpression");
-$.DomName_i7B0 = new $.DomName("PerformanceTiming.responseStart");
+$.DomName_i7B = new $.DomName("PerformanceTiming.responseStart");
 $.DomName_oFR = new $.DomName("RTCStatsReport.local");
 $.DomName_Yqh = new $.DomName("SVGViewSpec.viewTargetString");
 $.DomName_oGx3 = new $.DomName("AnalyserNode.frequencyBinCount");
@@ -18267,7 +18262,7 @@ $.DomName_CustomEvent = new $.DomName("CustomEvent");
 $.DomName_cdS = new $.DomName("SVGFEMorphologyElement.height");
 $.JSName_lastChild = new $.JSName("lastChild");
 $.JSName_get = new $.JSName("get");
-$.DomName_i7B1 = new $.DomName("DOMFileSystem.root");
+$.DomName_i7B0 = new $.DomName("DOMFileSystem.root");
 $.DomName_2No0 = new $.DomName("MemoryInfo.usedJSHeapSize");
 $.DomName_KHA = new $.DomName("XMLHttpRequest.readyState");
 $.DomName_ACe = new $.DomName("Document.title");
@@ -18400,7 +18395,7 @@ $.DomName_Iik0 = new $.DomName("SVGMarkerElement.preserveAspectRatio");
 $.DomName_kjq = new $.DomName("Screen.height");
 $.DomName_Moc = new $.DomName("WebGLActiveInfo.name");
 $.DomName_SVGAnimatedNumberList = new $.DomName("SVGAnimatedNumberList");
-$.DomName_4YB = new $.DomName("Element.scrollTop");
+$.DomName_4YB0 = new $.DomName("Element.scrollTop");
 $.DomName_b1T = new $.DomName("ShadowRoot.cloneNode");
 $.DomName_DirectoryReaderSync = new $.DomName("DirectoryReaderSync");
 $.DomName_MUB2 = new $.DomName("HTMLTextAreaElement.type");
@@ -18806,7 +18801,7 @@ $.DomName_gkc0 = new $.DomName("SVGPathSegMovetoRel.x");
 $.DomName_66I = new $.DomName("HTMLTrackElement.default");
 $.DomName_8D4 = new $.DomName("HTMLFormElement.autocomplete");
 $.DomName_oPa = new $.DomName("HTMLIFrameElement.sandbox");
-$.DomName_4YB0 = new $.DomName("MIDIPort.name");
+$.DomName_4YB = new $.DomName("MIDIPort.name");
 $.DomName_qx4 = new $.DomName("HTMLIFrameElement.contentWindow");
 $.DomName_DatabaseCallback = new $.DomName("DatabaseCallback");
 $.DomName_CsG = new $.DomName("IDBRequest.errorEvent");
@@ -19229,7 +19224,7 @@ $.DomName_4ys1 = new $.DomName("WebKitCSSMatrix.m21");
 $.DomName_np3 = new $.DomName("MediaController.duration");
 $.DomName_QoX = new $.DomName("HTMLModElement.cite");
 $.DomName_EWB3 = new $.DomName("SVGPathSegCurvetoQuadraticRel.y");
-$.DomName_i7B = new $.DomName("Element.offsetParent");
+$.DomName_i7B1 = new $.DomName("Element.offsetParent");
 $.DomName_SVGFontFaceUriElement = new $.DomName("SVGFontFaceUriElement");
 $.DomName_A9C0 = new $.DomName("XPathException.message");
 $.DomName_cD90 = new $.DomName("SVGFETurbulenceElement.height");
@@ -21298,12 +21293,6 @@ $.get$name$x = function(receiver) {
 };
 $.get$next$x = function(receiver) {
   return $.getInterceptor$x(receiver).get$next(receiver);
-};
-$.get$offsetParent$x = function(receiver) {
-  return $.getInterceptor$x(receiver).get$offsetParent(receiver);
-};
-$.get$offsetTop$x = function(receiver) {
-  return $.getInterceptor$x(receiver).get$offsetTop(receiver);
 };
 $.get$onClick$x = function(receiver) {
   return $.getInterceptor$x(receiver).get$onClick(receiver);
