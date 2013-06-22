@@ -1,25 +1,5 @@
-body {
-  background-color: #F8F8F8;
-  font-family: 'PT Serif',Georgia,Times,"Times New Roman",serif;
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 1.2em;
-  margin: 15px;
-  color: #333;
-}
-
-article {
-  display: block;
-}
-
-article p {
-  width: 400px;
-}
-  
-h1, h2 {
-  font-weight: normal;
-  margin-top: 60px;
-  margin-bottom: 20px;
+#content {
+  position: static;
 }
 
 /* --------------------------------------------------------------------------
@@ -27,6 +7,14 @@ h1, h2 {
  * ------------------------------------------------------------------------*/
 h2 {
   clear: both; 
+}
+
+/* Reset the img box for blog. */
+article img {
+  border-radius: 0;
+  box-shadow: none;
+  border: 0;
+  margin-bottom: 0;
 }
  
 .example-container {
@@ -234,7 +222,7 @@ h2 {
   background: url(icons/trash.png) top right no-repeat;
 }
 
-#drop-effects a {
+#drop-effects .dragme {
   background: url(icons/document.png) no-repeat;
   margin: 10px 0 0 5px;
   height: 60px;

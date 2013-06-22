@@ -1,5 +1,25 @@
-#content {
-  position: static;
+body {
+  background-color: #F8F8F8;
+  font-family: 'PT Serif',Georgia,Times,"Times New Roman",serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.2em;
+  margin: 15px;
+  color: #333;
+}
+
+article {
+  display: block;
+}
+
+article p {
+  width: 400px;
+}
+  
+h1, h2 {
+  font-weight: normal;
+  margin-top: 60px;
+  margin-bottom: 20px;
 }
 
 /* --------------------------------------------------------------------------
