@@ -3,14 +3,13 @@ layout: page
 title: Dart HTML5 Drag and Drop
 comments: false
 footer: true
-javascript: [html5_dnd_example.dart.js, dnd.polyfill.js, dart.js]
+javascript: [html5_dnd_example.dart.js, dart.js]
 css: [html5_dnd_example.css]
 ---
- 
+
   <p>
     Native HTML5 Drag and Drop is <a href="http://www.quirksmode.org/blog/archives/2009/09/the_html5_drag.html">not easy to work with</a>! The 
-    <a href="https://github.com/marcojakob/dart-html5-dnd">Dart HTML5 Drag and Drop</a> library was created to make Drag and Drop fun again 
-    (hopefully). Here are some examples of how to use it.
+    <a href="https://github.com/marcojakob/dart-html5-dnd">Dart HTML5 Drag and Drop</a> library was created to use HTML5 Drag and Drop in a consistend way across all modern browsers. Here are some examples of how to use it.
   </p>
   <p>
     API and Examples are inspired by 
@@ -28,7 +27,7 @@ css: [html5_dnd_example.css]
     
   <h3>Installation Instructions and Source Code</h3>
   <p>
-    <a href="https://github.com/marcojakob/dart-html5-dnd"><img class="nobox middle" src="/images/glyphicons_github.png" title="'Dart HTML5 Drag and Drop on GitHub'">Dart HTML5 Drag and Drop</a> on GitHub.
+    <a href="https://github.com/marcojakob/dart-html5-dnd"><img class="middle" src="/images/glyphicons_github.png" title="'Dart HTML5 Drag and Drop on GitHub'">Dart HTML5 Drag and Drop</a> on GitHub.
   </p>
   <p>You are welcome to contribute by reporting an <a href="https://github.com/marcojakob/dart-html5-dnd/issues">Issue</a> or <a href="https://help.github.com/articles/fork-a-repo">forking the repository</a>.
   </p>
@@ -40,10 +39,10 @@ css: [html5_dnd_example.css]
 </p>
 <div id="draggable-dropzone" class="example-container">
   <div class="trash"></div>
-  <img class="document nobox" src="icons/document.png" draggable="true">
-  <img class="document nobox" src="icons/document.png" draggable="true">
-  <img class="document nobox" src="icons/document.png" draggable="true">
-  <img class="document nobox" src="icons/document.png" draggable="true">
+  <img class="document" src="icons/document.png">
+  <img class="document" src="icons/document.png">
+  <img class="document" src="icons/document.png">
+  <img class="document" src="icons/document.png">
 </div><div class="example-code"><ul class="menu"><li><a href="#" tab="html" class="active">HTML</a><a href="#" tab="css">CSS</a><a href="#" tab="dart">Dart</a></li></ul><div class="content"><div tab="html" class="active">
 {% codeblock lang:html %}
 <div class="trash"></div>
@@ -91,10 +90,9 @@ DropzoneGroup dropGroup = new DropzoneGroup()
 <h2>Dragging Divs</h2>
 <p>
   All HTML elements with the <em>draggable="true"</em> attribute can be dragged - 
-  well...almost. Internet Explorer 9 does not support this attribute and 
-  thus by default only links and images are draggable in IE9. With a 
-  <a href="http://stackoverflow.com/a/8986075/862411">workaround</a>, we 
-  can also tell IE9 to drag anything. Try the following example in IE9.
+  well...almost. Internet Explorer 9 does not support this attribute. To get the 
+  same behaviour for all browsers, drag and drop events are emulated in IE9. 
+  Try the following example in IE9.
 </p>
 <p>
   <strong>Note:</strong> The <em>draggable="true"</em> attribute is automatically
@@ -148,18 +146,19 @@ DropzoneGroup dropGroup = new DropzoneGroup()
 </p>
 <div id="drop-effects" class="example-container">
   <div class="trash"></div>
-  <a href="#" class="move" draggable="true">move</a>
-  <a href="#" class="copy" draggable="true">copy</a>
-  <a href="#" class="link" draggable="true">link</a>
-  <a href="#" class="none" draggable="true">none</a>
-</div><div class="example-code"><ul class="menu"><li><a href="#" tab="html" class="active">HTML</a><a href="#" tab="css">CSS</a><a href="#" tab="dart">Dart</a></li></ul><div class="content"><div tab="html" class="active">
+  <div class="dragme move">move</div>
+  <div class="dragme copy">copy</div>
+  <div class="dragme link">link</div>
+  <div class="dragme none">none</div>
+</div>
+<div class="example-code"><ul class="menu"><li><a href="#" tab="html" class="active">HTML</a><a href="#" tab="css">CSS</a><a href="#" tab="dart">Dart</a></li></ul><div class="content"><div tab="html" class="active">
 
 {% codeblock lang:html %}
 <div class="trash"></div>
-<a href="#" class="move">move</a>
-<a href="#" class="copy">copy</a>
-<a href="#" class="link">link</a>
-<a href="#" class="none">none</a>
+<div class="dragme move">move</div>
+<div class="dragme copy">copy</div>
+<div class="dragme link">link</div>
+<div class="dragme none">none</div>
 {% endcodeblock  %}
 
 </div><div tab="css">
@@ -174,7 +173,7 @@ DropzoneGroup dropGroup = new DropzoneGroup()
   background: url(icons/trash.png) top right no-repeat;
 }
 
-#drop-effects a {
+#drop-effects .dragme {
   background: url(icons/document.png) no-repeat;
   /* ... */
 }
@@ -219,18 +218,14 @@ DropzoneGroup dropGroup = new DropzoneGroup()
 
 <h2>Custom Drag Images</h2>
 <p>
-  That was a tough one to make work cross-browser! IE9 and IE10 do not 
-  support setting a custom drag image (as other modern browsers do).
+  HTML5 drag and drop supports setting of custom drag images in place of the
+  auto-generated drag overlay.
 </p>
 <p>
-  So I had to implement a <strong>polyfill</strong> that draws a custom 
-  image and moves it around with the mouse (like jQuery and others do). The 
-  movement is not as smooth as with the native implementation but works 
-  quite well. (If you're curious how the polyfill works: 1. make sure the 
-  default image does not show, 2. draw the custom image, 3. ensure the mouse 
-  events are passed through to the layer underneath the drag image... more 
-  info in the source).
-</p>    
+  IE9 and IE10 do not support this. To get the same behaviour, a custom drag 
+  image is emulated: An image is manually created and moved together with
+  the mouse (similar to what jQuery IU does).
+</p>  
 <div id="drag-images" class="example-container">
   <div class="dropzone example-box">
     Drag here!
@@ -281,23 +276,17 @@ var dataUrl = canvas.toDataUrl("image/jpeg", 0.95);
 ImageElement canvasImage = new ImageElement(src: dataUrl);
 
 // Install draggables.
-DraggableGroup dragGroupOne = new DraggableGroup()
-..install(query('#drag-images .one'))
-..dragImageFunction = (Element draggable) {
-  return new DragImage(png, 40, 40);
-};
+DraggableGroup dragGroupOne = new DraggableGroup(
+    dragImageFunction: (Element draggable) => new DragImage(png, 40, 40))
+..install(query('#drag-images .one'));
 
-DraggableGroup dragGroupTwo = new DraggableGroup()
-..install(query('#drag-images .two'))
-..dragImageFunction = (Element draggable) {
-  return new DragImage(png, -20, -20);
-};
+DraggableGroup dragGroupTwo = new DraggableGroup(
+    dragImageFunction: (Element draggable) => new DragImage(png, -20, -20))
+..install(query('#drag-images .two'));
 
-DraggableGroup dragGroupThree = new DraggableGroup()
-..install(query('#drag-images .three'))
-..dragImageFunction = (Element draggable) {
-  return new DragImage(canvasImage, 0, 0);
-};
+DraggableGroup dragGroupThree = new DraggableGroup(
+    dragImageFunction: (Element draggable) => new DragImage(canvasImage, 20, 20))
+..install(query('#drag-images .three'));
 
 // Install dropzone.
 DropzoneGroup dropGroup = new DropzoneGroup()
@@ -583,10 +572,12 @@ sortGroup.accept.add(sortGroup);
 
 <h2>Two Sortable Groups</h2>
 <p>
-  Two sortable groups that are connected with each other.      
+  Two sortable groups that are connected with each other. 
 </p>
 <p>
-  Elements in the right group display an icon when dragged, elements in the left group display the dragged element. Whenever an element changes group it is uninstalled from the previous group and installed in the new group.
+  Elements in the right group display an icon when dragged, elements in the 
+  left group display the dragged element. Whenever an element changes group 
+  it is uninstalled from the previous group and installed in the new group.
 </p>
 <div id="sortable-two-groups" class="example-container">
   <ul class="example-box group1">
@@ -652,7 +643,7 @@ sortGroup.accept.add(sortGroup);
 </div><div tab="dart">
 {% codeblock lang:dart %}
 ImageElement png = new ImageElement(src: 'icons/smiley-happy.png');
-
+  
 SortableGroup sortGroup1 = new SortableGroup()
 ..installAll(queryAll('#sortable-two-groups .group1 li'))
 ..onSortUpdate.listen((SortableEvent event) {
@@ -660,11 +651,9 @@ SortableGroup sortGroup1 = new SortableGroup()
   event.newGroup.install(event.draggable);
 });
 
-SortableGroup sortGroup2 = new SortableGroup()
+SortableGroup sortGroup2 = new SortableGroup(
+    dragImageFunction: (Element draggable) => new DragImage(png, 5, 5))
 ..installAll(queryAll('#sortable-two-groups .group2 li'))
-..dragImageFunction = (Element draggable) {
-  return new DragImage(png, 0, 0);
-}
 ..onSortUpdate.listen((SortableEvent event) {
   event.originalGroup.uninstall(event.draggable);
   event.newGroup.install(event.draggable);
