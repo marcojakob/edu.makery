@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[edu.makery.ch | Category: Dart]]></title>
+  <link href="http://edu.makery.ch/blog/categories/dart/atom.xml" rel="self"/>
+  <link href="http://edu.makery.ch/blog/categories/dart/"/>
+  <updated>2013-06-26T16:51:21+02:00</updated>
+  <id>http://edu.makery.ch/blog/categories/dart</id>
+  <author>
+    <name><![CDATA[Marco Jakob]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Programming with Dart]]></title>
+    <link href="http://edu.makery.ch/blog/2013/06/26/programming-with-dart/"/>
+    <updated>2013-06-26T16:30:00+02:00</updated>
+    <id>http://edu.makery.ch/blog/2013/06/26/programming-with-dart</id>
+    <content type="html"><![CDATA[<p><img class="right" src="http://edu.makery.ch/images/dart/dart-logo.png"></p>
+
+<p>The last few months I have been programming with Google&#8217;s new <a href="http://www.dartlang.org/">Dart</a> language. I&#8217;m very excited about how great it is to work with Dart! Currently, I&#8217;m using Dart for the web client of a project called <a href="http://doxblox.ch">doxblox</a> (site is only in German at the moment).</p>
+
+<p>After a while I found some things that I was missing and started to write a few Dart libraries:</p>
+
+<ul>
+<li>The first was a <a href="http://edu.makery.ch/projects/dart-event-bus/">Dart EventBus</a> for decoupling applications.</li>
+<li>The second was <a href="http://edu.makery.ch/projects/dart-html5-drag-and-drop/">HTML5 Drag and Drop</a> support.</li>
+</ul>
+
+
+<p>HTML5 Drag and Drop was quite a task to get working across different browsers! Take a look and let me know what you think or if you have any issues with it.</p>
+]]></content>
+  </entry>
+  
+</feed>
