@@ -91,19 +91,25 @@
     Native HTML5 Drag and Drop is <a href="http://www.quirksmode.org/blog/archives/2009/09/the_html5_drag.html">not easy to work with</a>! The 
     <a href="https://github.com/marcojakob/dart-html5-dnd">Dart HTML5 Drag and Drop</a> library was created to use HTML5 Drag and Drop in a consistend way across all modern browsers. Here are some examples of how to use it.
   </p>
+  
+  <h3>Features</h3>
   <p>
-    API and Examples are inspired by 
+    <ul>
+      <li>Make any HTML Element <code>draggable</code>.</li>
+      <li>Create <code>dropzones</code> and connect them with <code>draggables</code>.</li>
+      <li>Rearrange elements with <code>sortables</code> (similar to jQuery UI Sortable).</li>
+      <li>Support for <code>touch events</code> on touch screen devices.</li>
+      <li>Same functionality and API for IE9+, Firefox, Chrome and Safari.</li>
+      <li>Uses fast native HTML5 Drag and Drop of the browser whenever possible.</li>
+      <li>For browsers that do not support some features, the behaviour is emulated.
+          This is the case for IE9 and partly for IE10 (when custom drag images are used).</li>
+    </ul>
   </p>
-  <ul>
-    <li>
-      <a href="http://farhadi.ir/projects/html5sortable/">HTML5 Sortable</a> (thank you, Ali Farhadi!)
-    </li>
-    <li>
-      jQuery UI: <a href="http://api.jqueryui.com/draggable/">Draggable</a>, 
-      <a href="http://api.jqueryui.com/droppable/">Droppable</a> and 
-      <a href="http://api.jqueryui.com/sortable/">Sortable</a>
-    </li>
-  </ul>
+  
+  <p>
+    API and Examples are inspired by <a href="http://farhadi.ir/projects/html5sortable/">HTML5 Sortable</a>, jQuery UI (<a href="http://api.jqueryui.com/draggable/">Draggable</a>, 
+      <a href="http://api.jqueryui.com/droppable/">Droppable</a>, <a href="http://api.jqueryui.com/sortable/">Sortable</a>) and <a href="http://touchpunch.furf.com/">Touch Punch</a>.
+  </p>
     
   <h3>Installation Instructions and Source Code</h3>
   <p>
@@ -367,20 +373,20 @@
 <span class='line-number'>25</span>
 </pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="c1">// Install draggables.</span>
 </span><span class='line'><span class="n">DraggableGroup</span> <span class="n">dragGroupMove</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DraggableGroup</span><span class="p">()</span>
-</span><span class='line'><span class="p">..</span><span class="n">install</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drop-effects .move&#39;</span><span class="p">))</span>
-</span><span class='line'><span class="p">..</span><span class="n">dropEffect</span> <span class="o">=</span> <span class="s1">&#39;move&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="p">..</span><span class="n">dropEffect</span> <span class="o">=</span> <span class="n">DROP_EFFECT_MOVE</span>
+</span><span class='line'><span class="p">..</span><span class="n">install</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drop-effects .move&#39;</span><span class="p">));</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">DraggableGroup</span> <span class="n">dragGroupCopy</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DraggableGroup</span><span class="p">()</span>
-</span><span class='line'><span class="p">..</span><span class="n">install</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drop-effects .copy&#39;</span><span class="p">))</span>
-</span><span class='line'><span class="p">..</span><span class="n">dropEffect</span> <span class="o">=</span> <span class="s1">&#39;copy&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="p">..</span><span class="n">dropEffect</span> <span class="o">=</span> <span class="n">DROP_EFFECT_COPY</span>
+</span><span class='line'><span class="p">..</span><span class="n">install</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drop-effects .copy&#39;</span><span class="p">));</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">DraggableGroup</span> <span class="n">dragGroupLink</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DraggableGroup</span><span class="p">()</span>
-</span><span class='line'><span class="p">..</span><span class="n">install</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drop-effects .link&#39;</span><span class="p">))</span>
-</span><span class='line'><span class="p">..</span><span class="n">dropEffect</span> <span class="o">=</span> <span class="s1">&#39;link&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="p">..</span><span class="n">dropEffect</span> <span class="o">=</span> <span class="n">DROP_EFFECT_LINK</span>
+</span><span class='line'><span class="p">..</span><span class="n">install</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drop-effects .link&#39;</span><span class="p">));</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">DraggableGroup</span> <span class="n">dragGroupNone</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DraggableGroup</span><span class="p">()</span>
-</span><span class='line'><span class="p">..</span><span class="n">install</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drop-effects .none&#39;</span><span class="p">))</span>
-</span><span class='line'><span class="p">..</span><span class="n">dropEffect</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="p">..</span><span class="n">dropEffect</span> <span class="o">=</span> <span class="n">DROP_EFFECT_NONE</span>
+</span><span class='line'><span class="p">..</span><span class="n">install</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#drop-effects .none&#39;</span><span class="p">));</span>
 </span><span class='line'>
 </span><span class='line'><span class="c1">// Install dropzone.</span>
 </span><span class='line'><span class="n">DropzoneGroup</span> <span class="n">dropGroup</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DropzoneGroup</span><span class="p">()</span>
