@@ -3,40 +3,41 @@ layout: page
 title: Dart HTML5 Drag and Drop
 comments: false
 footer: true
-javascript: [html5_dnd_example.dart.js, dart.js]
 css: [html5_dnd_example.css]
+javascript: [html5_dnd_example.dart.js, dart.js]
 ---
 
-  <p>
-    Native HTML5 Drag and Drop is <a href="http://www.quirksmode.org/blog/archives/2009/09/the_html5_drag.html">not easy to work with</a>! The 
-    <a href="https://github.com/marcojakob/dart-html5-dnd">Dart HTML5 Drag and Drop</a> library was created to use HTML5 Drag and Drop in a consistend way across all modern browsers. Here are some examples of how to use it.
-  </p>
+<p>
+  Native HTML5 Drag and Drop is <a href="http://www.quirksmode.org/blog/archives/2009/09/the_html5_drag.html">not easy to work with</a>! The 
+  <a href="https://github.com/marcojakob/dart-html5-dnd">Dart HTML5 Drag and Drop</a> library was created to use HTML5 Drag and Drop in a consistend way across all modern browsers. Here are some examples of how to use it.
+</p>
   
-  <h3>Features</h3>
-  <p>
-    <ul>
-      <li>Make any HTML Element <code>draggable</code>.</li>
-      <li>Create <code>dropzones</code> and connect them with <code>draggables</code>.</li>
-      <li>Rearrange elements with <code>sortables</code> (similar to jQuery UI Sortable).</li>
-      <li>Support for <code>touch events</code> on touch screen devices.</li>
-      <li>Same functionality and API for IE9+, Firefox, Chrome and Safari.</li>
-      <li>Uses fast native HTML5 Drag and Drop of the browser whenever possible.</li>
-      <li>For browsers that do not support some features, the behaviour is emulated.
-          This is the case for IE9 and partly for IE10 (when custom drag images are used).</li>
-    </ul>
-  </p>
+<h3>Features</h3>
+<p>
+  <ul>
+    <li>Make any HTML Element <code>draggable</code>.</li>
+    <li>Create <code>dropzones</code> and connect them with <code>draggables</code>.</li>
+    <li>Rearrange elements with <code>sortables</code> (similar to jQuery UI Sortable).</li>
+    <li>Support for <code>touch events</code> on touch screen devices.</li>
+    <li>Same functionality and API for IE9+, Firefox, Chrome and Safari.</li>
+    <li>Uses fast native HTML5 Drag and Drop of the browser whenever possible.</li>
+    <li>For browsers that do not support some features, the behaviour is emulated.
+        This is the case for IE9 and partly for IE10 (when custom drag images are used).</li>
+  </ul>
+</p>
+
+<p>
+  API and Examples are inspired by <a href="http://farhadi.ir/projects/html5sortable/">HTML5 Sortable</a>, jQuery UI (<a href="http://api.jqueryui.com/draggable/">Draggable</a>, 
+    <a href="http://api.jqueryui.com/droppable/">Droppable</a>, <a href="http://api.jqueryui.com/sortable/">Sortable</a>) and <a href="http://touchpunch.furf.com/">Touch Punch</a>.
+</p>
   
-  <p>
-    API and Examples are inspired by <a href="http://farhadi.ir/projects/html5sortable/">HTML5 Sortable</a>, jQuery UI (<a href="http://api.jqueryui.com/draggable/">Draggable</a>, 
-      <a href="http://api.jqueryui.com/droppable/">Droppable</a>, <a href="http://api.jqueryui.com/sortable/">Sortable</a>) and <a href="http://touchpunch.furf.com/">Touch Punch</a>.
-  </p>
-    
-  <h3>Installation Instructions and Source Code</h3>
-  <p>
-    <a href="https://github.com/marcojakob/dart-html5-dnd"><img class="middle" src="/images/glyphicons_github.png" title="'Dart HTML5 Drag and Drop on GitHub'">Dart HTML5 Drag and Drop</a> on GitHub.
-  </p>
-  <p>You are welcome to contribute by reporting an <a href="https://github.com/marcojakob/dart-html5-dnd/issues">Issue</a> or <a href="https://help.github.com/articles/fork-a-repo">forking the repository</a>.
-  </p>
+<h3>Installation Instructions and Source Code</h3>
+<p>
+  <a href="https://github.com/marcojakob/dart-html5-dnd"><img class="middle" src="/images/glyphicons_github.png" title="'Dart HTML5 Drag and Drop on GitHub'">Dart HTML5 Drag and Drop</a> on GitHub.
+</p>
+<p>You are welcome to contribute by reporting an <a href="https://github.com/marcojakob/dart-html5-dnd/issues">Issue</a> or <a href="https://help.github.com/articles/fork-a-repo">forking the repository</a>.
+</p>
+
 <p></p>
 
 <h2>Draggable and Dropzone</h2>
@@ -486,52 +487,7 @@ sortGroup.accept.add(sortGroup);
 {% endcodeblock  %}
 </div></div></div>
 
-<h2>Exclude Items</h2>
-<p>
-  Exclude elements from beeing sortable.
-</p>
-<div id="sortable-list-exclude" class="example-container">
-  <ul class="example-box">
-    <li draggable="true">Item 1</li>
-    <li draggable="true">Item 2</li>
-    <li draggable="true">Item 3</li>
-    <li class="disabled">Item 4</li>
-    <li class="disabled">Item 5</li>
-    <li class="disabled">Item 6</li>
-  </ul>
-</div><div class="example-code"><ul class="menu"><li><a href="#" tab="html" class="active">HTML</a><a href="#" tab="css">CSS</a><a href="#" tab="dart">Dart</a></li></ul><div class="content"><div tab="html" class="active">
-{% codeblock lang:html %}
-<ul class="example-box">
-  <li>Item 1</li>
-  <li>Item 2</li>
-  <li>Item 3</li>
-  <li class="disabled">Item 4</li>
-  <li class="disabled">Item 5</li>
-  <li class="disabled">Item 6</li>
-</ul>
-{% endcodeblock  %}
-</div><div tab="css">
-{% codeblock lang:css %}
-#sortable-list-exclude .dnd-placeholder {
-  border: 1px dashed #CCC;
-  background: none;  
-}
-
-#sortable-list-exclude li:not(.disabled) {
-  cursor: move;
-}
-{% endcodeblock  %}
-</div><div tab="dart">
-{% codeblock lang:dart %}
-SortableGroup sortGroup = new SortableGroup()
-..installAll(queryAll('#sortable-list-exclude li:not(.disabled)'));
-
-// Only accept elements from this section.
-sortGroup.accept.add(sortGroup);
-{% endcodeblock  %}
-</div></div></div>
-
-<h2>Sortable List With Handles</h2>
+<h2>Only Allow Drag on Handles</h2>
 <p>
   Items can only be dragged with the handle.
 </p>
@@ -575,6 +531,60 @@ SortableGroup sortGroup = new SortableGroup(handle: 'span')
 sortGroup.accept.add(sortGroup);
 {% endcodeblock  %}
 </div></div></div>
+
+
+<h2>Prevent Drag on Some Elements</h2>
+<p>
+  Starting a drag can be prevented on specified elements. In this example, 
+  drag can only be started on the outer div.
+</p>
+<p>
+  By default, elements of type input, textarea, button, select, or option 
+  are not draggable.
+</p>
+<div id="cancel-drag" class="example-container">
+  <div class="dragme example-box">
+    Drag me!
+    <div class="nodrag">No drag here!</div>
+    <textarea>No drag here!</textarea>
+    <button>No drag here!</button>
+  </div>
+</div>
+<div class="example-code"><ul class="menu"><li><a href="#" tab="html" class="active">HTML</a><a href="#" tab="css">CSS</a><a href="#" tab="dart">Dart</a></li></ul><div class="content"><div tab="html" class="active">
+{% codeblock lang:html %}
+<div class="dragme example-box">
+  Drag me!
+  <div class="nodrag">No drag here!</div>
+  <textarea>No drag here!</textarea>
+  <button>No drag here!</button>
+</div>
+{% endcodeblock  %}
+</div><div tab="css">
+{% codeblock lang:css %}
+#cancel-drag .dnd-dragging {
+  opacity: 0.5;
+}
+
+#cancel-drag .dragme {
+  padding: 5px;
+  border: 1px solid #aaa;
+  background: #acf;
+  cursor: move;
+}
+
+#cancel-drag .dragme * {
+  cursor: default;
+}
+{% endcodeblock  %}
+</div><div tab="dart">
+{% codeblock lang:dart %}
+// Install draggable.
+DraggableGroup dragGroup = new DraggableGroup(
+    cancel: 'textarea, button, .nodrag')
+..install(query('#cancel-drag .dragme'));
+{% endcodeblock  %}
+</div></div></div>
+
 
 <h2>Two Sortable Groups</h2>
 <p>

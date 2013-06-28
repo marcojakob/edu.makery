@@ -319,18 +319,6 @@ article img {
 }
  
 /* --------------------------------------------------------------------------
- * Section: sortable-list-exclude
- * ------------------------------------------------------------------------*/
-#sortable-list-exclude .dnd-placeholder {
-  border: 1px dashed #CCC;
-  background: none;  
-}
-
-#sortable-list-exclude li:not(.disabled) {
-  cursor: move;
-}
- 
-/* --------------------------------------------------------------------------
  * Section: sortable-list-handles
  * ------------------------------------------------------------------------*/
 #sortable-list-handles .dnd-placeholder {
@@ -340,6 +328,24 @@ article img {
 
 #sortable-list-handles span {
   cursor: move;
+}
+
+/* --------------------------------------------------------------------------
+ * Section: cancel-drag
+ * ------------------------------------------------------------------------*/
+#cancel-drag .dnd-dragging {
+  opacity: 0.5;
+}
+
+#cancel-drag .dragme {
+  padding: 5px;
+  border: 1px solid #aaa;
+  background: #acf;
+  cursor: move;
+}
+
+#cancel-drag .dragme * {
+  cursor: default;
 }
  
 /* --------------------------------------------------------------------------
