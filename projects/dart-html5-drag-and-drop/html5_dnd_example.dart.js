@@ -414,7 +414,22 @@ $$.IFrameElement = {"": "_HTMLElement;height},name=,src},width}"};
 
 $$.ImageElement = {"": "_HTMLElement;height},src},width},x=,y=", $isImageElement: true, $asImageElement: null};
 
-$$.InputElement = {"": "_HTMLElement;height},name=,src},value%,width}", $isElement: true, $asElement: null, $isNode: true, $asNode: null, $isEventTarget: true, $asEventTarget: null};
+$$.InputElement = {"": "_HTMLElement;height},name=,src},value%,width}",
+  setSelectionRange$3: function(receiver, start, end, direction) {
+    return receiver.setSelectionRange(start, end, direction);
+  },
+  setSelectionRange$2: function($receiver, start, end) {
+    return $receiver.setSelectionRange(start, end);
+  },
+  $isInputElement: true,
+  $asInputElement: null,
+  $isElement: true,
+  $asElement: null,
+  $isNode: true,
+  $asNode: null,
+  $isEventTarget: true,
+  $asEventTarget: null
+};
 
 $$.KeyboardEvent = {"": "UIEvent;",
   get$keyCode: function(receiver) {
@@ -666,7 +681,16 @@ $$.TemplateElement = {"": "_HTMLElement;"};
 
 $$.Text = {"": "CharacterData;"};
 
-$$.TextAreaElement = {"": "_HTMLElement;name=,value%"};
+$$.TextAreaElement = {"": "_HTMLElement;name=,value%",
+  setSelectionRange$3: function(receiver, start, end, direction) {
+    return receiver.setSelectionRange(start, end, direction);
+  },
+  setSelectionRange$2: function($receiver, start, end) {
+    return $receiver.setSelectionRange(start, end);
+  },
+  $isTextAreaElement: true,
+  $asTextAreaElement: null
+};
 
 $$.TextEvent = {"": "UIEvent;"};
 
@@ -8782,9 +8806,12 @@ max: function(a, b) {
   throw $.wrapException(new $.ArgumentError(a));
 }}],
 ["html5_dnd", "package:html5_dnd/html5_dnd.dart", , {
-DraggableGroup: {"": "Group;dragOccurringClass,draggingClass<,overClass,dropEffect,dragImageFunction,handle,_onDragStart?,_onDrag?,_onDragEnd?,_emulateDraggable,installedElements",
+DraggableGroup: {"": "Group;dragOccurringClass,draggingClass<,overClass,dropEffect,dragImageFunction,handle,cancel,_onDragStart?,_onDrag?,_onDragEnd?,_emulateDraggable,installedElements",
   dragImageFunction$1: function(arg0) {
     return this.dragImageFunction.call$1(arg0);
+  },
+  cancel$0: function() {
+    return this.cancel.call$0();
   },
   get$onDragStart: function(_) {
     var t1;
@@ -8883,7 +8910,7 @@ DraggableGroup: {"": "Group;dragOccurringClass,draggingClass<,overClass,dropEffe
     $.currentDraggable = null;
     $.currentDraggableGroup = null;
   },
-  DraggableGroup$2$dragImageFunction$handle: function(dragImageFunction, handle) {
+  DraggableGroup$3$cancel$dragImageFunction$handle: function(cancel, dragImageFunction, handle) {
     var t1;
     if ($._supportsDraggable == null) {
       $._supportsDraggable = $.get$draggable$x(document.createElement("span")) != null;
@@ -8926,52 +8953,75 @@ DraggableGroup_onDragEnd_closure: {"": "Closure;this_0",
 
 DraggableGroup__handleDragStart_closure: {"": "Closure;this_0,element_1",
   call$0: function() {
-    var t1 = $.get$classes$x(this.element_1);
-    t1.add$1(t1, this.this_0.get$draggingClass());
+    if ($.currentDraggable != null) {
+      var t1 = $.get$classes$x(this.element_1);
+      t1.add$1(t1, this.this_0.get$draggingClass());
+    }
   }
 },
 
-_installDraggable_closure: {"": "Closure;box_0",
-  call$1: function(_) {
-    $.get$_logger0().finest$1("element handle mouseDown");
-    this.box_0.isHandle_0 = true;
+_installDraggable_closure: {"": "Closure;box_1,element_2,group_3",
+  call$1: function(mouseEvent) {
+    var t1, t2, t3, t4, upSub;
+    t1 = {};
+    $.get$_logger0().finest$1("mouseDown");
+    t2 = this.element_2;
+    t3 = this.group_3;
+    t4 = this.box_1;
+    t4.validDragStartTarget_1 = $._isValidDragStartTarget(t2, $.get$target$x(mouseEvent), t3.handle, t3.cancel);
+    t3 = $.getInterceptor$x(t2);
+    if (t4.validDragStartTarget_1) {
+      t3.get$attributes(t2)._element.setAttribute("draggable", "true");
+      $.clearTextSelections();
+      t1.upSub_0 = null;
+      t3 = new $._EventStream(document, $.EventStreamProvider_mouseup._eventType, false);
+      upSub = new $._EventStreamSubscription(0, t3._target, t3._eventType, new $._installDraggable__closure(t1, t2), t3._useCapture);
+      t2 = upSub._onData;
+      if (t2 != null && !upSub.get$isPaused())
+        $.$$dom_addEventListener$3$x(upSub._target, upSub._eventType, t2, upSub._useCapture);
+      t1.upSub_0 = upSub;
+    } else {
+      t1 = t3.get$attributes(t2)._element;
+      t1.getAttribute("draggable");
+      t1.removeAttribute("draggable");
+    }
   }
 },
 
-_installDraggable_closure0: {"": "Closure;box_0",
-  call$1: function(_) {
-    $.get$_logger0().finest$1("element handle mouseUp");
-    this.box_0.isHandle_0 = false;
+_installDraggable__closure: {"": "Closure;box_0,element_4",
+  call$1: function(upEvent) {
+    var t1 = $.get$attributes$x(this.element_4)._element;
+    t1.getAttribute("draggable");
+    t1.removeAttribute("draggable");
+    this.box_0.upSub_0.cancel$0();
   }
 },
 
-_installDraggable_closure1: {"": "Closure;box_0,element_1,group_2",
+_installDraggable_closure0: {"": "Closure;box_1,element_5,group_6",
   call$1: function(mouseEvent) {
     var t1, t2, dragImage, t3;
-    t1 = this.group_2;
-    if (t1.handle != null && !this.box_0.isHandle_0) {
-      $.preventDefault$0$x(mouseEvent);
+    if (!this.box_1.validDragStartTarget_1)
       return;
-    }
     $.get$_logger0().finest$1("dragStart");
-    t2 = window.getSelection().rangeCount;
-    if (t2 == null)
-      throw t2.$gt();
-    if (t2 > 0)
+    t1 = window.getSelection().rangeCount;
+    if (t1 == null)
+      throw t1.$gt();
+    if (t1 > 0)
       window.getSelection().removeAllRanges();
-    t2 = $.getInterceptor$x(mouseEvent);
-    t2.get$dataTransfer(mouseEvent).effectAllowed = t1.dropEffect;
-    t2.get$dataTransfer(mouseEvent).setData("Text", "");
-    if (t1.dragImageFunction != null) {
-      dragImage = t1.dragImageFunction$1(this.element_1);
+    t1 = $.getInterceptor$x(mouseEvent);
+    t2 = this.group_6;
+    t1.get$dataTransfer(mouseEvent).effectAllowed = t2.dropEffect;
+    t1.get$dataTransfer(mouseEvent).setData("Text", "");
+    if (t2.dragImageFunction != null) {
+      dragImage = t2.dragImageFunction$1(this.element_5);
       t3 = $.getInterceptor$x(dragImage);
-      t2.get$dataTransfer(mouseEvent).setDragImage(dragImage.get$element(), t3.get$x(dragImage), t3.get$y(dragImage));
+      t1.get$dataTransfer(mouseEvent).setDragImage(dragImage.get$element(), t3.get$x(dragImage), t3.get$y(dragImage));
     }
-    t1._handleDragStart$3(this.element_1, t2.get$page(mouseEvent), t2.get$client(mouseEvent));
+    t2._handleDragStart$3(this.element_5, t1.get$page(mouseEvent), t1.get$client(mouseEvent));
   }
 },
 
-_installDraggable_closure2: {"": "Closure;element_3,group_4",
+_installDraggable_closure1: {"": "Closure;element_7,group_8",
   call$1: function(mouseEvent) {
     var t1, t2, t3;
     if ($.currentDraggable == null)
@@ -8979,26 +9029,30 @@ _installDraggable_closure2: {"": "Closure;element_3,group_4",
     t1 = $.getInterceptor$x(mouseEvent);
     t2 = t1.get$page(mouseEvent);
     t1 = t1.get$client(mouseEvent);
-    t3 = this.group_4._onDrag;
+    t3 = this.group_8._onDrag;
     if (t3 != null) {
       t3.add$1;
       if ((t3._state & 4) !== 0)
         $.throwExpression(new $.StateError("Cannot add new events after calling close()"));
-      t3._sendData$1(new $.DraggableEvent(this.element_3, t2, t1));
+      t3._sendData$1(new $.DraggableEvent(this.element_7, t2, t1));
     }
   }
 },
 
-_installDraggable_closure3: {"": "Closure;box_0,element_5,group_6",
+_installDraggable_closure2: {"": "Closure;box_1,element_9,group_10",
   call$1: function(mouseEvent) {
-    var t1;
+    var t1, t2;
     if ($.currentDraggable == null)
       return;
     $.get$_logger0().finest$1("dragEnd");
-    t1 = $.getInterceptor$x(mouseEvent);
-    this.group_6._handleDragEnd$3(this.element_5, t1.get$page(mouseEvent), t1.get$client(mouseEvent));
-    this.box_0.isHandle_0 = false;
+    t1 = this.element_9;
+    t2 = $.getInterceptor$x(mouseEvent);
+    this.group_10._handleDragEnd$3(t1, t2.get$page(mouseEvent), t2.get$client(mouseEvent));
+    this.box_1.validDragStartTarget_1 = false;
     $._lastDragEnterTarget = null;
+    t1 = $.get$attributes$x(t1)._element;
+    t1.getAttribute("draggable");
+    t1.removeAttribute("draggable");
   }
 },
 
@@ -9080,8 +9134,19 @@ DragImage: {"": "Object;element<,x>,y>,_emulatedSub",
 _installEmulatedDraggable_closure: {"": "Closure;element_0,group_1",
   call$1: function(downEvent) {
     var t1, t2, t3, t4, t5;
-    if ($._emulDragHandled || $.get$button$x(downEvent) !== 0)
+    if (!$._emulDragHandled) {
+      t1 = $.getInterceptor$x(downEvent);
+      if (t1.get$button(downEvent) === 0) {
+        t2 = this.group_1;
+        t2 = !$._isValidDragStartTarget(this.element_0, t1.get$target(downEvent), t2.handle, t2.cancel);
+        t1 = t2;
+      } else
+        t1 = true;
+    } else
+      t1 = true;
+    if (t1)
       return;
+    $.clearTextSelections();
     $._emulDragHandled = true;
     $.preventDefault$0$x(downEvent);
     t1 = $.get$_emulSubs();
@@ -9130,8 +9195,8 @@ _installEmulatedDraggable__closure: {"": "Closure;element_2,group_3,mouseDownEve
     } else
       t1 = false;
     if (t1) {
-      $._emulDragMoved = true;
       $.get$_logger0().finest$1("emulating dragStart");
+      $._emulDragMoved = true;
       t1 = this.mouseDownEvent_4;
       t2 = $.getInterceptor$x(t1);
       $._emulateDragStart(this.element_2, this.group_3, t2.get$page(t1), t2.get$client(t1));
@@ -9158,9 +9223,7 @@ _installEmulatedDraggable__closure: {"": "Closure;element_2,group_3,mouseDownEve
 
 _installEmulatedDraggable__closure0: {"": "Closure;element_5,group_6",
   call$1: function(upEvent) {
-    var t1;
-    $.get$_logger0().finest$1("emulating dragEnd");
-    t1 = $.getInterceptor$x(upEvent);
+    var t1 = $.getInterceptor$x(upEvent);
     $._emulateDragEnd(this.element_5, this.group_6, t1.get$target(upEvent), t1.get$page(upEvent), t1.get$client(upEvent), true);
   }
 },
@@ -9590,110 +9653,142 @@ Group_uninstall_closure: {"": "Closure;",
 },
 
 _installTouchEvents_closure: {"": "Closure;element_0,group_1",
-  call$1: function($event) {
-    var t1, touch;
-    if ($._emulDragHandled || $.get$touches$x($event).length > 1)
+  call$1: function(startEvent) {
+    var t1, startTouch, t2, t3, t4, t5, t6;
+    if ($._emulDragHandled || $.get$touches$x(startEvent).length > 1)
       return;
-    $.get$_logger0().finest$1("touchStart: emulating dragStart");
-    t1 = $.getInterceptor$x($event);
-    t1.preventDefault$0($event);
-    t1 = t1.get$changedTouches($event);
+    t1 = $.get$changedTouches$x(startEvent);
     if (0 >= t1.length)
       throw $.ioore(0);
-    touch = t1[0];
+    startTouch = t1[0];
+    t1 = document;
+    t2 = startTouch.clientX;
+    t3 = startTouch.clientY;
+    t4 = this.element_0;
+    t5 = this.group_1;
+    if (!$._isValidDragStartTarget(t4, t1.elementFromPoint(new $.Point(t2, t3).x, new $.Point(t2, t3).y), t5.handle, t5.cancel))
+      return;
     $._emulDragHandled = true;
-    $._emulateDragStart(this.element_0, this.group_1, new $.Point(touch.pageX, touch.pageY), new $.Point(touch.clientX, touch.clientY));
+    $.clearTextSelections();
+    t1 = $.get$_emulSubs();
+    t2 = $.getInterceptor$x(t4);
+    t3 = t2.get$onTouchMove(t4);
+    t3 = new $._EventStreamSubscription(0, t3._target, t3._eventType, new $._installTouchEvents__closure(t4, t5, startTouch), t3._useCapture);
+    t6 = t3._onData;
+    if (t6 != null && !t3.get$isPaused())
+      $.$$dom_addEventListener$3$x(t3._target, t3._eventType, t6, t3._useCapture);
+    t1.push(t3);
+    t1 = $.get$_emulSubs();
+    t2 = t2.get$onTouchEnd(t4);
+    t2 = new $._EventStreamSubscription(0, t2._target, t2._eventType, new $._installTouchEvents__closure0(t4, t5), t2._useCapture);
+    t3 = t2._onData;
+    if (t3 != null && !t2.get$isPaused())
+      $.$$dom_addEventListener$3$x(t2._target, t2._eventType, t3, t2._useCapture);
+    t1.push(t2);
   }
 },
 
-_installTouchEvents_closure0: {"": "Closure;element_2,group_3",
-  call$1: function($event) {
-    var t1, touch, t2, t3, target, t4;
-    if (!$._emulDragHandled || $.get$touches$x($event).length > 1)
+_installTouchEvents__closure: {"": "Closure;element_2,group_3,startTouch_4",
+  call$1: function(moveEvent) {
+    var t1, moveTouch, t2, t3, moveTarget, t4;
+    t1 = $.getInterceptor$x(moveEvent);
+    if (t1.get$touches(moveEvent).length > 1)
       return;
-    t1 = $.getInterceptor$x($event);
-    t1.preventDefault$0($event);
-    t1 = t1.get$changedTouches($event);
+    t1.preventDefault$0(moveEvent);
+    t1 = t1.get$changedTouches(moveEvent);
     if (0 >= t1.length)
       throw $.ioore(0);
-    touch = t1[0];
-    t1 = document;
-    t2 = touch.clientX;
-    t3 = touch.clientY;
-    target = t1.elementFromPoint(new $.Point(t2, t3).x, new $.Point(t2, t3).y);
-    $._emulDragMoved = true;
-    t3 = this.element_2;
-    t2 = new $.Point(touch.pageX, touch.pageY);
-    t1 = new $.Point(touch.clientX, touch.clientY);
-    $._emulDragImage._updateEmulatedDragImagePosition$1(t2);
-    t4 = this.group_3._onDrag;
-    if (t4 != null) {
-      t4.add$1;
-      if ((t4._state & 4) !== 0)
-        $.throwExpression(new $.StateError("Cannot add new events after calling close()"));
-      t4._sendData$1(new $.DraggableEvent(t3, t2, t1));
+    moveTouch = t1[0];
+    if (!$._emulDragMoved) {
+      t1 = this.startTouch_4;
+      t1 = new $.Point(t1.pageX, t1.pageY);
+      t2 = new $.Point(moveTouch.pageX, moveTouch.pageY);
+      t2 = $.max($.abs$0$n($.$sub$n(t1.x, t2.x)), $.abs$0$n($.$sub$n(t1.y, t2.y))) >= 1;
+      t1 = t2;
+    } else
+      t1 = false;
+    if (t1) {
+      $.get$_logger0().finest$1("touch: emulating dragStart");
+      $._emulDragMoved = true;
+      t1 = this.startTouch_4;
+      $._emulateDragStart(this.element_2, this.group_3, new $.Point(t1.pageX, t1.pageY), new $.Point(t1.clientX, t1.clientY));
     }
-    if (target != null)
-      $._dispatchDropzoneEvents(t3, target, t2, t1, true);
+    if ($._emulDragMoved) {
+      t1 = document;
+      t2 = moveTouch.clientX;
+      t3 = moveTouch.clientY;
+      moveTarget = t1.elementFromPoint(new $.Point(t2, t3).x, new $.Point(t2, t3).y);
+      t3 = this.element_2;
+      t2 = new $.Point(moveTouch.pageX, moveTouch.pageY);
+      t1 = new $.Point(moveTouch.clientX, moveTouch.clientY);
+      $._emulDragImage._updateEmulatedDragImagePosition$1(t2);
+      t4 = this.group_3._onDrag;
+      if (t4 != null) {
+        t4.add$1;
+        if ((t4._state & 4) !== 0)
+          $.throwExpression(new $.StateError("Cannot add new events after calling close()"));
+        t4._sendData$1(new $.DraggableEvent(t3, t2, t1));
+      }
+      if (moveTarget != null)
+        $._dispatchDropzoneEvents(t3, moveTarget, t2, t1, true);
+    }
   }
 },
 
-_installTouchEvents_closure1: {"": "Closure;element_4,group_5",
-  call$1: function($event) {
-    var t1, touch, t2, t3;
-    if (!$._emulDragHandled || $.get$touches$x($event).length > 1)
+_installTouchEvents__closure0: {"": "Closure;element_5,group_6",
+  call$1: function(endEvent) {
+    var t1, endTouch, t2, t3;
+    t1 = $.getInterceptor$x(endEvent);
+    if (t1.get$touches(endEvent).length > 1)
       return;
-    $.get$_logger0().finest$1("touchEnd: emulating dragEnd");
-    t1 = $.getInterceptor$x($event);
-    t1.preventDefault$0($event);
-    t1 = t1.get$changedTouches($event);
+    $.get$_logger0().finest$1("touch: emulating dragEnd");
+    t1.preventDefault$0(endEvent);
+    t1 = t1.get$changedTouches(endEvent);
     if (0 >= t1.length)
       throw $.ioore(0);
-    touch = t1[0];
+    endTouch = t1[0];
     t1 = document;
-    t2 = touch.clientX;
-    t3 = touch.clientY;
-    $._emulateDragEnd(this.element_4, this.group_5, t1.elementFromPoint(new $.Point(t2, t3).x, new $.Point(t2, t3).y), new $.Point(touch.pageX, touch.pageY), new $.Point(touch.clientX, touch.clientY), true);
+    t2 = endTouch.clientX;
+    t3 = endTouch.clientY;
+    $._emulateDragEnd(this.element_5, this.group_6, t1.elementFromPoint(new $.Point(t2, t3).x, new $.Point(t2, t3).y), new $.Point(endTouch.pageX, endTouch.pageY), new $.Point(endTouch.clientX, endTouch.clientY), true);
   }
 },
 
-DraggableGroup$: function(dragImageFunction, handle) {
-  var t1 = new $.DraggableGroup("dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", dragImageFunction, handle, null, null, null, false, new $.HashMap(0, null, null, null, null));
-  t1.DraggableGroup$2$dragImageFunction$handle(dragImageFunction, handle);
+DraggableGroup$: function(cancel, dragImageFunction, handle) {
+  var t1 = new $.DraggableGroup("dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", dragImageFunction, handle, cancel, null, null, null, false, new $.HashMap(0, null, null, null, null));
+  t1.DraggableGroup$3$cancel$dragImageFunction$handle(cancel, dragImageFunction, handle);
   return t1;
 },
 
 _installDraggable: function(element, group) {
-  var t1, subs, t2, t3, elementHandle, t4;
+  var t1, subs, t2, t3, t4;
   t1 = {};
   subs = $.List_List($);
+  t1.validDragStartTarget_1 = false;
   t2 = $.getInterceptor$x(element);
-  t2.get$attributes(element)._element.setAttribute("draggable", "true");
-  t1.isHandle_0 = false;
-  t3 = group.handle;
-  if (t3 != null) {
-    elementHandle = t2.query$1(element, t3);
-    if (elementHandle != null) {
-      elementHandle.get$onMouseDown;
-      t3 = new $._EventStream(elementHandle, $.EventStreamProvider_mousedown._eventType, false);
-      t3 = new $._EventStreamSubscription(0, t3._target, t3._eventType, new $._installDraggable_closure(t1), t3._useCapture);
-      t4 = t3._onData;
-      if (t4 != null && !t3.get$isPaused())
-        $.$$dom_addEventListener$3$x(t3._target, t3._eventType, t4, t3._useCapture);
-      subs.push(t3);
-      elementHandle.get$onMouseUp;
-      t3 = new $._EventStream(elementHandle, $.EventStreamProvider_mouseup._eventType, false);
-      t3 = new $._EventStreamSubscription(0, t3._target, t3._eventType, new $._installDraggable_closure0(t1), t3._useCapture);
-      t4 = t3._onData;
-      if (t4 != null && !t3.get$isPaused())
-        $.$$dom_addEventListener$3$x(t3._target, t3._eventType, t4, t3._useCapture);
-      subs.push(t3);
-    }
-  }
-  subs.push(t2.get$onDragStart(element).listen$1(new $._installDraggable_closure1(t1, element, group)));
-  subs.push(t2.get$onDrag(element).listen$1(new $._installDraggable_closure2(element, group)));
-  subs.push(t2.get$onDragEnd(element).listen$1(new $._installDraggable_closure3(t1, element, group)));
+  t3 = t2.get$onMouseDown(element);
+  t3 = new $._EventStreamSubscription(0, t3._target, t3._eventType, new $._installDraggable_closure(t1, element, group), t3._useCapture);
+  t4 = t3._onData;
+  if (t4 != null && !t3.get$isPaused())
+    $.$$dom_addEventListener$3$x(t3._target, t3._eventType, t4, t3._useCapture);
+  subs.push(t3);
+  subs.push(t2.get$onDragStart(element).listen$1(new $._installDraggable_closure0(t1, element, group)));
+  subs.push(t2.get$onDrag(element).listen$1(new $._installDraggable_closure1(element, group)));
+  subs.push(t2.get$onDragEnd(element).listen$1(new $._installDraggable_closure2(t1, element, group)));
   return subs;
+},
+
+_isValidDragStartTarget: function(element, target, handle, cancel) {
+  var handles, cancels;
+  if (handle != null) {
+    handles = $.queryAll$1$x(element, handle);
+    if (!handles.contains$1(handles, target))
+      return false;
+  }
+  cancels = $.queryAll$1$x(element, cancel);
+  if (cancels.contains$1(cancels, target))
+    return false;
+  return true;
 },
 
 DragImage$_forDraggable: function(draggable, mousePosition) {
@@ -9705,8 +9800,7 @@ DragImage$_forDraggable: function(draggable, mousePosition) {
 _installEmulatedDraggable: function(element, group) {
   var subs, t1, t2;
   subs = $.List_List($);
-  t1 = group.handle;
-  t1 = $.get$onMouseDown$x(t1 != null ? $.query$1$x(element, t1) : element);
+  t1 = $.get$onMouseDown$x(element);
   t1 = new $._EventStreamSubscription(0, t1._target, t1._eventType, new $._installEmulatedDraggable_closure(element, group), t1._useCapture);
   t2 = t1._onData;
   if (t2 != null && !t1.get$isPaused())
@@ -9727,15 +9821,16 @@ _emulateDragStart: function(element, group, mousePagePosition, mouseClientPositi
 },
 
 _emulateDragEnd: function(element, group, target, mousePagePosition, mouseClientPosition, dropped) {
-  if (dropped)
-    $.dispatchEvent$1$x($._getRealTarget(target, mouseClientPosition), $._createEmulatedMouseEvent("emulatedDrop", null, mousePagePosition, mouseClientPosition));
-  $.IterableMixinWorkaround_forEach($.get$_emulSubs(), new $._emulateDragEnd_closure());
-  $.JSArray_methods.set$length($.get$_emulSubs(), 0);
   if ($._emulDragMoved) {
+    $.get$_logger0().finest$1("emulating dragEnd");
     $._emulDragImage._removeEumlatedDragImage$0();
+    if (dropped)
+      $.dispatchEvent$1$x($._getRealTarget(target, mouseClientPosition), $._createEmulatedMouseEvent("emulatedDrop", null, mousePagePosition, mouseClientPosition));
     group._handleDragEnd$3(element, mousePagePosition, mouseClientPosition);
   }
   $._restoreCursor();
+  $.IterableMixinWorkaround_forEach($.get$_emulSubs(), new $._emulateDragEnd_closure());
+  $.JSArray_methods.set$length($.get$_emulSubs(), 0);
   $._emulDragHandled = false;
   $._emulDragMoved = false;
   $._emulDragImage = null;
@@ -9867,25 +9962,10 @@ _installEmulatedDropzone: function(element, group) {
 },
 
 _installTouchEvents: function(element, group) {
-  var subs, t1, elementHandle, t2, t3;
+  var subs, t1, t2;
   subs = $.List_List($);
-  t1 = group.handle;
-  elementHandle = t1 != null ? $.query$1$x(element, t1) : element;
-  t1 = $.getInterceptor$x(elementHandle);
-  t2 = t1.get$onTouchStart(elementHandle);
-  t2 = new $._EventStreamSubscription(0, t2._target, t2._eventType, new $._installTouchEvents_closure(element, group), t2._useCapture);
-  t3 = t2._onData;
-  if (t3 != null && !t2.get$isPaused())
-    $.$$dom_addEventListener$3$x(t2._target, t2._eventType, t3, t2._useCapture);
-  subs.push(t2);
-  t2 = t1.get$onTouchMove(elementHandle);
-  t2 = new $._EventStreamSubscription(0, t2._target, t2._eventType, new $._installTouchEvents_closure0(element, group), t2._useCapture);
-  t3 = t2._onData;
-  if (t3 != null && !t2.get$isPaused())
-    $.$$dom_addEventListener$3$x(t2._target, t2._eventType, t3, t2._useCapture);
-  subs.push(t2);
-  t1 = t1.get$onTouchEnd(elementHandle);
-  t1 = new $._EventStreamSubscription(0, t1._target, t1._eventType, new $._installTouchEvents_closure1(element, group), t1._useCapture);
+  t1 = $.get$onTouchStart$x(element);
+  t1 = new $._EventStreamSubscription(0, t1._target, t1._eventType, new $._installTouchEvents_closure(element, group), t1._useCapture);
   t2 = t1._onData;
   if (t2 != null && !t1.get$isPaused())
     $.$$dom_addEventListener$3$x(t1._target, t1._eventType, t2, t1._useCapture);
@@ -9920,6 +10000,13 @@ getElementIndexInParent: function(element) {
   return index;
 },
 
+clearTextSelections: function() {
+  window.getSelection().removeAllRanges();
+  var activeElement = document.activeElement;
+  if (typeof activeElement === "object" && activeElement !== null && !!$.getInterceptor(activeElement).$isTextAreaElement || typeof activeElement === "object" && activeElement !== null && !!$.getInterceptor(activeElement).$isInputElement)
+    $.setSelectionRange$2$x(activeElement, 0, 0);
+},
+
 supportsSetDragImage: function() {
   if ($._supportsSetDragImage == null) {
     if ($._isInternetExplorer == null)
@@ -9933,7 +10020,7 @@ supportsSetDragImage: function() {
   return $._supportsSetDragImage;
 }}],
 ["html5_dnd.sortable", "package:html5_dnd/src/sortable/sortable.dart", , {
-SortableGroup: {"": "DraggableGroup;placeholderClass,forcePlaceholderSize,isGrid,_onSortUpdate?,_dropzoneGroup,_dragEnterSub,_dragStartSub,dragOccurringClass,draggingClass,overClass,dropEffect,dragImageFunction,handle,_onDragStart,_onDrag,_onDragEnd,_emulateDraggable,installedElements",
+SortableGroup: {"": "DraggableGroup;placeholderClass,forcePlaceholderSize,isGrid,_onSortUpdate?,_dropzoneGroup,_sortableSubs<,_dragEnterSub,dragOccurringClass,draggingClass,overClass,dropEffect,dragImageFunction,handle,cancel,_onDragStart,_onDrag,_onDragEnd,_emulateDraggable,installedElements",
   get$onSortUpdate: function() {
     if (this._onSortUpdate == null) {
       var t1 = new $.SortableGroup_onSortUpdate_closure(this);
@@ -9966,16 +10053,24 @@ SortableGroup: {"": "DraggableGroup;placeholderClass,forcePlaceholderSize,isGrid
     return t1.get$onDrop(t1);
   },
   install$1: function(element) {
-    var t1;
-    $.get$_logger1().finest$1("installing sortable");
+    $.get$_logger1().finest$1("installing as sortable");
     $.DraggableGroup.prototype.install$1.call(this, element);
-    t1 = this._dropzoneGroup;
-    t1.install$1(element);
+    this._dropzoneGroup.install$1(element);
     if (this.installedElements._length === 1) {
       $.get$_logger1().finest$1("first element in this sortable group installed, add listeners");
-      this._dragStartSub = this.get$onDragStart(this).listen$1(new $.SortableGroup_install_closure());
-      this._dragEnterSub = t1.get$onDragEnter(t1).listen$1(new $.SortableGroup_install_closure0(this));
+      this._listenToDragEnter$0();
     }
+  },
+  _listenToDragEnter$0: function() {
+    var t1 = this._dropzoneGroup;
+    this._dragEnterSub = t1.get$onDragEnter(t1).listen$1(new $.SortableGroup__listenToDragEnter_closure(this));
+  },
+  _listenToDrop$0: function() {
+    var t1 = this._dropzoneGroup;
+    this._sortableSubs.push(t1.get$onDrop(t1).listen$1(new $.SortableGroup__listenToDrop_closure()));
+  },
+  _listenToDragEnd$1: function(group) {
+    this._sortableSubs.push(group.get$onDragEnd(group).listen$1(new $.SortableGroup__listenToDragEnd_closure(this)));
   },
   uninstall$1: function(element) {
     $.get$_logger1().finest$1("uninstalling sortable");
@@ -9985,8 +10080,6 @@ SortableGroup: {"": "DraggableGroup;placeholderClass,forcePlaceholderSize,isGrid
       $.get$_logger1().finest$1("last element in this sortable group uninstalled, cancel group subscriptions");
       this._dragEnterSub.cancel$0();
       this._dragEnterSub = null;
-      this._dragStartSub.cancel$0();
-      this._dragStartSub = null;
     }
   }
 },
@@ -9998,36 +10091,46 @@ SortableGroup_onSortUpdate_closure: {"": "Closure;this_0",
   }
 },
 
-SortableGroup_install_closure: {"": "Closure;",
+SortableGroup__listenToDragEnter_closure: {"": "Closure;this_0",
   call$1: function($event) {
-    var t1, t2, t3;
-    $.get$_logger1().finest$1("dragStart");
-    t1 = new $._Placeholder($.get$draggable$x($event), null, null, $.currentDraggableGroup, null, null, null, false, null, null, null, null);
-    t2 = t1.draggable;
-    t1.originalPosition = new $.Position($.get$parent$x(t2), $.getElementIndexInParent(t2));
-    t2 = new $.DropzoneGroup($.HashSet$(), null, null, null, null, $.HashMap$());
-    t3 = t2.accept;
-    t3.add$1(t3, t1.originalGroup);
-    t1._placeholderDropzoneGroup = t2;
-    $._currentPlaceholder = t1;
+    var t1;
+    $.get$_logger1().finest$1("dragEnter");
+    if ($._currentPlaceholder == null)
+      $._currentPlaceholder = $._Placeholder$($.currentDraggable, $.currentDraggableGroup);
+    t1 = this.this_0;
+    if (t1.get$_sortableSubs().length === 0) {
+      t1._listenToDrop$0();
+      t1._listenToDragEnd$1($.currentDraggableGroup);
+    }
+    $._currentPlaceholder.showPlaceholder$2($.get$dropzone$x($event), t1);
   }
 },
 
-SortableGroup_install_closure0: {"": "Closure;this_0",
+SortableGroup__listenToDrop_closure: {"": "Closure;",
   call$1: function($event) {
-    var t1, t2, t3;
-    $.get$_logger1().finest$1("dragEnter");
-    if ($._currentPlaceholder == null) {
-      t1 = new $._Placeholder($.get$draggable$x($event), null, null, $.currentDraggableGroup, null, null, null, false, null, null, null, null);
-      t2 = t1.draggable;
-      t1.originalPosition = new $.Position($.get$parent$x(t2), $.getElementIndexInParent(t2));
-      t2 = new $.DropzoneGroup($.HashSet$(), null, null, null, null, $.HashMap$());
-      t3 = t2.accept;
-      t3.add$1(t3, t1.originalGroup);
-      t1._placeholderDropzoneGroup = t2;
-      $._currentPlaceholder = t1;
-    }
-    $._currentPlaceholder.showPlaceholder$2($.get$dropzone$x($event), this.this_0);
+    $.get$_logger1().finest$1("drop");
+    if ($._currentPlaceholder != null)
+      $._dropped = true;
+  }
+},
+
+SortableGroup__listenToDragEnd_closure: {"": "Closure;this_0",
+  call$1: function(_) {
+    var t1;
+    $.get$_logger1().finest$1("dragEnd");
+    t1 = this.this_0;
+    $.IterableMixinWorkaround_forEach(t1.get$_sortableSubs(), new $.SortableGroup__listenToDragEnd__closure());
+    $.JSArray_methods.set$length(t1.get$_sortableSubs(), 0);
+    t1 = $._currentPlaceholder;
+    if (t1 != null)
+      t1.hidePlaceholder$1$dropped($._dropped);
+    $._dropped = false;
+  }
+},
+
+SortableGroup__listenToDragEnd__closure: {"": "Closure;",
+  call$1: function(s) {
+    return s.cancel$0();
   }
 },
 
@@ -10061,22 +10164,19 @@ Position: {"": "Object;parent>,index",
 
 SortableEvent: {"": "Object;draggable>,originalPosition,newPosition,originalGroup<,newGroup<"},
 
-_Placeholder: {"": "Object;draggable>,originalPosition,newPosition,originalGroup<,newGroup<,placeholderElement<,_placeholderDropzoneGroup<,_dropped@,_dropzoneOverSub<,_dropzoneDropSub<,_placeholderDropSub<,_draggableEndSub<",
+_Placeholder: {"": "Object;_draggable,_draggableWidth,_draggableHeight,_originalPosition,_originalGroup,_currentPosition,_currentGroup,placeholderElement,_dropzoneOverSub,_placeholderDropzoneGroup",
   showPlaceholder$2: function(dropzone, group) {
     var t1, t2, t3, t4;
     $.get$_logger1().finest$1("showPlaceholder");
-    this.newGroup = group;
-    if (this.placeholderElement == null)
-      this._createPlaceholderElement$0();
+    t1 = this._currentGroup;
+    if (t1 == null || t1 !== group) {
+      this._currentGroup = group;
+      this._applyGroupProperties$1(group);
+    }
     t1 = this._dropzoneOverSub;
     if (t1 != null) {
       t1.cancel$0();
       this._dropzoneOverSub = null;
-    }
-    t1 = this._dropzoneDropSub;
-    if (t1 != null) {
-      t1.cancel$0();
-      this._dropzoneDropSub = null;
     }
     t1 = this.placeholderElement;
     t2 = $.getInterceptor$x(t1);
@@ -10091,7 +10191,7 @@ _Placeholder: {"": "Object;draggable>,originalPosition,newPosition,originalGroup
     } else
       t3 = false;
     if (!t3)
-      if (this.newGroup.isGrid) {
+      if (this._currentGroup.isGrid) {
         t1 = t2.get$clientWidth(t1);
         if (t1 == null)
           throw t1.$gt();
@@ -10108,84 +10208,82 @@ _Placeholder: {"": "Object;draggable>,originalPosition,newPosition,originalGroup
       t1 = true;
     if (t1) {
       $.get$_logger1().finest$1("dropzone is bigger than placeholder, listening to dragOver events");
-      t1 = this.newGroup;
+      t1 = this._currentGroup;
       t1.get$onDragOver;
       t1 = t1._dropzoneGroup;
       this._dropzoneOverSub = t1.get$onDragOver(t1).listen$1(new $._Placeholder_showPlaceholder_closure(this, dropzone));
-      t1 = this.newGroup;
-      t1.get$onDrop;
-      t1 = t1._dropzoneGroup;
-      this._dropzoneDropSub = t1.get$onDrop(t1).listen$1(new $._Placeholder_showPlaceholder_closure0(this));
     } else {
-      $.get$_logger1().finest$1("dropzone is not bigger than placeholder, not listening to dragOver events");
-      this.newPosition = new $.Position($.get$parent$x(dropzone), $.getElementIndexInParent(dropzone));
-      $.get$_logger1().finest$1("showing placeholder at index " + $.S(this.newPosition.index));
+      $.get$_logger1().finest$1("dropzone is not bigger than placeholder");
+      this._currentPosition = new $.Position($.get$parent$x(dropzone), $.getElementIndexInParent(dropzone));
+      $.get$_logger1().finest$1("showing placeholder at index " + $.S(this._currentPosition.index));
       $.remove$0$ax(this.placeholderElement);
-      t1 = this.newPosition;
+      t1 = this._currentPosition;
       t2 = this.placeholderElement;
       t1.insert$1;
       $.insert$2$ax($.get$children$x(t1.parent), t1.index, t2);
-      $.remove$0$ax(this.draggable);
+      $.remove$0$ax(this._draggable);
     }
   },
-  hidePlaceholder$1$revertToOriginal: function(revertToOriginal) {
+  hidePlaceholder$1$dropped: function(dropped) {
     var t1, t2, t3, t4, t5;
     $.remove$0$ax(this.placeholderElement);
-    t1 = this.draggable;
-    if (revertToOriginal) {
-      t2 = this.originalPosition;
-      $.insert$2$ax($.get$children$x(t2.parent), t2.index, t1);
-    } else {
-      t2 = this.newPosition;
+    this.placeholderElement = null;
+    $._currentPlaceholder = null;
+    t1 = this._draggable;
+    if (dropped) {
+      $.get$_logger1().finest$1("placeholder was dropped -> Show draggable at new position");
+      t2 = this._currentPosition;
       t2.insert$1;
       $.insert$2$ax($.get$children$x(t2.parent), t2.index, t1);
-      if (!$.$eq(this.newPosition, this.originalPosition)) {
+      t2 = this._originalPosition;
+      if (!$.$eq(this._currentPosition, t2)) {
         $.get$_logger1().finest$1("firing onSortableComplete event");
-        t2 = this.newGroup;
-        t3 = t2._onSortUpdate;
-        if (t3 != null) {
-          t4 = this.originalPosition;
-          t5 = this.newPosition;
-          t3.add$1;
-          if ((t3._state & 4) !== 0)
+        t3 = this._currentGroup;
+        t4 = t3._onSortUpdate;
+        if (t4 != null) {
+          t5 = this._currentPosition;
+          t4.add$1;
+          if ((t4._state & 4) !== 0)
             $.throwExpression(new $.StateError("Cannot add new events after calling close()"));
-          t3._sendData$1(new $.SortableEvent(t1, t4, t5, this.originalGroup, t2));
+          t4._sendData$1(new $.SortableEvent(t1, t2, t5, this._originalGroup, t3));
         }
       }
+    } else {
+      $.get$_logger1().finest$1("placeholder not dropped -> Revert to state before dragging");
+      t2 = this._originalPosition;
+      $.insert$2$ax($.get$children$x(t2.parent), t2.index, t1);
     }
-  },
-  hidePlaceholder$0: function() {
-    return this.hidePlaceholder$1$revertToOriginal(false);
+    t1 = this._dropzoneOverSub;
+    if (t1 != null)
+      t1.cancel$0();
   },
   _createPlaceholderElement$0: function() {
-    var t1, t2, t3, t4, propValue;
-    $.get$_logger1().finest$1("creating new placeholder");
-    t1 = this.draggable;
-    t2 = $.getInterceptor$x(t1);
-    this.placeholderElement = document.createElement(t2.get$tagName(t1));
-    this._placeholderDropzoneGroup.install$1(this.placeholderElement);
-    this.newGroup.placeholderClass;
-    t3 = $.get$classes$x(this.placeholderElement);
-    t3.add$1(t3, this.newGroup.placeholderClass);
-    if (this.newGroup.forcePlaceholderSize) {
-      t3 = $.get$style$x(this.placeholderElement);
-      t4 = t2.getComputedStyle$0(t1);
-      t4.get$height;
-      propValue = t4.getPropertyValue("height");
-      t4 = propValue != null ? propValue : "";
-      t3.set$height;
-      $.setProperty$3$x(t3, "height", t4, "");
-      t4 = $.get$style$x(this.placeholderElement);
-      t1 = t2.getComputedStyle$0(t1);
-      t1.get$width;
-      propValue = t1.getPropertyValue("width");
-      t1 = propValue != null ? propValue : "";
-      t4.set$width;
-      $.setProperty$3$x(t4, "width", t1, "");
+    $.get$_logger1().finest$1("creating new placeholder element");
+    this.placeholderElement = document.createElement($.get$tagName$x(this._draggable));
+    var t1 = new $.DropzoneGroup(new $.HashSet(0, null, null, null, null), null, null, null, null, new $.HashMap(0, null, null, null, null));
+    t1.install$1(this.placeholderElement);
+    t1.get$onDrop(t1).listen$1(new $._Placeholder__createPlaceholderElement_closure());
+    this._placeholderDropzoneGroup = t1;
+  },
+  _applyGroupProperties$1: function(group) {
+    var t1, t2;
+    this._currentGroup.placeholderClass;
+    t1 = this.placeholderElement;
+    t1 = $.get$classes$x(t1);
+    t1.add$1(t1, this._currentGroup.placeholderClass);
+    t1 = this._currentGroup.forcePlaceholderSize;
+    t2 = this.placeholderElement;
+    if (t1) {
+      t1 = $.get$style$x(t2);
+      t1.set$width;
+      $.setProperty$3$x(t1, "width", this._draggableWidth, "");
+      t1 = $.get$style$x(this.placeholderElement);
+      t1.set$height;
+      $.setProperty$3$x(t1, "height", this._draggableHeight, "");
+    } else {
+      $.get$style$x(t2).removeProperty("width");
+      $.get$style$x(this.placeholderElement).removeProperty("height");
     }
-    this._placeholderDropSub = $.get$onDrop$x(this._placeholderDropzoneGroup).listen$1(new $._Placeholder__createPlaceholderElement_closure(this));
-    t1 = this.originalGroup;
-    this._draggableEndSub = t1.get$onDragEnd(t1).listen$1(new $._Placeholder__createPlaceholderElement_closure0(this));
   },
   _showPlaceholderForBiggerDropzone$2: function(dropzone, mousePagePosition) {
     var t1, dropzonePosition, t2, t3;
@@ -10204,7 +10302,7 @@ _Placeholder: {"": "Object;draggable>,originalPosition,newPosition,originalGroup
     if (t2)
       if (this._isInDisabledVerticalRegion$3(dropzone, dropzonePosition, mousePagePosition))
         return;
-    if (this.newGroup.isGrid) {
+    if (this._currentGroup.isGrid) {
       t2 = $.get$clientWidth$x(this.placeholderElement);
       if (t2 == null)
         throw t2.$gt();
@@ -10221,21 +10319,21 @@ _Placeholder: {"": "Object;draggable>,originalPosition,newPosition,originalGroup
           return;
     }
     $.get$_logger1().finest$1("showing placeholder for bigger dropzone");
-    this.newPosition = dropzonePosition;
-    $.get$_logger1().finest$1("showing placeholder at index " + $.S(this.newPosition.index));
+    this._currentPosition = dropzonePosition;
+    $.get$_logger1().finest$1("showing placeholder at index " + $.S(this._currentPosition.index));
     $.remove$0$ax(this.placeholderElement);
-    t1 = this.newPosition;
+    t1 = this._currentPosition;
     t2 = this.placeholderElement;
     t1.insert$1;
     $.insert$2$ax($.get$children$x(t1.parent), t1.index, t2);
-    $.remove$0$ax(this.draggable);
+    $.remove$0$ax(this._draggable);
   },
   _isInDisabledVerticalRegion$3: function(dropzone, dropzonePosition, mousePagePosition) {
     var t1, t2;
-    t1 = this.newPosition;
+    t1 = this._currentPosition;
     if (t1 != null)
       if ($.$eq(t1.parent, dropzonePosition.parent)) {
-        t1 = this.newPosition.index;
+        t1 = this._currentPosition.index;
         t2 = dropzonePosition.index;
         if (t1 == null)
           throw t1.$gt();
@@ -10255,9 +10353,9 @@ _Placeholder: {"": "Object;draggable>,originalPosition,newPosition,originalGroup
   _isInDisabledHorizontalRegion$3: function(dropzone, dropzonePosition, mousePagePosition) {
     var mouseRelativeLeft, t1, t2;
     mouseRelativeLeft = $.$sub$n($.get$x$x(mousePagePosition), $.pageOffset(dropzone).x);
-    t1 = this.newPosition;
+    t1 = this._currentPosition;
     if (t1 != null && $.$eq(t1.parent, dropzonePosition.parent)) {
-      t1 = this.newPosition.index;
+      t1 = this._currentPosition.index;
       t2 = dropzonePosition.index;
       if (t1 == null)
         throw t1.$gt();
@@ -10271,6 +10369,9 @@ _Placeholder: {"": "Object;draggable>,originalPosition,newPosition,originalGroup
           return true;
     }
     return false;
+  },
+  _Placeholder$2: function(draggable, originalGroup) {
+    this._createPlaceholderElement$0();
   }
 },
 
@@ -10281,70 +10382,29 @@ _Placeholder_showPlaceholder_closure: {"": "Closure;this_0,dropzone_1",
   }
 },
 
-_Placeholder_showPlaceholder_closure0: {"": "Closure;this_2",
+_Placeholder__createPlaceholderElement_closure: {"": "Closure;",
   call$1: function($event) {
-    $.get$_logger1().finest$1("placeholder (dropzone) drop");
-    this.this_2.set$_dropped(true);
+    $.get$_logger1().finest$1("drop on placeholder");
+    $._dropped = true;
   }
 },
 
-_Placeholder__createPlaceholderElement_closure: {"": "Closure;this_0",
-  call$1: function(_) {
-    $.get$_logger1().finest$1("placeholder drop");
-    this.this_0.set$_dropped(true);
-  }
-},
-
-_Placeholder__createPlaceholderElement_closure0: {"": "Closure;this_1",
-  call$1: function(_) {
-    var t1, t2;
-    $.get$_logger1().finest$1("placeholder dragEnd");
-    t1 = this.this_1;
-    if (t1.get$_dropped()) {
-      $.get$_logger1().finest$1("placeholder was dropped -> Show draggable at new position");
-      $._currentPlaceholder.hidePlaceholder$0();
-    } else {
-      $.get$_logger1().finest$1("placeholder not dropped -> Revert to state before dragging");
-      $._currentPlaceholder.hidePlaceholder$1$revertToOriginal(true);
-    }
-    $._currentPlaceholder = null;
-    t2 = t1.get$_dropzoneOverSub();
-    if (t2 != null)
-      t2.cancel$0();
-    t2 = t1.get$_dropzoneDropSub();
-    if (t2 != null)
-      t2.cancel$0();
-    t1.get$_placeholderDropSub().cancel$0();
-    t1.get$_draggableEndSub().cancel$0();
-    t1.get$_placeholderDropzoneGroup().uninstall$1(t1.get$placeholderElement());
-  }
+_Placeholder$: function(draggable, originalGroup) {
+  var t1, t2, propValue, t3;
+  t1 = $.getInterceptor$x(draggable);
+  t2 = t1.getComputedStyle$0(draggable);
+  t2.get$width;
+  propValue = t2.getPropertyValue("width");
+  t2 = propValue != null ? propValue : "";
+  t3 = t1.getComputedStyle$0(draggable);
+  t3.get$height;
+  propValue = t3.getPropertyValue("height");
+  t3 = propValue != null ? propValue : "";
+  t1 = new $._Placeholder(draggable, t2, t3, new $.Position(t1.get$parent(draggable), $.getElementIndexInParent(draggable)), originalGroup, null, null, null, null, null);
+  t1._Placeholder$2(draggable, originalGroup);
+  return t1;
 }}],
 ["html5_dnd_example", "html5_dnd_example.dart", , {
-installCodeblockTabs_closure: {"": "Closure;link_0",
-  call$1: function($event) {
-    var t1, t2, exampleCodeParent, t3, t4, currentTab;
-    $.preventDefault$0$x($event);
-    t1 = this.link_0;
-    t2 = $.getInterceptor$x(t1);
-    exampleCodeParent = $.get$parent$x($.get$parent$x(t2.get$parent(t1)));
-    t3 = $.getInterceptor$x(exampleCodeParent);
-    t4 = t3.queryAll$1(exampleCodeParent, "[tab]");
-    t4.forEach$1(t4, new $.installCodeblockTabs__closure());
-    currentTab = t2.get$attributes(t1)._element.getAttribute("tab");
-    t1 = t2.get$classes(t1);
-    t1.add$1(t1, "active");
-    t3 = $.get$classes$x(t3.query$1(exampleCodeParent, ".content [tab=\"" + currentTab + "\"]"));
-    t3.add$1(t3, "active");
-  }
-},
-
-installCodeblockTabs__closure: {"": "Closure;",
-  call$1: function(e) {
-    var t1 = $.get$classes$x(e);
-    t1.remove$1(t1, "active");
-  }
-},
-
 sectionDraggableAndDropzone_closure: {"": "Closure;",
   call$1: function($event) {
     var t1 = $.getInterceptor$x($event);
@@ -10440,9 +10500,19 @@ sectionSortableList_closure: {"": "Closure;",
 
 sectionSortableTwoGroups_closure: {"": "Closure;",
   call$1: function($event) {
-    var t1 = $.getInterceptor$x($event);
+    var t1, t2;
+    t1 = $.getInterceptor$x($event);
     $event.get$originalGroup().uninstall$1(t1.get$draggable($event));
-    $event.get$newGroup().install$1(t1.get$draggable($event));
+    t2 = $event.get$newGroup();
+    t1 = t1.get$draggable($event);
+    t2.install$1;
+    $.get$_logger1().finest$1("installing as sortable");
+    $.DraggableGroup.prototype.install$1.call(t2, t1);
+    t2._dropzoneGroup.install$1(t1);
+    if (t2.installedElements._length === 1) {
+      $.get$_logger1().finest$1("first element in this sortable group installed, add listeners");
+      t2._listenToDragEnter$0();
+    }
   }
 },
 
@@ -10454,62 +10524,84 @@ sectionSortableTwoGroups_closure0: {"": "Closure;png_0",
 
 sectionSortableTwoGroups_closure1: {"": "Closure;",
   call$1: function($event) {
-    var t1 = $.getInterceptor$x($event);
-    $event.get$originalGroup().uninstall$1(t1.get$draggable($event));
-    $event.get$newGroup().install$1(t1.get$draggable($event));
+    var t1, t2;
+    t1 = $event.get$originalGroup();
+    t2 = $event.get$newGroup();
+    if (t1 == null ? t2 != null : t1 !== t2) {
+      t2 = $.getInterceptor$x($event);
+      t1.uninstall$1(t2.get$draggable($event));
+      t1 = $event.get$newGroup();
+      t2 = t2.get$draggable($event);
+      t1.install$1;
+      $.get$_logger1().finest$1("installing as sortable");
+      $.DraggableGroup.prototype.install$1.call(t1, t2);
+      t1._dropzoneGroup.install$1(t2);
+      if (t1.installedElements._length === 1) {
+        $.get$_logger1().finest$1("first element in this sortable group installed, add listeners");
+        t1._listenToDragEnter$0();
+      }
+    }
+  }
+},
+
+_installCodeblockTabs_closure: {"": "Closure;link_0",
+  call$1: function($event) {
+    var t1, t2, exampleCodeParent, t3, t4, currentTab;
+    $.preventDefault$0$x($event);
+    t1 = this.link_0;
+    t2 = $.getInterceptor$x(t1);
+    exampleCodeParent = $.get$parent$x($.get$parent$x(t2.get$parent(t1)));
+    t3 = $.getInterceptor$x(exampleCodeParent);
+    t4 = t3.queryAll$1(exampleCodeParent, "[tab]");
+    t4.forEach$1(t4, new $._installCodeblockTabs__closure());
+    currentTab = t2.get$attributes(t1)._element.getAttribute("tab");
+    t1 = t2.get$classes(t1);
+    t1.add$1(t1, "active");
+    t3 = $.get$classes$x(t3.query$1(exampleCodeParent, ".content [tab=\"" + currentTab + "\"]"));
+    t3.add$1(t3, "active");
+  }
+},
+
+_installCodeblockTabs__closure: {"": "Closure;",
+  call$1: function(e) {
+    var t1 = $.get$classes$x(e);
+    t1.remove$1(t1, "active");
   }
 },
 
 main: function() {
-  var sortGroup, t1;
+  var t1, sortGroup;
   $.sectionDraggableAndDropzone();
   $.sectionDraggingDivs();
   $.sectionDropEffects();
   $.sectionDragImages();
   $.sectionNestedElements();
   $.sectionSortableList();
-  sortGroup = new $.SortableGroup("dnd-placeholder", true, false, null, new $.DropzoneGroup($.HashSet$(), null, null, null, null, $.HashMap$()), null, null, "dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", null, null, null, null, null, false, new $.HashMap(0, null, null, null, null));
-  sortGroup.DraggableGroup$2$dragImageFunction$handle(null, null);
+  t1 = $.List_List($);
+  sortGroup = new $.SortableGroup("dnd-placeholder", true, false, null, new $.DropzoneGroup($.HashSet$(), null, null, null, null, $.HashMap$()), t1, null, "dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", null, null, "input,textarea,button,select,option", null, null, null, false, new $.HashMap(0, null, null, null, null));
+  sortGroup.DraggableGroup$3$cancel$dragImageFunction$handle("input,textarea,button,select,option", null, null);
   sortGroup.draggingClass = null;
   sortGroup.overClass = null;
   sortGroup.isGrid = true;
   sortGroup.installAll$1(new $._FrozenElementList(document.querySelectorAll("#sortable-grid li")));
   t1 = sortGroup.get$accept(sortGroup);
   t1.add$1(t1, sortGroup);
-  sortGroup = new $.SortableGroup("dnd-placeholder", true, false, null, new $.DropzoneGroup($.HashSet$(), null, null, null, null, $.HashMap$()), null, null, "dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", null, null, null, null, null, false, new $.HashMap(0, null, null, null, null));
-  sortGroup.DraggableGroup$2$dragImageFunction$handle(null, null);
-  sortGroup.draggingClass = null;
-  sortGroup.overClass = null;
-  sortGroup.installAll$1(new $._FrozenElementList(document.querySelectorAll("#sortable-list-exclude li:not(.disabled)")));
-  t1 = sortGroup.get$accept(sortGroup);
-  t1.add$1(t1, sortGroup);
-  sortGroup = new $.SortableGroup("dnd-placeholder", true, false, null, new $.DropzoneGroup($.HashSet$(), null, null, null, null, $.HashMap$()), null, null, "dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", null, "span", null, null, null, false, new $.HashMap(0, null, null, null, null));
-  sortGroup.DraggableGroup$2$dragImageFunction$handle(null, "span");
+  t1 = $.List_List($);
+  sortGroup = new $.SortableGroup("dnd-placeholder", true, false, null, new $.DropzoneGroup($.HashSet$(), null, null, null, null, $.HashMap$()), t1, null, "dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", null, "span", "input,textarea,button,select,option", null, null, null, false, new $.HashMap(0, null, null, null, null));
+  sortGroup.DraggableGroup$3$cancel$dragImageFunction$handle("input,textarea,button,select,option", null, "span");
   sortGroup.draggingClass = null;
   sortGroup.overClass = null;
   sortGroup.installAll$1(new $._FrozenElementList(document.querySelectorAll("#sortable-list-handles li")));
   t1 = sortGroup.get$accept(sortGroup);
   t1.add$1(t1, sortGroup);
+  $.DraggableGroup$("textarea, button, .nodrag", null, null).install$1(document.querySelector("#cancel-drag .dragme"));
   $.sectionSortableTwoGroups();
-  $.installCodeblockTabs();
-},
-
-installCodeblockTabs: function() {
-  var tabLinks, t1, link, t2, t3;
-  tabLinks = new $._FrozenElementList(document.querySelectorAll(".example-code .menu li a"));
-  for (t1 = tabLinks.get$iterator(tabLinks); t1.moveNext$0();) {
-    link = t1._current;
-    t2 = $.get$onClick$x(link);
-    t2 = new $._EventStreamSubscription(0, t2._target, t2._eventType, new $.installCodeblockTabs_closure(link), t2._useCapture);
-    t3 = t2._onData;
-    if (t3 != null && !t2.get$isPaused())
-      $.$$dom_addEventListener$3$x(t2._target, t2._eventType, t3, t2._useCapture);
-  }
+  $._installCodeblockTabs();
 },
 
 sectionDraggableAndDropzone: function() {
   var dragGroup, dropGroup, t1;
-  dragGroup = $.DraggableGroup$(null, null);
+  dragGroup = $.DraggableGroup$("input,textarea,button,select,option", null, null);
   dragGroup.installAll$1(new $._FrozenElementList(document.querySelectorAll("#draggable-dropzone .document")));
   dropGroup = new $.DropzoneGroup(new $.HashSet(0, null, null, null, null), null, null, null, null, new $.HashMap(0, null, null, null, null));
   dropGroup.install$1(document.querySelector("#draggable-dropzone .trash"));
@@ -10520,7 +10612,7 @@ sectionDraggableAndDropzone: function() {
 
 sectionDraggingDivs: function() {
   var dragGroup, dropGroup, t1;
-  dragGroup = $.DraggableGroup$(null, null);
+  dragGroup = $.DraggableGroup$("input,textarea,button,select,option", null, null);
   dragGroup.installAll$1(new $._FrozenElementList(document.querySelectorAll("#dragging-divs .dragme")));
   dropGroup = new $.DropzoneGroup(new $.HashSet(0, null, null, null, null), null, null, null, null, new $.HashMap(0, null, null, null, null));
   dropGroup.install$1(document.querySelector("#dragging-divs .dropzone"));
@@ -10530,16 +10622,16 @@ sectionDraggingDivs: function() {
 
 sectionDropEffects: function() {
   var dragGroupMove, dragGroupCopy, dragGroupLink, dragGroupNone, dropGroup, t1;
-  dragGroupMove = $.DraggableGroup$(null, null);
+  dragGroupMove = $.DraggableGroup$("input,textarea,button,select,option", null, null);
   dragGroupMove.dropEffect = "move";
   dragGroupMove.install$1(document.querySelector("#drop-effects .move"));
-  dragGroupCopy = $.DraggableGroup$(null, null);
+  dragGroupCopy = $.DraggableGroup$("input,textarea,button,select,option", null, null);
   dragGroupCopy.dropEffect = "copy";
   dragGroupCopy.install$1(document.querySelector("#drop-effects .copy"));
-  dragGroupLink = $.DraggableGroup$(null, null);
+  dragGroupLink = $.DraggableGroup$("input,textarea,button,select,option", null, null);
   dragGroupLink.dropEffect = "link";
   dragGroupLink.install$1(document.querySelector("#drop-effects .link"));
-  dragGroupNone = $.DraggableGroup$(null, null);
+  dragGroupNone = $.DraggableGroup$("input,textarea,button,select,option", null, null);
   dragGroupNone.dropEffect = "none";
   dragGroupNone.install$1(document.querySelector("#drop-effects .none"));
   dropGroup = new $.DropzoneGroup(new $.HashSet(0, null, null, null, null), null, null, null, null, new $.HashMap(0, null, null, null, null));
@@ -10558,11 +10650,11 @@ sectionDragImages: function() {
   ctx.fillStyle = "rgb(200,0,0)";
   ctx.fillRect(10, 10, 55, 50);
   canvasImage = $.ImageElement_ImageElement(null, t1.toDataUrl$2(canvas, "image/jpeg", 0.95), null);
-  dragGroupOne = $.DraggableGroup$(new $.sectionDragImages_closure(png), null);
+  dragGroupOne = $.DraggableGroup$("input,textarea,button,select,option", new $.sectionDragImages_closure(png), null);
   dragGroupOne.install$1(document.querySelector("#drag-images .one"));
-  dragGroupTwo = $.DraggableGroup$(new $.sectionDragImages_closure0(png), null);
+  dragGroupTwo = $.DraggableGroup$("input,textarea,button,select,option", new $.sectionDragImages_closure0(png), null);
   dragGroupTwo.install$1(document.querySelector("#drag-images .two"));
-  dragGroupThree = $.DraggableGroup$(new $.sectionDragImages_closure1(canvasImage), null);
+  dragGroupThree = $.DraggableGroup$("input,textarea,button,select,option", new $.sectionDragImages_closure1(canvasImage), null);
   dragGroupThree.install$1(document.querySelector("#drag-images .three"));
   dropGroup = new $.DropzoneGroup(new $.HashSet(0, null, null, null, null), null, null, null, null, new $.HashMap(0, null, null, null, null));
   dropGroup.install$1(document.querySelector("#drag-images .dropzone"));
@@ -10579,7 +10671,7 @@ sectionNestedElements: function() {
   textarea.textContent = "";
   t1.enterLeaveCounter_0 = 1;
   t1.overCounter_1 = 1;
-  dragGroup = $.DraggableGroup$(null, null);
+  dragGroup = $.DraggableGroup$("input,textarea,button,select,option", null, null);
   dragGroup.install$1(document.querySelector("#nested-elements .dragme"));
   dropGroup = new $.DropzoneGroup(new $.HashSet(0, null, null, null, null), null, null, null, null, new $.HashMap(0, null, null, null, null));
   dropGroup.install$1(document.querySelector("#nested-elements .dropzone"));
@@ -10593,8 +10685,8 @@ sectionNestedElements: function() {
 
 sectionSortableList: function() {
   var sortGroup, t1;
-  sortGroup = new $.SortableGroup("dnd-placeholder", true, false, null, new $.DropzoneGroup(new $.HashSet(0, null, null, null, null), null, null, null, null, new $.HashMap(0, null, null, null, null)), null, null, "dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", null, null, null, null, null, false, new $.HashMap(0, null, null, null, null));
-  sortGroup.DraggableGroup$2$dragImageFunction$handle(null, null);
+  sortGroup = new $.SortableGroup("dnd-placeholder", true, false, null, new $.DropzoneGroup(new $.HashSet(0, null, null, null, null), null, null, null, null, new $.HashMap(0, null, null, null, null)), $.List_List($), null, "dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", null, null, "input,textarea,button,select,option", null, null, null, false, new $.HashMap(0, null, null, null, null));
+  sortGroup.DraggableGroup$3$cancel$dragImageFunction$handle("input,textarea,button,select,option", null, null);
   sortGroup.draggingClass = null;
   sortGroup.overClass = null;
   sortGroup.installAll$1(new $._FrozenElementList(document.querySelectorAll("#sortable-list li")));
@@ -10606,15 +10698,15 @@ sectionSortableList: function() {
 sectionSortableTwoGroups: function() {
   var png, sortGroup1, t1, sortGroup2;
   png = $.ImageElement_ImageElement(null, "icons/smiley-happy.png", null);
-  sortGroup1 = new $.SortableGroup("dnd-placeholder", true, false, null, new $.DropzoneGroup(new $.HashSet(0, null, null, null, null), null, null, null, null, new $.HashMap(0, null, null, null, null)), null, null, "dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", null, null, null, null, null, false, new $.HashMap(0, null, null, null, null));
-  sortGroup1.DraggableGroup$2$dragImageFunction$handle(null, null);
+  sortGroup1 = new $.SortableGroup("dnd-placeholder", true, false, null, new $.DropzoneGroup(new $.HashSet(0, null, null, null, null), null, null, null, null, new $.HashMap(0, null, null, null, null)), $.List_List($), null, "dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", null, null, "input,textarea,button,select,option", null, null, null, false, new $.HashMap(0, null, null, null, null));
+  sortGroup1.DraggableGroup$3$cancel$dragImageFunction$handle("input,textarea,button,select,option", null, null);
   sortGroup1.draggingClass = null;
   sortGroup1.overClass = null;
   sortGroup1.installAll$1(new $._FrozenElementList(document.querySelectorAll("#sortable-two-groups .group1 li")));
   sortGroup1.get$onSortUpdate().listen$1(new $.sectionSortableTwoGroups_closure());
   t1 = new $.sectionSortableTwoGroups_closure0(png);
-  sortGroup2 = new $.SortableGroup("dnd-placeholder", true, false, null, new $.DropzoneGroup(new $.HashSet(0, null, null, null, null), null, null, null, null, new $.HashMap(0, null, null, null, null)), null, null, "dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", t1, null, null, null, null, false, new $.HashMap(0, null, null, null, null));
-  sortGroup2.DraggableGroup$2$dragImageFunction$handle(t1, null);
+  sortGroup2 = new $.SortableGroup("dnd-placeholder", true, false, null, new $.DropzoneGroup(new $.HashSet(0, null, null, null, null), null, null, null, null, new $.HashMap(0, null, null, null, null)), $.List_List($), null, "dnd-drag-occurring", "dnd-dragging", "dnd-over", "move", t1, null, "input,textarea,button,select,option", null, null, null, false, new $.HashMap(0, null, null, null, null));
+  sortGroup2.DraggableGroup$3$cancel$dragImageFunction$handle("input,textarea,button,select,option", t1, null);
   sortGroup2.draggingClass = null;
   sortGroup2.overClass = null;
   sortGroup2.installAll$1(new $._FrozenElementList(document.querySelectorAll("#sortable-two-groups .group2 li")));
@@ -10623,6 +10715,19 @@ sectionSortableTwoGroups: function() {
   t1.addAll$1(t1, [sortGroup1, sortGroup2]);
   t1 = sortGroup2.get$accept(sortGroup2);
   t1.addAll$1(t1, [sortGroup1, sortGroup2]);
+},
+
+_installCodeblockTabs: function() {
+  var tabLinks, t1, link, t2, t3;
+  tabLinks = new $._FrozenElementList(document.querySelectorAll(".example-code .menu li a"));
+  for (t1 = tabLinks.get$iterator(tabLinks); t1.moveNext$0();) {
+    link = t1._current;
+    t2 = $.get$onClick$x(link);
+    t2 = new $._EventStreamSubscription(0, t2._target, t2._eventType, new $._installCodeblockTabs_closure(link), t2._useCapture);
+    t3 = t2._onData;
+    if (t3 != null && !t2.get$isPaused())
+      $.$$dom_addEventListener$3$x(t2._target, t2._eventType, t3, t2._useCapture);
+  }
 }}],
 ["html_common", "dart:html_common", , {
 convertDartToNative_Dictionary_closure: {"": "Closure;object_0",
@@ -11016,6 +11121,7 @@ $._supportsDraggable = null;
 $._supportsSetDragImage = null;
 $._isInternetExplorer = null;
 $._currentPlaceholder = null;
+$._dropped = false;
 $.Device__isOpera = null;
 $.Device__isWebKit = null;
 $.hierarchicalLoggingEnabled = false;
@@ -11110,8 +11216,8 @@ $.get$$$dom_className$x = function(receiver) {
 $.get$attributes$x = function(receiver) {
   return $.getInterceptor$x(receiver).get$attributes(receiver);
 };
-$.get$button$x = function(receiver) {
-  return $.getInterceptor$x(receiver).get$button(receiver);
+$.get$changedTouches$x = function(receiver) {
+  return $.getInterceptor$x(receiver).get$changedTouches(receiver);
 };
 $.get$children$x = function(receiver) {
   return $.getInterceptor$x(receiver).get$children(receiver);
@@ -11152,11 +11258,11 @@ $.get$name$x = function(receiver) {
 $.get$onClick$x = function(receiver) {
   return $.getInterceptor$x(receiver).get$onClick(receiver);
 };
-$.get$onDrop$x = function(receiver) {
-  return $.getInterceptor$x(receiver).get$onDrop(receiver);
-};
 $.get$onMouseDown$x = function(receiver) {
   return $.getInterceptor$x(receiver).get$onMouseDown(receiver);
+};
+$.get$onTouchStart$x = function(receiver) {
+  return $.getInterceptor$x(receiver).get$onTouchStart(receiver);
 };
 $.get$page$x = function(receiver) {
   return $.getInterceptor$x(receiver).get$page(receiver);
@@ -11172,6 +11278,9 @@ $.get$previousElementSibling$x = function(receiver) {
 };
 $.get$style$x = function(receiver) {
   return $.getInterceptor$x(receiver).get$style(receiver);
+};
+$.get$tagName$x = function(receiver) {
+  return $.getInterceptor$x(receiver).get$tagName(receiver);
 };
 $.get$target$x = function(receiver) {
   return $.getInterceptor$x(receiver).get$target(receiver);
@@ -11206,8 +11315,8 @@ $.modify$1$x = function(receiver, a0) {
 $.preventDefault$0$x = function(receiver) {
   return $.getInterceptor$x(receiver).preventDefault$0(receiver);
 };
-$.query$1$x = function(receiver, a0) {
-  return $.getInterceptor$x(receiver).query$1(receiver, a0);
+$.queryAll$1$x = function(receiver, a0) {
+  return $.getInterceptor$x(receiver).queryAll$1(receiver, a0);
 };
 $.register$2$x = function(receiver, a0, a1) {
   return $.getInterceptor$x(receiver).register$2(receiver, a0, a1);
@@ -11241,6 +11350,9 @@ $.set$width$x = function(receiver, value) {
 };
 $.setProperty$3$x = function(receiver, a0, a1, a2) {
   return $.getInterceptor$x(receiver).setProperty$3(receiver, a0, a1, a2);
+};
+$.setSelectionRange$2$x = function(receiver, a0, a1) {
+  return $.getInterceptor$x(receiver).setSelectionRange$2(receiver, a0, a1);
 };
 $.toList$0$ax = function(receiver) {
   return $.getInterceptor$ax(receiver).toList$0(receiver);

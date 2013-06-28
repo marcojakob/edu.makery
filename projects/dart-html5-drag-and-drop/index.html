@@ -87,36 +87,37 @@
     
   </header>
   
-    <p>
-    Native HTML5 Drag and Drop is <a href="http://www.quirksmode.org/blog/archives/2009/09/the_html5_drag.html">not easy to work with</a>! The 
-    <a href="https://github.com/marcojakob/dart-html5-dnd">Dart HTML5 Drag and Drop</a> library was created to use HTML5 Drag and Drop in a consistend way across all modern browsers. Here are some examples of how to use it.
-  </p>
+  <p>
+  Native HTML5 Drag and Drop is <a href="http://www.quirksmode.org/blog/archives/2009/09/the_html5_drag.html">not easy to work with</a>! The 
+  <a href="https://github.com/marcojakob/dart-html5-dnd">Dart HTML5 Drag and Drop</a> library was created to use HTML5 Drag and Drop in a consistend way across all modern browsers. Here are some examples of how to use it.
+</p>
   
-  <h3>Features</h3>
-  <p>
-    <ul>
-      <li>Make any HTML Element <code>draggable</code>.</li>
-      <li>Create <code>dropzones</code> and connect them with <code>draggables</code>.</li>
-      <li>Rearrange elements with <code>sortables</code> (similar to jQuery UI Sortable).</li>
-      <li>Support for <code>touch events</code> on touch screen devices.</li>
-      <li>Same functionality and API for IE9+, Firefox, Chrome and Safari.</li>
-      <li>Uses fast native HTML5 Drag and Drop of the browser whenever possible.</li>
-      <li>For browsers that do not support some features, the behaviour is emulated.
-          This is the case for IE9 and partly for IE10 (when custom drag images are used).</li>
-    </ul>
-  </p>
+<h3>Features</h3>
+<p>
+  <ul>
+    <li>Make any HTML Element <code>draggable</code>.</li>
+    <li>Create <code>dropzones</code> and connect them with <code>draggables</code>.</li>
+    <li>Rearrange elements with <code>sortables</code> (similar to jQuery UI Sortable).</li>
+    <li>Support for <code>touch events</code> on touch screen devices.</li>
+    <li>Same functionality and API for IE9+, Firefox, Chrome and Safari.</li>
+    <li>Uses fast native HTML5 Drag and Drop of the browser whenever possible.</li>
+    <li>For browsers that do not support some features, the behaviour is emulated.
+        This is the case for IE9 and partly for IE10 (when custom drag images are used).</li>
+  </ul>
+</p>
+
+<p>
+  API and Examples are inspired by <a href="http://farhadi.ir/projects/html5sortable/">HTML5 Sortable</a>, jQuery UI (<a href="http://api.jqueryui.com/draggable/">Draggable</a>, 
+    <a href="http://api.jqueryui.com/droppable/">Droppable</a>, <a href="http://api.jqueryui.com/sortable/">Sortable</a>) and <a href="http://touchpunch.furf.com/">Touch Punch</a>.
+</p>
   
-  <p>
-    API and Examples are inspired by <a href="http://farhadi.ir/projects/html5sortable/">HTML5 Sortable</a>, jQuery UI (<a href="http://api.jqueryui.com/draggable/">Draggable</a>, 
-      <a href="http://api.jqueryui.com/droppable/">Droppable</a>, <a href="http://api.jqueryui.com/sortable/">Sortable</a>) and <a href="http://touchpunch.furf.com/">Touch Punch</a>.
-  </p>
-    
-  <h3>Installation Instructions and Source Code</h3>
-  <p>
-    <a href="https://github.com/marcojakob/dart-html5-dnd"><img class="middle" src="/images/glyphicons_github.png" title="'Dart HTML5 Drag and Drop on GitHub'">Dart HTML5 Drag and Drop</a> on GitHub.
-  </p>
-  <p>You are welcome to contribute by reporting an <a href="https://github.com/marcojakob/dart-html5-dnd/issues">Issue</a> or <a href="https://help.github.com/articles/fork-a-repo">forking the repository</a>.
-  </p>
+<h3>Installation Instructions and Source Code</h3>
+<p>
+  <a href="https://github.com/marcojakob/dart-html5-dnd"><img class="middle" src="/images/glyphicons_github.png" title="'Dart HTML5 Drag and Drop on GitHub'">Dart HTML5 Drag and Drop</a> on GitHub.
+</p>
+<p>You are welcome to contribute by reporting an <a href="https://github.com/marcojakob/dart-html5-dnd/issues">Issue</a> or <a href="https://help.github.com/articles/fork-a-repo">forking the repository</a>.
+</p>
+
 <p></p>
 
 <h2>Draggable and Dropzone</h2>
@@ -797,70 +798,7 @@
 </span></code></pre></td></tr></table></div></figure>
 </div></div></div>
 
-<h2>Exclude Items</h2>
-<p>
-  Exclude elements from beeing sortable.
-</p>
-<div id="sortable-list-exclude" class="example-container">
-  <ul class="example-box">
-    <li draggable="true">Item 1</li>
-    <li draggable="true">Item 2</li>
-    <li draggable="true">Item 3</li>
-    <li class="disabled">Item 4</li>
-    <li class="disabled">Item 5</li>
-    <li class="disabled">Item 6</li>
-  </ul>
-</div><div class="example-code"><ul class="menu"><li><a href="#" tab="html" class="active">HTML</a><a href="#" tab="css">CSS</a><a href="#" tab="dart">Dart</a></li></ul><div class="content"><div tab="html" class="active">
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;example-box&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;li&gt;</span>Item 1<span class="nt">&lt;/li&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;li&gt;</span>Item 2<span class="nt">&lt;/li&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;li&gt;</span>Item 3<span class="nt">&lt;/li&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;disabled&quot;</span><span class="nt">&gt;</span>Item 4<span class="nt">&lt;/li&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;disabled&quot;</span><span class="nt">&gt;</span>Item 5<span class="nt">&lt;/li&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;disabled&quot;</span><span class="nt">&gt;</span>Item 6<span class="nt">&lt;/li&gt;</span>
-</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-</div><div tab="css">
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nf">#sortable-list-exclude</span> <span class="nc">.dnd-placeholder</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">dashed</span> <span class="m">#CCC</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">background</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="nf">#sortable-list-exclude</span> <span class="nt">li</span><span class="nd">:not</span><span class="o">(</span><span class="nc">.disabled</span><span class="o">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">cursor</span><span class="o">:</span> <span class="n">move</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-</div><div tab="dart">
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="n">SortableGroup</span> <span class="n">sortGroup</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SortableGroup</span><span class="p">()</span>
-</span><span class='line'><span class="p">..</span><span class="n">installAll</span><span class="p">(</span><span class="n">queryAll</span><span class="p">(</span><span class="s1">&#39;#sortable-list-exclude li:not(.disabled)&#39;</span><span class="p">));</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// Only accept elements from this section.</span>
-</span><span class='line'><span class="n">sortGroup</span><span class="p">.</span><span class="n">accept</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">sortGroup</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-</div></div></div>
-
-<h2>Sortable List With Handles</h2>
+<h2>Only Allow Drag on Handles</h2>
 <p>
   Items can only be dragged with the handle.
 </p>
@@ -922,6 +860,81 @@
 </span><span class='line'><span class="n">sortGroup</span><span class="p">.</span><span class="n">accept</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">sortGroup</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure>
 </div></div></div>
+
+
+<h2>Prevent Drag on Some Elements</h2>
+<p>
+  Starting a drag can be prevented on specified elements. In this example, 
+  drag can only be started on the outer div.
+</p>
+<p>
+  By default, elements of type input, textarea, button, select, or option 
+  are not draggable.
+</p>
+<div id="cancel-drag" class="example-container">
+  <div class="dragme example-box">
+    Drag me!
+    <div class="nodrag">No drag here!</div>
+    <textarea>No drag here!</textarea>
+    <button>No drag here!</button>
+  </div>
+</div>
+<div class="example-code"><ul class="menu"><li><a href="#" tab="html" class="active">HTML</a><a href="#" tab="css">CSS</a><a href="#" tab="dart">Dart</a></li></ul><div class="content"><div tab="html" class="active">
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;dragme example-box&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  Drag me!
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;nodrag&quot;</span><span class="nt">&gt;</span>No drag here!<span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;textarea&gt;</span>No drag here!<span class="nt">&lt;/textarea&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;button&gt;</span>No drag here!<span class="nt">&lt;/button&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+</div><div tab="css">
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nf">#cancel-drag</span> <span class="nc">.dnd-dragging</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">opacity</span><span class="o">:</span> <span class="m">0</span><span class="o">.</span><span class="m">5</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">#cancel-drag</span> <span class="nc">.dragme</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">padding</span><span class="o">:</span> <span class="m">5px</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="m">#aaa</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">background</span><span class="o">:</span> <span class="m">#acf</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">cursor</span><span class="o">:</span> <span class="n">move</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">#cancel-drag</span> <span class="nc">.dragme</span> <span class="o">*</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">cursor</span><span class="o">:</span> <span class="k">default</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+</div><div tab="dart">
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='dart'><span class='line'><span class="c1">// Install draggable.</span>
+</span><span class='line'><span class="n">DraggableGroup</span> <span class="n">dragGroup</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DraggableGroup</span><span class="p">(</span>
+</span><span class='line'>    <span class="nl">cancel:</span> <span class="s1">&#39;textarea, button, .nodrag&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="p">..</span><span class="n">install</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;#cancel-drag .dragme&#39;</span><span class="p">));</span>
+</span></code></pre></td></tr></table></div></figure>
+</div></div></div>
+
 
 <h2>Two Sortable Groups</h2>
 <p>
