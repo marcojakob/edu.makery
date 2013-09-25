@@ -1,12 +1,12 @@
 ---
 layout: page
-title: Learn Programming
+title: Learn Java
 comments: false
 footer: true
 ---
 {% img right /images/learn-java/java-logo.png 'Java Logo' %}
 
-For the very first contact with a programming language I recommend using **Kara**. Kara is a learning scenario that offers a playful introduction to the fundamental concepts of programming. [Introduction to Programming with Kara](/blog/2012/10/02/introduction-to-programming-with-kara/) is a blog post describing what Kara is about.
+For the very first contact with Java I recommend using **Kara**. Kara is a learning scenario that offers a playful introduction to the fundamental concepts of programming. [Introduction to Programming with Kara](/blog/2012/10/02/introduction-to-programming-with-kara/) is a blog post describing what Kara is about.
 
 I created a beginners course that comes in two versions, `GreenfootKara` and `GameGridKara` (see below).  Both courses are available in **German** and **English**.
 

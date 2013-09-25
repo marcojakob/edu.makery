@@ -5,7 +5,10 @@ comments: false
 footer: false
 ---
 
-## <a href="{{root_url}}/projects/learn-programming">Learn Programming</a> ##
+## <a href="{{root_url}}/projects/learn-dart">Learn Dart</a> ##
+A playful introduction to programming using the Dart language.
+
+## <a href="{{root_url}}/projects/learn-java">Learn Java</a> ##
 A playful introduction to programming using the Java language.
 
 ## <a href="{{root_url}}/projects/learn-javafx">Learn JavaFX</a> ##
