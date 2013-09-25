@@ -9,7 +9,7 @@
   <meta name="author" content="Marco Jakob">
 
   
-  <meta name="description" content="GreenfootKara version 2.0 has been released (see a change log). Features Complete beginners course in German and English
+  <meta name="description" content="GameGridKara version 2.0 has been released (see a change log). Features Complete beginners course in German and English
 Combination of Kara and &hellip;">
   
 
@@ -85,6 +85,71 @@ Combination of Kara and &hellip;">
   </ul>
   
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/03/gamegridkara-2-0-released/">GameGridKara 2.0 Released</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-03T13:00:00+02:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="/images/kara/gamegridkara-logo-large.png" title="GameGridKara" ></p>
+
+<p>GameGridKara version 2.0 has been released (see a <a href="http://www.swisseduc.ch/informatik/karatojava/gamegridkara/changes.html">change log</a>).</p>
+
+<h2>Features</h2>
+
+<ul>
+<li>Complete beginners course in German and English</li>
+<li>Combination of Kara and <a href="http://www.gamegrid.ch">GameGrid</a> for a simple introduction to Java programming</li>
+<li>Use <strong>any programming IDE like Eclipse, Netbeans or BlueJ</strong></li>
+<li>16-20 lessons</li>
+<li>12 handouts for students</li>
+<li>24 Kara scenarios</li>
+<li>38+ exercises with solutions</li>
+<li>Programming of a Sokoban game with self-designed levels, a highscore, etc.</li>
+</ul>
+
+
+<h2>Sample Scenario</h2>
+
+<p>That&#8217;s how a simple scenario of GameGridKara looks like in Eclipse. You will find the complete exercise on the handout for chapter 1 (see downloads).</p>
+
+<p><img src="/images/kara/gamegridkara-eclipse.png" title="GameGridKara in Eclipse" ></p>
+
+<p>What does the program in the screenshot do? It will get Kara around the first tree. The complete program can be written inside the <code>act()</code> method. For more complex scenarios you will likely have to create additional methods.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/03/gamegridkara-2-0-released/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -172,6 +237,8 @@ Combination of Kara and &hellip;">
   
 
 
+
+  
 <time datetime="2012-10-02T22:00:00+02:00" pubdate data-updated="true">Oct 2<span>nd</span>, 2012</time>
         
       </p>
@@ -179,7 +246,9 @@ Combination of Kara and &hellip;">
   </header>
 
 
-  <div class="entry-content"><p>Kara offers a playful introduction to fundamental concepts of programming. Kara is a ladybug that lives in a simple world with trees, leafs and mushrooms.</p>
+  <div class="entry-content"><p><strong>Updated Sep 26th, 2013</strong>: Added Dart Version</p>
+
+<p>Kara offers a playful introduction to fundamental concepts of programming. Kara is a ladybug that lives in a simple world with trees, leafs and mushrooms.</p>
 
 <p><img src="/images/kara/kara.png" title="Kara" >
 <img src="/images/kara/mushroom.png" title="Mushroom" >
@@ -215,7 +284,7 @@ Combination of Kara and &hellip;">
 
 <p>One solution would be as follows:</p>
 
-<figure class='code'><figcaption><span>Kara collects leafs (Java)</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>Kara collects leafs</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -238,19 +307,23 @@ Combination of Kara and &hellip;">
 
 <p>Kara has many different versions. The original Kara is designed as a finite state machine with a purely graphical program editor. See the full list of <a href="http://www.swisseduc.ch/informatik/karatojava/index.html">available Kara versions</a>.</p>
 
-<p>I usually prefer to start directly with writing Java code. Now there are three possible editors/libraries:</p>
+<p>I usually prefer to start directly with writing code in the Java or Dart language. Now there are quite a few possible editors/libraries:</p>
 
-<h3>JavaKara</h3>
+<h3>DartKara (Dart)</h3>
+
+<p>DartKara is a scenario written in Dart. It can be used in the Dart Editor which is a very nice and simple development environment. The scenario comes with handouts and exercises. You can find those resources on the <a href="/projects/learn-dart">Learn Dart</a> page.</p>
+
+<h3>GreenfootKara (Java)</h3>
+
+<p>Since I really like the editor of the <a href="http://greenfoot.org">Greenfoot IDE</a> I decided to create a Kara version that works with Greenfoot, it is called GreenfootKara. In addition to this I wrote an entire beginners course of 16-20 lessons with exercises and handouts to go along with GreenfootKara. You can find the links to the German and English versions on the <a href="/projects/learn-java">Learn Java</a> page.</p>
+
+<h3>GameGridKara (Java)</h3>
+
+<p>Sometimes, especially if time is too short, it might be good to directly start with a professional development environment like Eclipse or NetBeans. Since it was not possible to integrate Greenfoot into Eclipse/NetBeans, I had to find another solution. Altough, we could start JavaKara from Eclipse/NetBeans, there are just some things that are not possible (like programming an interactive Kara game). The solution was to port the code to work with a library called <em>JGameGrid</em>. Links to the GameGridKara resources in German and English can also be found on the <a href="/projects/learn-java">Learn Java</a> page.</p>
+
+<h3>JavaKara (Java)</h3>
 
 <p>JavaKara is the original editor. You can find the <a href="http://www.swisseduc.ch/informatik/karatojava/javakara/index.html">JavaKara download and resources here</a> (in German).</p>
-
-<h3>GreenfootKara</h3>
-
-<p>Since I really like the editor of the <a href="http://greenfoot.org">Greenfoot IDE</a> I decided to create a Kara version that works with Greenfoot, it is called GreenfootKara. In addition to this I wrote an entire beginners course of 16-20 lessons with exercises and handouts to go along with GreenfootKara. You can find the links to the German and English versions on the <a href="/learn-java">Learn Java</a> page.</p>
-
-<h3>GameGridKara</h3>
-
-<p>Sometimes, especially if time is too short, it might be good to directly start with a professional development environment like Eclipse or NetBeans. Since it was not possible to integrate Greenfoot into Eclipse/NetBeans, I had to find another solution. Altough, we could start JavaKara from Eclipse/NetBeans, there are just some things that are not possible (like programming an interactive Kara game). The solution was to port the code to work with a library called <a href="http://gamegrid.ch">JGameGrid</a>.</p>
 
 <p>GameGridKara enables us to use Kara in any IDE of our choice by simply adding two jar files to a project. The link to GameGridKara with the adjusted beginners course in German and English can be found on the <a href="/learn-java">Learn Java</a> page.</p>
 </div>
@@ -370,7 +443,10 @@ Combination of Kara and &hellip;">
   <h1>Projects</h1>
   <ul>
     <li>
-      <a href="/projects/learn-programming">Learn Programming</a>
+      <a href="/projects/learn-dart">Learn Dart</a> - New!
+    </li>    
+    <li>
+      <a href="/projects/learn-java">Learn Java</a>
     </li>    
     <li>
       <a href="/projects/learn-javafx">Learn JavaFX</a>
@@ -386,9 +462,9 @@ Combination of Kara and &hellip;">
 <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/'>All (24)</a><a title='subscribe via RSS' href='http://feeds.feedburner.com/edu-makery' class='feed-rss_16 category-icon'></a></li>
-<li class='category'><a href='/blog/categories/dart/'>Dart (1)</a><a title='subscribe via RSS: Dart' href='http://feeds.feedburner.com/edu-makery-dart' class='feed-rss_16 category-icon'></a></li>
-<li class='category'><a href='/blog/categories/deutsch/'>Deutsch (1)</a><a title='subscribe via RSS: Deutsch' href='http://feeds.feedburner.com/edu-makery-deutsch' class='feed-rss_16 category-icon'></a></li>
+    <li class='category'><a href='/'>All (25)</a><a title='subscribe via RSS' href='http://feeds.feedburner.com/edu-makery' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/dart/'>Dart (3)</a><a title='subscribe via RSS: Dart' href='http://feeds.feedburner.com/edu-makery-dart' class='feed-rss_16 category-icon'></a></li>
+<li class='category'><a href='/blog/categories/deutsch/'>Deutsch (2)</a><a title='subscribe via RSS: Deutsch' href='http://feeds.feedburner.com/edu-makery-deutsch' class='feed-rss_16 category-icon'></a></li>
 <li class='category'><a href='/blog/categories/english/'>English (23)</a><a title='subscribe via RSS: English' href='http://feeds.feedburner.com/edu-makery-english' class='feed-rss_16 category-icon'></a></li>
 <li class='category'><a href='/blog/categories/java/'>Java (6)</a><a title='subscribe via RSS: Java' href='http://feeds.feedburner.com/edu-makery-java' class='feed-rss_16 category-icon'></a></li>
 <li class='category'><a href='/blog/categories/javafx/'>JavaFX (16)</a><a title='subscribe via RSS: JavaFX' href='http://feeds.feedburner.com/edu-makery-javafx' class='feed-rss_16 category-icon'></a></li>

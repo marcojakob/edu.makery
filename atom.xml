@@ -4,7 +4,7 @@
   <title><![CDATA[edu.makery.ch]]></title>
   <link href="http://edu.makery.ch/atom.xml" rel="self"/>
   <link href="http://edu.makery.ch/"/>
-  <updated>2013-06-28T13:51:29+02:00</updated>
+  <updated>2013-09-25T19:27:44+02:00</updated>
   <id>http://edu.makery.ch/</id>
   <author>
     <name><![CDATA[Marco Jakob]]></name>
@@ -12,6 +12,221 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Web und Mobile Apps Programmieren mit Dart]]></title>
+    <link href="http://edu.makery.ch/blog/2013/09/26/web-und-mobile-apps-programmieren-mit-dart/"/>
+    <updated>2013-09-26T08:00:00+02:00</updated>
+    <id>http://edu.makery.ch/blog/2013/09/26/web-und-mobile-apps-programmieren-mit-dart</id>
+    <content type="html"><![CDATA[<p><em>Der folgende Artikel ist erschienen an der <a href="http://www.infos2013.uni-kiel.de/">INFOS 2013, GI-Fachtagung Informatik und Schule, Kiel</a></em></p>
+
+<p><strong>Auf der Seite <a href="http://edu.makery.ch/projects/learn-dart">Learn Dart</a> finden Sie alle Unterlagen zum INFOS Workshop</strong></p>
+
+<h2>Abstract</h2>
+
+<blockquote><p>Bisher war es kaum realistisch, im Anfängerunterricht mobile oder webbasierte Applikationen zu entwickeln. Die Programmiersprache Dart bietet neue Möchkeiten, wie solche Applikationen viel einfacher programmiert werden können. Zudem zeigt sich, dass Dart in einigen Bereichen sogar besser geeignet ist in die objektorientierte Programmierung einzuführen als herkömmliche Programmiersprachen.</p></blockquote>
+
+
+<!-- more -->
+
+
+<h2>Einleitung</h2>
+
+<p>Heute sind vor allem <em>mobile und webbasierte Anwendungen aktuell</em>. Immer weniger werden Desktop Applikationen, d.h. fest installierte Programme, verwendet. Viele Nutzer bewegen sich fast ausschliesslich im Webbrowser oder auf dem Mobiltelefon.</p>
+
+<p>Es ist deshalb sehr motivierend, wenn Lernende im Unterricht mobile oder webbasierte Anwendungen selber entwickeln können. Zudem können sie solche Anwendungen auf einfache Weise mit ihren Freunden teilen.</p>
+
+<p><em>Mit den gängigen Ansätzen</em>, wie in den letzten Jahren Programmieren unterrichtet wurde, ist es aber <em>kaum oder nur sehr beschränkt möglich</em>, mobile oder webbasierte Anwendungen zu entwickeln.</p>
+
+<p>Im Folgenden wird zuerst dargelegt, weshalb es mit herkömmlichen Möglichkeiten schwierig ist, mobile oder webbasierte Applikationen im Anfängerunterricht zu programmieren. Anschliessend wird die neuere Programmiersprache <em>Dart</em> vorgestellt und untersucht, in wiefern sich diese für den Unterricht eignet.</p>
+
+<h2>Problematik mobiler Anwendungen</h2>
+
+<p>Android und Apples iOS sind die gängigsten Plattformen für mobile Anwendungen. Der Einsatz dieser Plattformen im Unterricht ist mit Schwierigkeiten verbunden, die hier kurz erwähnt werden.</p>
+
+<p><strong>iOS-Apps.</strong> Die Entwicklung von iOS-Applikationen erfolgt in einer eigenen Sprache namens Objective-C speziell für die iOS-Plattform. Dies bedeutet, dass die Programme auch nur auf iPhones bzw. iPads laufen. Zum Entwickeln von iOS-Anwendungen benötigt man (bevorzugt) ein Mac-Betriebssystem. So ein System dürfte nicht überall zur Verfügung stehen. Zudem ist es sehr umständlich bis unmöglich für eine Schule, die eigenen Programme über den App Store auf anderen iOS-Geräten zu installieren.</p>
+
+<p><strong>Android-Apps.</strong> Obwohl Android-Applikationen in Java programmiert werden, stellt sich die gleiche Problematik wie bei iOS-Applikationen: Die Programme laufen nur auf Geräten mit einem Android-Betriebssystem. Der Besitz eines Android-Gerätes kann aber nicht vorausgesetzt werden. So werden Lernende ausgeschlossen, die ihr Programm auf einem iOS-Gerät, einem Windows Phone oder auf dem Desktop ausführen möchten.</p>
+
+<h2>Problematik webbasierter Anwendungen</h2>
+
+<p>Webbasierte Anwendungen haben den Vorteil, dass sie <em>sowohl auf Desktopbrowsern</em> (Internet Explorer, Firefox, Chrome, Safari) <em>als auch auf mobilen Browsern</em> laufen können. Zur Entwicklung von Webanwendungen gibt es konvenzionell zahlreiche Möglichkeiten, die aber alle ihre Tücken haben, wenn sie im Unterricht eingesetzt werden sollen.</p>
+
+<p><strong>PHP, ASP.net etc.</strong> Diese sogenannten Skriptsprachen werden häufig verwendet, um dynamische Webanwendungen zu erstellen. Dabei werden auf einem Webserver HTML-Seiten generiert, welche dann im Browser angezeigt werden können. Die so notwendige Kommunikation zwischen dem Server und dem Browser auf dem Client bringt zusätzliche Komplexität in das Erlernen einer Programmiersprache. Ausserdem eignen sich Skriptsprachen nicht besonders gut, um moderne, objektorientierte Programmierkonzepte zu unterrichten.</p>
+
+<p><strong>Python, Java, C++, Visual Basic etc.</strong> Mit all diesen Sprachen lassen sich objektorientierte Programmierkonzepte vermitteln. Der Weg zu einer Webapplikation ist jedoch sehr aufwändig und anspruchsvoll. All diese Programmiersprachen laufen nicht direkt im Browser. Somit muss, wie bei den Skriptsprachen, eine Serverapplikation geschrieben werden, welche HTML-Seiten generiert. Und da diese Sprachen nicht für die Webprogrammierung entwickelt wurden, ist die Komplexität noch höher als bei den oben genannten Skriptsprachen.</p>
+
+<p><strong>JavaScript.</strong> JavaScript ist die einzige Programmiersprache, welche von allen gängigen Browsern unterstützt wird. Es ist somit möglich, damit ganze Webanwendungen zu schreiben, welche direkt in Desktopbrowsern und mobilen Browsern laufen können. Leider ist aber JavaScript für den Unterricht weniger geeignet. JavaScript ist eine Programmiersprache mit schwierigen Konzepten und vielen Ausnahmefällen. Diese Hindernisse sind (nicht nur) für Anfänger sehr frustrierend.</p>
+
+<h2>Dart</h2>
+
+<p>Google hat eine neue Sprache namens <a href="http://www.dartlang.org">Dart</a> entwickelt.</p>
+
+<p>Dart ist <em>für das Web gemacht</em> und lässt sich direkt in JavaScript übersetzen. Somit laufen Dart-Anwendungen ohne zusätzliche Installation in allen modernen Desktopbrowsern und mobilen Browsern.</p>
+
+<p><img src="http://edu.makery.ch/images/dart/dart-on-modern-platforms.png"></p>
+
+<p><em>Dart-Programme laufen auf allen modernen Plattformen (Bildquelle: <a href="http://gakuesisean.deviantart.com">Sean Poon</a> und <a href="http://www.designcontest.com/">Design Contest</a>)</em></p>
+
+<p>Dart ist eine <strong>objektorientierte Sprache</strong>, welche sich sehr gut für den Unterricht eignet. Sie ist stark an die bekanntesten Programmiersprachen wie Java und C++ angelehnt, ist aber konsistenter und eleganter. Das macht die Sprache einfach zu lernen für Umsteiger und viel einfacher für Programmieranfänger (siehe Code-Beispiele weiter unten).</p>
+
+<p>Fast genauso wichtig wie die Programmiersprache selbst ist das, was rund um die Sprache zur Verfügung steht:</p>
+
+<p><strong>Dart Editor</strong> ist eine komfortable Entwicklungsumgebung für Dart. Der Editor enthält professionelle Programmierhilfen wie Code-Vervollständigung, Umbenennen von Variablen und Debugging. Trotzdem ist der Dart Editor sehr einfach und übersichtlich gehalten, d.h. er enthält keine unnötigen Elemente, die Anfänger abschrecken könnten.</p>
+
+<p>Der Dart Editor läuft <em>ohne Installation</em> auf Windows, Linux und Mac. Da keine Installation nötig ist, kann er zum Beispiel auch von einem USB-Stick gestartet werden.</p>
+
+<p>Viele <strong>nützliche Bibliotheken</strong> sind bei Dart schon eingebaut. Zum Beispiel für mathematische Berechnungen, für Interaktionen mit HTML, zum Speichern in Dateien und Datenbanken, für Kryptografie etc. Zusätzliche Bibliotheken werden nach Bedarf automatisch von einem zentralen Server heruntergeladen.</p>
+
+<p>Es gibt drei Möglichkeiten, Dart-Programme auszuführen: In der <strong>Kommandozeile</strong>, <strong>als JavaScript</strong> in allen modernen Browsern oder in <strong>Chromium</strong>, einem Google Browser mit Dart Virtual Machine.</p>
+
+<p>Man kann auch <strong>Server-Applikationen</strong> in Dart programmieren. So ist es möglich, eine gesamte Client-Server-Applikation in der gleichen Sprache zu verfassen. Der Server wird in der Kommandozeile gestartet und von einem Browser Client angesprochen. Mit kaum einer anderen Programmiersprache ist dies möglich.</p>
+
+<h2>Dart Code-Beispiele</h2>
+
+<p>Anhand von Code-Beispielen soll gezeigt werden, wie einfach es ist, mit Dart zu programmieren. Wer bereits eine Programmiersprache kennt, dem wird Dart sehr vertraut vorkommen. Dies ermöglicht den Umstieg auf diese Sprache innert weniger Stunden.</p>
+
+<p>Dort, wo herkömmliche Sprachen unnötige Stolpersteine beinhalten, bietet Dart elegante Lösungen. Um dies aufzuzeigen, werden bei einigen Beispielen Parallelen zu Java gezogen.</p>
+
+<h3>Hello World</h3>
+
+<p>Mit diesem Klassiker zeigt sich, wie aufwändig es ist, ein erstes Programm in einer Sprache zum laufen zu bringen. Ein minimales Programm in Dart sieht wie folgt aus:</p>
+
+<figure class='code'><figcaption><span>Hello World in Dart</span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='dart'><span class='line'><span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">print</span><span class="p">(</span><span class="s2">&quot;Hello, World!&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Angenommen, das Programm oben wurde unter <em>helloworld.dart</em> gespeichert. Nun kann es von der Kommandozeile wie folgt gestartet werden:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='console'><span class='line'><span class="go">dart helloworld.dart</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Kommentar.</strong> Obwohl in Dart Klassen häufig verwendet werden, gibt es die Möglichkeit, Funktionen ohne Klassen zu definieren. In Java ist dies nicht möglich. Dort würde ein entsprechendes Programm wie folgt aussehen:</p>
+
+<figure class='code'><figcaption><span>Hello World in Java</span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="c1">// Java</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorld</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Der Anfänger ist mit einem solchen Programm schnell überfordert. Neben den Schlüsselbegriffen <em>public, class, static</em> werden fortgeschrittene Sprachelemente wie Arrays und ein statischer Aufruf verwendet. Um dieses Java <em>Hello, World</em> zu verstehen, braucht es bereits etliches an Programmierkenntnissen.</p>
+
+<p>Ein weiterer Schritt, der bei Dart wegfällt, ist das Kompilieren. Kompilieren ist für die <a href="http://www.dartlang.org/articles/why-not-bytecode/">Dart Virtual Machine (VM)</a> nicht nötig, da die VM direkt den Quellcode ausführt.</p>
+
+<h3>Funktionen und Variablen</h3>
+
+<figure class='code'><figcaption><span>Funktionen und Variablen</span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='dart'><span class='line'><span class="c1">// Funktion definieren.</span>
+</span><span class='line'><span class="n">printNumber</span><span class="p">(</span><span class="kt">int</span> <span class="n">number</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// Nummer auf Konsole ausgeben.</span>
+</span><span class='line'>  <span class="n">print</span><span class="p">(</span><span class="s2">&quot;Die Nummer ist </span><span class="si">$</span><span class="n">number</span><span class="s2">.&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// Variable deklarieren und initialisieren.</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="n">number</span> <span class="o">=</span> <span class="m">42</span><span class="p">;</span>
+</span><span class='line'>  <span class="c1">// Funktion aufrufen.</span>
+</span><span class='line'>  <span class="n">printNumber</span><span class="p">(</span><span class="n">number</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Kommentar.</strong> Typen von Variablen, Parametern und Rückgabewerten können optional angegeben werden. Man könnte also bei <em>var number</em> den Typ genauer angeben und <em>int number</em> schreiben. Damit würde man vom Dart Editor gewarnt, wenn man etwas anderes als einen Integer in diese Variable speichern möchte. Deshalb ist es oft sinnvoll, den Typ anzugeben. Für eine Einführung in die Thematik der Variablen ist es aber praktisch, wenn man zuerst ohne Typen arbeiten kann. Diese Möglichkeit hat man bei den meisten Programmiersprachen nicht.</p>
+
+<h3>Integer</h3>
+
+<figure class='code'><figcaption><span>Integer</span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='dart'><span class='line'><span class="c1">// String in einen int umwandeln.</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="kt">int</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;5&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// int in einen String umwandeln. Da 22 ein Objekt ist, </span>
+</span><span class='line'><span class="c1">// kann man Funktionen darauf aufrufen.</span>
+</span><span class='line'><span class="kt">String</span> <span class="n">s</span> <span class="o">=</span> <span class="m">22.</span><span class="n">toString</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Kommentar.</strong> In Dart gibt es keine Unterscheidung zwischen elementaren Datentypen und Objekten (wie etwa in Java). Alles, was in eine Variable gespeichert werden kann, ist ein Objekt. Das ist für das Verständnis viel einfacher!</p>
+
+<p>Ausserdem kann ein int eine beliebige Grösse haben. Man braucht sich also nicht darum zu kümmern, ob man noch im Zahlenbereich drin ist oder wie in Java zwischen int und long unterscheiden.</p>
+
+<h3>Klassen</h3>
+
+<figure class='code'><figcaption><span>Klassen</span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='dart'><span class='line'><span class="k">import</span> <span class="s1">&#39;dart:math&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">class</span> <span class="nc">Point</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kt">num</span> <span class="n">x</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">num</span> <span class="n">y</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Konstruktor (kurze Schreibweise)</span>
+</span><span class='line'>  <span class="n">Point</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kt">num</span> <span class="n">distanceTo</span><span class="p">(</span><span class="n">Point</span> <span class="n">other</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="n">dx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">other</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="n">dy</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">other</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">dx</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">*</span> <span class="n">dy</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Point</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">);</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="n">q</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Point</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// String Interpolation</span>
+</span><span class='line'>  <span class="n">print</span><span class="p">(</span><span class="s1">&#39;Distanz von p zu q = </span><span class="si">${</span><span class="n">p</span><span class="p">.</span><span class="n">distanceTo</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Kommentar.</strong> Definition einer Klasse und das Erzeugen von Objekten  funktionieren analog zu Java. Einzig der Konstuktor mit den Zuweisungen zu den Variablen ist eine verkürzte Schreibweise. Optional könnte man den Konstruktor auch gleich schreiben wie in Java:</p>
+
+<figure class='code'><figcaption><span>Alternative Konstruktorschreibweise</span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='dart'><span class='line'><span class="c1">// Konstruktor (lange Schreibweise)</span>
+</span><span class='line'><span class="n">Point</span><span class="p">(</span><span class="kt">num</span> <span class="n">x</span><span class="p">,</span> <span class="kt">num</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">this</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">this</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Interaktion mit dem Browser</h3>
+
+<figure class='code'><figcaption><span>HTML als Grafische Benutzeroberfläche</span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='dart'><span class='line'><span class="k">import</span> <span class="s1">&#39;dart:html&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// HTML Knopf erstellen.</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="n">button</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ButtonElement</span><span class="p">()</span>
+</span><span class='line'>  <span class="p">..</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Bestellen&#39;</span>
+</span><span class='line'>  <span class="p">..</span><span class="n">classes</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;wichtig&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="c1">// Beim Klicken die Funktion handleOnClick aufrufen.</span>
+</span><span class='line'>  <span class="p">..</span><span class="n">onClick</span><span class="p">.</span><span class="n">listen</span><span class="p">(</span><span class="n">handleOnClick</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// Knopf in HTML einfuegen.</span>
+</span><span class='line'>  <span class="n">query</span><span class="p">(</span><span class="s1">&#39;#bestellung&#39;</span><span class="p">).</span><span class="n">children</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">button</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="n">handleOnClick</span><span class="p">(</span><span class="n">MouseEvent</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">window</span><span class="p">.</span><span class="n">alert</span><span class="p">(</span><span class="s1">&#39;Danke!&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Kommentar.</strong> Graphische Benutzeroberflächen werden in Dart für den Browser geschrieben. Nach dem Übersetzen des Dart-Codes in JavaScript können alle modernen Browser das Dart-Programm anzeigen. In Java würde man typischerweise eine Benutzeroberfläche mit Swing oder JavaFX programmieren. Im Gegensatz zu Dart lassen sich diese aber nicht direkt im Browser ausführen.</p>
+
+<h2>Fazit</h2>
+
+<p>Mit Dart gibt es erstmals eine realistische Möglichkeit, mobile und webbasierte Applikationen im Anfängerunterricht zu programmieren. Zudem zeigt sich, dass Dart in einigen Bereichen sogar besser geeignet ist in die objektorientierte Programmierung einzuführen als herkömmliche Sprachen. Dies ist möglich, da Dart eine neuere Sprache ist und deshalb auf jahrzentelanger Erfahrung mit Sprachen wie Java, C++, Visual Basic, etc. aufbauen konnte.</p>
+
+<h2>Weitere Details</h2>
+
+<p>Unterrichtsmaterial und weitere Informationen zum Programmieren mit Dart finden Sie auf der folgenden Webseite:</p>
+
+<p><a href="http://edu.makery.ch/projects/learn-dart">Learn Dart</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Programming with Dart]]></title>
@@ -928,7 +1143,7 @@
     <content type="html"><![CDATA[<p>I created two new pages to structure content on this website. The pages will guide you through the learning resources about Java and JavaFX:</p>
 
 <ul>
-<li><a href="http://edu.makery.ch/projects/learn-programming">Learn Programming</a> - Java resources and blog posts</li>
+<li><a href="http://edu.makery.ch/projects/learn-java">Learn Java</a> - Java resources and blog posts</li>
 <li><a href="http://edu.makery.ch/projects/learn-javafx">Learn JavaFX</a> - JavaFX resources and blog posts</li>
 </ul>
 
@@ -3536,125 +3751,6 @@ Specify the Name of the project (i.e. AddressApp).</p>
 <h2>Bugs / Questions</h2>
 
 <p>If you have questions or found a bug please leave a comment below or report an <a href="https://github.com/marcojakob/javafx-ui-sandbox">issue on GitHub</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[GameGridKara 2.0 Released]]></title>
-    <link href="http://edu.makery.ch/blog/2012/10/03/gamegridkara-2-0-released/"/>
-    <updated>2012-10-03T13:00:00+02:00</updated>
-    <id>http://edu.makery.ch/blog/2012/10/03/gamegridkara-2-0-released</id>
-    <content type="html"><![CDATA[<p><img src="http://edu.makery.ch/images/kara/gamegridkara-logo-large.png" title="GameGridKara" ></p>
-
-<p>GameGridKara version 2.0 has been released (see a <a href="http://www.swisseduc.ch/informatik/karatojava/gamegridkara/changes.html">change log</a>).</p>
-
-<h2>Features</h2>
-
-<ul>
-<li>Complete beginners course in German and English</li>
-<li>Combination of Kara and <a href="http://www.gamegrid.ch">GameGrid</a> for a simple introduction to Java programming</li>
-<li>Use <strong>any programming IDE like Eclipse, Netbeans or BlueJ</strong></li>
-<li>16-20 lessons</li>
-<li>12 handouts for students</li>
-<li>24 Kara scenarios</li>
-<li>38+ exercises with solutions</li>
-<li>Programming of a Sokoban game with self-designed levels, a highscore, etc.</li>
-</ul>
-
-
-<h2>Sample Scenario</h2>
-
-<p>That&#8217;s how a simple scenario of GameGridKara looks like in Eclipse. You will find the complete exercise on the handout for chapter 1 (see downloads).</p>
-
-<p><img src="http://edu.makery.ch/images/kara/gamegridkara-eclipse.png" title="GameGridKara in Eclipse" ></p>
-
-<p>What does the program in the screenshot do? It will get Kara around the first tree. The complete program can be written inside the <code>act()</code> method. For more complex scenarios you will likely have to create additional methods.</p>
-
-<!-- more -->
-
-
-<p>Kara&#8217;s world in the scenario above is loaded from the WorldSetup.txt file:</p>
-
-<figure class='code'><figcaption><span>WorldSetup.txt</span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='text'><span class='line'>World: Kara 07 Around Tree
-</span><span class='line'>X: 10
-</span><span class='line'>Y: 2
-</span><span class='line'>
-</span><span class='line'>@ # #  #.
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><code>X</code> and <code>Y</code> attributes define the width and height of the world. <code>@</code> represents the location of Kara while <code>#</code> stands for a tree and <code>.</code> for a leaf. The size of the world and the actor positions can easily be changed by editing the <em>WorldSetup.txt</em> file. You can also design new world setups by placing actors inside the world with the mouse and using the context menu | <code>saveWorldSetupToFile()</code> to save it to a file.</p>
-
-<h2>How to Get Started</h2>
-
-<p>To use the predefined scenarios you can import the scenarios into your development environment (see downloads below).</p>
-
-<h3>Create Your Own Scenarios</h3>
-
-<p>To create your own scenarios you will need to put the following two libraries on the classpath:</p>
-
-<ul>
-<li>GameGridKara-2.2.0.jar</li>
-<li>JGameGrid-2.20.jar</li>
-</ul>
-
-
-<p>You can extract the two libraries from any scenario (see downloads below).</p>
-
-<p>Each scenario must have <em>one Java class</em> and a <em>WorldSetup.txt</em> file as seen above. Here is a complete example of a Java class where the actual program will be written:</p>
-
-<figure class='code'><figcaption><span>MyKara.java</span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="kn">import</span> <span class="nn">kara.gamegrid.Kara</span><span class="o">;</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">kara.gamegrid.KaraWorld</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="cm">/**</span>
-</span><span class='line'><span class="cm"> * MyKara is a subclass of Kara. Therefore, it inherits all methods of Kara: &lt;p&gt;</span>
-</span><span class='line'><span class="cm"> * </span>
-</span><span class='line'><span class="cm"> * &lt;i&gt;MyKara ist eine Unterklasse von Kara. Sie erbt damit alle Methoden der Klasse Kara:&lt;/i&gt; &lt;p&gt;</span>
-</span><span class='line'><span class="cm"> * </span>
-</span><span class='line'><span class="cm"> * Actions:     move(), turnLeft(), turnRight(), putLeaf(), removeLeaf() &lt;b&gt;</span>
-</span><span class='line'><span class="cm"> * Sensors:     onLeaf(), treeFront(), treeLeft(), treeRight(), mushroomFront()</span>
-</span><span class='line'><span class="cm"> */</span>
-</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyKara</span> <span class="kd">extends</span> <span class="n">Kara</span> <span class="o">{</span>
-</span><span class='line'>  
-</span><span class='line'>  <span class="cm">/**</span>
-</span><span class='line'><span class="cm">   * In the &#39;act()&#39; method you can write your program for Kara &lt;br&gt;</span>
-</span><span class='line'><span class="cm">   * &lt;i&gt;In der Methode &#39;act()&#39; koennen die Befehle fuer Kara programmiert werden&lt;/i&gt;</span>
-</span><span class='line'><span class="cm">   */</span>
-</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">act</span><span class="o">()</span> <span class="o">{</span>
-</span><span class='line'>      <span class="n">move</span><span class="o">();</span>
-</span><span class='line'>      <span class="n">turnRight</span><span class="o">();</span>
-</span><span class='line'>      <span class="n">move</span><span class="o">();</span>
-</span><span class='line'>      
-</span><span class='line'>      <span class="n">stop</span><span class="o">();</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'>  
-</span><span class='line'>  
-</span><span class='line'>  <span class="cm">/**</span>
-</span><span class='line'><span class="cm">  * The main-method is the start of the program where the Kara world is loaded &lt;br&gt;</span>
-</span><span class='line'><span class="cm">  * &lt;i&gt;Die main-Methode ist der Start des Programms, wo die Kara Welt geladen wird&lt;/i&gt;</span>
-</span><span class='line'><span class="cm">  */</span>
-</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>      <span class="n">KaraWorld</span> <span class="n">world</span> <span class="o">=</span> <span class="k">new</span> <span class="n">KaraWorld</span><span class="o">(</span><span class="s">&quot;WorldSetup.txt&quot;</span><span class="o">,</span> <span class="n">MyKara</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-</span><span class='line'>      <span class="n">world</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The <code>main(...)</code> method is needed to setup and start the world. You need to tell GameGridKara the name of the world setup file and provide the class in which to look for the <code>act()</code> method.</p>
-
-<h2>GameGridKara Downloads</h2>
-
-<p>Instructions, handouts, and scenarios can be downloaded from the Swisseduc website: <br/>
-<a href="http://www.swisseduc.ch/informatik/karatojava/gamegridkara/gamegridkara-english.html"><img class="nobox middle" src="http://edu.makery.ch/images/swisseduc.png" title="'GameGridKara on Swisseduc (English)'" > GameGridKara Downloads (English)</a> <br/>
-<a href="http://www.swisseduc.ch/informatik/karatojava/gamegridkara/index.html"><img class="nobox middle" src="http://edu.makery.ch/images/swisseduc.png" title="'GameGridKara on Swisseduc (German)'" > GameGridKara Downloads (German)</a></p>
-
-<p>The GameGridKara source can be found on GitHub (feedback and bug reports are welcome!): <br/>
-<a href="https://github.com/marcojakob/gamegrid-kara"><img class="nobox middle" src="http://edu.makery.ch/images/glyphicons_github.png" title="'GameGridKara on GitHub'" > GameGridKara Source on GitHub</a></p>
-
-<h2>Feedback</h2>
-
-<p>I would appreciate any feedback of your experience with GameGridKara. You can write an <a href="http://edu.makery.ch/about">E-Mail</a> or leave a comment at the bottom of this blog entry. If you create your own exercises and scenarios I would be glad to post or link them on this blog so others could use them too.</p>
 ]]></content>
   </entry>
   

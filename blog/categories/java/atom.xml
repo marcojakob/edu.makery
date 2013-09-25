@@ -4,7 +4,7 @@
   <title><![CDATA[edu.makery.ch | Category: Java]]></title>
   <link href="http://edu.makery.ch/blog/categories/java/atom.xml" rel="self"/>
   <link href="http://edu.makery.ch/blog/categories/java/"/>
-  <updated>2013-06-28T13:51:29+02:00</updated>
+  <updated>2013-09-25T19:27:44+02:00</updated>
   <id>http://edu.makery.ch/blog/categories/java</id>
   <author>
     <name><![CDATA[Marco Jakob]]></name>
@@ -21,7 +21,7 @@
     <content type="html"><![CDATA[<p>I created two new pages to structure content on this website. The pages will guide you through the learning resources about Java and JavaFX:</p>
 
 <ul>
-<li><a href="http://edu.makery.ch/projects/learn-programming">Learn Programming</a> - Java resources and blog posts</li>
+<li><a href="http://edu.makery.ch/projects/learn-java">Learn Java</a> - Java resources and blog posts</li>
 <li><a href="http://edu.makery.ch/projects/learn-javafx">Learn JavaFX</a> - JavaFX resources and blog posts</li>
 </ul>
 
@@ -363,7 +363,9 @@ Almost every application will need some way to persistently store data. There ar
     <link href="http://edu.makery.ch/blog/2012/10/02/introduction-to-programming-with-kara/"/>
     <updated>2012-10-02T22:00:00+02:00</updated>
     <id>http://edu.makery.ch/blog/2012/10/02/introduction-to-programming-with-kara</id>
-    <content type="html"><![CDATA[<p>Kara offers a playful introduction to fundamental concepts of programming. Kara is a ladybug that lives in a simple world with trees, leafs and mushrooms.</p>
+    <content type="html"><![CDATA[<p><strong>Updated Sep 26th, 2013</strong>: Added Dart Version</p>
+
+<p>Kara offers a playful introduction to fundamental concepts of programming. Kara is a ladybug that lives in a simple world with trees, leafs and mushrooms.</p>
 
 <p><img src="http://edu.makery.ch/images/kara/kara.png" title="Kara" >
 <img src="http://edu.makery.ch/images/kara/mushroom.png" title="Mushroom" >
@@ -399,7 +401,7 @@ Almost every application will need some way to persistently store data. There ar
 
 <p>One solution would be as follows:</p>
 
-<figure class='code'><figcaption><span>Kara collects leafs (Java)</span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="k">while</span> <span class="o">(!</span><span class="n">treeFront</span><span class="o">())</span> <span class="o">{</span>
+<figure class='code'><figcaption><span>Kara collects leafs</span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="k">while</span> <span class="o">(!</span><span class="n">treeFront</span><span class="o">())</span> <span class="o">{</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="k">if</span> <span class="o">(</span><span class="n">onLeaf</span><span class="o">())</span> <span class="o">{</span>
 </span><span class='line'>    <span class="n">removeLeaf</span><span class="o">();</span>
@@ -414,19 +416,23 @@ Almost every application will need some way to persistently store data. There ar
 
 <p>Kara has many different versions. The original Kara is designed as a finite state machine with a purely graphical program editor. See the full list of <a href="http://www.swisseduc.ch/informatik/karatojava/index.html">available Kara versions</a>.</p>
 
-<p>I usually prefer to start directly with writing Java code. Now there are three possible editors/libraries:</p>
+<p>I usually prefer to start directly with writing code in the Java or Dart language. Now there are quite a few possible editors/libraries:</p>
 
-<h3>JavaKara</h3>
+<h3>DartKara (Dart)</h3>
+
+<p>DartKara is a scenario written in Dart. It can be used in the Dart Editor which is a very nice and simple development environment. The scenario comes with handouts and exercises. You can find those resources on the <a href="http://edu.makery.ch/projects/learn-dart">Learn Dart</a> page.</p>
+
+<h3>GreenfootKara (Java)</h3>
+
+<p>Since I really like the editor of the <a href="http://greenfoot.org">Greenfoot IDE</a> I decided to create a Kara version that works with Greenfoot, it is called GreenfootKara. In addition to this I wrote an entire beginners course of 16-20 lessons with exercises and handouts to go along with GreenfootKara. You can find the links to the German and English versions on the <a href="http://edu.makery.ch/projects/learn-java">Learn Java</a> page.</p>
+
+<h3>GameGridKara (Java)</h3>
+
+<p>Sometimes, especially if time is too short, it might be good to directly start with a professional development environment like Eclipse or NetBeans. Since it was not possible to integrate Greenfoot into Eclipse/NetBeans, I had to find another solution. Altough, we could start JavaKara from Eclipse/NetBeans, there are just some things that are not possible (like programming an interactive Kara game). The solution was to port the code to work with a library called <em>JGameGrid</em>. Links to the GameGridKara resources in German and English can also be found on the <a href="http://edu.makery.ch/projects/learn-java">Learn Java</a> page.</p>
+
+<h3>JavaKara (Java)</h3>
 
 <p>JavaKara is the original editor. You can find the <a href="http://www.swisseduc.ch/informatik/karatojava/javakara/index.html">JavaKara download and resources here</a> (in German).</p>
-
-<h3>GreenfootKara</h3>
-
-<p>Since I really like the editor of the <a href="http://greenfoot.org">Greenfoot IDE</a> I decided to create a Kara version that works with Greenfoot, it is called GreenfootKara. In addition to this I wrote an entire beginners course of 16-20 lessons with exercises and handouts to go along with GreenfootKara. You can find the links to the German and English versions on the <a href="http://edu.makery.ch/learn-java">Learn Java</a> page.</p>
-
-<h3>GameGridKara</h3>
-
-<p>Sometimes, especially if time is too short, it might be good to directly start with a professional development environment like Eclipse or NetBeans. Since it was not possible to integrate Greenfoot into Eclipse/NetBeans, I had to find another solution. Altough, we could start JavaKara from Eclipse/NetBeans, there are just some things that are not possible (like programming an interactive Kara game). The solution was to port the code to work with a library called <a href="http://gamegrid.ch">JGameGrid</a>.</p>
 
 <p>GameGridKara enables us to use Kara in any IDE of our choice by simply adding two jar files to a project. The link to GameGridKara with the adjusted beginners course in German and English can be found on the <a href="http://edu.makery.ch/learn-java">Learn Java</a> page.</p>
 ]]></content>

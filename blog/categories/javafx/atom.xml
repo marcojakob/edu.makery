@@ -4,7 +4,7 @@
   <title><![CDATA[edu.makery.ch | Category: JavaFX]]></title>
   <link href="http://edu.makery.ch/blog/categories/javafx/atom.xml" rel="self"/>
   <link href="http://edu.makery.ch/blog/categories/javafx/"/>
-  <updated>2013-06-28T13:51:29+02:00</updated>
+  <updated>2013-09-25T19:27:44+02:00</updated>
   <id>http://edu.makery.ch/blog/categories/javafx</id>
   <author>
     <name><![CDATA[Marco Jakob]]></name>
@@ -907,7 +907,7 @@
     <content type="html"><![CDATA[<p>I created two new pages to structure content on this website. The pages will guide you through the learning resources about Java and JavaFX:</p>
 
 <ul>
-<li><a href="http://edu.makery.ch/projects/learn-programming">Learn Programming</a> - Java resources and blog posts</li>
+<li><a href="http://edu.makery.ch/projects/learn-java">Learn Java</a> - Java resources and blog posts</li>
 <li><a href="http://edu.makery.ch/projects/learn-javafx">Learn JavaFX</a> - JavaFX resources and blog posts</li>
 </ul>
 
