@@ -56,7 +56,7 @@ Wenn Dart Ihre erste Programmiersprache ist, empfiehlt es sich, mit einem Lernsz
 [{% img nobox middle /images/common/pdf_document.png Slides Dart Workshop INFOS 2013 %} Slides Dart Workshop INFOS 2013 [862 KB]](/downloads/learn-dart/slides-dart-workshop-infos2013.pdf) 
 
 ## Umfrage ##
-[Umfrage: Web und Mobile Apps Programmieren in Dart](https://docs.google.com/forms/d/1_0JV5GUMaSOrEq2DmScZj_64JKnyW0ods2HZ-Lb-btw/viewform)
+[{% img nobox middle /images/common/microphone.png Umfrage: Web und Mobile Apps Programmieren in Dart %} Umfrage: Web und Mobile Apps Programmieren in Dart](https://docs.google.com/forms/d/1_0JV5GUMaSOrEq2DmScZj_64JKnyW0ods2HZ-Lb-btw/viewform)
 
 ## Blogeinträge zu Dart ##
 Für alle Blogeinträge zu Dart, siehe [Dart Archive](/blog/archives/dart/).
