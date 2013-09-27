@@ -1,7 +1,8 @@
-
 ## IconSweets 2 by Yummygum ##
 https://www.iconfinder.com/search/?q=iconset%3Aiconsweets2
 http://yummygum.com/
 
 * pdf_document.png
 * word_document.png
+* zip_file.png
+* microphone.png
