@@ -22,6 +22,12 @@ Wenn Dart Ihre erste Programmiersprache ist, empfiehlt es sich, mit einem Lernsz
 * **Kapitel 4**: Spiel Programmieren, Keyboard Input, Strings vergleichen, Dart API Dokumentation lesen, eigene ASCII-Levels designen, eigenes Szenario auf dem Web veröffentlichen
 * **Kapitel 5**: Eigene Methoden mit Parametern und Rückgabewerten, Repetition
 
+### Beispiele ###
+* [Kara als Wächter](http://marcojakob.github.io/dart-kara/kara-as-guard/) - Beispiel der Miniwelt Kara
+* [Todo-Liste](http://marcojakob.github.io/dart-kara/todo/) - Beispiel einer dynamischen Webseite
+* [Waves](http://marcojakob.github.io/dart-kara/waves/) - Beispiel eines interaktiven HTML5 Canvas
+
+
 ### Downloads ###
 
 #### Szenarien ####
@@ -46,5 +52,9 @@ Wenn Dart Ihre erste Programmiersprache ist, empfiehlt es sich, mit einem Lernsz
 [{% img nobox middle /images/common/zip_file.png Alle Handouts als PDF-Dokumente %} Alle Handouts als PDF-Dokumente [1 MB]](/downloads/learn-dart/dart-kara-handouts-pdf.zip)   
 [{% img nobox middle /images/common/zip_file.png Alle Handouts als Word-Dokumente %} Alle Handouts als Word-Dokumente [772 KB]](/downloads/learn-dart/dart-kara-handouts-word.zip)
 
-## Dart Blogeinträge ##
+### Workshop Präsentation ###
+[{% img nobox middle /images/common/pdf_document.png Slides Dart Workshop INFOS 2013 %} Slides Dart Workshop INFOS 2013 [862 KB]](/downloads/learn-dart/slides-dart-workshop-infos2013.pdf) 
+
+
+## Blogeinträge zu Dart ##
 Für alle Blogeinträge zu Dart, siehe [Dart Archive](/blog/archives/dart/).
