@@ -4,7 +4,7 @@
   <title><![CDATA[edu.makery.ch]]></title>
   <link href="http://edu.makery.ch/atom.xml" rel="self"/>
   <link href="http://edu.makery.ch/"/>
-  <updated>2013-09-28T18:50:21+02:00</updated>
+  <updated>2013-10-02T11:24:07+02:00</updated>
   <id>http://edu.makery.ch/</id>
   <author>
     <name><![CDATA[Marco Jakob]]></name>
@@ -66,7 +66,7 @@
 
 <p><img src="http://edu.makery.ch/images/dart/dart-on-modern-platforms.png"></p>
 
-<p><em>Dart-Programme laufen auf allen modernen Plattformen (Bildquelle: <a href="http://gakuesisean.deviantart.com">Sean Poon</a> und <a href="http://www.designcontest.com/">Design Contest</a>)</em></p>
+<p><em>Dart-Programme laufen auf allen modernen Plattformen (Bildquelle: Sean Poon und <a href="http://www.designcontest.com/">Design Contest</a>)</em></p>
 
 <p>Dart ist eine <strong>objektorientierte Sprache</strong>, welche sich sehr gut für den Unterricht eignet. Sie ist stark an die bekanntesten Programmiersprachen wie Java und C++ angelehnt, ist aber konsistenter und eleganter. Das macht die Sprache einfach zu lernen für Umsteiger und viel einfacher für Programmieranfänger (siehe Code-Beispiele weiter unten).</p>
 
@@ -3417,14 +3417,14 @@ If you don&#8217;t to do the work, you can download this <a href="http://edu.mak
 
 <ul>
 <li>Latest <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java JDK 7</a> that includes <strong>JavaFX 2.2</strong> or greater.</li>
-<li>Eclipse 4.2 or greater with e(fx)clipse plugin. The easiest way is to download the preconfigured distro from the <a href="http://efxclipse.org/install.html">e(fx)clipse website</a>.</li>
-<li><a href="http://www.oracle.com/technetwork/java/javafx/overview/index.html">Scene Builder 1.1</a> or greater</li>
+<li>Eclipse 4.2 or greater with e(fx)clipse plugin. The easiest way is to download the preconfigured distro from the <a href="http://efxclipse.bestsolution.at/install.html#all-in-one">e(fx)clipse website</a>. As an alternative you can use an <a href="http://www.eclipse.org/efxclipse/install.html">update site</a> for your Eclipse installation.</li>
+<li><a href="http://www.oracle.com/technetwork/java/javafx/downloads/index.html">Scene Builder 1.1</a> or greater</li>
 </ul>
 
 
 <h3>Preparation and Helpful Links</h3>
 
-<p>Play around with the JavaFX widgets in the <a href="http://download.oracle.com/otndocs/products/javafx/2.2/samples/Ensemble/index.html#SAMPLES">JavaFX Ensemble</a>:</p>
+<p>Play around with the JavaFX widgets in the <a href="http://www.oracle.com/technetwork/java/javafx/samples/index.html">JavaFX Ensemble</a> (Under <em>Downloads</em>, go to <em>JavaFX Demos and Samples Downloads</em>, unzip the samples and click on <em>Ensemble.jar</em>):</p>
 
 <ul>
 <li>JavaFX Ensemble is a gallery of over 100 sample applications that use a wide range of JavaFX features.</li>

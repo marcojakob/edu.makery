@@ -4,7 +4,7 @@
   <title><![CDATA[edu.makery.ch | Category: Dart]]></title>
   <link href="http://edu.makery.ch/blog/categories/dart/atom.xml" rel="self"/>
   <link href="http://edu.makery.ch/blog/categories/dart/"/>
-  <updated>2013-09-28T18:50:21+02:00</updated>
+  <updated>2013-10-02T11:24:07+02:00</updated>
   <id>http://edu.makery.ch/blog/categories/dart</id>
   <author>
     <name><![CDATA[Marco Jakob]]></name>
@@ -66,7 +66,7 @@
 
 <p><img src="http://edu.makery.ch/images/dart/dart-on-modern-platforms.png"></p>
 
-<p><em>Dart-Programme laufen auf allen modernen Plattformen (Bildquelle: <a href="http://gakuesisean.deviantart.com">Sean Poon</a> und <a href="http://www.designcontest.com/">Design Contest</a>)</em></p>
+<p><em>Dart-Programme laufen auf allen modernen Plattformen (Bildquelle: Sean Poon und <a href="http://www.designcontest.com/">Design Contest</a>)</em></p>
 
 <p>Dart ist eine <strong>objektorientierte Sprache</strong>, welche sich sehr gut für den Unterricht eignet. Sie ist stark an die bekanntesten Programmiersprachen wie Java und C++ angelehnt, ist aber konsistenter und eleganter. Das macht die Sprache einfach zu lernen für Umsteiger und viel einfacher für Programmieranfänger (siehe Code-Beispiele weiter unten).</p>
 
@@ -319,13 +319,13 @@
 
 <h3>GameGridKara (Java)</h3>
 
-<p>Sometimes, especially if time is too short, it might be good to directly start with a professional development environment like Eclipse or NetBeans. Since it was not possible to integrate Greenfoot into Eclipse/NetBeans, I had to find another solution. Altough, we could start JavaKara from Eclipse/NetBeans, there are just some things that are not possible (like programming an interactive Kara game). The solution was to port the code to work with a library called <em>JGameGrid</em>. Links to the GameGridKara resources in German and English can also be found on the <a href="http://edu.makery.ch/projects/learn-java">Learn Java</a> page.</p>
+<p>Sometimes, especially if time is too short, it might be good to directly start with a professional development environment like Eclipse or NetBeans. Since it was not possible to integrate Greenfoot into Eclipse/NetBeans, I had to find another solution. Altough, we could start JavaKara from Eclipse/NetBeans, there are just some things that are not possible (like programming an interactive Kara game). The solution was to port the code to work with a library called <em>JGameGrid</em>.</p>
+
+<p>GameGridKara enables us to use Kara in any IDE of our choice by simply adding two jar files to a project. The link to GameGridKara with the adjusted beginners course in German and English can be found on the <a href="http://edu.makery.ch/projects/learn-java">Learn Java</a> page.</p>
 
 <h3>JavaKara (Java)</h3>
 
 <p>JavaKara is the original editor. You can find the <a href="http://www.swisseduc.ch/informatik/karatojava/javakara/index.html">JavaKara download and resources here</a> (in German).</p>
-
-<p>GameGridKara enables us to use Kara in any IDE of our choice by simply adding two jar files to a project. The link to GameGridKara with the adjusted beginners course in German and English can be found on the <a href="http://edu.makery.ch/learn-java">Learn Java</a> page.</p>
 ]]></content>
   </entry>
   
