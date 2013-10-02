@@ -52,7 +52,7 @@ Dart ist *für das Web gemacht* und lässt sich direkt in JavaScript übersetzen
 
 {% img /images/dart/dart-on-modern-platforms.png %}
 
-*Dart-Programme laufen auf allen modernen Plattformen (Bildquelle: [Sean Poon](http://gakuesisean.deviantart.com) und [Design Contest](http://www.designcontest.com/))*
+*Dart-Programme laufen auf allen modernen Plattformen (Bildquelle: Sean Poon und [Design Contest](http://www.designcontest.com/))*
 
 Dart ist eine **objektorientierte Sprache**, welche sich sehr gut für den Unterricht eignet. Sie ist stark an die bekanntesten Programmiersprachen wie Java und C++ angelehnt, ist aber konsistenter und eleganter. Das macht die Sprache einfach zu lernen für Umsteiger und viel einfacher für Programmieranfänger (siehe Code-Beispiele weiter unten).
 

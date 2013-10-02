@@ -30,12 +30,12 @@ The goal of this tutorial is to learn how to create graphical user interfaces wi
 
 ### Prerequisites ###
 * Latest [Java JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/index.html) that includes **JavaFX 2.2** or greater.
-* Eclipse 4.2 or greater with e(fx)clipse plugin. The easiest way is to download the preconfigured distro from the [e(fx)clipse website](http://efxclipse.org/install.html).
-* [Scene Builder 1.1](http://www.oracle.com/technetwork/java/javafx/overview/index.html) or greater
+* Eclipse 4.2 or greater with e(fx)clipse plugin. The easiest way is to download the preconfigured distro from the [e(fx)clipse website](http://efxclipse.bestsolution.at/install.html#all-in-one). As an alternative you can use an [update site](http://www.eclipse.org/efxclipse/install.html) for your Eclipse installation.
+* [Scene Builder 1.1](http://www.oracle.com/technetwork/java/javafx/downloads/index.html) or greater
 
 
 ### Preparation and Helpful Links ###
-Play around with the JavaFX widgets in the [JavaFX Ensemble](http://download.oracle.com/otndocs/products/javafx/2.2/samples/Ensemble/index.html#SAMPLES):
+Play around with the JavaFX widgets in the [JavaFX Ensemble](http://www.oracle.com/technetwork/java/javafx/samples/index.html) (Under *Downloads*, go to *JavaFX Demos and Samples Downloads*, unzip the samples and click on *Ensemble.jar*):
 
 * JavaFX Ensemble is a gallery of over 100 sample applications that use a wide range of JavaFX features.
 * Contains source code for each sample.
