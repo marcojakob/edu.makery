@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Dart Event Bus
-comments: false
+comments: true
 footer: true
 javascript: [event_bus_example.dart.js, dart.js]
 css: [event_bus_example.css]

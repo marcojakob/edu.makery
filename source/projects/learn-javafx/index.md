@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Learn JavaFX
-comments: false
+comments: true
 footer: true
 ---
 {% img right /images/learn-javafx/javafx-logo.png 'JavaFX Logo' %}

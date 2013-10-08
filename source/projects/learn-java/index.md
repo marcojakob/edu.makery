@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Learn Java
-comments: false
+comments: true
 footer: true
 ---
 {% img right /images/learn-java/java-logo.png 'Java Logo' %}
