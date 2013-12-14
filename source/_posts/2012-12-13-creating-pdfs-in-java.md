@@ -17,8 +17,6 @@ There are many iText tutorials, here are just a couple:
 
 * [iText Tutorial](http://www.vogella.com/articles/JavaPDF/article.html)
 * Tutorials and [many iText Examples](http://www.roseindia.net/java/itext/index.shtml)
-Almost every application will need some way to persistently store data. There are many different ways to accomplish that. We'll start with a simple way to save a small amount of data and continue to more advanced techniques.
-
 
 
 
