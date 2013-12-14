@@ -128,7 +128,7 @@ To ignore such an error is not very nice, of course. We should let the user know
 
 We'll add a popup dialog to inform the user. You'll need to **add a library** for the Dialogs: 
 
-1. Download the newest **javafx-dialogs-x.x.x.jar** file from my [GitHub Page](https://github.com/marcojakob/javafx-ui-sandbox/tree/master/javafx-dialogs/dist).
+1. Download the newest **javafx-dialogs-x.x.x.jar** file from my [GitHub Page](https://github.com/marcojakob/javafx-ui-sandbox/releases).
 2. Create a **lib** subfolder in the project and add the jar file to this folder.
 3. Add the jar file to the project's classpath: In Eclipse *right-click on the jar file | Build Path | Add to Build Path*.
 
