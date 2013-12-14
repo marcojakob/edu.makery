@@ -4,7 +4,7 @@
   <title><![CDATA[edu.makery.ch]]></title>
   <link href="http://edu.makery.ch/atom.xml" rel="self"/>
   <link href="http://edu.makery.ch/"/>
-  <updated>2013-10-08T12:36:21+02:00</updated>
+  <updated>2013-12-14T11:59:09+01:00</updated>
   <id>http://edu.makery.ch/</id>
   <author>
     <name><![CDATA[Marco Jakob]]></name>
@@ -1409,8 +1409,7 @@
 
 <ul>
 <li><a href="http://www.vogella.com/articles/JavaPDF/article.html">iText Tutorial</a></li>
-<li>Tutorials and <a href="http://www.roseindia.net/java/itext/index.shtml">many iText Examples</a>
-Almost every application will need some way to persistently store data. There are many different ways to accomplish that. We&#8217;ll start with a simple way to save a small amount of data and continue to more advanced techniques.</li>
+<li>Tutorials and <a href="http://www.roseindia.net/java/itext/index.shtml">many iText Examples</a></li>
 </ul>
 
 ]]></content>
