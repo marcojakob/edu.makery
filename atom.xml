@@ -4,7 +4,7 @@
   <title><![CDATA[edu.makery.ch]]></title>
   <link href="http://edu.makery.ch/atom.xml" rel="self"/>
   <link href="http://edu.makery.ch/"/>
-  <updated>2013-12-14T13:56:16+01:00</updated>
+  <updated>2014-03-28T23:28:55+01:00</updated>
   <id>http://edu.makery.ch/</id>
   <author>
     <name><![CDATA[Marco Jakob]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Moving to code.makery.ch]]></title>
+    <link href="http://edu.makery.ch/blog/2014/03/28/moving-to-code-makery-ch/"/>
+    <updated>2014-03-28T00:00:00+01:00</updated>
+    <id>http://edu.makery.ch/blog/2014/03/28/moving-to-code-makery-ch</id>
+    <content type="html"><![CDATA[<p>This blog is moving to a new home:</p>
+
+<p><a href="http://code.makery.ch"><img src="http://edu.makery.ch/images/code-makery.png"></a></p>
+
+<h3>Please update your links and RSS feeds to <a href="http://code.makery.ch">code.makery.ch</a></h3>
+
+<h3>Or even better: Sign up to <a href="https://tinyletter.com/code-makery">receive updates by email</a></h3>
+
+<h2>Why the Move?</h2>
+
+<p>When I started blogging in 2012 I thought this would be a blog about educational things. That&#8217;s why I called it <strong>edu</strong>.makery.ch. The posts and tutorials I originally wrote for my students turned out to be useful for a much broader audience. (I&#8217;ve been getting some good traffic, averaging around 700 visits per day.) Soon the blog became a website not just about educational matters but about programming material in general.</p>
+
+<p>So I decided to move to a new subdomain that expresses what the website is about: <code>code</code></p>
+
+<h2>Redesign</h2>
+
+<p>At the same time I made a <strong>complete redesign</strong> and separated the rather large tutorials from the blog (containing shorter posts).</p>
+
+<h2>Expect More Tutorials</h2>
+
+<p>I plan to update the <code>JavaFX 2</code> tutorials for <code>JavaFX 8</code> (which is quite some work if done well). And I hope to write more about <code>Dart</code> in the future, we&#8217;ll see.</p>
+
+<h2>Stay in Touch</h2>
+
+<p>I would love to get your feedback about the new design and the tutorials. If you would like me to inform you when new content is available, <a href="https://tinyletter.com/code-makery">sign up with your email here</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Web und Mobile Apps Programmieren mit Dart]]></title>
@@ -3604,152 +3637,6 @@ Specify the Name of the project (i.e. AddressApp).</p>
 <h3>Download</h3>
 
 <p><a href="http://edu.makery.ch/downloads/javafx-addressapp/part-1/addressapp-part-1.zip">Source of Tutorial Part I</a> as Eclipse Project</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[JavaFX 2 Dialogs]]></title>
-    <link href="http://edu.makery.ch/blog/2012/10/30/javafx-2-dialogs/"/>
-    <updated>2012-10-30T00:45:00+01:00</updated>
-    <id>http://edu.makery.ch/blog/2012/10/30/javafx-2-dialogs</id>
-    <content type="html"><![CDATA[<p>When programming a graphical user interface (GUI) there are occasions where you&#8217;ll need a simple popup dialog to communicate with the user. In Swing (the predecessor of JavaFX) there is a convenient class called <a href="http://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html">JOptionPane</a> for such dialogs. A similar class doesn&#8217;t exist in JavaFX 2.x (yet).</p>
-
-<p>Fortunately, the authors of JavaFX <a href="http://fxexperience.com/2012/10/announcing-the-javafx-ui-controls-sandbox/">published</a> some user interface controls they are currently working on. Those controls might be added in a future version of JavaFX.</p>
-
-<p>One of those ui controls is a class called <code>Dialogs.java</code> which is exactly what we need.</p>
-
-<h2>How To Use the Dialogs</h2>
-
-<ol>
-<li>Download the newest <strong>javafx-dialogs-x.x.x.jar</strong> file from my <a href="https://github.com/marcojakob/javafx-ui-sandbox/tree/master/javafx-dialogs/dist">GitHub Page</a>. I put all necessary classes, css files and images inside this jar.</li>
-<li>Add the jar file to your project (usually inside a <strong>lib</strong> subfolder).</li>
-<li>Add the jar file to the project&#8217;s classpath: In Eclipse <em>right-click on the jar file</em> | <em>Build Path</em> | <em>Add to Build Path</em>. Now Eclipse knows about the library.</li>
-<li>Then add one of the following lines:</li>
-</ol>
-
-
-<h3>Information Dialog</h3>
-
-<p><img src="http://edu.makery.ch/images/javafx-dialogs/javafx-information-dialog.png" title="JavaFX Information Dialog" ></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="n">Dialogs</span><span class="o">.</span><span class="na">showInformationDialog</span><span class="o">(</span><span class="n">stage</span><span class="o">,</span> <span class="s">&quot;I have a great message for you!&quot;</span><span class="o">,</span>
-</span><span class='line'>    <span class="s">&quot;Information Dialog&quot;</span><span class="o">,</span> <span class="s">&quot;title&quot;</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<!-- more -->
-
-
-<h3>Warning Dialog</h3>
-
-<p><img src="http://edu.makery.ch/images/javafx-dialogs/javafx-warning-dialog.png" title="JavaFX Warning Dialog" ></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="n">Dialogs</span><span class="o">.</span><span class="na">showWarningDialog</span><span class="o">(</span><span class="n">stage</span><span class="o">,</span> <span class="s">&quot;Careful with the next step!&quot;</span><span class="o">,</span> <span class="s">&quot;Warning Dialog&quot;</span><span class="o">,</span> <span class="s">&quot;title&quot;</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Error Dialog</h3>
-
-<p><img src="http://edu.makery.ch/images/javafx-dialogs/javafx-error-dialog.png" title="JavaFX Error Dialog" ></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="n">Dialogs</span><span class="o">.</span><span class="na">showErrorDialog</span><span class="o">(</span><span class="n">stage</span><span class="o">,</span> <span class="s">&quot;Ooops, there was an error!&quot;</span><span class="o">,</span> <span class="s">&quot;Error Dialog&quot;</span><span class="o">,</span> <span class="s">&quot;title&quot;</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>You may also provide an exception:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="n">Dialogs</span><span class="o">.</span><span class="na">showErrorDialog</span><span class="o">(</span><span class="n">stage</span><span class="o">,</span> <span class="s">&quot;Ooops, there was an error!&quot;</span><span class="o">,</span> <span class="s">&quot;Error Dialog With Exception&quot;</span><span class="o">,</span>
-</span><span class='line'>    <span class="s">&quot;title&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">FileNotFoundException</span><span class="o">(</span><span class="s">&quot;Could not find file blabla.txt&quot;</span><span class="o">));</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Confirm Dialog</h3>
-
-<p><img src="http://edu.makery.ch/images/javafx-dialogs/javafx-confirmation-dialog.png" title="JavaFX Confirm Dialog" ></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="n">DialogResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">Dialogs</span><span class="o">.</span><span class="na">showConfirmDialog</span><span class="o">(</span><span class="n">stage</span><span class="o">,</span>
-</span><span class='line'>    <span class="s">&quot;Do you want to continue?&quot;</span><span class="o">,</span> <span class="s">&quot;Confirm Dialog&quot;</span><span class="o">,</span> <span class="s">&quot;title&quot;</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>You may provide <code>DialogOptions</code> like this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="n">DialogResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">Dialogs</span><span class="o">.</span><span class="na">showConfirmDialog</span><span class="o">(</span><span class="n">stage</span><span class="o">,</span> <span class="s">&quot;Are you ok with this?&quot;</span><span class="o">,</span>
-</span><span class='line'>      <span class="s">&quot;Confirm Dialog With Options&quot;</span><span class="o">,</span> <span class="s">&quot;title&quot;</span><span class="o">,</span> <span class="n">DialogOptions</span><span class="o">.</span><span class="na">OK_CANCEL</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The response will either be <code>DialogResponse.YES</code>, <code>DialogResponse.NO</code>, <code>DialogResponse.CANCEL</code>, <code>DialogResponse.OK</code>, or <code>DialogResponse.CLOSED</code>.</p>
-
-<h3>Input Dialog</h3>
-
-<p><img src="http://edu.makery.ch/images/javafx-dialogs/javafx-input-dialog.png" title="JavaFX Input Dialog" ></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="n">String</span> <span class="n">input</span> <span class="o">=</span> <span class="n">Dialogs</span><span class="o">.</span><span class="na">showInputDialog</span><span class="o">(</span><span class="n">stage</span><span class="o">,</span> <span class="s">&quot;Please enter your name:&quot;</span><span class="o">,</span> <span class="s">&quot;Input Dialog&quot;</span><span class="o">,</span> <span class="s">&quot;title&quot;</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>If you provide some choices, a combobox will be displayed:
-<img src="http://edu.makery.ch/images/javafx-dialogs/javafx-input-dialog-choices.png" title="JavaFX Input Dialog with Choices" ></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">choices</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
-</span><span class='line'><span class="n">choices</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;a&quot;</span><span class="o">);</span>
-</span><span class='line'><span class="n">choices</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;b&quot;</span><span class="o">);</span>
-</span><span class='line'><span class="n">choices</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;c&quot;</span><span class="o">);</span>
-</span><span class='line'>      
-</span><span class='line'><span class="n">String</span> <span class="n">input</span> <span class="o">=</span> <span class="n">Dialogs</span><span class="o">.</span><span class="na">showInputDialog</span><span class="o">(</span><span class="n">stage</span><span class="o">,</span> <span class="s">&quot;Choose your color:&quot;</span><span class="o">,</span>
-</span><span class='line'>    <span class="s">&quot;Input Dialog With Choices&quot;</span><span class="o">,</span> <span class="s">&quot;title&quot;</span><span class="o">,</span> <span class="s">&quot;b&quot;</span><span class="o">,</span> <span class="n">choices</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<hr />
-
-<p><strong>UPDATE (Version 0.0.3)</strong></p>
-
-<h3>Custom Dialog</h3>
-
-<p>Since JavaFX dialogs version 0.0.3 there is support for custom dialogs (thanks to Guldner for providing the <a href="https://github.com/marcojakob/javafx-ui-sandbox/pull/7">patch</a>).</p>
-
-<p>Here is an example of how to use custom dialogs to create a login form:</p>
-
-<p><img src="http://edu.makery.ch/images/javafx-dialogs/javafx-custom-dialog.png" title="JavaFX Custom Dialog" ></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='java'><span class='line'><span class="n">GridPane</span> <span class="n">grid</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GridPane</span><span class="o">();</span>
-</span><span class='line'><span class="n">grid</span><span class="o">.</span><span class="na">setHgap</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
-</span><span class='line'><span class="n">grid</span><span class="o">.</span><span class="na">setVgap</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
-</span><span class='line'><span class="n">grid</span><span class="o">.</span><span class="na">setPadding</span><span class="o">(</span><span class="k">new</span> <span class="n">Insets</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">10</span><span class="o">));</span>
-</span><span class='line'><span class="kd">final</span> <span class="n">TextField</span> <span class="n">username</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TextField</span><span class="o">();</span>
-</span><span class='line'><span class="n">username</span><span class="o">.</span><span class="na">setPromptText</span><span class="o">(</span><span class="s">&quot;Username&quot;</span><span class="o">);</span>
-</span><span class='line'><span class="kd">final</span> <span class="n">PasswordField</span> <span class="n">password</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PasswordField</span><span class="o">();</span>
-</span><span class='line'><span class="n">password</span><span class="o">.</span><span class="na">setPromptText</span><span class="o">(</span><span class="s">&quot;Password&quot;</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">grid</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;Username:&quot;</span><span class="o">),</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
-</span><span class='line'><span class="n">grid</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">username</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
-</span><span class='line'><span class="n">grid</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;Password:&quot;</span><span class="o">),</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
-</span><span class='line'><span class="n">grid</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">password</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">String</span> <span class="n">usernameResult</span><span class="o">;</span>
-</span><span class='line'><span class="n">String</span> <span class="n">passwordResult</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">Callback</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">,</span> <span class="n">Void</span><span class="o">&gt;</span> <span class="n">myCallback</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Callback</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">,</span> <span class="n">Void</span><span class="o">&gt;()</span> <span class="o">{</span>
-</span><span class='line'>  <span class="nd">@Override</span>
-</span><span class='line'>  <span class="kd">public</span> <span class="n">Void</span> <span class="nf">call</span><span class="o">(</span><span class="n">Void</span> <span class="n">param</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>    <span class="n">usernameResult</span> <span class="o">=</span> <span class="n">username</span><span class="o">.</span><span class="na">getText</span><span class="o">();</span>
-</span><span class='line'>    <span class="n">passwordResult</span> <span class="o">=</span> <span class="n">password</span><span class="o">.</span><span class="na">getText</span><span class="o">();</span>
-</span><span class='line'>    <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'><span class="o">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">DialogResponse</span> <span class="n">resp</span> <span class="o">=</span> <span class="n">Dialogs</span><span class="o">.</span><span class="na">showCustomDialog</span><span class="o">(</span><span class="n">stage</span><span class="o">,</span> <span class="n">grid</span><span class="o">,</span> <span class="s">&quot;Please log in&quot;</span><span class="o">,</span> <span class="s">&quot;Login&quot;</span><span class="o">,</span> <span class="n">DialogOptions</span><span class="o">.</span><span class="na">OK_CANCEL</span><span class="o">,</span> <span class="n">myCallback</span><span class="o">);</span>
-</span><span class='line'><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Custom Dialog: User clicked: &quot;</span> <span class="o">+</span> <span class="n">resp</span><span class="o">);</span>
-</span><span class='line'><span class="c1">//You must check the resp, since input fields&#39; texts are returned regardless of what button was pressed. (ie. If user clicked &#39;Cancel&#39; disregard the input) </span>
-</span><span class='line'><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Custom Dialog: Fields set from custom dialog: &quot;</span> <span class="o">+</span> <span class="n">usernameResult</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">passwordResult</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Bugs / Questions</h2>
-
-<p>If you have questions or found a bug please leave a comment below or report an <a href="https://github.com/marcojakob/javafx-ui-sandbox">issue on GitHub</a>.</p>
 ]]></content>
   </entry>
   
