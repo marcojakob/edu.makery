@@ -1,11 +1,5 @@
 ---
-layout: page
+layout: redirect
 title: About
-comments: false
-footer: false
+redirect: http://code.makery.ch/about
 ---
-{% img /images/about/marco.jpg %}
-
-Marco Jakob
-
-{% img nobox /images/about/mail.png %}
