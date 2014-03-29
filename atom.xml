@@ -4,7 +4,7 @@
   <title><![CDATA[edu.makery.ch]]></title>
   <link href="http://edu.makery.ch/atom.xml" rel="self"/>
   <link href="http://edu.makery.ch/"/>
-  <updated>2014-03-29T00:51:58+01:00</updated>
+  <updated>2014-03-29T10:22:11+01:00</updated>
   <id>http://edu.makery.ch/</id>
   <author>
     <name><![CDATA[Marco Jakob]]></name>
@@ -18,7 +18,31 @@
     <link href="http://edu.makery.ch/blog/2014/03/28/moving-to-code-makery-ch/"/>
     <updated>2014-03-28T00:00:00+01:00</updated>
     <id>http://edu.makery.ch/blog/2014/03/28/moving-to-code-makery-ch</id>
-    <content type="html"><![CDATA[
+    <content type="html"><![CDATA[<p>This blog is moving to a new home:</p>
+
+<p><a href="http://code.makery.ch"><img src="http://edu.makery.ch/images/code-makery.png"></a></p>
+
+<h3>Please update your links and RSS feeds to <a href="http://code.makery.ch">code.makery.ch</a></h3>
+
+<h3>Or even better: Sign up to <a href="https://tinyletter.com/code-makery">receive updates by email</a></h3>
+
+<h2>Why the Move?</h2>
+
+<p>When I started blogging in 2012 I thought this would be a blog about educational things. That&#8217;s why I called it <strong>edu</strong>.makery.ch. The posts and tutorials I originally wrote for my students turned out to be useful for a much broader audience. (I&#8217;ve been getting some good traffic, averaging around 700 visits per day.) Soon the blog became a website not just about educational matters but about programming material in general.</p>
+
+<p>So I decided to move to a new subdomain that expresses what the website is about: <code>code</code></p>
+
+<h2>Redesign</h2>
+
+<p>At the same time I made a <strong>complete redesign</strong> and separated the rather large tutorials from the blog (containing shorter posts).</p>
+
+<h2>Expect More Tutorials</h2>
+
+<p>I plan to update the <code>JavaFX 2</code> tutorials for <code>JavaFX 8</code> (which is quite some work if done well). And I hope to write more about <code>Dart</code> in the future, we&#8217;ll see.</p>
+
+<h2>Stay in Touch</h2>
+
+<p>I would love to get your feedback about the new design and the tutorials. If you would like me to inform you when new content is available, <a href="https://tinyletter.com/code-makery">sign up with your email here</a>.</p>
 ]]></content>
   </entry>
   
