@@ -2,7 +2,7 @@
 layout: post
 title: "Moving to code.makery.ch"
 date: 2014-03-28 00:00
-comments: true
+comments: false
 categories: [Dart, English, Java, JavaFX]
 published: true
 ---
