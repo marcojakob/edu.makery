@@ -1,5 +1,5 @@
 ---
 layout: redirect
 title: Learn Java
-redirect: http://code.makery.ch/java
+redirect: http://code.makery.ch/java/
 ---
