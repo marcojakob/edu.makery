@@ -1,13 +1,13 @@
 source "http://rubygems.org"
 
 group :development do
-  gem 'rake', '~> 0.9.2'
-  gem 'rack', '~> 1.4.1'
-  gem 'jekyll', '~> 0.11.2'
+  gem 'rake', '~> 12.3.3'
+  gem 'rack', '~> 2.1.4'
+  gem 'jekyll', '~> 3.6.3'
   gem 'rdiscount', '~> 1.6.8'
   gem 'pygments.rb', '~> 0.5.0'
-  gem 'RedCloth', '~> 4.2.9'
-  gem 'haml', '~> 3.1.6'
+  gem 'RedCloth', '~> 4.3.0'
+  gem 'haml', '~> 5.0.0'
   gem 'compass', '~> 0.12.1'
   gem 'rubypants', '~> 0.2.0'
   gem 'rb-fsevent', '~> 0.9'
